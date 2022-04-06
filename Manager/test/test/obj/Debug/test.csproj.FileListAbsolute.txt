@@ -1,0 +1,11 @@
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\bin\Debug\test.exe.config
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\bin\Debug\test.exe
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\bin\Debug\test.pdb
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.csproj.AssemblyReference.cache
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.csproj.SuggestedBindingRedirects.cache
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.Form1.resources
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.csproj.GenerateResource.cache
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.exe
+C:\Work Space\GitHub\Ahnduino\Manager\test\test\obj\Debug\test.pdb
