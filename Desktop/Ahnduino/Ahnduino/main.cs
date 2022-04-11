@@ -7,23 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FireSharp;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using FireSharp.Response;
 
 namespace Ahnduino
 {
-	public partial class main : Form
-	{
-		public main()
-		{
-			InitializeComponent();
-		}
-
-		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-	}
+    public partial class main : Form
+    {
+        public main()
+        {
+            InitializeComponent();
+        }
+    }
 }

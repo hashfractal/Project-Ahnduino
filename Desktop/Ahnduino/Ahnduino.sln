@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahnduino", "Ahnduino\Ahnduino.csproj", "{F84C2A8B-94C9-4419-92C4-0DCAFA2E14A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahnduino", "Ahnduino\Ahnduino.csproj", "{B559355E-D17E-4DDC-84CA-F9C99CB43847}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F84C2A8B-94C9-4419-92C4-0DCAFA2E14A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F84C2A8B-94C9-4419-92C4-0DCAFA2E14A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F84C2A8B-94C9-4419-92C4-0DCAFA2E14A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F84C2A8B-94C9-4419-92C4-0DCAFA2E14A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B559355E-D17E-4DDC-84CA-F9C99CB43847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B559355E-D17E-4DDC-84CA-F9C99CB43847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B559355E-D17E-4DDC-84CA-F9C99CB43847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B559355E-D17E-4DDC-84CA-F9C99CB43847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6478118D-33AA-48B7-91B6-3C4229EA5FFE}
+		SolutionGuid = {0F784F46-F8C0-4AD7-A93A-94B29C821110}
 	EndGlobalSection
 EndGlobal
