@@ -1,0 +1,11 @@
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\bin\Debug\실기확인용.exe.config
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\bin\Debug\실기확인용.exe
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\bin\Debug\실기확인용.pdb
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.Form1.resources
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.Properties.Resources.resources
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.StudentAddForm.resources
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.csproj.GenerateResource.cache
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.exe
+C:\Users\user\Desktop\고급34기수업진행\09_평가\02_WinForm제출폴더\실기확인용\실기확인용\obj\Debug\실기확인용.pdb
