@@ -24,7 +24,7 @@ namespace Ahnduino
 
 		void Add_Document_with_AutoID()
 		{
-			CollectionReference coll = DB.Collection("Add_Document_Width_AutoID");
+			CollectionReference coll = DB.Collection("test");
 			Dictionary<string, object> data1 = new Dictionary<string, object>()
 			{
 				{"FirestName", "Kim" },
@@ -34,52 +34,83 @@ namespace Ahnduino
 			coll.AddAsync(data1);
 		}
 
-        #region json
+		void Add_Document_with_CustomID()
+		{
+			DocumentReference DOC = DB.Collection("test").Document("myDoc");
+			Dictionary<string, object> data1 = new Dictionary<string, object>()
+			{
+				{"FirestName", "Kim" },
+				{"LastName","Jinwon" },
+				{"PhoneNumber", "010-1234-5789" }
+			};
+			DOC.SetAsync(data1);
+		}
 
-        private static string Request_Json(string url)
-        {
-            string result = string.Empty;
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                using (var response = (HttpWebResponse)request.GetResponse())
-                {
-                    using (Stream responseStream = response.GetResponseStream())
-                    {
-                        using (StreamReader stream = new StreamReader(responseStream, Encoding.UTF8))
-                        {
-                            result = stream.ReadToEnd();
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                //                Console.WriteLine(e.Message);
-            }
-            return result;
-        }
+		async List<bill> GetBillList(string uid)
+		{
+			DocumentReference docref = DB.Collection("Bill").Document(uid);
+			DocumentSnapshot snap = await docref.GetSnapshotAsync();
+
+			if (snap.Exists)
+			{
+				object temp;
+				Dictionary<string, object> city = snap.ToDictionary();
+				List<bill> billlist = new List<bill>();
+
+				city.TryGetValue("list", out temp);
+				billlist = (List<bill>)temp;
+
+				return billlist;
+			}
+		}
 
 
-        /*========== json parsing example =============
+		#region json
 
-        private void JsonParser(String json)
-        {
-            JObject obj = JObject.Parse(json);
-            JArray array = JArray.Parse(obj["d"].ToString());
-            string result = null;
+		private static string Request_Json(string url)
+		{
+			string result = string.Empty;
+			try
+			{
+				HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+				using (var response = (HttpWebResponse)request.GetResponse())
+				{
+					using (Stream responseStream = response.GetResponseStream())
+					{
+						using (StreamReader stream = new StreamReader(responseStream, Encoding.UTF8))
+						{
+							result = stream.ReadToEnd();
+						}
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			return result;
+		}
 
-            foreach (JObject itemObj in array)
-            {
-                result += " ID : " + itemObj["Id"].ToString();
-                result += " --- ";
-                result += " Name : " + itemObj["Name"].ToString();
-                result += "\r\n";
-            }
-        }
+
+		/*========== json parsing example =============
+
+		private void JsonParser(String json)
+		{
+			JObject obj = JObject.Parse(json);
+			JArray array = JArray.Parse(obj["d"].ToString());
+			string result = null;
+
+			foreach (JObject itemObj in array)
+			{
+				result += " ID : " + itemObj["Id"].ToString();
+				result += " --- ";
+				result += " Name : " + itemObj["Name"].ToString();
+				result += "\r\n";
+			}
+		}
 		*/
 
-        public static string Getimage(String filename)
+		public static string Getimage(String filename)
 		{
 			JObject obj = JObject.Parse(
 				Request_Json("https://firebasestorage.googleapis.com/v0/b/ahnduino.appspot.com/o/" + filename + ".png"));
@@ -90,6 +121,6 @@ namespace Ahnduino
 			return link;
 		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

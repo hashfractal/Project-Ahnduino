@@ -124,11 +124,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bill.cs">
+    <Compile Include="bill.cs" />
+    <Compile Include="billselect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bill.Designer.cs">
-      <DependentUpon>bill.cs</DependentUpon>
+    <Compile Include="billselect.Designer.cs">
+      <DependentUpon>billselect.cs</DependentUpon>
     </Compile>
     <Compile Include="FireBase.cs" />
     <Compile Include="mainform.cs">
@@ -139,8 +140,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="bill.resx">
-      <DependentUpon>bill.cs</DependentUpon>
+    <EmbeddedResource Include="billselect.resx">
+      <DependentUpon>billselect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainform.resx">
       <DependentUpon>mainform.cs</DependentUpon>
