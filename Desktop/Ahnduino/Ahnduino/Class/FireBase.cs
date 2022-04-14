@@ -50,22 +50,31 @@ namespace Ahnduino
 			DOC.SetAsync(data1);
 		}
 
-		public List<Dictionary<string, object>> GetBillList(string uid)
+		public List<object> GetBillList(string uid)
 		{
 			initialize();
 
 			DocumentReference docref = DB.Collection("Bill").Document("Default");
-
 			DocumentSnapshot snap = docref.GetSnapshotAsync().Result;
 
-
+			List<object> billlist = new List<object>();
+			object temp;
 
 			if (snap.Exists)
 			{
-				List<Dictionary<string, object>> temp = snap.ConvertTo<List<Dictionary<string, object>>>();
+				Dictionary<string, object> dic = snap.ToDictionary();
+				dic.TryGetValue("list", out temp);
+				billlist = (List<object>) temp;
 
+				foreach (Dictionary<string, object> item in billlist)
+				{
+					item.TryGetValue("Date", out object date);
+					item.TryGetValue("Pay", out object pay);
+					Bill bill = new Bill((DateTime)date, (bool)pay);
+					
+				}
 
-				return temp;
+				return billlist;
 			}
 			else
 			{

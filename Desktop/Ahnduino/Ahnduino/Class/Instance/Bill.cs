@@ -13,6 +13,14 @@ namespace Ahnduino
 		[FirestoreProperty]
 		public DateTime Date { get; set; }
 		[FirestoreProperty]
-		public Boolean Pay { get; set; }
+		public bool Pay { get; set; }
+
+		public Bill(DateTime date, bool pay)
+		{
+			Date = date;
+			Pay = pay;
+		}
+
+		public Bill() { }
 	}
 }
