@@ -13,6 +13,8 @@ namespace Ahnduino
 	public partial class billselect : Form
 	{
 		FireBase FireBase = new FireBase();
+
+		List<Bill> bills = new List<Bill>();
 		public billselect()
 		{
 			InitializeComponent();
@@ -20,32 +22,42 @@ namespace Ahnduino
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			pictureBox1.ImageLocation = FireBase.Getimage(textBox1.Text + comboBox1.Text);
+			if (bills.Find( x => x.Date == comboBox1.Text).Pay)
+            {
+				radioButtontrue.Checked = true;
+				radioButtonfalse.Checked = false;
+            }
+			else
+            {
+				radioButtontrue.Checked = false;
+				radioButtonfalse.Checked = true;
+            }
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			bills = FireBase.GetBillList(textBox1.Text);
+			comboBox1.Items.Clear();
 
-			pictureBox1.ImageLocation = FireBase.Getimage(textBox1.Text);
-
-
-			//foreach (Bill bill in FireBase.GetBillList(textBox1.Text))
-				comboBox1.Items.Add(FireBase.GetBillList(textBox1.Text));
-		}
-
-		private void radioButton1_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
+			foreach (Bill bill in bills)
+				comboBox1.Items.Add(bill.Date);
+			comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
 		}
 
 		private void billselect_Load(object sender, EventArgs e)
 		{
 
 		}
-	}
+
+        private void radioButtontrue_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButtonfalse_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

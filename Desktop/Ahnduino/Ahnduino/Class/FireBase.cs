@@ -50,7 +50,7 @@ namespace Ahnduino
 			DOC.SetAsync(data1);
 		}
 
-		public List<object> GetBillList(string uid)
+		public List<Bill> GetBillList(string uid)
 		{
 			initialize();
 
@@ -58,6 +58,7 @@ namespace Ahnduino
 			DocumentSnapshot snap = docref.GetSnapshotAsync().Result;
 
 			List<object> billlist = new List<object>();
+			List<Bill> res = new List<Bill>();
 			object temp;
 
 			if (snap.Exists)
@@ -70,11 +71,15 @@ namespace Ahnduino
 				{
 					item.TryGetValue("Date", out object date);
 					item.TryGetValue("Pay", out object pay);
-					Bill bill = new Bill((DateTime)date, (bool)pay);
-					
+
+					string strdate = date.ToString();
+
+					Bill bill = new Bill(strdate.Substring(11, 7), (bool)pay);
+
+					res.Add(bill);
 				}
 
-				return billlist;
+				return res;
 			}
 			else
 			{
@@ -127,13 +132,12 @@ namespace Ahnduino
 		}
 		*/
 
-		public static string Getimage(String filename)
+		public static string Getimage(string filename)
 		{
 			JObject obj = JObject.Parse(
-				Request_Json("https://firebasestorage.googleapis.com/v0/b/ahnduino.appspot.com/o/" + filename + ".png"));
-			string link = null;
+				Request_Json("https://firebasestorage.googleapis.com/v0/b/ahnduino.appspot.com/o/Bill%2F" + filename + ".png"));
 
-			link = "https://firebasestorage.googleapis.com/v0/b/ahnduino.appspot.com/o/" + filename
+			string link = "https://firebasestorage.googleapis.com/v0/b/ahnduino.appspot.com/o/Bill%2F" + filename
 				+ ".png?alt=media&token=" + obj["downloadTokens"].ToString();
 			return link;
 		}
