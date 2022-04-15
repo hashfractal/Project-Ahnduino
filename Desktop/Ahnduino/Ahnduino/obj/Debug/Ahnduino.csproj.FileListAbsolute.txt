@@ -158,3 +158,8 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\grpc
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\grpc_csharp_ext.x64.dll
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\libgrpc_csharp_ext.x64.so
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\libgrpc_csharp_ext.x64.dylib
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.xml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.pdb
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.xml

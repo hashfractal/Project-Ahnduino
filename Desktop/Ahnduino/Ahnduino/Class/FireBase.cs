@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using Google.Cloud.Firestore;
+using FirebaseAdmin.Auth;
 using Newtonsoft.Json.Linq;
 
 
@@ -54,8 +55,14 @@ namespace Ahnduino
 		{
 			initialize();
 
-			DocumentReference docref = DB.Collection("Bill").Document("Default");
-			DocumentSnapshot snap = docref.GetSnapshotAsync().Result;
+			CollectionReference docref = DB.Collection("Bill");
+			Query query = docref.WhereEqualTo("address", uid);
+			QuerySnapshot querySnapshot = query.GetSnapshotAsync().Result;
+			DocumentSnapshot snap = null;
+			foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+            {
+				snap = documentSnapshot;
+            }
 
 			List<object> billlist = new List<object>();
 			List<Bill> res = new List<Bill>();
