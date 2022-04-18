@@ -14,9 +14,14 @@ namespace Ahnduino
 {
 	internal class FireBase
 	{
-		FirestoreDb DB;
+		public FirestoreDb DB;
 
 		public object Temp { get; private set; }
+
+		public FireBase()
+        {
+			initialize();
+        }
 
 		private void initialize()
 		{
@@ -51,18 +56,16 @@ namespace Ahnduino
 			DOC.SetAsync(data1);
 		}
 
-		public List<Bill> GetBillList(string uid, out int paypermonth)
+		public List<Bill> GetBillList(string address, out int paypermonth)
 		{
-			initialize();
-
 			CollectionReference docref = DB.Collection("Bill");
-			Query query = docref.WhereEqualTo("address", uid);
+			Query query = docref.WhereEqualTo("address", address);
 			QuerySnapshot querySnapshot = query.GetSnapshotAsync().Result;
 			DocumentSnapshot snap = null;
 			foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
-            {
+			{
 				snap = documentSnapshot;
-            }
+			}
 
 			List<object> billlist = new List<object>();
 			List<Bill> res = new List<Bill>();
@@ -77,12 +80,10 @@ namespace Ahnduino
 
 				foreach (Dictionary<string, object> item in billlist)
 				{
-					item.TryGetValue("date", out object date);
-					item.TryGetValue("pay", out object pay);
+					item.TryGetValue("Date", out object date);
+					item.TryGetValue("Pay", out object pay);
 
-					string strdate = date.ToString();
-
-					Bill bill = new Bill(strdate.Substring(11, 7), (bool)pay);
+					Bill bill = new Bill(date.ToString(), (bool)pay);
 
 					res.Add(bill);
 				}
@@ -98,6 +99,30 @@ namespace Ahnduino
 			{
 				paypermonth = -1;
 				return null;
+			}
+		}
+
+		public void UpdateBillList(List<Bill> bills, string address)
+        {
+			CollectionReference docref = DB.Collection("Bill");
+			Query query = docref.WhereEqualTo("address", address);
+			QuerySnapshot querySnapshot = query.GetSnapshotAsync().Result;
+			DocumentSnapshot snap = null;
+
+			foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+			{
+				snap = documentSnapshot;
+			}
+
+			if (snap.Exists)
+			{
+				Dictionary<string, object> dict = new Dictionary<string, object>()
+                {
+					{"list", FieldValue.Delete }
+                };
+				snap.Reference.UpdateAsync(dict);
+				snap.Reference.UpdateAsync("list", FieldValue.ArrayUnion(bills.ToArray())).Wait();
+
 			}
 		}
 

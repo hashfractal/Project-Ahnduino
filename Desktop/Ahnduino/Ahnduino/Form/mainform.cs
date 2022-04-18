@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Ahnduino
 {
 	
-	public partial class mainform : Form
+	public partial class mainform : System.Windows.Forms.Form
 	{
 		public mainform()
 		{

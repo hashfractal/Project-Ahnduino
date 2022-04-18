@@ -39,12 +39,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComponentFactory.Krypton.Toolkit">
-      <HintPath>..\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="ComponentFactory.Krypton.Workspace">
-      <HintPath>..\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
-    </Reference>
     <Reference Include="FirebaseAdmin, Version=2.3.0.0, Culture=neutral, PublicKeyToken=97c8d00c348326ed, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebaseAdmin.2.3.0\lib\net461\FirebaseAdmin.dll</HintPath>
     </Reference>
@@ -150,6 +144,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\addbill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\addbill.Designer.cs">
+      <DependentUpon>addbill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Class\Instance\Bill.cs" />
     <Compile Include="Form\billselect.cs">
       <SubType>Form</SubType>
@@ -166,6 +166,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\addbill.resx">
+      <DependentUpon>addbill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\billselect.resx">
       <DependentUpon>billselect.cs</DependentUpon>
     </EmbeddedResource>

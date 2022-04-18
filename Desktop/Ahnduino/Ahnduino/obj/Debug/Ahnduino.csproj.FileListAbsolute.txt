@@ -171,3 +171,7 @@ C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.xml
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.pdb
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.xml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.Design.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\Ahnduino.addbill.resources

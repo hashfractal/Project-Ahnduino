@@ -12,6 +12,15 @@ namespace Ahnduino
 {
 	public partial class billselect : MetroFramework.Forms.MetroForm
 	{
+		#region userdeffunc
+		private int datetonumer(string billdate)
+		{
+			string[] temps = billdate.Split('-');
+			string temp = temps[0] + temps[1];
+			return int.Parse(temp);
+		}
+		#endregion
+
 		FireBase FireBase = new FireBase();
 
 		List<Bill> bills = new List<Bill>();
@@ -68,15 +77,6 @@ namespace Ahnduino
 			metroComboBoxdate.SelectedIndex = metroComboBoxdate.Items.Count - 1;
 		}
 
-		#region userdeffunc
-		private int datetonumer(string billdate)
-		{
-			string[] temps = billdate.Split('-');
-			string temp = temps[0] + temps[1];
-			return int.Parse(temp);
-		}
-		#endregion
-
 		private void metroTextBoxsearch_Enter(object sender, EventArgs e)
 		{
 			if(metroTextBoxsearch.Text == "건물 주소 +호수   예) 동대전로1번길1롤아파트a동101호")
@@ -104,6 +104,29 @@ namespace Ahnduino
 		{
 			bill.Pay = metroToggle1.Checked;
 			metroLabelrespay.Text = bill.Pay ? "완납" : "미납";
+
+			for (int i = 0; datetonumer(bills[i].Date) < datetonumer(bill.Date); i++)
+			{
+				bills[i].Pay = true;
+			}
+
+			metroComboBoxdate_SelectedIndexChanged(sender, e);
+
 		}
-	}
+
+        private void metroButtonupdate_Click(object sender, EventArgs e)
+        {
+			FireBase.UpdateBillList(bills, metroTextBoxsearch.Text);
+		}
+
+        private void metroButtoninsert_Click(object sender, EventArgs e)
+        {
+			addbill addbill = new addbill(metroTextBoxsearch.Text);
+			addbill.ShowDialog();
+
+
+
+			metroComboBoxdate_SelectedIndexChanged(sender, e);
+		}
+    }
 }
