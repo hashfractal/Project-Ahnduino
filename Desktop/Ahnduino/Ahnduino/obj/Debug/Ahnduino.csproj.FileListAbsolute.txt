@@ -163,3 +163,11 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Goog
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.xml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.pdb
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.xml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.Design.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\MetroFramework.Fonts.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\FirebaseAdmin.xml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.pdb
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Google.Api.Gax.Rest.xml

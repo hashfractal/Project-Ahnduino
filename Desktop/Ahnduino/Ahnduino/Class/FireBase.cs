@@ -51,7 +51,7 @@ namespace Ahnduino
 			DOC.SetAsync(data1);
 		}
 
-		public List<Bill> GetBillList(string uid)
+		public List<Bill> GetBillList(string uid, out int paypermonth)
 		{
 			initialize();
 
@@ -67,17 +67,18 @@ namespace Ahnduino
 			List<object> billlist = new List<object>();
 			List<Bill> res = new List<Bill>();
 			object temp;
-
 			if (snap.Exists)
 			{
 				Dictionary<string, object> dic = snap.ToDictionary();
+				dic.TryGetValue("money", out temp);
+				paypermonth = int.Parse(temp.ToString());
 				dic.TryGetValue("list", out temp);
 				billlist = (List<object>) temp;
 
 				foreach (Dictionary<string, object> item in billlist)
 				{
-					item.TryGetValue("Date", out object date);
-					item.TryGetValue("Pay", out object pay);
+					item.TryGetValue("date", out object date);
+					item.TryGetValue("pay", out object pay);
 
 					string strdate = date.ToString();
 
@@ -86,10 +87,16 @@ namespace Ahnduino
 					res.Add(bill);
 				}
 
+				res.Sort((x, y) =>
+				{
+					return x.Date.CompareTo(y.Date);
+				});
+
 				return res;
 			}
 			else
 			{
+				paypermonth = -1;
 				return null;
 			}
 		}
