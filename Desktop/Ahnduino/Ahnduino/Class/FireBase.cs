@@ -16,21 +16,22 @@ namespace Ahnduino
 	{
 		public FirestoreDb DB;
 
-		public object Temp { get; private set; }
-
 		public FireBase()
-        {
-			initialize();
-        }
-
-		private void initialize()
 		{
-
 			string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
 			System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
 			DB = FirestoreDb.Create("ahnduino");
 		}
+
+		public void CreateUser(string address)
+        {
+			/*
+			 * 이메일받아옴
+			 * 컬렉션 생성 함수 호출
+			 * 
+			 */
+        }
 
 		void Add_Document_with_AutoID()
 		{
@@ -56,7 +57,28 @@ namespace Ahnduino
 			DOC.SetAsync(data1);
 		}
 
-		public List<Bill> GetBillList(string address, out int paypermonth)
+		public string getEmail(string address)
+		{
+			CollectionReference colref = DB.Collection("User");
+			Query query = colref.WhereEqualTo("주소", address);
+			QuerySnapshot qusnap = query.GetSnapshotAsync().Result;
+			DocumentSnapshot docsnap = qusnap[0];
+
+			return docsnap.Id;
+		}
+
+        #region Bill
+		public void createnewbill(string address)
+        {
+			/*
+			 * getemail 로 이메일 받아옴
+			 * Bill 컬렉션에 이메일 문서생성
+			 * 문서 작성
+			 * 
+			 */
+        }
+
+        public List<Bill> GetBillList(string address, out int paypermonth)
 		{
 			CollectionReference docref = DB.Collection("Bill");
 			Query query = docref.WhereEqualTo("address", address);
@@ -80,8 +102,8 @@ namespace Ahnduino
 
 				foreach (Dictionary<string, object> item in billlist)
 				{
-					item.TryGetValue("Date", out object date);
-					item.TryGetValue("Pay", out object pay);
+					item.TryGetValue("date", out object date);
+					item.TryGetValue("pay", out object pay);
 
 					Bill bill = new Bill(date.ToString(), (bool)pay);
 
@@ -90,7 +112,7 @@ namespace Ahnduino
 
 				res.Sort((x, y) =>
 				{
-					return x.Date.CompareTo(y.Date);
+					return x.date.CompareTo(y.date);
 				});
 
 				return res;
@@ -103,7 +125,7 @@ namespace Ahnduino
 		}
 
 		public void UpdateBillList(List<Bill> bills, string address)
-        {
+		{
 			CollectionReference docref = DB.Collection("Bill");
 			Query query = docref.WhereEqualTo("address", address);
 			QuerySnapshot querySnapshot = query.GetSnapshotAsync().Result;
@@ -117,18 +139,23 @@ namespace Ahnduino
 			if (snap.Exists)
 			{
 				Dictionary<string, object> dict = new Dictionary<string, object>()
-                {
+				{
 					{"list", FieldValue.Delete }
-                };
+				};
 				snap.Reference.UpdateAsync(dict);
+
+				foreach (Bill bill in bills.ToArray())
+					Console.WriteLine(bill.date + bill.pay);
+
 				snap.Reference.UpdateAsync("list", FieldValue.ArrayUnion(bills.ToArray())).Wait();
 
 			}
 		}
+        #endregion
 
-		#region json
+        #region json
 
-		private static string Request_Json(string url)
+        private static string Request_Json(string url)
 		{
 			string result = string.Empty;
 			try

@@ -254,6 +254,7 @@
             this.metroButtondelete.TabIndex = 17;
             this.metroButtondelete.Text = "삭제";
             this.metroButtondelete.UseSelectable = true;
+            this.metroButtondelete.Click += new System.EventHandler(this.metroButtondelete_Click);
             // 
             // textBox1
             // 

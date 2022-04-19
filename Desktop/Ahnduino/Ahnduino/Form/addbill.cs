@@ -15,17 +15,20 @@ namespace Ahnduino
     {
         FireBase fb = new FireBase();
         string address;
+        int paypermonth;
 
         DocumentSnapshot snap;
-        public addbill(string address)
+        public addbill(string address, int paypermonth)
         {
             InitializeComponent();
             this.address = address;
+            this.paypermonth = paypermonth;
         }
 
         private void addbill_Load(object sender, EventArgs e)
         {
-            metroTextBox2.Text = DateTime.Now.ToString("yyyy");
+            metroTextBoxyear.Text = DateTime.Now.ToString("yyyy");
+            metroTextBoxppm.Text = paypermonth.ToString();
 
             CollectionReference docref = fb.DB.Collection("Bill");
             Query query = docref.WhereEqualTo("address", address);
@@ -37,11 +40,12 @@ namespace Ahnduino
             object temp;
             snap.TryGetValue("money", out temp);
 
-            metroTextBox1.Text = temp.ToString();
+            metroTextBoxppm.Text = temp.ToString();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            Close();
         }
     }
 }
