@@ -26,16 +26,6 @@ namespace Ahnduino
 			string temp = temps[0] + temps[1];
 			return int.Parse(temp);
 		}
-
-		private void resetBills()
-        {
-			bills.Clear();
-			
-			for(int i = 1; i <= 12; i++)
-            {
-				bills.Add(new Bill("0000-" + i,false));
-            }
-        }
 		#endregion
 
 		
@@ -49,11 +39,11 @@ namespace Ahnduino
 		{
 			int misspay = 0;
 			int totalpay = 0;
-			bill = bills.Find(x => x.date == metroComboBoxdate.Text);
+			bill = bills[metroComboBoxdate.SelectedIndex];
 
-			for (int i = 0; datetonumer(bills[i].date) < datetonumer(bill.date) ; i++)
+			for (int i = 0; i < bills.FindIndex(x => x == bill); i++)
 			{
-				if(bills[i].pay == false)
+				if (bills[i].pay == false)
 				{
 					misspay += paypermonth;
 				}
@@ -72,21 +62,30 @@ namespace Ahnduino
 
 			metroLabelresaddress.Text = metroTextBoxsearch.Text;
 			metroLabelrespay.Text = bill.pay ? "완납" : "미납";
-			metroLabelresdate.Text = string.Format("{0}년 {1}월분", bill.date.Substring(0, 4), bill.date.Substring(5,2));
+			metroLabelresdate.Text = string.Format("{0}월분", bill.month);
 			metroLabelresmoney.Text = string.Format("당월 부과액: {0}원", paypermonth);
 			metroLabelresmiss.Text = string.Format("미납액: {0}원", misspay);
 			metroLabelrestotalmoney.Text = string.Format("총 부과액: {0}원", totalpay);
-			metroLabelreslimit.Text = string.Format("납부 마감일 {0}월 말일", int.Parse(bill.date.Substring(5,2)) + 1);
+			metroLabelreslimit.Text = string.Format("납부 마감일 {0}월 말일", bill.month + 1);
 		}
 
 		private void metroButton1_Click(object sender, EventArgs e)
 		{
+			List<Bill> temp = bills;
 			bills = FireBase.GetBillList(metroTextBoxsearch.Text, out paypermonth);
 			metroComboBoxdate.Items.Clear();
 
-			foreach (Bill bill in bills)
-				metroComboBoxdate.Items.Add(bill.date);
-			metroComboBoxdate.SelectedIndex = metroComboBoxdate.Items.Count - 1;
+			if(bill != null)
+			{
+				foreach (Bill bill in bills)
+					metroComboBoxdate.Items.Add(bill.month);
+				metroComboBoxdate.SelectedIndex = metroComboBoxdate.Items.Count - 1;
+			}
+			else
+			{
+				bills = temp;
+			}
+			
 		}
 
 		private void metroTextBoxsearch_Enter(object sender, EventArgs e)
@@ -117,29 +116,44 @@ namespace Ahnduino
 			bill.pay = metroToggle1.Checked;
 			metroLabelrespay.Text = bill.pay ? "완납" : "미납";
 
-			for (int i = 0; datetonumer(bills[i].date) < datetonumer(bill.date); i++)
+			if(metroToggle1.Checked)
 			{
-				bills[i].pay = true;
+				for (int i = 0; i < bills.FindIndex(x => x == bill); i++)
+				{
+					bills[i].pay = true;
+				}
 			}
+			
 
 			metroComboBoxdate_SelectedIndexChanged(sender, e);
 
 		}
 
-        private void metroButtonupdate_Click(object sender, EventArgs e)
-        {
+		private void metroButtonupdate_Click(object sender, EventArgs e)
+		{
 			FireBase.UpdateBillList(bills, metroTextBoxsearch.Text);
 		}
 
-        private void metroButtoninsert_Click(object sender, EventArgs e)
-        {
-			addbill addbill = new addbill(metroTextBoxsearch.Text, paypermonth);
-			addbill.ShowDialog();
+		private void metroButtoninsert_Click(object sender, EventArgs e)
+		{
+			Bill temp = null;
+				
+			if (bills.Count == 0)
+			{	
+				addbill addbill = new addbill();
+				addbill.ShowDialog();
+				temp = new Bill(int.Parse(addbill.metroComboBoxmonth.Text), false);
+			}
+			else
+			{
+				if (bills.Count > 11)
+					bills.RemoveAt(0);
 
-			paypermonth = int.Parse(addbill.metroTextBoxppm.Text);
+				temp = new Bill(bills[bills.Count - 1].month == 12 ? 
+					1 : bills[bills.Count - 1].month + 1,
+					false);
+			}
 
-			string strdate = addbill.metroTextBoxyear.Text + "-" + addbill.metroComboBoxmonth.Text;
-			Bill temp = new Bill(strdate, false);
 			bills.Add(temp);
 
 			FireBase.UpdateBillList(bills, metroTextBoxsearch.Text);
@@ -147,11 +161,11 @@ namespace Ahnduino
 			metroButton1_Click(sender, e);
 		}
 
-        private void metroButtondelete_Click(object sender, EventArgs e)
-        {
-			bills.Remove(bills.Find(x => x.date == bill.date));
+		private void metroButtondelete_Click(object sender, EventArgs e)
+		{
+			bills.RemoveAt(bills.Count - 1);
 			FireBase.UpdateBillList(bills, metroTextBoxsearch.Text);
 			metroButton1_Click(sender, e);
 		}
-    }
+	}
 }

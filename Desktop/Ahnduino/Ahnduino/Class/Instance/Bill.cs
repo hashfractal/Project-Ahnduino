@@ -11,13 +11,13 @@ namespace Ahnduino
 	internal class Bill
 	{
 		[FirestoreProperty]
-		public string date { get; set; }
+		public int month { get; set; }
 		[FirestoreProperty]
 		public bool pay { get; set; }
 
-		public Bill(string date, bool pay)
+		public Bill(int month, bool pay)
 		{
-			this.date = date;
+			this.month = month;
 			this.pay = pay;
 		}
 
