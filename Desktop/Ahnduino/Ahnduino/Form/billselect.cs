@@ -75,7 +75,7 @@ namespace Ahnduino
 			bills = FireBase.GetBillList(metroTextBoxsearch.Text, out paypermonth);
 			metroComboBoxdate.Items.Clear();
 
-			if(bill != null)
+			if(bills != null)
 			{
 				foreach (Bill bill in bills)
 					metroComboBoxdate.Items.Add(bill.month);

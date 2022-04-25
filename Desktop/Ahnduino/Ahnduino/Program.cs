@@ -16,7 +16,7 @@ namespace Ahnduino
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new billselect());
+            Application.Run(new mainform());
 
         }
     }

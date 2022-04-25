@@ -24,37 +24,13 @@ namespace Ahnduino
 			DB = FirestoreDb.Create("ahnduino");
 		}
 
-		public void CreateUser(string address)
+		public void CreateUser(string email)
 		{
 			/*
 			 * 이메일받아옴
 			 * 컬렉션 생성 함수 호출
 			 * 
 			 */
-		}
-
-		void Add_Document_with_AutoID()
-		{
-			CollectionReference coll = DB.Collection("test");
-			Dictionary<string, object> data1 = new Dictionary<string, object>()
-			{
-				{"FirestName", "Kim" },
-				{"LastName","Jinwon" },
-				{"PhoneNumber", "010-1234-5678" }
-			};
-			coll.AddAsync(data1);
-		}
-
-		void Add_Document_with_CustomID()
-		{
-			DocumentReference DOC = DB.Collection("test").Document("myDoc");
-			Dictionary<string, object> data1 = new Dictionary<string, object>()
-			{
-				{"FirestName", "Kim" },
-				{"LastName","Jinwon" },
-				{"PhoneNumber", "010-1234-5789" }
-			};
-			DOC.SetAsync(data1);
 		}
 
 		public string getEmail(string address)
@@ -66,6 +42,29 @@ namespace Ahnduino
 
 			return docsnap.Id;
 		}
+
+		#region Chat
+		public List<string> getChatList()
+		{
+			List<string> res = new List<string>();
+
+			DocumentReference docref = DB.Collection("chat").Document("chat");
+
+			docref.ListCollectionsAsync();
+			
+			return res;
+		}
+
+		public async Task<List<string>> getChatListAsync()
+		{
+			DocumentReference docref = DB.Collection("chat").Document("chat");
+
+			await foreach(CollectionReference cref in docref.ListCollectionsAsync())
+			{
+
+			}
+		}
+		#endregion
 
 		#region Bill
 		public void createnewbill(string address)
@@ -97,9 +96,8 @@ namespace Ahnduino
 
 				billlist = (List<object>) temp;
 
-				if ((string)billlist[0] == "")
+				if (billlist.Count == 0)
 					return null;
-
 
 				foreach (Dictionary<string, object> item in billlist)
 				{

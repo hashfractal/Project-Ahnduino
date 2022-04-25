@@ -28,36 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.button1 = new System.Windows.Forms.Button();
+			this.listboxchat = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
 			// 
-			// button1
+			// listboxchat
 			// 
-			this.button1.Location = new System.Drawing.Point(471, 213);
-			this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(66, 18);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.listboxchat.FormattingEnabled = true;
+			this.listboxchat.ItemHeight = 15;
+			this.listboxchat.Location = new System.Drawing.Point(686, 62);
+			this.listboxchat.Name = "listboxchat";
+			this.listboxchat.Size = new System.Drawing.Size(288, 454);
+			this.listboxchat.TabIndex = 0;
 			// 
 			// mainform
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(863, 427);
-			this.Controls.Add(this.button1);
+			this.ClientSize = new System.Drawing.Size(986, 534);
+			this.Controls.Add(this.listboxchat);
 			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "mainform";
-			this.Text = "Form1";
+			this.Padding = new System.Windows.Forms.Padding(23, 75, 23, 25);
+			this.Style = MetroFramework.MetroColorStyle.Black;
 			this.ResumeLayout(false);
 
         }
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.ListBox listboxchat;
 	}
 }
 

@@ -11,17 +11,19 @@ using System.Windows.Forms;
 namespace Ahnduino
 {
 	
-	public partial class mainform : System.Windows.Forms.Form
+	public partial class mainform : MetroFramework.Forms.MetroForm
 	{
+		FireBase FireBase = new FireBase();
 		public mainform()
 		{
 			InitializeComponent();
+
+			foreach (string i in FireBase.getChatList())
+			{
+				listboxchat.Items.Add(i);
+			}
+			
 			
 		}
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+	}
 }
