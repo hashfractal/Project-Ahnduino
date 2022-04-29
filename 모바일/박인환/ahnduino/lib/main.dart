@@ -1,7 +1,10 @@
 import 'package:ahnduino/mainpage/mainpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'singin/singin.dart';
+import 'package:flutter/services.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'singin/signin.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -16,9 +19,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ahnduino',
-      home: Login(),
+    return ScreenUtilInit(
+      designSize: Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context) => MaterialApp(
+        title: 'Ahnduino',
+        home: Login(),
+      ),
     );
   }
 }
@@ -32,8 +40,11 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   void initState() {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     super.initState();
     _navigatetohome();
   }
@@ -41,11 +52,19 @@ class _LoginState extends State<Login> {
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
     if (auth.currentUser != null) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Mainpage()));
+      // Navigator.pushReplacement(
+      //     context, MaterialPageRoute(builder: (context) => Mainpage()));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => Mainpage()),
+          (route) => false);
     } else
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SingIn()));
+      // Navigator.pushReplacement(
+      //     context, MaterialPageRoute(builder: (context) => SingIn()));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (BuildContext context) => SingIn()),
+          (route) => false);
   }
 
   @override
@@ -54,19 +73,21 @@ class _LoginState extends State<Login> {
       backgroundColor: Color.fromARGB(255, 0, 143, 94),
       body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         SizedBox(
-          height: 300,
+          height: 300.h,
         ),
         Center(
           child: Image.asset(
             'assets/home.png',
-            width: 100,
-            height: 100,
+            width: 100.w,
+            height: 100.h,
           ),
         ),
         Text(
           'Ahnduino',
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
       ]),
     );
