@@ -14,7 +14,8 @@
 
 							<TextBlock Text="{TemplateBinding Property=Content}"
 									   VerticalAlignment="Center"
-									   Margin="30,0,0,0"/>
+									   Margin="30,0,0,0"
+									   FontFamily="/Fonts/#Poppins"/>
 							
 						</Grid>
 					</ControlTemplate>

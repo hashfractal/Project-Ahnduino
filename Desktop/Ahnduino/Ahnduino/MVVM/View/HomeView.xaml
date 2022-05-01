@@ -79,7 +79,8 @@
 				   HorizontalAlignment="Left"
 				   Margin="0,0,0,10"/>
 
-			<StackPanel Orientation="Horizontal">
+			<StackPanel Orientation="Horizontal"
+						Margin="0,0,0,40">
 				<Border Width="150"
 					Height="150"
 					Background="#844eff"

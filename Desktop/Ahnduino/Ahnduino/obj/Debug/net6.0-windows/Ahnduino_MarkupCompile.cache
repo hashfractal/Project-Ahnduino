@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-4696154039
+6-772267333
 
-7549395979
+11-243663479
 194-1951243044
-MVVM\View\HomeView.xaml;Theme\MenuButtonTheme.xaml;Theme\TextboxTheme.xaml;Window\MainWindow.xaml;
+MVVM\View\DiscoveryView.xaml;MVVM\View\HomeView.xaml;Theme\MenuButtonTheme.xaml;Theme\TextboxTheme.xaml;Win\Login.xaml;Win\MainWindow.xaml;
 
-False
+True
 
