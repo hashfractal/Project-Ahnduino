@@ -2,10 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Ahnduino"
-             StartupUri="Wins/LogIn.xaml">
+             StartupUri="Wins/Auth.xaml">
 	<Application.Resources>
-		<FontFamily x:Key="OptimusPrinceps">/Fonts/#OptimusPrinceps</FontFamily>
-		<FontFamily x:Key="OptimusPrincepsSB">/Fonts/#OptimusPrincepsSemiBold</FontFamily>
-		<FontFamily x:Key="NanumMyeongjo">/Fonts/#NanumMyeongjo</FontFamily>
+		<ResourceDictionary>
+			<FontFamily x:Key="OptimusPrinceps">/Fonts/#OptimusPrinceps</FontFamily>
+			<FontFamily x:Key="OptimusPrincepsSB">/Fonts/#OptimusPrincepsSemiBold</FontFamily>
+			<FontFamily x:Key="NanumMyeongjo">/Fonts/#NanumMyeongjo</FontFamily>
+			
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Resource/AuthButton.xaml"/>
+				<ResourceDictionary Source="Resource/AuthTextbox.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>

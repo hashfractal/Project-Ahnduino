@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Image\" />
     <Folder Include="Sound\" />
   </ItemGroup>
 
@@ -43,6 +44,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Image\mainIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Image\mainIConcolor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Sound\Intro.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

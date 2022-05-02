@@ -62,6 +62,54 @@ namespace Ahnduino.Lib
 		public void Login(string email, string password)
 		{
 		}
+
+		private void Register(string email, string password, string phone)
+		{
+			if (email == "" || password == "" || phone == "") //공백이 입력될 경우
+			{
+				/*MessageBox.Show("아이디 또는 비밀번호에 공백이 있습니다.");*/
+				return;
+			}
+			JoinManagement(email, password, phone);
+		}
+
+		private async void JoinManagement(string id, string pass, string phonenumber)
+		{
+			bool idCheck = await FindId(id);
+			if (idCheck) { } //id가 이미 있으므로 회원가입 X
+			else if (!idCheck) //id가 없으므로 회원가입 O
+			{
+				Join(id, pass, phonenumber);
+			}
+		}
+
+		void Join(string id, string pass, string phonenumber)
+		{
+			DocumentReference DOC = DB.Collection("Manager").Document();
+			Dictionary<string, object> temp = new Dictionary<string, object>()
+			{
+				{"ID", id },
+				{"Password", pass },
+				{"Phone", phonenumber }
+			};
+			DOC.SetAsync(temp);
+		}
+
+		async Task<bool> FindId(string id)
+		{
+			Query qref = DB.Collection("Manager").WhereEqualTo("Id", id);
+			QuerySnapshot snap = await qref.GetSnapshotAsync();
+
+			foreach (DocumentSnapshot docsnap in snap)
+			{
+				if (docsnap.Exists)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		#endregion
 
 		#region Request

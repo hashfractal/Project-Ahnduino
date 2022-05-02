@@ -7,18 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Wins\Auth.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Wins\LogIn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Wins\MainWIndow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\Register.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Resource\AuthButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\AuthTextbox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\Auth.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Wins\LogIn.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\MainWIndow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\Register.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

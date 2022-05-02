@@ -23,13 +23,7 @@ namespace Ahnduino.Wins
 	{
 		public SignIn()
 		{
-
-			SoundPlayer player = new SoundPlayer("SOund/Intro.wav");
-			player.LoadCompleted += delegate (object? sender, AsyncCompletedEventArgs e)
-			{
-				player.Play();
-			};
-			player.LoadAsync();
+			InitializeComponent();
 		}
 
 		private void Login_Btn_Click(object sender, RoutedEventArgs e)

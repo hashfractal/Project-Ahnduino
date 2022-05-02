@@ -12,7 +12,7 @@
 			<TextBlock Foreground="White" FontSize="200" HorizontalAlignment="Center" FontFamily="{StaticResource OptimusPrinceps}" Text="Ahnduino"/>
 
 			<Grid HorizontalAlignment="Center">
-				<TextBox  Width="250" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="IDTextbox" Margin="5" TextAlignment="Center"/>
+				<TextBox Style="{StaticResource AuthTextbox}" Width="300" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="IDTextbox" Margin="5" TextAlignment="Center"/>
 				<TextBlock IsHitTestVisible="False" Text="ID" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">
 					<TextBlock.Style>
 						<Style TargetType="{x:Type TextBlock}">
@@ -25,11 +25,11 @@
 						</Style>
 					</TextBlock.Style>
 				</TextBlock>
-				<TextBlock Foreground="White" HorizontalAlignment="Center" Text="──────────────────" Margin="0,44,0,0" />
+				<TextBlock Foreground="White" HorizontalAlignment="Center" Text="─────────────────────────" Margin="0,34,0,0" />
 			</Grid>
 
 			<Grid HorizontalAlignment="Center">
-				<TextBox  Width="250" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PWTextbox" Margin="5" TextAlignment="Center"/>
+				<TextBox Style="{StaticResource AuthTextbox}" Width="300" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PWTextbox" Margin="5" TextAlignment="Center"/>
 				<TextBlock IsHitTestVisible="False" Text="Password" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="White">
 					<TextBlock.Style>
 						<Style TargetType="{x:Type TextBlock}">
@@ -42,58 +42,19 @@
 						</Style>
 					</TextBlock.Style>
 				</TextBlock>
-				<TextBlock Foreground="White" HorizontalAlignment="Center" Text="──────────────────" Margin="0,44,0,0" />
+				<TextBlock Foreground="White" HorizontalAlignment="Center" Text="─────────────────────────" Margin="0,34,0,0" />
 			</Grid>
 
-			<Button x:Name="Login_Btn" Margin="25,15,25,0" FontSize="30" Content ="Log In" Foreground="White" Background="Black" BorderBrush="Black" Grid.Column="0" Click="Login_Btn_Click" FontFamily="{StaticResource NanumMyeongjo}" >
-				<Button.Style>
-					<Style TargetType="{x:Type Button}">
-						<Setter Property="Background" Value="White" />
-						<Setter Property="Template">
-							<Setter.Value>
-								<ControlTemplate TargetType="{x:Type Button}">
-									<Border x:Name="Border" Background="{TemplateBinding Background}">
-										<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-									</Border>
-									<ControlTemplate.Triggers>
-										<Trigger Property="IsMouseOver" Value="True">
-											<Setter Property="Background" Value="Black" TargetName="Border" />
-										</Trigger>
-									</ControlTemplate.Triggers>
-								</ControlTemplate>
-							</Setter.Value>
-						</Setter>
-					</Style>
-				</Button.Style>
-				<Button.Resources>
-					<Style TargetType="{x:Type Border}">
-						<Setter Property="CornerRadius" Value="5"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="Login_Btn" Style="{StaticResource AuthButton}" Width="300" Margin="25,15,25,0" FontSize="30" Content ="Log In" Foreground="White" Background="Black" BorderBrush="Black" Grid.Column="0" Click="Login_Btn_Click" FontFamily="{StaticResource NanumMyeongjo}" >
 			</Button>
 
-			<Button x:Name="Register_Btn" Margin="25,25,25,0" FontSize="30" Content ="Register" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
-				<Button.Resources>
-					<Style TargetType="{x:Type Border}">
-						<Setter Property="CornerRadius" Value="5"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="Register_Btn" Style="{StaticResource AuthButton}" Width="300" Margin="25,25,25,0" FontSize="30" Content ="Register" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
 			</Button>
 
-			<Button x:Name="ResetPW_Btn" Margin="25,25,25,0" FontSize="30" Content ="Reset Password" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
-				<Button.Resources>
-					<Style TargetType="{x:Type Border}">
-						<Setter Property="CornerRadius" Value="5"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="ResetPW_Btn" Style="{StaticResource AuthButton}" Width="300" Margin="25,25,25,0" FontSize="30" Content ="Reset Password" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
 			</Button>
 
-			<Button x:Name="Exit_Btn" Margin="25,25,25,0" FontSize="30" Content ="Exit Program" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
-				<Button.Resources>
-					<Style TargetType="{x:Type Border}">
-						<Setter Property="CornerRadius" Value="5"/>
-					</Style>
-				</Button.Resources>
+			<Button x:Name="Exit_Btn" Style="{StaticResource AuthButton}" Width="300" Margin="25,25,25,0" FontSize="30" Content ="Exit Program" Foreground="White" Background="Black" BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}" Grid.Column="1" Click="Register_Btn_Click" >
 			</Button>
 		</StackPanel>
 	</Border>
