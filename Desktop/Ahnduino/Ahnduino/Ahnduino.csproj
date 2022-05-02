@@ -8,7 +8,44 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\Model\" />
+    <None Remove="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json" />
+    <None Remove="Fonts\honokamin.ttf" />
+    <None Remove="Fonts\NanumMyeongjo.ttf" />
+    <None Remove="Fonts\OptimusPrinceps.ttf" />
+    <None Remove="Fonts\OptimusPrincepsSemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\NanumMyeongjo.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\OptimusPrinceps.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\OptimusPrincepsSemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Sound\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sound\Intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

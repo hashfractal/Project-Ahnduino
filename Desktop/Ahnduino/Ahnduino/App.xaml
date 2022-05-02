@@ -2,24 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Ahnduino"
-			 xmlns:viewModel="clr-namespace:Ahnduino.MVVM.ViewModel"
-			 xmlns:view="clr-namespace:Ahnduino.MVVM.View"
-             StartupUri="Win/Login.xaml">
-    <Application.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="Theme/MenubuttonTheme.xaml"/>
-				<ResourceDictionary Source="Theme/TextboxTheme.xaml"/>
-			</ResourceDictionary.MergedDictionaries>
-
-			<DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
-				<view:HomeView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type viewModel:DiscoveryViewModel}">
-				<view:DiscoveryView/>
-			</DataTemplate>
-
-		</ResourceDictionary>
-    </Application.Resources>
+             StartupUri="Wins/LogIn.xaml">
+	<Application.Resources>
+		<FontFamily x:Key="OptimusPrinceps">/Fonts/#OptimusPrinceps</FontFamily>
+		<FontFamily x:Key="OptimusPrincepsSB">/Fonts/#OptimusPrincepsSemiBold</FontFamily>
+		<FontFamily x:Key="NanumMyeongjo">/Fonts/#NanumMyeongjo</FontFamily>
+	</Application.Resources>
 </Application>

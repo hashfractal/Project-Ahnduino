@@ -7,39 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="MVVM\View\DiscoveryView.xaml.cs">
+    <Compile Update="Wins\LogIn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\HomeView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Window1.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Win\Login.xaml.cs">
+    <Compile Update="Wins\MainWIndow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MVVM\View\DiscoveryView.xaml">
+    <Page Update="Wins\LogIn.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\HomeView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Theme\MenuButtonTheme.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Theme\TextboxTheme.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Window1.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Win\Login.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Win\MainWindow.xaml">
+    <Page Update="Wins\MainWIndow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
