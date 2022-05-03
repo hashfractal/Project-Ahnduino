@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Image\mainIConcolor.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
     <Content Include="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Image\mainIConcolor.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,7 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Image\" />
     <Folder Include="Sound\" />
   </ItemGroup>
 

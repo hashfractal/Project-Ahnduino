@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-		Title="Register" Height="500" Width="500">
+		Title="Register" Height="500" Width="600">
 	<Grid>
 		<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
 			<Grid HorizontalAlignment="Center">
@@ -41,9 +41,15 @@
 
 					<Grid HorizontalAlignment="Center" Margin="0,20,0,0">
 						<TextBox Width="300" 
-						 BorderBrush="White" FontFamily="{StaticResource NanumMyeongjo}"
+						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rIDTextbox" TextAlignment="Left"/>
+						 x:Name="rIDTextbox" TextAlignment="Left">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="7"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
 						<TextBlock IsHitTestVisible="False" Text="	Emali@Email.com" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
@@ -57,15 +63,18 @@
 							</TextBlock.Style>
 						</TextBlock>
 					</Grid>
-					<Canvas>
-						<Line X1="0" Y1="0" X2="300" Y2="0" Stroke="Black" StrokeThickness="1"/>
-					</Canvas>
 
 					<Grid HorizontalAlignment="Center" Margin="0,8,0,0">
 						<TextBox Width="300" 
-						 BorderBrush="White" FontFamily="{StaticResource NanumMyeongjo}"
+						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rPWTextbox" TextAlignment="Left"/>
+						 x:Name="rPWTextbox" TextAlignment="Left">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="7"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
 						<TextBlock IsHitTestVisible="False" Text="	8자 이상 입력해주십시오" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
@@ -79,15 +88,19 @@
 							</TextBlock.Style>
 						</TextBlock>
 					</Grid>
-					<Canvas>
-						<Line X1="0" Y1="0" X2="300" Y2="0" Stroke="Black" StrokeThickness="1"/>
-					</Canvas>
 
 					<Grid HorizontalAlignment="Center" Margin="0,8,0,0">
 						<TextBox Width="300" 
-						 BorderBrush="White" FontFamily="{StaticResource NanumMyeongjo}"
+						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rPNTextbox" TextAlignment="Left"/>
+						 x:Name="rPNTextbox" TextAlignment="Left">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="7"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
+						
 						<TextBlock IsHitTestVisible="False" Text="	숫자만 입력해 주십시오" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
@@ -101,14 +114,11 @@
 							</TextBlock.Style>
 						</TextBlock>
 					</Grid>
-					<Canvas>
-						<Line X1="0" Y1="0" X2="300" Y2="0" Stroke="Black" StrokeThickness="2"/>
-					</Canvas>
 				</StackPanel>
 
 			</Grid>
-			<Button HorizontalAlignment="Center" Width="150" Margin="0,30,0,0" Background="#008F5E" Foreground="White"
-						FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" Content="회원가입">
+			<Button x:Name="RegBtn" HorizontalAlignment="Center" Padding="7" Width="150" Margin="0,30,0,0" Background="#008F5E" Foreground="White"
+						FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" Content="회원가입" Click="RegBtn_Click">
 				<Button.Resources>
 					<Style TargetType="Border">
 						<Setter Property="CornerRadius" Value="10"/>

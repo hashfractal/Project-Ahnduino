@@ -23,5 +23,10 @@ namespace Ahnduino.Wins
 		{
 			InitializeComponent();
 		}
+
+		private void RegBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
