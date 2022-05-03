@@ -112,3 +112,11 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Image\mainIConcolor.png
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthButton.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthTextbox.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Image\mainIcon.png
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Image\mainIConcolor.png
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
