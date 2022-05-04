@@ -115,7 +115,7 @@ namespace Ahnduino.Lib
 
 		private async void JoinManagement(string email, string password, string name, string phone)
 		{
-			bool idCheck = await FindId(email);
+			bool idCheck = FindId(email);
 			if (idCheck) { } //id가 이미 있으므로 회원가입 X
 			else if (!idCheck) //id가 없으므로 회원가입 O
 			{
@@ -136,10 +136,10 @@ namespace Ahnduino.Lib
 			DOC.SetAsync(temp);
 		}
 
-		async Task<bool> FindId(string email)
+		public bool FindId(string email)
 		{
 			Query qref = DB.Collection("Manager").WhereEqualTo("Email", email);
-			QuerySnapshot snap = await qref.GetSnapshotAsync();
+			QuerySnapshot snap = qref.GetSnapshotAsync().Result;
 
 			foreach (DocumentSnapshot docsnap in snap)
 			{
@@ -149,6 +149,29 @@ namespace Ahnduino.Lib
 				}
 			}
 			return false;
+		}
+
+		public string ResetEmail(string email)
+		{
+			var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			var Charsarr = new char[8];
+			var random = new Random();
+
+			for (int i = 0; i < Charsarr.Length; i++)
+			{
+				Charsarr[i] = characters[random.Next(characters.Length)];
+			}
+
+			string resultString = new string(Charsarr);
+
+			DocumentReference DOC = DB.Collection("Manager").Document(email);
+			Dictionary<string, object> temp = new Dictionary<string, object>()
+			{
+				{"Password", EncryptString(resultString,"flawless ahnduino") }
+			};
+			DOC.SetAsync(temp);
+
+			return resultString;
 		}
 
 		// 암호화 AES256

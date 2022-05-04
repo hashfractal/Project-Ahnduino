@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-5711874516
+6-1624856672
 1-699830913
-6-1620247338
+7185804219
 214-1969012555
-Resource\AuthButton.xaml;Resource\AuthTextbox.xaml;Wins\Auth.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;
+Resource\AuthButton.xaml;Resource\AuthTextbox.xaml;Wins\Auth.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
 
 False
 

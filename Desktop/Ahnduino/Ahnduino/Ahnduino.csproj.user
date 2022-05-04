@@ -16,6 +16,9 @@
     <Compile Update="Wins\Register.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\ResetPW.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Resource\AuthButton.xaml">
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\Register.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\ResetPW.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

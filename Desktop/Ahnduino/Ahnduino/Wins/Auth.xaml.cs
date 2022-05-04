@@ -11,9 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Net.Mail;
 using Ahnduino.Lib;
-using System.Net;
 
 namespace Ahnduino.Wins
 {
@@ -48,20 +46,8 @@ namespace Ahnduino.Wins
 
 		private void ResetPwBtn_Click(object sender, RoutedEventArgs e)
 		{
-			SmtpClient smtp = new SmtpClient
-			{
-				Host = "smtp.gmail.com",
-				EnableSsl = true,
-				DeliveryMethod = SmtpDeliveryMethod.Network,
-				Credentials = new NetworkCredential(),
-				Timeout = 20000
-			};
-
-			MailMessage message = new MailMessage("hsj", "hsj3925@naver.com")
-			{
-				Body = "test"
-			};
-			smtp.Send(message);
+			ResetPW resetPW = new ResetPW();
+			resetPW.ShowDialog();
 		}
 	}
 }
