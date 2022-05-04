@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ahnduino.Lib;
 
 namespace Ahnduino.Wins
 {
@@ -19,6 +20,19 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class Register : Window
 	{
+
+		#region UserDefineFunc
+		string ParsePhone(string Phone)
+		{
+			string res = Phone;
+			res = res.Insert(3, "-");
+			res = res.Insert(8, "-");
+
+			return res;
+		}
+		#endregion
+
+		Firebase firebase = new();
 		public Register()
 		{
 			InitializeComponent();
@@ -26,7 +40,22 @@ namespace Ahnduino.Wins
 
 		private void RegBtn_Click(object sender, RoutedEventArgs e)
 		{
+			string vali = Firebase.FBValidation(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+			if(vali != null)
+			{
+				MessageBox.Show(vali);
+				return;
+			}	
 
+			firebase.Register(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+		}
+
+		private void phonetextbox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			if (phonetextbox.Text.Length == 11 && !phonetextbox.Text.Contains('-'))
+				phonetextbox.Text = ParsePhone(phonetextbox.Text);
+
+			phonetextbox.CaretIndex = phonetextbox.Text.Length;
 		}
 	}
 }

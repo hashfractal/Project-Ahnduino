@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-		Title="Register" Height="500" Width="600">
+		Title="Register" Height="800" Width="600">
 	<Grid>
 		<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
 			<Grid HorizontalAlignment="Center">
@@ -21,110 +21,62 @@
 			</Grid>
 
 			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="150"/>
-					<ColumnDefinition Width="300"/>
-				</Grid.ColumnDefinitions>
-				<StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="0">
-					<Grid Margin="0,22,0,0">
-						<TextBlock FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" TextAlignment="Right">ID:</TextBlock>
-					</Grid>
-					<Grid Margin="0,10,0,0" >
-						<TextBlock FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" TextAlignment="Right">비밀번호:</TextBlock>
-					</Grid>
-					<Grid Margin="0,10,0,0">
-						<TextBlock FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" TextAlignment="Right">전화번호:</TextBlock>
-					</Grid>
-
-				</StackPanel>
-				<StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1">
-
-					<Grid HorizontalAlignment="Center" Margin="0,20,0,0">
-						<TextBox Width="300" 
-						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
-						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rIDTextbox" TextAlignment="Left">
-							<TextBox.Resources>
-								<Style TargetType="Border">
-									<Setter Property="CornerRadius" Value="7"/>
-								</Style>
-							</TextBox.Resources>
-						</TextBox>
-						<TextBlock IsHitTestVisible="False" Text="	Emali@Email.com" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
-							<TextBlock.Style>
-								<Style TargetType="{x:Type TextBlock}">
-									<Setter Property="Visibility" Value="Collapsed"/>
-									<Style.Triggers>
-										<DataTrigger Binding="{Binding Text, ElementName=rIDTextbox}" Value="">
-											<Setter Property="Visibility" Value="Visible"/>
-										</DataTrigger>
-									</Style.Triggers>
-								</Style>
-							</TextBlock.Style>
-						</TextBlock>
-					</Grid>
-
-					<Grid HorizontalAlignment="Center" Margin="0,8,0,0">
-						<TextBox Width="300" 
-						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
-						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rPWTextbox" TextAlignment="Left">
-							<TextBox.Resources>
-								<Style TargetType="Border">
-									<Setter Property="CornerRadius" Value="7"/>
-								</Style>
-							</TextBox.Resources>
-						</TextBox>
-						<TextBlock IsHitTestVisible="False" Text="	8자 이상 입력해주십시오" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
-							<TextBlock.Style>
-								<Style TargetType="{x:Type TextBlock}">
-									<Setter Property="Visibility" Value="Collapsed"/>
-									<Style.Triggers>
-										<DataTrigger Binding="{Binding Text, ElementName=rPWTextbox}" Value="">
-											<Setter Property="Visibility" Value="Visible"/>
-										</DataTrigger>
-									</Style.Triggers>
-								</Style>
-							</TextBlock.Style>
-						</TextBlock>
-					</Grid>
-
-					<Grid HorizontalAlignment="Center" Margin="0,8,0,0">
-						<TextBox Width="300" 
-						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
-						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="rPNTextbox" TextAlignment="Left">
-							<TextBox.Resources>
-								<Style TargetType="Border">
-									<Setter Property="CornerRadius" Value="7"/>
-								</Style>
-							</TextBox.Resources>
-						</TextBox>
-						
-						<TextBlock IsHitTestVisible="False" Text="	숫자만 입력해 주십시오" FontSize="22" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
-							<TextBlock.Style>
-								<Style TargetType="{x:Type TextBlock}">
-									<Setter Property="Visibility" Value="Collapsed"/>
-									<Style.Triggers>
-										<DataTrigger Binding="{Binding Text, ElementName=rPNTextbox}" Value="">
-											<Setter Property="Visibility" Value="Visible"/>
-										</DataTrigger>
-									</Style.Triggers>
-								</Style>
-							</TextBlock.Style>
-						</TextBlock>
-					</Grid>
+				<StackPanel Margin="20">
+					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}">이메일</TextBlock>
+					<TextBox x:Name="emailtextbox" FontSize="30"  BorderBrush="Black">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호</TextBlock>
+					<TextBox x:Name="passwordtextbox" FontSize="30" BorderBrush="Black">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호 재확인</TextBlock>
+					<TextBox x:Name="repasswordtextbox" FontSize="30" BorderBrush="Black">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">이름</TextBlock>
+					<TextBox x:Name="nametextbox" FontSize="30" BorderBrush="Black">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">전화번호</TextBlock>
+					<TextBox x:Name="phonetextbox" FontSize="30" BorderBrush="Black" TextChanged="phonetextbox_TextChanged">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<Button x:Name="RegBtn" Margin="0,25,0,0" Padding="5" Background="#008F5E" Foreground="White"
+						FontSize="30" Content="회원가입" Click="RegBtn_Click">
+						<Button.Resources>
+							<Style TargetType="{x:Type Border}">
+								<Setter Property="CornerRadius" Value="10"/>
+							</Style>
+						</Button.Resources>
+						<Button.FontFamily>
+							<StaticResource ResourceKey="NanumMyeongjo"/>
+						</Button.FontFamily>
+					</Button>
 				</StackPanel>
 
 			</Grid>
-			<Button x:Name="RegBtn" HorizontalAlignment="Center" Padding="7" Width="150" Margin="0,30,0,0" Background="#008F5E" Foreground="White"
-						FontFamily="{StaticResource NanumMyeongjo}" FontSize="30" Content="회원가입" Click="RegBtn_Click">
-				<Button.Resources>
-					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="10"/>
-					</Style>
-				</Button.Resources>
-			</Button>
+
 		</StackPanel>
 
 	</Grid>

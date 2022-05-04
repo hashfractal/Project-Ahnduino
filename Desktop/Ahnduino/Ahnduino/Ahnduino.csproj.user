@@ -10,9 +10,6 @@
     <Compile Update="Wins\Auth.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Wins\LogIn.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Wins\MainWIndow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,9 +25,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\Auth.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Wins\LogIn.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\MainWIndow.xaml">

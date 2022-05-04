@@ -14,13 +14,13 @@
     <None Remove="Fonts\NanumMyeongjo.ttf" />
     <None Remove="Fonts\OptimusPrinceps.ttf" />
     <None Remove="Fonts\OptimusPrincepsSemiBold.ttf" />
+    <None Remove="Image\mainIConcolor.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Image\mainIConcolor.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +31,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\OptimusPrincepsSemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\mainIConcolor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -46,10 +49,7 @@
 
   <ItemGroup>
     <None Update="Image\mainIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Image\mainIConcolor.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Sound\Intro.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

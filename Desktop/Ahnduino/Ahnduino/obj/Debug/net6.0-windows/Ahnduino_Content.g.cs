@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/mainiconcolor.ico")]
 
 

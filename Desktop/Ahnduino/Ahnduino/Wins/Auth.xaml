@@ -20,7 +20,7 @@
 				<TextBlock Grid.Column="2" FontSize="50" FontFamily="{StaticResource NanumMyeongjo}" Margin="10,12,0,0">Ahnduino</TextBlock>
 			</Grid>
 
-			<Grid>
+			<Grid HorizontalAlignment="Center">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="300"/>
 					<ColumnDefinition Width="100"/>
@@ -28,10 +28,16 @@
 				<StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="0">
 					<Grid HorizontalAlignment="Center" Margin="0,20,0,0">
 						<TextBox Width="300" 
-						 BorderBrush="White" FontFamily="{StaticResource NanumMyeongjo}"
+						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="IDTextbox" TextAlignment="Left"/>
-						<TextBlock IsHitTestVisible="False" Text="	ID" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Black">
+						 x:Name="IDTextbox" TextAlignment="Left">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="7"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
+						<TextBlock IsHitTestVisible="False" Text="	아이디" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
 									<Setter Property="Visibility" Value="Collapsed"/>
@@ -44,16 +50,19 @@
 							</TextBlock.Style>
 						</TextBlock>
 					</Grid>
-					<Canvas>
-						<Line X1="0" Y1="0" X2="300" Y2="0" Stroke="Black" StrokeThickness="1"/>
-					</Canvas>
 
 					<Grid HorizontalAlignment="Center">
 						<TextBox Width="300" 
-						 BorderBrush="White" FontFamily="{StaticResource NanumMyeongjo}"
+						 BorderBrush="Black" FontFamily="{StaticResource NanumMyeongjo}"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="PWTextbox" TextAlignment="Left" Margin="0,10,0,0"/>
-						<TextBlock IsHitTestVisible="False" Text="	Password" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Black" Margin="0,10,0,0">
+						 x:Name="PWTextbox" TextAlignment="Left" Margin="0,10,0,0">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="7"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
+						<TextBlock IsHitTestVisible="False" Text="	비밀번호" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
 									<Setter Property="Visibility" Value="Collapsed"/>
@@ -66,12 +75,9 @@
 							</TextBlock.Style>
 						</TextBlock>
 					</Grid>
-					<Canvas>
-						<Line X1="0" Y1="0" X2="300" Y2="0" Stroke="Black" StrokeThickness="1"/>
-					</Canvas>
 				</StackPanel>
-				<Button Grid.Column="1" Margin="25,25,0,-3" Background="#008F5E" Foreground="White"
-						FontFamily="{StaticResource NanumMyeongjo}" FontSize="22" Content="로그인">
+				<Button x:Name="LoginBtn" Grid.Column="1" Margin="20,20,0,0" Background="#008F5E" Foreground="White"
+						FontFamily="{StaticResource NanumMyeongjo}" FontSize="22" Content="로그인" Click="LoginBtn_Click">
 					<Button.Resources>
 						<Style TargetType="Border">
 							<Setter Property="CornerRadius" Value="10"/>
@@ -83,10 +89,12 @@
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
+					<ColumnDefinition Width="10"/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<Button x:Name="RegisterBtn" Content="회원가입" FontFamily="{StaticResource NanumMyeongjo}" FontSize="20" Margin="0,30,0,0" Background="White" BorderBrush="White"/>
-				<Button x:Name="ResetPwBtn" Grid.Column="1" Content="비밀번호 찾기" FontFamily="{StaticResource NanumMyeongjo}" FontSize="20" Margin="0,30,0,0" Background="White" BorderBrush="White"/>
+				<Button x:Name="RegisterBtn" Content="회원가입" FontFamily="{StaticResource NanumMyeongjo}" FontSize="20" Margin="0,30,0,0" Background="White" BorderBrush="White" Click="RegisterBtn_Click"/>
+				<TextBlock FontSize="20" Grid.Column="1" HorizontalAlignment="Center" Margin="0,28,0,0" Foreground="Gray"> │ </TextBlock>
+				<Button x:Name="ResetPwBtn" Grid.Column="2" Content="비밀번호 찾기" FontFamily="{StaticResource NanumMyeongjo}" FontSize="20" Margin="0,30,0,0" Background="White" BorderBrush="White" Click="ResetPwBtn_Click"/>
 			</Grid>
 		</StackPanel>
 		
