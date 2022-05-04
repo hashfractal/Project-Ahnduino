@@ -113,7 +113,7 @@ namespace Ahnduino.Lib
 			JoinManagement(email, password, name, phone);
 		}
 
-		private async void JoinManagement(string email, string password, string name, string phone)
+		private void JoinManagement(string email, string password, string name, string phone)
 		{
 			bool idCheck = FindId(email);
 			if (idCheck) { } //id가 이미 있으므로 회원가입 X
@@ -169,7 +169,7 @@ namespace Ahnduino.Lib
 			{
 				{"Password", EncryptString(resultString,"flawless ahnduino") }
 			};
-			DOC.SetAsync(temp);
+			DOC.UpdateAsync(temp);
 
 			return resultString;
 		}

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
 Ahnduino
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
 6-1624856672
 1-699830913
 9948173810
-214-1969012555
+214-1354046666
 Resource\AuthButton.xaml;Resource\AuthTextbox.xaml;Wins\Auth.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
 
-False
+True
 

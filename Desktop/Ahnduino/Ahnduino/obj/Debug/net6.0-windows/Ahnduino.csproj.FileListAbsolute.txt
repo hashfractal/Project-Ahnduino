@@ -82,14 +82,12 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.AssemblyReference.cache
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\LogIn.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainWindow.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_Content.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.cache
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.lref
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.baml
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\LogIn.baml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainWindow.baml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.g.resources
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.GeneratedMSBuildEditorConfig.editorconfig
@@ -106,8 +104,6 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthTextbox.baml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Image\mainIcon.png
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Image\mainIConcolor.png
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthButton.baml
@@ -118,3 +114,5 @@ C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml

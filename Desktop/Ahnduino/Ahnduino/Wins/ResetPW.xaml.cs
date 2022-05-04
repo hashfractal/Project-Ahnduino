@@ -41,7 +41,7 @@ namespace Ahnduino.Wins
 					
 
 				MailMessage msg = new MailMessage("highfuncsmtp@gmail.com", emailtextbox.Text,
-		  "Subject : Reset Ahnduino Password", firebase.ResetEmail(emailtextbox.Text));
+		  "Subject : Reset Ahnduino Password", "새 비밀번호:" + firebase.ResetEmail(emailtextbox.Text));
 
 				SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
 				smtp.EnableSsl = true;
