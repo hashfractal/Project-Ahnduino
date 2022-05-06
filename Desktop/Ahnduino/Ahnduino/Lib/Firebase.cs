@@ -73,19 +73,26 @@ namespace Ahnduino.Lib
 			return Regex.IsMatch(phone, @"010-[0-9]{4}-[0-9]{4}$");
 		}
 
-		public static string FBValidation(string email, string password, string repassword, string name, string phone)
+		public static string[] FBValidation(string email, string password, string repassword, string name, string phone)
 		{
-			string? res = null;
-			if (email == null || password == null || repassword == null || name == null || phone == null)
-				res += "입력하지 않은 항목이 있습니다\r\n";
-			if (!IsValidEmail(email))
-				res += "이메일 형식이 틀립니다\r\n";
-			if (FindId(email))
-				res += "이미 사용된 이메일 입니다\r\n";
-			if (password != repassword)
-				res += "재확인 비밀번호가 틀립니다\r\n";
+			string[]? res = new string[5];
+
+			res[0] = "";
+			res[1] = "";
+			res[2] = "";
+			res[3] = "";
+			res[4] = "";
+
+			if (!IsValidEmail(email) || FindId(email))
+				res[0] = "사용할 수 없는 이메일 입니다";
+			if (password == "" || password == "사용할 수 없는 비밀번호 입니다")
+				res[1] = "사용할 수 없는 비밀번호 입니다";
+			if (password != repassword && repassword != "")
+				res[2] = "재확인 비밀번호가 틀립니다";
+			if (name == "" || name == "사용할 수 없는 이름 입니다")
+				res[3] = "사용할 수 없는 이름 입니다";
 			if (!IsValidPhone(phone))
-				res += "전화번호 형식이 틀립니다\r\n";
+				res[4] = "사용할 수 없는 전화번호 입니다";
 
 			return res!;
 		}
@@ -106,7 +113,7 @@ namespace Ahnduino.Lib
 		}
 
 		public void Register(string email, string password, string repassword, string name, string phone)
-		{
+			{
 			if (email == "" || password == "" || repassword == "" || name == "" || phone == "") //공백이 입력될 경우
 			{
 				/*MessageBox.Show("아이디 또는 비밀번호에 공백이 있습니다.");*/

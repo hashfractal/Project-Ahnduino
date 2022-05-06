@@ -33,6 +33,9 @@ namespace Ahnduino.Wins
 		#endregion
 
 		Firebase firebase = new();
+		SolidColorBrush blackbrush = new SolidColorBrush(Colors.Black);
+		SolidColorBrush redbrush = new SolidColorBrush(Colors.Red);
+
 		public Register()
 		{
 			InitializeComponent();
@@ -40,10 +43,19 @@ namespace Ahnduino.Wins
 
 		private void RegBtn_Click(object sender, RoutedEventArgs e)
 		{
-			string vali = Firebase.FBValidation(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
-			if(vali != null)
+			string[] vali = Firebase.FBValidation(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+			if(vali[0] != "" | vali[1] != "" | vali[2] != "" | vali[3] != "" | vali[4] != "")
 			{
-				MessageBox.Show(vali);
+				emailtextbox.Text = vali[0];
+				emailtextbox.Foreground = redbrush;
+				passwordtextbox.Text = vali[1];
+				passwordtextbox.Foreground = redbrush;
+				repasswordtextbox.Text = vali[2];
+				repasswordtextbox.Foreground = redbrush;
+				nametextbox.Text = vali[3];
+				nametextbox.Foreground = redbrush;
+				phonetextbox.Text = vali[4];
+				phonetextbox.Foreground = redbrush;
 				return;
 			}	
 
@@ -58,6 +70,56 @@ namespace Ahnduino.Wins
 				phonetextbox.Text = ParsePhone(phonetextbox.Text);
 
 			phonetextbox.CaretIndex = phonetextbox.Text.Length;
+		}
+
+		private void emailtextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			if(emailtextbox.Foreground == redbrush)
+			{
+				emailtextbox.Foreground = blackbrush;
+				emailtextbox.Text = "";
+			}
+			
+		}
+
+		private void passwordtextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			if (passwordtextbox.Foreground == redbrush)
+			{
+				passwordtextbox.Foreground = blackbrush;
+				passwordtextbox.Text = "";
+			}
+			
+		}
+
+		private void repasswordtextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			if (repasswordtextbox.Foreground == redbrush)
+			{
+				repasswordtextbox.Foreground = blackbrush;
+				repasswordtextbox.Text = "";
+			}
+			
+		}
+
+		private void nametextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			if (nametextbox.Foreground == redbrush)
+			{
+				nametextbox.Foreground = blackbrush;
+				nametextbox.Text = "";
+			}
+			
+		}
+
+		private void phonetextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			if (phonetextbox.Foreground == redbrush)
+			{
+				phonetextbox.Foreground = blackbrush;
+				phonetextbox.Text = "";
+			}
+			
 		}
 	}
 }

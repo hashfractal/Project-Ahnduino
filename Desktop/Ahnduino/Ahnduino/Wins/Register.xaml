@@ -23,7 +23,7 @@
 			<Grid>
 				<StackPanel Margin="20">
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}">이메일</TextBlock>
-					<TextBox x:Name="emailtextbox" FontSize="30"  BorderBrush="Black">
+					<TextBox x:Name="emailtextbox" FontSize="30"  BorderBrush="Black" GotFocus="emailtextbox_GotFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>
@@ -31,7 +31,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호</TextBlock>
-					<TextBox x:Name="passwordtextbox" FontSize="30" BorderBrush="Black">
+					<TextBox x:Name="passwordtextbox" FontSize="30" BorderBrush="Black" GotFocus="passwordtextbox_GotFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>
@@ -39,7 +39,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호 재확인</TextBlock>
-					<TextBox x:Name="repasswordtextbox" FontSize="30" BorderBrush="Black">
+					<TextBox x:Name="repasswordtextbox" FontSize="30" BorderBrush="Black" GotFocus="repasswordtextbox_GotFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>
@@ -47,7 +47,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">이름</TextBlock>
-					<TextBox x:Name="nametextbox" FontSize="30" BorderBrush="Black">
+					<TextBox x:Name="nametextbox" FontSize="30" BorderBrush="Black" GotFocus="nametextbox_GotFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>
@@ -55,7 +55,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">전화번호</TextBlock>
-					<TextBox x:Name="phonetextbox" FontSize="30" BorderBrush="Black" TextChanged="phonetextbox_TextChanged">
+					<TextBox x:Name="phonetextbox" FontSize="30" BorderBrush="Black" TextChanged="phonetextbox_TextChanged" GotFocus="phonetextbox_GotFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>

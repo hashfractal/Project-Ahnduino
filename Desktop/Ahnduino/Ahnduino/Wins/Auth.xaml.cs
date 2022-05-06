@@ -34,7 +34,7 @@ namespace Ahnduino.Wins
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if(Firebase.Login(IDTextbox.Text, PWTextbox.Text))
+			if(Firebase.Login(IDTextbox.Text, PWTextbox.Password))
 			{
 				MessageBox.Show("성공");
 			}
