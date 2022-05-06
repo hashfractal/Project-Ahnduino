@@ -48,6 +48,8 @@ namespace Ahnduino.Wins
 			}	
 
 			firebase.Register(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+
+			Close();
 		}
 
 		private void phonetextbox_TextChanged(object sender, TextChangedEventArgs e)

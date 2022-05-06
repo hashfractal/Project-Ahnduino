@@ -6,7 +6,8 @@
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-		Title="Ahnduino Login" Height="350" Width="500">
+		Title="Ahnduino Login" Height="350" Width="500"
+		ResizeMode="NoResize">
 	<Grid>
 		<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
 			<Grid HorizontalAlignment="Center">
@@ -37,7 +38,7 @@
 								</Style>
 							</TextBox.Resources>
 						</TextBox>
-						<TextBlock IsHitTestVisible="False" Text="	아이디" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+						<TextBlock IsHitTestVisible="False" Text="	📧 이메일" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
 									<Setter Property="Visibility" Value="Collapsed"/>
@@ -62,7 +63,7 @@
 								</Style>
 							</TextBox.Resources>
 						</TextBox>
-						<TextBlock IsHitTestVisible="False" Text="	비밀번호" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0">
+						<TextBlock IsHitTestVisible="False" Text="	🔒 비밀번호" FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
 									<Setter Property="Visibility" Value="Collapsed"/>

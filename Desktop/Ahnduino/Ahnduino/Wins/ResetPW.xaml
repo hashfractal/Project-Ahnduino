@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
-		Title="ResetPW" Height="450" Width="600"
+		Title="ResetPW" Height="450" Width="500"
 		WindowStartupLocation="CenterScreen">
 	<Grid>
 		<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
@@ -42,10 +42,7 @@
 						</Button.FontFamily>
 					</Button>
 				</StackPanel>
-
 			</Grid>
-
 		</StackPanel>
-
 	</Grid>
 </Window>

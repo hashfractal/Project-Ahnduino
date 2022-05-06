@@ -18,7 +18,7 @@ namespace Ahnduino.Lib
 {
 	public class Firebase
 	{
-		FirestoreDb DB;
+		static FirestoreDb? DB;
 
 		public Firebase ()
 		{
@@ -39,7 +39,7 @@ namespace Ahnduino.Lib
 
 		public string getEmail(string address)
 		{
-			CollectionReference colref = DB.Collection("User");
+			CollectionReference colref = DB!.Collection("User");
 			Query query = colref.WhereEqualTo("주소", address);
 			QuerySnapshot qusnap = query.GetSnapshotAsync().Result;
 			DocumentSnapshot docsnap = qusnap[0];
@@ -49,7 +49,7 @@ namespace Ahnduino.Lib
 
 		public string GetAddress(string email)
 		{
-			CollectionReference cref = DB.Collection("User");
+			CollectionReference cref = DB!.Collection("User");
 			Query query = cref.WhereEqualTo("메일", email);
 			QuerySnapshot qsnap = query.GetSnapshotAsync().Result;
 			DocumentSnapshot dsnap = qsnap[0];
@@ -80,6 +80,8 @@ namespace Ahnduino.Lib
 				res += "입력하지 않은 항목이 있습니다\r\n";
 			if (!IsValidEmail(email))
 				res += "이메일 형식이 틀립니다\r\n";
+			if (FindId(email))
+				res += "이미 사용된 이메일 입니다\r\n";
 			if (password != repassword)
 				res += "재확인 비밀번호가 틀립니다\r\n";
 			if (!IsValidPhone(phone))
@@ -90,7 +92,7 @@ namespace Ahnduino.Lib
 
 		public bool Login(string email, string password)
 		{
-			Query qref = DB.Collection("Manager").WhereEqualTo("Email", email).WhereEqualTo("Password", EncryptString(password, "flawless ahnduino"));
+			Query qref = DB!.Collection("Manager").WhereEqualTo("Email", email).WhereEqualTo("Password", EncryptString(password, "flawless ahnduino"));
 			QuerySnapshot snap = qref.GetSnapshotAsync().Result;
 
 			foreach (DocumentSnapshot docsnap in snap)
@@ -125,7 +127,7 @@ namespace Ahnduino.Lib
 
 		void Join(string email, string password, string name, string phone)
 		{
-			DocumentReference DOC = DB.Collection("Manager").Document(email);
+			DocumentReference DOC = DB!.Collection("Manager").Document(email);
 			Dictionary<string, object> temp = new Dictionary<string, object>()
 			{
 				{"Email", email },
@@ -136,9 +138,9 @@ namespace Ahnduino.Lib
 			DOC.SetAsync(temp);
 		}
 
-		public bool FindId(string email)
+		public static bool FindId(string email)
 		{
-			Query qref = DB.Collection("Manager").WhereEqualTo("Email", email);
+			Query qref = DB!.Collection("Manager").WhereEqualTo("Email", email);
 			QuerySnapshot snap = qref.GetSnapshotAsync().Result;
 
 			foreach (DocumentSnapshot docsnap in snap)
@@ -164,7 +166,7 @@ namespace Ahnduino.Lib
 
 			string resultString = new string(Charsarr);
 
-			DocumentReference DOC = DB.Collection("Manager").Document(email);
+			DocumentReference DOC = DB!.Collection("Manager").Document(email);
 			Dictionary<string, object> temp = new Dictionary<string, object>()
 			{
 				{"Password", EncryptString(resultString,"flawless ahnduino") }
@@ -275,7 +277,7 @@ namespace Ahnduino.Lib
 		{
 			List<string> res = new List<string>();
 
-			CollectionReference colref = DB.Collection("ResponsAndReQuest");
+			CollectionReference colref = DB!.Collection("ResponsAndReQuest");
 			IAsyncEnumerable<DocumentReference> endoccref = colref.ListDocumentsAsync();
 			List<DocumentReference> docrefs = endoccref.ToListAsync().Result;
 
@@ -313,7 +315,7 @@ namespace Ahnduino.Lib
 		{
 			List<string> res = new List<string>();
 
-			DocumentReference docref = DB.Collection("chat").Document("chat");
+			DocumentReference docref = DB!.Collection("chat").Document("chat");
 
 			IAsyncEnumerable<CollectionReference> ascref = docref.ListCollectionsAsync();
 			List<CollectionReference> colrefs = ascref.ToListAsync().Result;

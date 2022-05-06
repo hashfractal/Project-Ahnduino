@@ -20,7 +20,6 @@ C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainWindow.g.cs
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainWindow.baml
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.baml
-C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Sound\Intro.wav
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.dll
@@ -106,8 +105,6 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
-C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthButton.baml
-C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Resource\AuthTextbox.baml
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
@@ -116,3 +113,10 @@ C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthButton.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthTextbox.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ContactCard.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ChatItem.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MessageBox.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ScrollBar.baml

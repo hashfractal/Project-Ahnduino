@@ -39,6 +39,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="MVVM\View\" />
+    <Folder Include="Resource\" />
     <Folder Include="Sound\" />
   </ItemGroup>
 
@@ -50,9 +52,6 @@
   <ItemGroup>
     <None Update="Image\mainIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Sound\Intro.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

@@ -21,10 +21,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Resource\AuthButton.xaml">
+    <Page Update="Themes\AuthButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\AuthTextbox.xaml">
+    <Page Update="Themes\AuthTextbox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ChatItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ContactCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ScrollBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\Auth.xaml">

@@ -62,7 +62,7 @@
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					<Button x:Name="RegBtn" Margin="0,25,0,0" Padding="5" Background="#008F5E" Foreground="White"
+					<Button x:Name="RegBtn" Margin="0,50,0,0" Padding="5" Background="#008F5E" Foreground="White"
 						FontSize="30" Content="회원가입" Click="RegBtn_Click">
 						<Button.Resources>
 							<Style TargetType="{x:Type Border}">
