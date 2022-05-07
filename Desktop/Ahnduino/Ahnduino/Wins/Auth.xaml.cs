@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Google.Cloud.Firestore;
 using Ahnduino.Lib;
 
 namespace Ahnduino.Wins
@@ -21,6 +22,8 @@ namespace Ahnduino.Wins
 	public partial class Auth : Window
 	{
 		Firebase Firebase = new();
+		string password = "";
+
 		public Auth()
 		{
 			InitializeComponent();
@@ -34,7 +37,7 @@ namespace Ahnduino.Wins
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if(Firebase.Login(IDTextbox.Text, PWTextbox.Password))
+			if (Firebase.Login(IDTextbox.Text, password))
 			{
 				MessageBox.Show("성공");
 			}
@@ -48,6 +51,32 @@ namespace Ahnduino.Wins
 		{
 			ResetPW resetPW = new ResetPW();
 			resetPW.ShowDialog();
+		}
+
+		private void PWTextbox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (PWTextbox.Text.Length > 0 && PWTextbox.Text[^1] != '*')
+			{
+				password += PWTextbox.Text[^1];
+				PWTextbox.Text = PWTextbox.Text.Remove(PWTextbox.Text.Length - 1, 1);
+				PWTextbox.Text += "*";
+				PWTextbox.CaretIndex = PWTextbox.Text.Length;
+			}
+			else if (PWTextbox.Text.Length < password.Length)
+			{
+				password = password.Remove(PWTextbox.Text.Length, password.Length - PWTextbox.Text.Length);
+			}
+		}
+
+		private void PWTextbox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			if (PWTextbox.Text.Length > 0 && PWTextbox.Text[^1] != '*')
+			{
+				password += PWTextbox.Text[^1];
+				PWTextbox.Text = PWTextbox.Text.Remove(PWTextbox.Text.Length - 1, 1);
+				PWTextbox.Text += "*";
+				PWTextbox.CaretIndex = PWTextbox.Text.Length;
+			}
 		}
 	}
 }

@@ -31,7 +31,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호</TextBlock>
-					<TextBox x:Name="passwordtextbox" FontSize="30" BorderBrush="Black" GotFocus="passwordtextbox_GotFocus">
+					<TextBox x:Name="passwordtextbox" FontSize="30" BorderBrush="Black" GotFocus="passwordtextbox_GotFocus" KeyDown="passwordtextbox_KeyDown" LostFocus="passwordtextbox_LostFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>
@@ -39,7 +39,7 @@
 						</TextBox.Resources>
 					</TextBox>
 					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}" Margin="0,25,0,0">비밀번호 재확인</TextBlock>
-					<TextBox x:Name="repasswordtextbox" FontSize="30" BorderBrush="Black" GotFocus="repasswordtextbox_GotFocus">
+					<TextBox x:Name="repasswordtextbox" FontSize="30" BorderBrush="Black" GotFocus="repasswordtextbox_GotFocus" KeyDown="repasswordtextbox_KeyDown" LostFocus="repasswordtextbox_LostFocus">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="7"/>

@@ -20,6 +20,12 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class Register : Window
 	{
+		Firebase firebase = new();
+		SolidColorBrush blackbrush = new SolidColorBrush(Colors.Black);
+		SolidColorBrush redbrush = new SolidColorBrush(Colors.Red);
+
+		string password = "";
+		string repassword = "";
 
 		#region UserDefineFunc
 		string ParsePhone(string Phone)
@@ -32,9 +38,7 @@ namespace Ahnduino.Wins
 		}
 		#endregion
 
-		Firebase firebase = new();
-		SolidColorBrush blackbrush = new SolidColorBrush(Colors.Black);
-		SolidColorBrush redbrush = new SolidColorBrush(Colors.Red);
+		
 
 		public Register()
 		{
@@ -43,23 +47,45 @@ namespace Ahnduino.Wins
 
 		private void RegBtn_Click(object sender, RoutedEventArgs e)
 		{
-			string[] vali = Firebase.FBValidation(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+			string[] vali = Firebase.FBValidation(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
 			if(vali[0] != "" | vali[1] != "" | vali[2] != "" | vali[3] != "" | vali[4] != "")
 			{
-				emailtextbox.Text = vali[0];
-				emailtextbox.Foreground = redbrush;
-				passwordtextbox.Text = vali[1];
-				passwordtextbox.Foreground = redbrush;
-				repasswordtextbox.Text = vali[2];
-				repasswordtextbox.Foreground = redbrush;
-				nametextbox.Text = vali[3];
-				nametextbox.Foreground = redbrush;
-				phonetextbox.Text = vali[4];
-				phonetextbox.Foreground = redbrush;
+				if (vali[0] != "")
+				{
+					emailtextbox.Text = vali[0];
+					emailtextbox.Foreground = redbrush;
+				}
+
+				if (vali[1] != "")
+				{
+					passwordtextbox.Text = vali[1];
+					passwordtextbox.Foreground = redbrush;
+				}
+
+				if (vali[2] != "")
+				{
+					repasswordtextbox.Text = vali[2];
+					repasswordtextbox.Foreground = redbrush;
+				}
+
+				if (vali[3] != "")
+				{
+					nametextbox.Text = vali[3];
+					nametextbox.Foreground = redbrush;
+				}
+
+				if (vali[4] != "")
+				{
+					phonetextbox.Text = vali[4];
+					phonetextbox.Foreground = redbrush;
+				}
+
 				return;
 			}	
 
-			firebase.Register(emailtextbox.Text, passwordtextbox.Text, repasswordtextbox.Text, nametextbox.Text, phonetextbox.Text);
+			firebase.Register(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
+
+			MessageBox.Show("회원가입이 완료되었습니다");
 
 			Close();
 		}
@@ -120,6 +146,62 @@ namespace Ahnduino.Wins
 				phonetextbox.Text = "";
 			}
 			
+		}
+
+		private void passwordtextbox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (passwordtextbox.Text.Length > 0 && passwordtextbox.Text[^1] != '*')
+			{
+				password += passwordtextbox.Text[^1];
+				passwordtextbox.Text = passwordtextbox.Text.Remove(passwordtextbox.Text.Length - 1, 1);
+				passwordtextbox.Text += "*";
+				passwordtextbox.CaretIndex = passwordtextbox.Text.Length;
+			}
+			else if (passwordtextbox.Text.Length < password.Length)
+			{
+				password = password.Remove(passwordtextbox.Text.Length, password.Length - passwordtextbox.Text.Length);
+			}
+			Console.WriteLine("1" + password);
+		}
+
+		private void passwordtextbox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			if (passwordtextbox.Text.Length > 0 && passwordtextbox.Text[^1] != '*')
+			{
+				password += passwordtextbox.Text[^1];
+				passwordtextbox.Text = passwordtextbox.Text.Remove(passwordtextbox.Text.Length - 1, 1);
+				passwordtextbox.Text += "*";
+				passwordtextbox.CaretIndex = passwordtextbox.Text.Length;
+			}
+			Console.WriteLine("1" + password);
+		}
+
+		private void repasswordtextbox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (repasswordtextbox.Text.Length > 0 && repasswordtextbox.Text[^1] != '*')
+			{
+				repassword += repasswordtextbox.Text[^1];
+				repasswordtextbox.Text = repasswordtextbox.Text.Remove(repasswordtextbox.Text.Length - 1, 1);
+				repasswordtextbox.Text += "*";
+				repasswordtextbox.CaretIndex = repasswordtextbox.Text.Length;
+			}
+			else if (repasswordtextbox.Text.Length < repassword.Length)
+			{
+				repassword = repassword.Remove(repasswordtextbox.Text.Length, repassword.Length - repasswordtextbox.Text.Length);
+			}
+			Console.WriteLine("2" + repassword);
+		}
+
+		private void repasswordtextbox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			if (repasswordtextbox.Text.Length > 0 && repasswordtextbox.Text[^1] != '*')
+			{
+				repassword += repasswordtextbox.Text[^1];
+				repasswordtextbox.Text = passwordtextbox.Text.Remove(repasswordtextbox.Text.Length - 1, 1);
+				repasswordtextbox.Text += "*";
+				repasswordtextbox.CaretIndex = repasswordtextbox.Text.Length;
+			}
+			Console.WriteLine("2" + repassword);
 		}
 	}
 }

@@ -50,6 +50,8 @@ namespace Ahnduino.Wins
 				smtp.Credentials = new NetworkCredential("highfuncsmtp@gmail.com", "opli6554");
 
 				smtp.Send(msg);
+
+				MessageBox.Show("비밀번호 초기화 메일이 전송되었습니다");
 			}
 			catch (Exception exc)
 			{

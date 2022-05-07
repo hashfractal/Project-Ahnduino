@@ -7,7 +7,6 @@ using System.Net;
 using System.IO;
 using System.Security.Cryptography;
 using Google.Cloud.Firestore;
-using FirebaseAdmin.Auth;
 using System.Drawing;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
@@ -20,7 +19,7 @@ namespace Ahnduino.Lib
 	{
 		static FirestoreDb? DB;
 
-		public Firebase ()
+		public Firebase()
 		{
 			string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
 			System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
@@ -87,7 +86,7 @@ namespace Ahnduino.Lib
 				res[0] = "사용할 수 없는 이메일 입니다";
 			if (password == "" || password == "사용할 수 없는 비밀번호 입니다")
 				res[1] = "사용할 수 없는 비밀번호 입니다";
-			if (password != repassword && repassword != "")
+			if (password != repassword || repassword == "")
 				res[2] = "재확인 비밀번호가 틀립니다";
 			if (name == "" || name == "사용할 수 없는 이름 입니다")
 				res[3] = "사용할 수 없는 이름 입니다";
@@ -113,7 +112,7 @@ namespace Ahnduino.Lib
 		}
 
 		public void Register(string email, string password, string repassword, string name, string phone)
-			{
+		{
 			if (email == "" || password == "" || repassword == "" || name == "" || phone == "") //공백이 입력될 경우
 			{
 				/*MessageBox.Show("아이디 또는 비밀번호에 공백이 있습니다.");*/
@@ -232,7 +231,7 @@ namespace Ahnduino.Lib
 				// 암호화된 데이터를 Base64 인코딩된 문자열로 변환한다.
 				EncryptedData = Convert.ToBase64String(CipherBytes);
 			}
-			catch {  }
+			catch { }
 			// 최종 결과를 리턴
 			return EncryptedData;
 		}
