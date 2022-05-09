@@ -20,7 +20,7 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class Register : Window
 	{
-		Firebase firebase = new();
+		/*Firebase firebase = new();*/
 		SolidColorBrush blackbrush = new SolidColorBrush(Colors.Black);
 		SolidColorBrush redbrush = new SolidColorBrush(Colors.Red);
 
@@ -83,7 +83,7 @@ namespace Ahnduino.Wins
 				return;
 			}	
 
-			firebase.Register(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
+			Firebase.Register(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
 
 			MessageBox.Show("회원가입이 완료되었습니다");
 

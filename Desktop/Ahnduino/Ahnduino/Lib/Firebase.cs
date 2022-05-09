@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +11,19 @@ using Google.Cloud.Firestore;
 using System.Drawing;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using Ahnduino.Lib.Object;
 
-#pragma warning disable CS8604 // 가능한 null 참조 인수입니다.
+#pragma warning disable SYSLIB0022 // 형식 또는 멤버는 사용되지 않습니다.
 
 namespace Ahnduino.Lib
 {
-	public class Firebase
+	public static class Firebase
 	{
 		static FirestoreDb? DB;
 
-		public Firebase()
+		public static FirestoreDb GetDb { get { return DB!; } }
+
+		static Firebase()
 		{
 			string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
 			System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
@@ -27,7 +31,7 @@ namespace Ahnduino.Lib
 			DB = FirestoreDb.Create("ahnduino");
 		}
 
-		public void CreateUser(string email)
+		public static void CreateUser(string email)
 		{
 			/*
 			 * 이메일받아옴
@@ -36,7 +40,7 @@ namespace Ahnduino.Lib
 			 */
 		}
 
-		public string getEmail(string address)
+		public static string getEmail(string address)
 		{
 			CollectionReference colref = DB!.Collection("User");
 			Query query = colref.WhereEqualTo("주소", address);
@@ -46,7 +50,7 @@ namespace Ahnduino.Lib
 			return docsnap.Id;
 		}
 
-		public string GetAddress(string email)
+		public static string GetAddress(string email)
 		{
 			CollectionReference cref = DB!.Collection("User");
 			Query query = cref.WhereEqualTo("메일", email);
@@ -96,7 +100,7 @@ namespace Ahnduino.Lib
 			return res!;
 		}
 
-		public bool Login(string email, string password)
+		public static bool Login(string email, string password)
 		{
 			Query qref = DB!.Collection("Manager").WhereEqualTo("Email", email).WhereEqualTo("Password", EncryptString(password, "flawless ahnduino"));
 			QuerySnapshot snap = qref.GetSnapshotAsync().Result;
@@ -111,7 +115,7 @@ namespace Ahnduino.Lib
 			return false;
 		}
 
-		public void Register(string email, string password, string repassword, string name, string phone)
+		public static void Register(string email, string password, string repassword, string name, string phone)
 		{
 			if (email == "" || password == "" || repassword == "" || name == "" || phone == "") //공백이 입력될 경우
 			{
@@ -121,7 +125,7 @@ namespace Ahnduino.Lib
 			JoinManagement(email, password, name, phone);
 		}
 
-		private void JoinManagement(string email, string password, string name, string phone)
+		private static void JoinManagement(string email, string password, string name, string phone)
 		{
 			bool idCheck = FindId(email);
 			if (idCheck) { } //id가 이미 있으므로 회원가입 X
@@ -131,7 +135,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
-		void Join(string email, string password, string name, string phone)
+		static void Join(string email, string password, string name, string phone)
 		{
 			DocumentReference DOC = DB!.Collection("Manager").Document(email);
 			Dictionary<string, object> temp = new Dictionary<string, object>()
@@ -159,7 +163,7 @@ namespace Ahnduino.Lib
 			return false;
 		}
 
-		public string ResetEmail(string email)
+		public static string ResetEmail(string email)
 		{
 			var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 			var Charsarr = new char[8];
@@ -279,45 +283,220 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Request
-		public List<string> GetRequestList()
+		public static void GetRequestUserList(ObservableCollection<string> res)
 		{
-			List<string> res = new List<string>();
+			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
 
-			CollectionReference colref = DB!.Collection("ResponsAndReQuest");
-			IAsyncEnumerable<DocumentReference> endoccref = colref.ListDocumentsAsync();
-			List<DocumentReference> docrefs = endoccref.ToListAsync().Result;
-
-			foreach (DocumentReference i in docrefs)
+			FirestoreChangeListener listener = query.Listen(snapshot =>
 			{
-				IAsyncEnumerable<CollectionReference> encolef = i.Collection("Request").Document("Request").ListCollectionsAsync();
-				List<CollectionReference> colrefs = encolef.ToListAsync().Result;
-				foreach (CollectionReference j in colrefs)
+				DispatcherService.Invoke(() =>
 				{
-					if (j.Id.Substring(10, 4) == "예약 전")
+					res.Clear();
+					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
 					{
-						res.Add(i.Id /*GetAddress(i.id)*/ + " " + j.Id.Substring(0, 10));
+						res.Add(documentSnapshot.Id);
 					}
+				});
+			} );
+		}
+
+		public static void GetDateList(string? email, ObservableCollection<string> res)
+		{
+			if (email == null)
+			{
+				email = "null";
+			}
+			DocumentReference docRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			FirestoreChangeListener listener = docRef.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					res.Clear();
+					IAsyncEnumerable<CollectionReference> subcollections = snapshot.Reference.ListCollectionsAsync();
+					IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
+					while (subcollectionsEnumerator.MoveNextAsync().Result)
+					{
+						CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
+						if (subcollectionRef.Id.Length == 14)
+						{
+							res.Add(subcollectionRef.Id[..10]);
+						}
+					}
+				});
+			});
+
+			if(email == "null")
+			{
+				listener.StopAsync();
+			}
+		}
+
+		public static void GetRequestList(string? email, string? date, ObservableCollection<string> res)
+		{
+			if (date == null)
+			{
+				date = "null";
+			}
+			if(email == null)
+			{
+				email = "null";
+			}
+
+			Query query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전");
+			FirestoreChangeListener listener = query.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					res.Clear();
+					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+					{
+						res.Add(documentSnapshot.Id);
+					}
+				});
+			});
+
+			if (date == "null")
+			{
+				listener.StopAsync();
+			}
+		}
+
+		public static Request? GetRequest (string? email, string? date, string? docid)
+		{
+			Query query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			DocumentSnapshot dSnap = qSnap.Documents[0];
+
+			if(dSnap.Exists)
+			{
+				Dictionary<string, object> dict = dSnap.ToDictionary();
+				List<string> images = new();
+
+				object temp;
+
+				dSnap.TryGetValue("Date", out temp);
+				string ddate = (string)temp;
+				dSnap.TryGetValue("DocID", out temp);
+				string docID = (string)temp;
+				dSnap.TryGetValue("Text", out temp);
+				string text = (string)temp;
+				dSnap.TryGetValue("Time", out temp);
+				Timestamp time = (Timestamp)temp;
+				dSnap.TryGetValue("Title", out temp);
+				string title = (string)temp;
+				dSnap.TryGetValue("UID", out temp);
+				string uid = (string)temp;
+				dSnap.TryGetValue("isreserv", out temp);
+				bool isreserve = (bool)temp;
+				dSnap.TryGetValue("reserv", out temp);
+				string reserve = (string)temp;
+				dSnap.TryGetValue("sovled", out temp);
+				bool solved = Convert.ToBoolean((string)temp);
+				dSnap.TryGetValue("userName", out temp);
+				string userName = (string)temp;
+
+				int i = 0;
+				while (dSnap.TryGetValue("image" + i, out temp))
+				{
+					images.Add((string)temp);
+					i++;
+				}
+
+				Request res = new Request(ddate, docID, text, time, title, uid, isreserve, reserve, solved, userName, images);
+
+				return res;
+			}
+			return null;
+		}
+
+		public static void UpdateRequest (string? email, string? date, string? docid, Request request, string UID)
+		{
+			Query query;
+			QuerySnapshot qSnap;
+			DocumentSnapshot dSnap;
+			//예약 업데이트
+
+			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약").Document(docid);
+			
+			Dictionary<string, object> dic = new Dictionary<string, object>()
+			{
+				{"Date", request.Date!},
+				{"DocID", request.DocID!},
+				{"Text", request.Text!},
+				{"Time", request.Time!},
+				{"Title", request.Title!},
+				{"UID", request.UID!},
+				{"isreserv", request.Isreserve!},
+				{"reserv", request.Reserve!},
+				{"solved", request.Solved!},
+				{"userName", request.UserName!},
+			};
+
+			int n = 0;
+			foreach(string i in request.Images!)
+			{
+				dic.Add("image" + n, i);
+				n++;
+			}
+
+			dRef.SetAsync(dic);
+
+			//현장직 대기
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(request.Reserve + "수리예정").Document(request.DocID);
+			dRef.SetAsync(dic);
+
+			//예약전 삭제
+			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
+			qSnap = query.GetSnapshotAsync().Result;
+			dSnap = qSnap.Documents[0];
+			dRef = dSnap.Reference;
+			dRef.DeleteAsync().Wait();
+
+
+			//예약전 카운트
+			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전");
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			Dictionary<string, object> updates = new Dictionary<string, object>
+			{
+				{ date! + "예약 전", query.GetSnapshotAsync().Result.Count }
+			};
+			dRef.UpdateAsync(updates).Wait();
+
+			//예약 카운트
+			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약");
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			Dictionary<string, object> update = new Dictionary<string, object>
+			{
+				{ date! + "예약", query.GetSnapshotAsync().Result.Count }
+			};
+			dRef.UpdateAsync(update).Wait();
+
+			//isdone처리
+			bool isdone = true;
+			dSnap = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").GetSnapshotAsync().Result;
+			IAsyncEnumerable<CollectionReference> subcollections = dSnap.Reference.ListCollectionsAsync();
+			IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
+			while (subcollectionsEnumerator.MoveNextAsync().Result)
+			{
+				CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
+				if (subcollectionRef.Id.Length == 14)
+				{
+					isdone = false;
 				}
 			}
 
-			return res;
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email);
+			update = new Dictionary<string, object>
+			{
+				{ "isdone", isdone }
+			};
+
+			dRef.UpdateAsync(update).Wait();
 		}
-
-		//public List<string> GetUserRequestList()
-		//{
-		//	List<string> res = new List<string>();
-		//}
-
-		//public Request GetRequest()
-		//{
-
-		//}
-
-
 		#endregion
 
 		#region Chat
-		public List<string> getChatList()
+		public static List<string> getChatList()
 		{
 			List<string> res = new List<string>();
 
@@ -335,7 +514,7 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Bill
-		public void createnewbill(string address)
+		public static void createnewbill(string address)
 		{
 			/*
 			 * getemail 로 이메일 받아옴

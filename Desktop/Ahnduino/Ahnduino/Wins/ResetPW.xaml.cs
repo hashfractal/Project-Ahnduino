@@ -22,8 +22,6 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class ResetPW : Window
 	{
-		Firebase firebase = new();
-
 		public ResetPW()
 		{
 			InitializeComponent();
@@ -41,7 +39,7 @@ namespace Ahnduino.Wins
 					
 
 				MailMessage msg = new MailMessage("highfuncsmtp@gmail.com", emailtextbox.Text,
-		  "Reset Ahnduino Password", "임시 비밀번호: " + firebase.ResetEmail(emailtextbox.Text) + "\r\n반드시 임시 비밀번호로 로그인 후 새로운 비밀번호로 변경하여 주십시오");
+		  "Reset Ahnduino Password", "임시 비밀번호: " + Firebase.ResetEmail(emailtextbox.Text) + "\r\n반드시 임시 비밀번호로 로그인 후 새로운 비밀번호로 변경하여 주십시오");
 
 				SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
 				smtp.EnableSsl = true;

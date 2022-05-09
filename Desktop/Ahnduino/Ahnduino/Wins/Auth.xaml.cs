@@ -21,7 +21,6 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class Auth : Window
 	{
-		Firebase Firebase = new();
 		string password = "";
 
 		public Auth()
@@ -39,7 +38,9 @@ namespace Ahnduino.Wins
 		{
 			if (Firebase.Login(IDTextbox.Text, password))
 			{
-				MessageBox.Show("성공");
+				MainWindow mainWindow = new MainWindow(IDTextbox.Text);
+				mainWindow.Show();
+				Close();
 			}
 			else
 			{

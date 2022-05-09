@@ -10,7 +10,10 @@
     <Compile Update="Wins\Auth.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Wins\MainWIndow.xaml.cs">
+    <Compile Update="Wins\MainMenuTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Wins\Register.xaml.cs">
@@ -33,6 +36,9 @@
     <Page Update="Themes\ContactCard.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\MenuButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\MessageBox.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -42,7 +48,10 @@
     <Page Update="Wins\Auth.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Wins\MainWIndow.xaml">
+    <Page Update="Wins\MainMenuTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\Register.xaml">

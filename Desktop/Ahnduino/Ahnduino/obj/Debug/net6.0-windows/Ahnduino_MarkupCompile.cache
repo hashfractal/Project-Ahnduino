@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-10-763676866
+12-640819130
 1-699830913
-12266671092
+15-88046510
 214-1969012555
-Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
+Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\MainMenuTemplate.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
 
 False
 

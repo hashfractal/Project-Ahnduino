@@ -177,3 +177,13 @@ C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\Metr
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\Ahnduino.addbill.resources
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\Ahnduino.chat.resources
 C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\Ahnduino.RequestManage.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.csproj.AssemblyReference.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.csproj.SuggestedBindingRedirects.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.addbill.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.billselect.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.chat.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.mainform.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.RequestManage.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.Properties.Resources.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.csproj.GenerateResource.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino Ref\Ahnduino\obj\Debug\Ahnduino.csproj.CoreCompileInputs.cache

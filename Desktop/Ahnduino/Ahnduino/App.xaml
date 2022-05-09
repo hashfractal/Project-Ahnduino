@@ -10,7 +10,7 @@
 			<FontFamily x:Key="NanumMyeongjo">/Fonts/#NanumMyeongjo</FontFamily>
 			
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="Themes/AuthButton.xaml"/>
+				<ResourceDictionary Source="Themes/MenuButton.xaml"/>
 				<ResourceDictionary Source="Themes/AuthTextbox.xaml"/>
 				<ResourceDictionary Source="Themes/ContactCard.xaml"/>
 				<ResourceDictionary Source="Themes/ChatItem.xaml"/>
