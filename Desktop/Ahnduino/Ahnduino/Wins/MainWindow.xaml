@@ -28,8 +28,8 @@
 
 				<Button Height="120" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">📬</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">채팅</Label>
 					</StackPanel>
 				</Button>
 
