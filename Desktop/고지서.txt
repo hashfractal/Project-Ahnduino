@@ -1,0 +1,12 @@
+Ab	연체 상태 1: 완납 2: 미납 3: 연체
+Arrears  	납기후연체금액: 해당월에 미납시 발생하는 벌금
+Defmoney 미납액 : 전월 안낸금액
+Money 기본관리비
+Nab 납부마감일 
+Pay 납부 여부
+Pomoney 납기후금액: 월별 납기후 연체금액의 합
+Repair 수리비
+Totmoeny 청구금액
+
+Totmoney = money + repair
+
