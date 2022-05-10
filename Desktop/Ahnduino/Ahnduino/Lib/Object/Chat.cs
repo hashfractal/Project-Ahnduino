@@ -21,7 +21,7 @@ namespace Ahnduino.Lib.Object
 
 		public override string ToString()
 		{
-			return type.ToString() + " " + text + " " + time;
+			return ((bool)type! ? "사용자" : "관리자") + ": " + text + "\n\r" + time + "\n\r\n\r";
 		}
 	}
 }

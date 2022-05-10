@@ -745,19 +745,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sejin\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work Space\\GitHub\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\Ahnduino.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\Ahnduino\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\Ahnduino.csproj",
       "projectName": "Ahnduino",
-      "projectPath": "C:\\Work Space\\GitHub\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\Ahnduino.csproj",
-      "packagesPath": "C:\\Users\\Sejin\\.nuget\\packages\\",
-      "outputPath": "C:\\Work Space\\GitHub\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\obj\\",
+      "projectPath": "C:\\Users\\user\\Desktop\\Ahnduino\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\Ahnduino.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\Ahnduino\\Ahnduino\\Desktop\\Ahnduino\\Ahnduino\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Sejin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

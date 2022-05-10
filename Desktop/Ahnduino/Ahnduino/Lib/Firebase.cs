@@ -566,7 +566,6 @@ namespace Ahnduino.Lib
 					}
 				});
 			});
-
 		}
 
 		public static void SendChat(string email,string uid, string text)
@@ -575,10 +574,9 @@ namespace Ahnduino.Lib
 			Chat chat = new Chat();
 			chat.chat = uid;
 			chat.text = text;
-			chat.time = Timestamp.FromDateTime(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc));
+			chat.time = Timestamp.FromDateTime(DateTime.UtcNow);
 			chat.type = false;
 			cRef.AddAsync(chat);
-
 		}
 		#endregion
 
@@ -592,45 +590,10 @@ namespace Ahnduino.Lib
 			 * 
 			 */
 		}
-		/*
+		
 		public List<Bill> GetBillList(string address, out int paypermonth)
 		{
-			List<object> billlist = new List<object>();
-			List<Bill> res = new List<Bill>();
-			object temp;
-
-			DocumentReference docref = DB.Collection("Bill").Document(getEmail(address));
-			DocumentSnapshot snap = docref.GetSnapshotAsync().Result;
-
-
-			if (snap.Exists)
-			{
-				Dictionary<string, object> dic = snap.ToDictionary();
-				dic.TryGetValue("money", out temp);
-				paypermonth = int.Parse(temp.ToString());
-				dic.TryGetValue("list", out temp);
-
-				billlist = (List<object>)temp;
-
-				if (billlist.Count == 0)
-					return null;
-
-				foreach (Dictionary<string, object> item in billlist)
-				{
-					item.TryGetValue("month", out object month);
-					item.TryGetValue("pay", out object pay);
-					Bill bill = new Bill(int.Parse(month.ToString()), int.Parse(pay.ToString()));
-
-					res.Add(bill);
-				}
-
-				return res;
-			}
-			else
-			{
-				paypermonth = -1;
-				return null;
-			}
+			
 		}
 
 		public void UpdateBillList(List<Bill> bills, string address)
@@ -654,7 +617,6 @@ namespace Ahnduino.Lib
 
 			}
 		}
-		*/
 		#endregion
 
 		#region json
