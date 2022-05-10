@@ -12,6 +12,7 @@ using System.Drawing;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using Ahnduino.Lib.Object;
+using System.Windows.Controls;
 
 #pragma warning disable SYSLIB0022 // 형식 또는 멤버는 사용되지 않습니다.
 
@@ -496,20 +497,88 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Chat
-		public static List<string> getChatList()
+		public static void FirstGetChatList(string email, ObservableCollection<Chat> chatlist)
 		{
-			List<string> res = new List<string>();
-
-			DocumentReference docref = DB!.Collection("chat").Document("chat");
-
-			IAsyncEnumerable<CollectionReference> ascref = docref.ListCollectionsAsync();
-			List<CollectionReference> colrefs = ascref.ToListAsync().Result;
-
-			foreach (CollectionReference i in colrefs)
+			chatlist.Clear();
+			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
+			Query query = collectionRef.OrderByDescending("time").Limit(50);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot dSnap in qSnap.Documents)
 			{
-				res.Add(i.Id);
+				chatlist.Insert(0, dSnap.ConvertTo<Chat>());
 			}
-			return res;
+		}
+
+		public static void GetChatList(string email, ObservableCollection<Chat> chatlist)
+		{
+			ObservableCollection<Chat> list = new ObservableCollection<Chat>();
+			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
+			Query query = collectionRef.WhereLessThan("time", chatlist.First().time) .OrderByDescending("time").Limit(50);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot dSnap in qSnap.Documents)
+			{
+				list.Add(dSnap.ConvertTo<Chat>());
+			}
+			foreach(Chat i in list)
+			{
+				chatlist.Insert(0, i);
+			}
+		}
+
+		public static void GetChat(string? email, ObservableCollection<Chat> chatlist, ScrollViewer scrollViewer)
+		{
+			if (email == null)
+			{
+				email = "null";
+			}
+			ObservableCollection<Chat> list = new ObservableCollection<Chat>();
+			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
+			Query query = collectionRef.OrderByDescending("time").Limit(1);
+			FirestoreChangeListener listener = collectionRef.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+					Chat chat = qSnap.Documents[0].ConvertTo<Chat>();
+					chatlist.Add(chat);
+					scrollViewer.ScrollToBottom();
+				});
+			});
+
+			if (email == "null")
+			{
+				listener.StopAsync();
+			}
+		}
+
+		public static void GetChatUserList(ObservableCollection<string> chatuserlist)
+		{
+			Query query = DB!.Collection("chat").Document("chat").Collection("needanswer");
+
+			FirestoreChangeListener listener = query.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					chatuserlist.Clear();
+					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+					{
+						chatuserlist.Add(documentSnapshot.Id);
+					}
+				});
+			});
+
+		}
+
+		public static void SendChat(string email,string uid, string text)
+		{
+			CollectionReference cRef = DB!.Collection("chat").Document("chat").Collection(email);
+			Chat chat = new Chat();
+			chat.chat = uid;
+			chat.text = text;
+			chat.time = Timestamp.FromDateTime(DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc));
+			chat.type = false;
+			cRef.AddAsync(chat);
+
 		}
 		#endregion
 

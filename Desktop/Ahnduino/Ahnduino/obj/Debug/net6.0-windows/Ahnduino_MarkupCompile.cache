@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
 Ahnduino
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-13591631671
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
+13-1001225356
 1-699830913
-16900544118
-214-1354046666
-Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\Chat.xaml;Wins\MainMenuTemplate.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
+17815242519
+214-1969012555
+Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\ChatMenu.xaml;Wins\MainMenuTemplate.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
 
 False
 

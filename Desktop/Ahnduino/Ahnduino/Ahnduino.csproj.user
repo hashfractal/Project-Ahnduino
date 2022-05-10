@@ -10,7 +10,7 @@
     <Compile Update="Wins\Auth.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Wins\Chat.xaml.cs">
+    <Compile Update="Wins\ChatMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Wins\MainMenuTemplate.xaml.cs">
@@ -51,7 +51,7 @@
     <Page Update="Wins\Auth.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Wins\Chat.xaml">
+    <Page Update="Wins\ChatMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\MainMenuTemplate.xaml">

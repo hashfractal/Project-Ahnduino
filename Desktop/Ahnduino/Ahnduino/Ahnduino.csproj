@@ -14,6 +14,9 @@
     <None Remove="Fonts\NanumMyeongjo.ttf" />
     <None Remove="Fonts\OptimusPrinceps.ttf" />
     <None Remove="Fonts\OptimusPrincepsSemiBold.ttf" />
+    <None Remove="Icon\ChatPlus.png" />
+    <None Remove="Icon\ChatSearch.png" />
+    <None Remove="Icon\ChatSend.png" />
     <None Remove="Image\mainIConcolor.png" />
   </ItemGroup>
 
@@ -31,6 +34,13 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\OptimusPrincepsSemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icon\ChatPlus.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icon\ChatSearch.png" />
+    <Resource Include="Icon\ChatSend.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\mainIConcolor.png">
