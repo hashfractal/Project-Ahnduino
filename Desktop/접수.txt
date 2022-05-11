@@ -1,0 +1,4 @@
+isreserv: 정비아저씨 보낼것 여부
+reserv: 보낼 날짜
+
+/ResponsAndReQuest/김성현/Request/Request/2022-04-25예약 으로 문서 이동
