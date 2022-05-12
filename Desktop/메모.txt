@@ -1,3 +1,7 @@
+주말에 완성되면 전체적으로 컨펌
+
+https://github.com/step-up-labs/firebase-storage-dotnet
+
 ==Ref==
 https://codingman.tistory.com/128
 
@@ -12,6 +16,9 @@ https://codingman.tistory.com/128
 사용자: 수리 완료
 사용자: 현장직 할당 완료
 
+==고지서==
+콤보박스 너비 늘리고 납부승인버튼 파랑백 검정 프론트 테두리 둥굴게
+고지서 추가 UI 관리비 항목 자동연산
 
 ==퇴실==
 퇴실할 날짜를 받음
