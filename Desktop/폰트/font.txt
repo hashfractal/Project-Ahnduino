@@ -1,0 +1,14 @@
+얇은글씨 : lightfont
+두꺼운글씨: mainfont
+글씨에서 각자 bold 빼주기
+
+
+예시)'
+ TextSpan(
+                      text: '원',
+                      style: TextStyle(
+                          fontFamily: 'lightfont', //이 부분 추가
+                          letterSpacing: 5,
+                          fontSize: 20.sp,
+                          color: Colors.black),
+                    ),

@@ -59,6 +59,7 @@
 					<RowDefinition Height="40"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
+				
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
@@ -81,28 +82,294 @@
 					</Button>
 				</Grid>
 
-				<ListView x:Name="billlist" Grid.Row="1" Width="380" Margin="8" BorderThickness="0" SelectionChanged="chatneedanswerlistview_SelectionChanged">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
-						<Style TargetType="Border">
-							<Setter Property="CornerRadius" Value="10"/>
-						</Style>
-					</ListView.Resources>
-				</ListView>
-			
-				
-			</Grid>
+				<Border Grid.Row="2" Margin="8" Background="White" CornerRadius="10">
+					<Grid Margin="8" Background="White">
+						<StackPanel Orientation="Vertical" >
 
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="250"/>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+
+
+								<StackPanel Margin="10,0,0,0" Grid.Column="0" Orientation="Horizontal">
+									<ComboBox x:Name="billlistbox" Height="20" Width="60" Background="Transparent" Margin="5,5,5,5" BorderBrush="Transparent" SelectionChanged="billlistbox_SelectionChanged"/>
+									<Button x:Name="acceptbutton" Content="납부 승인" Margin="5" Click="acceptbutton_Click"/>
+								</StackPanel>
+							</Grid>
+
+
+							<Border Background="#008F5E" CornerRadius="10" Margin="10">
+								<StackPanel Orientation="Vertical">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition/>
+											<ColumnDefinition Width="100"/>
+										</Grid.ColumnDefinitions>
+
+										<Label x:Name="labeldate" Foreground="White" Margin="10,15,10,10" Padding="0" FontSize="15">
+											YYYY년 M월분
+										</Label>
+										<Border Grid.Column="1" Background="White" CornerRadius="15" Height="30" Margin="10">
+											<TextBlock x:Name="tbpay" TextAlignment="Center" VerticalAlignment="Center" Width="60" FontSize="15">
+											미납
+											</TextBlock>
+										</Border>
+									</Grid>
+									<Label x:Name="labeltotalmoney" Foreground="White" Margin="10,0,0,0" FontSize="20" Padding="0">원</Label>
+									<Label x:Name="labeldeadline" Foreground="White" Margin="10,0,0,20" FontSize="13" Padding="0">납부마감일</Label>
+								</StackPanel>
+							</Border>
+
+							<Border Background="LightGray" CornerRadius="10" Margin="10">
+								<StackPanel>
+									<Label>청구금액</Label>
+									<Border Background="White" CornerRadius="10,10,0,0" Margin="10,10,10,0">
+										<StackPanel>
+											<TextBlock FontSize="20" Margin="10">이번 달 관리비</TextBlock>
+											<TextBlock x:Name="tbtotalmoney" TextAlignment="Right" Margin="10" FontSize="30">원</TextBlock>
+										</StackPanel>
+									</Border>
+									<Border Background="White" CornerRadius="0,0,10,10" Margin="10,5,10,10">
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition/>
+											</Grid.ColumnDefinitions>
+
+											<StackPanel Grid.Column="0">
+												<TextBlock FontSize="20" Margin="10">당월부과액</TextBlock>
+												<TextBlock FontSize="20" Margin="10,0,10,10">미납액</TextBlock>
+												<TextBlock FontSize="20" Margin="10,0,10,10">납기후 연체금액</TextBlock>
+												<TextBlock FontSize="20" Margin="10,0,10,10">납기후 금액</TextBlock>
+												<TextBlock FontSize="20" Margin="10,0,10,10">수리 금액</TextBlock>
+											</StackPanel>
+
+											<StackPanel Grid.Column="1">
+												<TextBlock x:Name="tbi1" FontSize="20" Margin="10" TextAlignment="Right">원</TextBlock>
+												<TextBlock x:Name="tbi2" FontSize="20" Margin="10,0,10,10" TextAlignment="Right">원</TextBlock>
+												<TextBlock x:Name="tbi3" FontSize="20" Margin="10,0,10,10" TextAlignment="Right">원</TextBlock>
+												<TextBlock x:Name="tbi4" FontSize="20" Margin="10,0,10,10" TextAlignment="Right">원</TextBlock>
+												<TextBlock x:Name="tbi5" FontSize="20" Margin="10,0,10,10" TextAlignment="Right">원</TextBlock>
+
+												<Border CornerRadius="10" Background="SkyBlue" Margin="15">
+													<TextBlock x:Name="tbstatus" FontSize="25" Padding="5" TextAlignment="Center">
+														미납
+													</TextBlock>
+												</Border>
+
+											</StackPanel>
+										</Grid>
+									</Border>
+								</StackPanel>
+							</Border>
+						</StackPanel>
+					</Grid>
+				</Border>
+
+			</Grid>
 		</Grid>
 
-		<Grid Grid.Column="2">
-			
+		<Grid Grid.Column="2" Background="LightGray">
+			<Border Grid.Row="2" Margin="8" Background="White" CornerRadius="10">
+				<Grid Margin="8" Background="White">
+					<StackPanel Orientation="Vertical">
+
+						<TextBlock x:Name="tbtitle" TextAlignment="Center" FontSize="20">n월 고지서 추가</TextBlock>
+
+						<Border Background="#008F5E" CornerRadius="10" Margin="10">
+							<StackPanel Orientation="Vertical">
+								<StackPanel Orientation="Horizontal" Height="40">
+									<TextBox x:Name="ntb1" Background="LightGray" Width="80" Margin="7,7,0,7" FontSize="15">
+										<TextBox.Resources>
+											<Style TargetType="Border">
+												<Setter Property="CornerRadius" Value="7"/>
+											</Style>
+										</TextBox.Resources>
+									</TextBox>
+
+									<Label Foreground="White" VerticalAlignment="Center" FontSize="15">년</Label>
+									<TextBox x:Name="ntb2" Background="LightGray" Width="40" Margin="7,7,0,7" FontSize="15">
+										<TextBox.Resources>
+											<Style TargetType="Border">
+												<Setter Property="CornerRadius" Value="7"/>
+											</Style>
+										</TextBox.Resources>
+									</TextBox>
+									<Label Foreground="White" VerticalAlignment="Center" FontSize="15">월분</Label>
+
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" Height="40">
+									<TextBox x:Name="ntb3" Background="LightGray" Width="80" Margin="7,7,0,7" FontSize="15">
+										<TextBox.Resources>
+											<Style TargetType="Border">
+												<Setter Property="CornerRadius" Value="7"/>
+											</Style>
+										</TextBox.Resources>
+									</TextBox>
+
+									<Label x:Name="nlabeltotalmoney" Foreground="White" VerticalAlignment="Center" FontSize="15" >원</Label>
+								</StackPanel>
+
+								<StackPanel Orientation="Horizontal">
+									<Label x:Name="nlabeldeadline" Foreground="White" VerticalAlignment="Center" FontSize="15">납부마감일</Label>
+									<TextBox x:Name="ntb4" Background="LightGray" Width="40" Margin="0,7,0,7" FontSize="15">
+										<TextBox.Resources>
+											<Style TargetType="Border">
+												<Setter Property="CornerRadius" Value="7"/>
+											</Style>
+										</TextBox.Resources>
+									</TextBox>
+									<Label Foreground="White" VerticalAlignment="Center" FontSize="15">월</Label>
+									<TextBox x:Name="ntb4_1" Background="LightGray" Width="40" Margin="0,7,0,7" FontSize="15">
+										<TextBox.Resources>
+											<Style TargetType="Border">
+												<Setter Property="CornerRadius" Value="7"/>
+											</Style>
+										</TextBox.Resources>
+									</TextBox>
+									<Label Foreground="White" VerticalAlignment="Center" FontSize="15">일</Label>
+								</StackPanel>
+								
+							</StackPanel>
+						</Border>
+
+						<Border Background="LightGray" CornerRadius="10" Margin="10">
+							<StackPanel>
+								<Label>청구금액</Label>
+								<Border Background="White" CornerRadius="10,10,0,0" Margin="10,10,10,0">
+									<StackPanel>
+										<TextBlock FontSize="20" Margin="10">이번 달 관리비</TextBlock>
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb5" Background="LightGray"  Margin="7,7,0,7" FontSize="30">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1" x:Name="ntbtotalmoney" TextAlignment="Right" Margin="10" FontSize="30">원</TextBlock>
+										</Grid>
+											
+										
+									</StackPanel>
+								</Border>
+								<Border Background="White" CornerRadius="0,0,10,10" Margin="10,5,10,10">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+											<RowDefinition/>
+											<RowDefinition/>
+											<RowDefinition/>
+											<RowDefinition/>
+											<RowDefinition/>
+											<RowDefinition/>
+										</Grid.RowDefinitions>
+
+										<TextBlock Grid.Column="0" Grid.Row="0" FontSize="20" VerticalAlignment="Center">당월부과액</TextBlock>
+										<TextBlock Grid.Column="0" Grid.Row="1" FontSize="20" VerticalAlignment="Center">미납액</TextBlock>
+										<TextBlock Grid.Column="0" Grid.Row="2" FontSize="20" VerticalAlignment="Center">납기후 연체금액</TextBlock>
+										<TextBlock Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Center">납기후 금액</TextBlock>
+										<TextBlock Grid.Column="0" Grid.Row="4" FontSize="20" VerticalAlignment="Center">수리 금액</TextBlock>
+
+
+										<Grid Margin="11" Grid.Column="1" Grid.Row="0">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb6" Background="LightGray" FontSize="20">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1"  TextAlignment="Right" FontSize="20">원</TextBlock>
+										</Grid>
+
+										<Grid Margin="11" Grid.Column="1" Grid.Row="1">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb7" Background="LightGray" FontSize="20">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1"  TextAlignment="Right" FontSize="20">원</TextBlock>
+										</Grid>
+
+										<Grid Margin="11" Grid.Column="1" Grid.Row="2">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb8" Background="LightGray" FontSize="20">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1"  TextAlignment="Right" FontSize="20">원</TextBlock>
+										</Grid>
+
+										<Grid Margin="11" Grid.Column="1" Grid.Row="3">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb9" Background="LightGray" FontSize="20">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1"  TextAlignment="Right" FontSize="20">원</TextBlock>
+										</Grid>
+
+										<Grid Margin="11" Grid.Column="1" Grid.Row="4">
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition/>
+												<ColumnDefinition Width="50"/>
+											</Grid.ColumnDefinitions>
+											<TextBox x:Name="ntb10" Background="LightGray" FontSize="20">
+												<TextBox.Resources>
+													<Style TargetType="Border">
+														<Setter Property="CornerRadius" Value="7"/>
+													</Style>
+												</TextBox.Resources>
+											</TextBox>
+											<TextBlock Grid.Column="1"  TextAlignment="Right" FontSize="20">원</TextBlock>
+										</Grid>
+
+										<Border CornerRadius="10" Background="SkyBlue" Margin="10" Grid.Column="1" Grid.Row="6">
+												<Button x:Name="ntbstatus" FontSize="20" Padding="5" Background="Transparent" BorderBrush="Transparent" Click="ntbstatus_Click">
+													새 고지서 추가
+												</Button>
+										</Border>
+
+
+									</Grid>
+								</Border>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+				</Grid>
+			</Border>
 		</Grid>
 	</Grid>
 </Window>

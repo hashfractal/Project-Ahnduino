@@ -8,25 +8,32 @@ using Google.Cloud.Firestore;
 namespace Ahnduino.Lib.Object
 {
 	[FirestoreData]
-	internal class Bill
+	public class Bill
 	{
 		[FirestoreProperty]
-		int? Ab { get; set; }
+		public int? Ab { get; set; }
 		[FirestoreProperty]
-		int? Arrears { get; set; }
+		public int? Arrears { get; set; }
 		[FirestoreProperty]
-		int? Defmoney { get; set; }
+		public int? Defmoney { get; set; }
 		[FirestoreProperty]
-		int? Money { get; set; }
+		public int? Money { get; set; }
 		[FirestoreProperty]
-		Timestamp? Nab { get; set; }
+		public Timestamp? Nab { get; set; }
 		[FirestoreProperty]
-		bool? Pay { get; set; }
+		public bool? Pay { get; set; }
 		[FirestoreProperty]
-		int? Pomoney { get; set; }
+		public int? Pomoney { get; set; }
 		[FirestoreProperty]
-		int? Repair { get; set; }
+		public int? Repair { get; set; }
 		[FirestoreProperty]
-		int? Totmoney { get; set; }
+		public int? Totmoney { get; set; }
+
+		public override string ToString()
+		{
+			Timestamp temp = (Timestamp)Nab!;
+
+			return (temp.ToDateTime().Month - 1 == 0 ? 12 : temp.ToDateTime().Month - 1).ToString();
+		}
 	}
 }

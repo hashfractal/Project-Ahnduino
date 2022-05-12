@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
 Ahnduino
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-141932891987
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
+151999690726
 1-699830913
-19407860765
-214-1354046666
-Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\ChatMenu.xaml;Wins\MainMenuTemplate.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
+20858139466
+214-1969012555
+Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardMenu.xaml;Wins\ChatMenu.xaml;Wins\MainMenuTemplate.xaml;Wins\MainWindow.xaml;Wins\Register.xaml;Wins\ResetPW.xaml;
 
-True
+False
 

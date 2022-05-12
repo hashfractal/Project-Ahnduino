@@ -13,6 +13,9 @@
     <Compile Update="Wins\BillMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\BoardMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Wins\ChatMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\BillMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\BoardMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\ChatMenu.xaml">

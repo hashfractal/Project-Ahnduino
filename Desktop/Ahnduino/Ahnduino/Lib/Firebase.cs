@@ -581,41 +581,94 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Bill
-		public static void createnewbill(string address)
+		public static void GetBillList(string? email, ObservableCollection<Bill> billlist)
 		{
-			/*
-			 * getemail 로 이메일 받아옴
-			 * Bill 컬렉션에 이메일 문서생성
-			 * 문서 작성
-			 * 
-			 */
-		}
-		
-		public List<Bill> GetBillList(string address, out int paypermonth)
-		{
-			
+			billlist.Clear();
+			CollectionReference cRef = DB!.Collection("Bill").Document(email).Collection("Month");
+			Query query = cRef.OrderBy("Nab");
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot dSnap in qSanp.Documents)
+			{
+				billlist.Add(dSnap.ConvertTo<Bill>());
+			}
 		}
 
-		public void UpdateBillList(List<Bill> bills, string address)
+		public static void AcceptPay(string? email, Bill bill)
 		{
-
-			DocumentReference docref = DB.Collection("Bill").Document(getEmail(address));
-			DocumentSnapshot snap = docref.GetSnapshotAsync().Result;
-
-			if (snap.Exists)
+			Query query = DB!.Collection("Bill").Document(email).Collection("Month").WhereLessThanOrEqualTo("Nab", bill.Nab);
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot dSnap in qSanp.Documents)
 			{
 				Dictionary<string, object> dict = new Dictionary<string, object>()
 				{
-					{"list", FieldValue.Delete }
+					{ "Pay", true },
+					{ "Ab", 1 },
 				};
-				snap.Reference.UpdateAsync(dict);
-
-				foreach (Bill bill in bills.ToArray())
-					Console.WriteLine(bill.month.ToString() + bill.pay);
-
-				snap.Reference.UpdateAsync("list", FieldValue.ArrayUnion(bills.ToArray())).Wait();
-
+				dSnap.Reference.SetAsync(dict, SetOptions.MergeAll);
 			}
+		}
+
+		public static void SetNewBill(string? email, Bill newbill)
+		{
+			Query query = DB!.Collection("Bill").Document(email).Collection("Month").OrderByDescending("Nab").Limit(1);
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			if(qSanp.Count > 0)
+			{
+				DocumentSnapshot dSnap = qSanp.Documents[0];
+				Bill lastbill = dSnap.ConvertTo<Bill>();
+
+				Timestamp timestamp = (Timestamp)lastbill.Nab!;
+				DateTime dateTime = timestamp.ToDateTime();
+				dateTime = dateTime.AddMonths(1);
+
+				newbill.Ab = 2;
+				newbill.Arrears = lastbill.Arrears;
+				newbill.Money = lastbill.Money;
+				newbill.Nab = Timestamp.FromDateTime(dateTime);
+				newbill.Pay = false;
+				newbill.Repair = 0;
+
+				// defmoney pomoney totmoney 연산
+				if (lastbill.Ab == 2)
+				{
+					newbill.Defmoney = lastbill.Pomoney;
+
+				}
+				else if (lastbill.Ab == 1)
+				{
+					newbill.Defmoney = 0;
+				}
+				newbill.Totmoney = newbill.Money + newbill.Repair + newbill.Defmoney;
+				newbill.Pomoney = newbill.Totmoney + newbill.Arrears;
+			}
+			else
+			{
+				newbill.Ab = 2;
+				newbill.Arrears = null;
+				newbill.Defmoney = 0;
+				newbill.Money = null;
+				newbill.Nab = null;
+				newbill.Pay = false;
+				newbill.Pomoney = null;
+				newbill.Repair = 0;
+				newbill.Totmoney = null;
+			}
+		}
+
+		public static void CreateBill(string? email, Bill newbill, int billlistcount)
+		{
+			if(billlistcount >= 12)
+			{
+				Query query = DB!.Collection("Bill").Document(email).Collection("Month").OrderBy("Nab").Limit(1);
+				QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+				DocumentSnapshot dSnap = qSanp.Documents[0];
+				dSnap.Reference.DeleteAsync().Wait();
+			}
+
+			Timestamp temp = (Timestamp)newbill.Nab!;
+			DateTime Month = temp.ToDateTime();
+			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month - 1 == 0 ? 12 : Month.Month - 1) + "월");
+			dRef.SetAsync(newbill, SetOptions.MergeAll);
 		}
 		#endregion
 
