@@ -1,4 +1,5 @@
 import 'package:chattingtest/screens/board_screen.dart';
+import 'package:chattingtest/screens/board_write.dart';
 import 'package:chattingtest/screens/chat_screen.dart';
 import 'package:chattingtest/screens/mainpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';

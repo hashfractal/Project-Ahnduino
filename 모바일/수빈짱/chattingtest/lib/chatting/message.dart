@@ -30,16 +30,26 @@ class Messages extends StatelessWidget {
 
       List<ChatBubbles> chatinglist =[];
           chatDocs.forEach((element) {
+            List<String> allurl = [];
+            for(int i = 0 ; i <5 ; i++)
+              {
+                if(element.data()['image$i'] != null )
+                {
+                  allurl.add(element.data()['image$i']);
+                }
+              }
+
           Timestamp now = element['time'];
           if (chatDate != DateFormat('yyyy-MM-dd').format(now.toDate()).toString())
           {
             chatDate =  DateFormat('yyyy-MM-dd').format(now.toDate()).toString();
-            chatinglist.add(ChatBubbles(chatDate, element['chat'] == chat!.email,  element['time'],true));
+            chatinglist.add(ChatBubbles( chatDate, element['chat'] == chat!.email,  element['time'],true,alllist: allurl,));
             chatinglist.add(ChatBubbles (
                 element['text'],
                 element['type'] ,
                 element['time'],
                 false
+              ,alllist: allurl
             ));
           }
           else
@@ -49,6 +59,7 @@ class Messages extends StatelessWidget {
                   element['type'],
                   element['time'],
                   false
+                  ,alllist: allurl
               ),);
             }
 

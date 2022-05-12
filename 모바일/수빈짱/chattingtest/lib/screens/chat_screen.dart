@@ -42,13 +42,29 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-     leading: BackButton(
-       color: Color.fromRGBO(0, 143, 94, 1.0),
-     ),
+        leading: Row(
+          children:[ IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black,),
+
+          ),
+        ]),
 
         backgroundColor: Color.fromRGBO(230, 235, 238, 1.0),
-        title: Text('관리자 문의'),
-        titleTextStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(0, 143, 94, 1.0)),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 55),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.chat_outlined, size:20 ,color: Colors.black),
+              Text('관리자 문의',),
+
+            ],
+          ),
+        ),
+        titleTextStyle: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
 
         actions: [
 
