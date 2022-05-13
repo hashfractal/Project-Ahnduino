@@ -34,6 +34,7 @@ namespace Ahnduino.Lib.Object
 		{
 			Timestamp timestamp = time;
 			DateTime date = timestamp.ToDateTime();
+			date = date.AddHours(9);
 			return string.Format("{0:yyyy/MM/dd} | {1}", date, title);
 		}
 	}
