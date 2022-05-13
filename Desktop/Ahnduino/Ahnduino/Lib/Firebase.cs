@@ -13,6 +13,7 @@ using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using Ahnduino.Lib.Object;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 #pragma warning disable SYSLIB0022 // 형식 또는 멤버는 사용되지 않습니다.
 
@@ -63,6 +64,20 @@ namespace Ahnduino.Lib
 			dic.TryGetValue("주소", out object? temp);
 
 			return temp!.ToString()!;
+		}
+
+		public static Image GetImageFromUri(string uri)
+		{
+			Image image = new Image();
+
+			BitmapImage bitmap = new BitmapImage();
+			bitmap.BeginInit();
+			bitmap.UriSource = new Uri(@uri, UriKind.Absolute);
+			bitmap.EndInit();
+
+			image.Source = bitmap;
+
+			return image;
 		}
 
 		#region Auth
@@ -669,6 +684,80 @@ namespace Ahnduino.Lib
 			DateTime Month = temp.ToDateTime();
 			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month - 1 == 0 ? 12 : Month.Month - 1) + "월");
 			dRef.SetAsync(newbill, SetOptions.MergeAll);
+		}
+		#endregion
+
+		#region Board
+		public static void GetBoardList(ObservableCollection<Board> boardlist)
+		{
+			boardlist.Clear(); 
+			Query query = DB!.Collection("board").OrderByDescending("time");
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot dSnap in qSanp.Documents)
+			{
+				List<Image> images = new();
+				Board board;
+				object temp;
+
+				board = dSnap.ConvertTo<Board>();
+
+				int i = 0;
+				while (dSnap.TryGetValue("image" + i, out temp))
+				{
+					images.Add(GetImageFromUri((string)temp));
+					i++;
+				}
+				board.imagelist = images;
+
+				boardlist.Add(board);
+			}
+		}
+
+		public static void SearchBoardList(string keyword, ObservableCollection<Board> boardlist)
+		{
+			boardlist.Clear();
+			Query query = DB!.Collection("board").WhereGreaterThanOrEqualTo("title", keyword).WhereLessThanOrEqualTo("title", keyword + '\uf8ff');
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot dSnap in qSanp.Documents)
+			{
+				List<Image> images = new();
+				Board board;
+				object temp;
+
+				board = dSnap.ConvertTo<Board>();
+
+				int i = 0;
+				while (dSnap.TryGetValue("image" + i, out temp))
+				{
+					images.Add(GetImageFromUri((string)temp));
+					i++;
+				}
+				board.imagelist = images;
+
+				boardlist.Add(board);
+			}
+		}
+
+		public static void CreateBoard(Board board)
+		{
+			if(board.DocID == null)
+			{
+				CollectionReference cRef = DB!.Collection("board");
+				DocumentReference dRef = cRef.AddAsync(board).Result;
+				board.DocID = dRef.Id;
+				dRef.SetAsync(board, SetOptions.MergeAll);
+			}
+			else
+			{
+				DocumentReference dRef = DB!.Collection("board").Document(board.DocID);
+				dRef.SetAsync(board, SetOptions.MergeAll).Wait();
+			}
+		}
+
+		public static void DeleteBoard(Board board)
+		{
+			DocumentReference dRef = DB!.Collection("board").Document(board.DocID);
+			dRef.DeleteAsync().Wait();
 		}
 		#endregion
 

@@ -67,14 +67,14 @@
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
 
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25">
+					<TextBox x:Name="tbsearch" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					<Button x:Name="buttonsearch" Grid.Column="1" BorderThickness="0" Background="White" Margin="0,8,10,0">
+					<Button x:Name="buttonsearch" Grid.Column="1" BorderThickness="0" Background="White" Margin="0,8,10,0" Click="buttonsearch_Click">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="0,10,10,0"/>
@@ -85,10 +85,10 @@
 				</Grid>
 
 				<Border Grid.Row="2" Background="#008f5e" CornerRadius="10" Margin="8,0,8,8">
-					<Button Background="Transparent" BorderBrush="Transparent" Foreground="White">새 게시글 추가</Button>
+					<Button x:Name="badd" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="badd_Click">새 게시글 추가</Button>
 				</Border>
 
-				<ListView x:Name="listviewboard" Grid.Row="1" Width="380" Margin="8" BorderThickness="0">
+				<ListView x:Name="listviewboard" Grid.Row="1" Width="380" Margin="8" BorderThickness="0" SelectionChanged="listviewboard_SelectionChanged">
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
@@ -120,11 +120,11 @@
 						<ColumnDefinition Width="120"/>
 					</Grid.ColumnDefinitions>
 					<Border CornerRadius="10" Margin="8" Background="White">
-						<TextBlock>
+						<TextBlock x:Name="tbtitle">
 						</TextBlock>
 					</Border>
 					<Border Grid.Column="1" CornerRadius="10" Margin="0,8,8,8" Background="White">
-						<TextBlock FontSize="35">
+						<TextBlock x:Name="tbthumbup" FontSize="35">
 							👍
 						</TextBlock>
 					</Border>
@@ -132,7 +132,9 @@
 				
 
 				<Border Grid.Row="1" CornerRadius="10" Margin="8,0,8,8" Background="White">
-					<TextBlock></TextBlock>
+					<TextBlock x:Name="tbtext">
+						
+					</TextBlock>
 				</Border>
 
 				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
@@ -142,11 +144,11 @@
 				<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
 					<StackPanel Orientation="Horizontal">
 						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-							<Button Content="게시글 삭제" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
+							<Button x:Name="bdelete" Content="게시글 삭제" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bdelete_Click"/>
 						</Border>
 
 						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-							<Button Content="게시글 수정" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
+							<Button x:Name="bNew" Content="게시글 수정" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bNew_Click"/>
 						</Border>
 
 					</StackPanel>

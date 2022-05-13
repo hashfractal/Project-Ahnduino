@@ -20,7 +20,7 @@
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 				<Border CornerRadius="10" Margin="8" Background="White">
-					<TextBox FontSize="30" Background="Transparent" BorderBrush="Transparent">
+					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent">
 					제목
 					</TextBox>
 				</Border>
@@ -28,7 +28,7 @@
 
 
 			<Border Grid.Row="1" CornerRadius="10" Margin="8,0,8,8" Background="White">
-				<TextBox FontSize="20" Background="Transparent" BorderBrush="Transparent">
+				<TextBox x:Name="tbtext" FontSize="20" Background="Transparent" BorderBrush="Transparent">
 				내용
 				</TextBox>
 			</Border>
@@ -40,7 +40,7 @@
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
 					<Border Background="#008f5e" CornerRadius="10" Margin="0,8,0,8" Width="70">
-						<Button Content="사진 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
+						<Button x:Name="baddimage" Content="사진 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
 					</Border>
 				</Grid>
 
@@ -50,14 +50,11 @@
 			<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
 				<StackPanel Orientation="Horizontal">
 					<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-						<Button Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
+						<Button x:Name="bcreate" Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bcreate_Click"/>
 					</Border>
 
 				</StackPanel>
 			</Border>
-
-
-
 		</Grid>
 	</Grid>
 </Window>
