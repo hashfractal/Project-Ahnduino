@@ -54,10 +54,10 @@ namespace Ahnduino.Wins
 			if (newbill!.Totmoney == null)
 			{
 				DateTime dt = DateTime.Now;
-				tbtitle.Text = dt.AddMonths(-1).Month .ToString() + "월 고지서 추가";
-				ntb1.Text = dt.AddMonths(-1).Year.ToString();
-				ntb2.Text = dt.AddMonths(-1).Month.ToString();
-				ntb4.Text = dt.AddMonths(1).Month.ToString();
+				tbtitle.Text = dt.Month .ToString() + "월 고지서 추가";
+				ntb1.Text = dt.Year.ToString();
+				ntb2.Text = dt.Month.ToString();
+				ntb4.Text = dt.Month.ToString();
 				ntb7.Text = "0";
 			}
 			else
@@ -66,9 +66,9 @@ namespace Ahnduino.Wins
 				DateTime dt = timestamp.ToDateTime();
 				dt = dt.AddHours(9);
 
-				tbtitle.Text = dt.AddMonths(-1).Month.ToString() + "월 고지서 추가";
-				ntb1.Text = dt.AddMonths(-1).Year.ToString();
-				ntb2.Text = dt.AddMonths(-1).Month.ToString();
+				tbtitle.Text = dt.Month.ToString() + "월 고지서 추가";
+				ntb1.Text = dt.Year.ToString();
+				ntb2.Text = dt.Month.ToString();
 				ntb3.Text = newbill.Totmoney.ToString();
 				ntb4.Text = dt.Month.ToString();
 				ntb4_1.Text = dt.Day.ToString();

@@ -38,7 +38,7 @@ namespace Ahnduino.Wins
 		{
 			if (Firebase.Login(IDTextbox.Text, password))
 			{
-				MainWindow mainWindow = new MainWindow(IDTextbox.Text);
+				RequestMenu mainWindow = new RequestMenu();
 				mainWindow.Show();
 				Close();
 			}

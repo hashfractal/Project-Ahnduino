@@ -22,16 +22,19 @@
     <Compile Update="Wins\ChatMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\ImageViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Wins\InfoMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Wins\MainMenuTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Wins\MainWindow.xaml.cs">
+    <Compile Update="Wins\Register.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Wins\Register.xaml.cs">
+    <Compile Update="Wins\RequestMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Wins\ResetPW.xaml.cs">
@@ -75,16 +78,19 @@
     <Page Update="Wins\ChatMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Wins\ImageViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Wins\InfoMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\MainMenuTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Wins\MainWindow.xaml">
+    <Page Update="Wins\Register.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Wins\Register.xaml">
+    <Page Update="Wins\RequestMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\ResetPW.xaml">

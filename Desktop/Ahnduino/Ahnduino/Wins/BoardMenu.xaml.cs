@@ -49,7 +49,16 @@ namespace Ahnduino.Wins
 				tbtitle.Text = board!.title;
 				tbthumbup.Text = "👍" + board!.likes.ToString();
 				tbtext.Text = board!.text;
-			}	
+			}
+
+			foreach (string i in board!.imagelist!)
+			{
+				Image image = Firebase.GetImageFromUri(i);
+				image.Height = 150;
+				image.Width = 150;
+
+				imglist.Items.Add(image);
+			}
 		}
 
 		private void badd_Click(object sender, RoutedEventArgs e)
@@ -73,6 +82,17 @@ namespace Ahnduino.Wins
 			Firebase.DeleteBoard(board!);
 			Thread.Sleep(200);
 			buttonsearch_Click(sender, e);
+		}
+
+		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (imglist.SelectedIndex != -1)
+			{
+				Image img = (Image)imglist.SelectedItem;
+				ImageViewer imageViewer = new ImageViewer(img);
+				imageViewer.Show();
+				imglist.SelectedIndex = -1;
+			}
 		}
 	}
 }

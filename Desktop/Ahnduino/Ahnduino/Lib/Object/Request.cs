@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Google.Cloud.Firestore;
 
 namespace Ahnduino.Lib.Object
 {
+	[FirestoreData]
 	public class Request
 	{
+		[FirestoreProperty]
 		public string? Date { get; set; }
+		[FirestoreProperty]
 		public string? DocID { get; set; }
+		[FirestoreProperty]
 		public string? Text { get; set; }
+		[FirestoreProperty]
 		public Timestamp? Time { get; set; }
+		[FirestoreProperty]
 		public string? Title { get; set; }
+		[FirestoreProperty]
 		public string? UID { get; set; }
+		[FirestoreProperty]
+		public string? hopeTime0 { get; set; }
+		[FirestoreProperty]
+		public string? hopeTime1 { get; set; }
+		[FirestoreProperty]
+		public string? hopeTime2 { get; set; }
+		[FirestoreProperty]
 		public bool? Isreserve { get; set; }
+		[FirestoreProperty]
 		public string? Reserve { get; set; }
-		public bool? Solved { get; set; }
-		public string? UserName { get; set; }
+		[FirestoreProperty]
+		public bool? solved { get; set; }
+		[FirestoreProperty]
+		public string? userName { get; set; }
+		[FirestoreProperty]
 		public List<string>? Images { get; set; }
-
-		public Request(string date, string docID, string text, Timestamp time, string title, string uid, bool isReserve, string reserve, bool solved, string userName, List<string> images)
-		{
-			Date = date;
-			DocID = docID;
-			Text = text;
-			Time = time;
-			Title = title;
-			UID = uid;
-			Isreserve = isReserve;
-			Reserve = reserve;
-			Solved = solved;
-			UserName = userName;
-			Images = images;
-		}
 	}
 }

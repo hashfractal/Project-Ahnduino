@@ -110,7 +110,6 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="65"/>
 					<RowDefinition Height="3*"/>
-					<RowDefinition/>
 					<RowDefinition Height="80"/>
 				</Grid.RowDefinitions>
 
@@ -129,19 +128,22 @@
 						</TextBlock>
 					</Border>
 				</Grid>
-				
+
 
 				<Border Grid.Row="1" CornerRadius="10" Margin="8,0,8,8" Background="White">
-					<TextBlock x:Name="tbtext">
-						
-					</TextBlock>
-				</Border>
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="200"/>
+						</Grid.ColumnDefinitions>
 
-				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
-					<TextBlock></TextBlock>
+						<Border Grid.Column="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
+							<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged"/>
+						</Border>
+						<TextBlock x:Name="tbtext"/>
+					</Grid>
 				</Border>
-
-				<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
+				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
 					<StackPanel Orientation="Horizontal">
 						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
 							<Button x:Name="bdelete" Content="게시글 삭제" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bdelete_Click"/>
@@ -150,12 +152,8 @@
 						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
 							<Button x:Name="bNew" Content="게시글 수정" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bNew_Click"/>
 						</Border>
-
 					</StackPanel>
 				</Border>
-
-
-
 			</Grid>
 		</Grid>
 	</Grid>

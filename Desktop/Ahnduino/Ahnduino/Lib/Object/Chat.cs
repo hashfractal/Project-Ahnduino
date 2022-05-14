@@ -18,6 +18,7 @@ namespace Ahnduino.Lib.Object
 		public Timestamp? time { get; set; }
 		[FirestoreProperty]
 		public bool? type { get; set; }
+		public List<string>? imagelist { get; set; }
 
 		public override string ToString()
 		{

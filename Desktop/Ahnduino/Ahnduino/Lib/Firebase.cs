@@ -390,27 +390,6 @@ namespace Ahnduino.Lib
 
 				object temp;
 
-				dSnap.TryGetValue("Date", out temp);
-				string ddate = (string)temp;
-				dSnap.TryGetValue("DocID", out temp);
-				string docID = (string)temp;
-				dSnap.TryGetValue("Text", out temp);
-				string text = (string)temp;
-				dSnap.TryGetValue("Time", out temp);
-				Timestamp time = (Timestamp)temp;
-				dSnap.TryGetValue("Title", out temp);
-				string title = (string)temp;
-				dSnap.TryGetValue("UID", out temp);
-				string uid = (string)temp;
-				dSnap.TryGetValue("isreserv", out temp);
-				bool isreserve = (bool)temp;
-				dSnap.TryGetValue("reserv", out temp);
-				string reserve = (string)temp;
-				dSnap.TryGetValue("sovled", out temp);
-				bool solved = Convert.ToBoolean((string)temp);
-				dSnap.TryGetValue("userName", out temp);
-				string userName = (string)temp;
-
 				int i = 0;
 				while (dSnap.TryGetValue("image" + i, out temp))
 				{
@@ -418,20 +397,21 @@ namespace Ahnduino.Lib
 					i++;
 				}
 
-				Request res = new Request(ddate, docID, text, time, title, uid, isreserve, reserve, solved, userName, images);
+				Request res = dSnap.ConvertTo<Request>();
+				res.Images = images;
 
 				return res;
 			}
 			return null;
 		}
 
-		public static void UpdateRequest (string? email, string? date, string? docid, Request request, string UID)
+		public static void UpdateRequest (string? email, string? date, string? docid, Request request, string UID, DateTime reservedtime)
 		{
 			Query query;
 			QuerySnapshot qSnap;
 			DocumentSnapshot dSnap;
-			//예약 업데이트
 
+			//예약 업데이트
 			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약").Document(docid);
 			
 			Dictionary<string, object> dic = new Dictionary<string, object>()
@@ -444,8 +424,8 @@ namespace Ahnduino.Lib
 				{"UID", request.UID!},
 				{"isreserv", request.Isreserve!},
 				{"reserv", request.Reserve!},
-				{"solved", request.Solved!},
-				{"userName", request.UserName!},
+				{"solved", request.solved!},
+				{"userName", request.userName!},
 			};
 
 			int n = 0;
@@ -455,11 +435,20 @@ namespace Ahnduino.Lib
 				n++;
 			}
 
-			dRef.SetAsync(dic);
+			dRef.SetAsync(dic, SetOptions.MergeAll);
 
 			//현장직 대기
-			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(request.Reserve + "수리예정").Document(request.DocID);
-			dRef.SetAsync(dic);
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title).Document(request.DocID);
+			dRef.SetAsync(dic, SetOptions.MergeAll).Wait();
+
+			//현장직 예약 카운트
+			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title);
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul");
+			Dictionary<string, object> update = new Dictionary<string, object>
+			{
+				{ string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title, query.GetSnapshotAsync().Result.Count != 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
+			};
+			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 
 			//예약전 삭제
 			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
@@ -474,18 +463,18 @@ namespace Ahnduino.Lib
 			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
 			Dictionary<string, object> updates = new Dictionary<string, object>
 			{
-				{ date! + "예약 전", query.GetSnapshotAsync().Result.Count }
+				{ date! + "예약 전", query.GetSnapshotAsync().Result.Count > 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
 			};
-			dRef.UpdateAsync(updates).Wait();
+			dRef.SetAsync(updates, SetOptions.MergeAll).Wait();
 
 			//예약 카운트
 			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약");
 			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
-			Dictionary<string, object> update = new Dictionary<string, object>
+			update = new Dictionary<string, object>
 			{
-				{ date! + "예약", query.GetSnapshotAsync().Result.Count }
+				{ date! + "예약", query.GetSnapshotAsync().Result.Count > 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
 			};
-			dRef.UpdateAsync(update).Wait();
+			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 
 			//isdone처리
 			bool isdone = true;
@@ -507,7 +496,58 @@ namespace Ahnduino.Lib
 				{ "isdone", isdone }
 			};
 
-			dRef.UpdateAsync(update).Wait();
+			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
+		}
+
+		public static void RemoveRequest(string? email, string? date, string? docid, Request request, string UID)
+		{
+			Query query;
+			DocumentSnapshot dSnap;
+
+			//예약전 삭제
+			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").Document(docid);
+
+			dRef.DeleteAsync().Wait();
+
+			//예약전 카운트
+			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전");
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			Dictionary<string, object> updates = new Dictionary<string, object>
+			{
+				{ date! + "예약 전", query.GetSnapshotAsync().Result.Count > 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
+			};
+			dRef.SetAsync(updates, SetOptions.MergeAll).Wait();
+
+			//예약 카운트
+			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약");
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			Dictionary<string, object> update = new Dictionary<string, object>
+			{
+				{ date! + "예약", query.GetSnapshotAsync().Result.Count > 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
+			};
+			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
+
+			//isdone처리
+			bool isdone = true;
+			dSnap = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").GetSnapshotAsync().Result;
+			IAsyncEnumerable<CollectionReference> subcollections = dSnap.Reference.ListCollectionsAsync();
+			IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
+			while (subcollectionsEnumerator.MoveNextAsync().Result)
+			{
+				CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
+				if (subcollectionRef.Id.Length == 14)
+				{
+					isdone = false;
+				}
+			}
+
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email);
+			update = new Dictionary<string, object>
+			{
+				{ "isdone", isdone }
+			};
+
+			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 		}
 		#endregion
 
@@ -520,7 +560,23 @@ namespace Ahnduino.Lib
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 			foreach(DocumentSnapshot dSnap in qSnap.Documents)
 			{
-				chatlist.Insert(0, dSnap.ConvertTo<Chat>());
+				Dictionary<string, object> dict = dSnap.ToDictionary();
+				List<string> images = new();
+
+				object temp;
+
+				int i = 0;
+				while (dSnap.TryGetValue("image" + i, out temp))
+				{
+					images.Add((string)temp);
+					i++;
+				}
+
+				Chat res = dSnap.ConvertTo<Chat>();
+				res.imagelist = images;
+
+				chatlist.Insert(0, res);
+
 			}
 		}
 
@@ -532,7 +588,22 @@ namespace Ahnduino.Lib
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 			foreach (DocumentSnapshot dSnap in qSnap.Documents)
 			{
-				list.Add(dSnap.ConvertTo<Chat>());
+				Dictionary<string, object> dict = dSnap.ToDictionary();
+				List<string> images = new();
+
+				object temp;
+
+				int i = 0;
+				while (dSnap.TryGetValue("image" + i, out temp))
+				{
+					images.Add((string)temp);
+					i++;
+				}
+
+				Chat res = dSnap.ConvertTo<Chat>();
+				res.imagelist = images;
+
+				list.Add(res);
 			}
 			foreach(Chat i in list)
 			{
@@ -546,7 +617,6 @@ namespace Ahnduino.Lib
 			{
 				email = "null";
 			}
-			ObservableCollection<Chat> list = new ObservableCollection<Chat>();
 			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
 			Query query = collectionRef.OrderByDescending("time").Limit(1);
 			FirestoreChangeListener listener = collectionRef.Listen(snapshot =>
@@ -555,6 +625,20 @@ namespace Ahnduino.Lib
 				{
 					QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 					Chat chat = qSnap.Documents[0].ConvertTo<Chat>();
+
+					List<string> images = new();
+
+					object temp;
+
+					int i = 0;
+					while (qSnap.Documents[0].TryGetValue("image" + i, out temp))
+					{
+						images.Add((string)temp);
+						i++;
+					}
+
+					chat.imagelist = images;
+
 					chatlist.Add(chat);
 					scrollViewer.ScrollToBottom();
 				});
@@ -695,7 +779,7 @@ namespace Ahnduino.Lib
 			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
 			foreach(DocumentSnapshot dSnap in qSanp.Documents)
 			{
-				List<Image> images = new();
+				List<string> images = new();
 				Board board;
 				object temp;
 
@@ -704,7 +788,7 @@ namespace Ahnduino.Lib
 				int i = 0;
 				while (dSnap.TryGetValue("image" + i, out temp))
 				{
-					images.Add(GetImageFromUri((string)temp));
+					images.Add((string)temp);
 					i++;
 				}
 				board.imagelist = images;
@@ -720,7 +804,7 @@ namespace Ahnduino.Lib
 			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
 			foreach (DocumentSnapshot dSnap in qSanp.Documents)
 			{
-				List<Image> images = new();
+				List<string> images = new();
 				Board board;
 				object temp;
 
@@ -729,7 +813,7 @@ namespace Ahnduino.Lib
 				int i = 0;
 				while (dSnap.TryGetValue("image" + i, out temp))
 				{
-					images.Add(GetImageFromUri((string)temp));
+					images.Add((string)temp);
 					i++;
 				}
 				board.imagelist = images;

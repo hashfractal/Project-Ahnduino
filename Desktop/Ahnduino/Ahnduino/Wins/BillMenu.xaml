@@ -5,7 +5,8 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
-		Title="BillMenu" Height="720" Width="1280">
+		Title="BillMenu" Height="720" Width="1280"
+		WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120"/>
@@ -92,13 +93,13 @@
 									<ColumnDefinition/>
 								</Grid.ColumnDefinitions>
 
+								<ComboBox x:Name="billlistbox" Height="20" Background="Transparent" Margin="11,0,0,0" BorderBrush="Transparent" SelectionChanged="billlistbox_SelectionChanged"/>
 
-								<StackPanel Margin="10,0,0,0" Grid.Column="0" Orientation="Horizontal">
-									<ComboBox x:Name="billlistbox" Height="20" Width="60" Background="Transparent" Margin="5,5,5,5" BorderBrush="Transparent" SelectionChanged="billlistbox_SelectionChanged"/>
-									<Button x:Name="acceptbutton" Content="납부 승인" Margin="5" Click="acceptbutton_Click"/>
-								</StackPanel>
+								<Border Grid.Column="1" CornerRadius="5" Margin="5" Background="#008F5E">
+									<Button x:Name="acceptbutton" Content="납부 승인" Click="acceptbutton_Click" BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
+								</Border>
+								
 							</Grid>
-
 
 							<Border Background="#008F5E" CornerRadius="10" Margin="10">
 								<StackPanel Orientation="Vertical">

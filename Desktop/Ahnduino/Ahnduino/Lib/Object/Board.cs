@@ -16,7 +16,7 @@ namespace Ahnduino.Lib.Object
 		[FirestoreProperty]
 		public string? DocID { get; set; }
 
-		public List<Image>? imagelist { get; set; }
+		public List<string>? imagelist { get; set; }
 		[FirestoreProperty]
 		public int? likes { get; set; }
 		[FirestoreProperty]
