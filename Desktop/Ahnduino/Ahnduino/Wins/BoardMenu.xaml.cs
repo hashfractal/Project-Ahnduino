@@ -23,65 +23,72 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class BoardMenu : Window
 	{
+		string uid;
+
 		ObservableCollection<Board> boardlist = new ObservableCollection<Board>();
 		Board? board = null;
-		string email = "test@test.com";
 
-		public BoardMenu()
+		public BoardMenu(string uid)
 		{
+			this.uid = uid;
+
 			InitializeComponent();
 
 			listviewboard.ItemsSource = boardlist;
 
-			Firebase.GetBoardList(boardlist);
+			Fbad.GetBoardList(boardlist);
 		}
 
 		private void buttonsearch_Click(object sender, RoutedEventArgs e)
 		{
-			Firebase.SearchBoardList(tbsearch.Text, boardlist);
+			Fbad.SearchBoardList(tbsearch.Text, boardlist);
 		}
 
 		private void listviewboard_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			imglist.Items.Clear();
+
 			board = listviewboard.SelectedItem as Board;
 			if (board != null)
 			{
 				tbtitle.Text = board!.title;
 				tbthumbup.Text = "👍" + board!.likes.ToString();
 				tbtext.Text = board!.text;
-			}
 
-			foreach (string i in board!.imagelist!)
-			{
-				Image image = Firebase.GetImageFromUri(i);
-				image.Height = 150;
-				image.Width = 150;
+				foreach (string i in board!.imagelist!)
+				{
+					Image image = Fbad.GetImageFromUri(i);
+					image.Height = 150;
+					image.Width = 150;
 
-				imglist.Items.Add(image);
+					imglist.Items.Add(image);
+				}
+
 			}
+			
 		}
 
 		private void badd_Click(object sender, RoutedEventArgs e)
 		{
-			BoardAdd boardAdd = new BoardAdd(null, email);
+			BoardAdd boardAdd = new BoardAdd(null, uid);
 			boardAdd.ShowDialog();
 			Thread.Sleep(200);
-			buttonsearch_Click(sender, e);
+			Fbad.GetBoardList(boardlist);
 		}
 
 		private void bNew_Click(object sender, RoutedEventArgs e)
 		{
-			BoardAdd boardAdd = new BoardAdd(board, email);
+			BoardAdd boardAdd = new BoardAdd(board, uid);
 			boardAdd.ShowDialog();
 			Thread.Sleep(200);
-			buttonsearch_Click(sender, e);
+			Fbad.GetBoardList(boardlist);
 		}
 
 		private void bdelete_Click(object sender, RoutedEventArgs e)
 		{
-			Firebase.DeleteBoard(board!);
+			Fbad.DeleteBoard(board!);
 			Thread.Sleep(200);
-			buttonsearch_Click(sender, e);
+			Fbad.GetBoardList(boardlist);
 		}
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,6 +100,34 @@ namespace Ahnduino.Wins
 				imageViewer.Show();
 				imglist.SelectedIndex = -1;
 			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
 		}
 	}
 }

@@ -31,7 +31,7 @@ namespace Ahnduino.Wins
 		{
 			try
 			{
-				if (!Firebase.FindId(emailtextbox.Text))
+				if (!Fbad.FindId(emailtextbox.Text))
 				{
 					MessageBox.Show("이메일을 찾을 수 없습니다");
 					return;
@@ -39,7 +39,7 @@ namespace Ahnduino.Wins
 					
 
 				MailMessage msg = new MailMessage("highfuncsmtp@gmail.com", emailtextbox.Text,
-		  "Reset Ahnduino Password", "임시 비밀번호: " + Firebase.ResetEmail(emailtextbox.Text) + "\r\n반드시 임시 비밀번호로 로그인 후 새로운 비밀번호로 변경하여 주십시오");
+		  "Reset Ahnduino Password", "임시 비밀번호: " + Fbad.ResetEmail(emailtextbox.Text) + "\r\n반드시 임시 비밀번호로 로그인 후 새로운 비밀번호로 변경하여 주십시오");
 
 				SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
 				smtp.EnableSsl = true;

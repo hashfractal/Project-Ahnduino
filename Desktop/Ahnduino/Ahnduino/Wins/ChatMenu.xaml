@@ -1,11 +1,12 @@
 ﻿<Window x:Class="Ahnduino.Wins.ChatMenu"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ahnduino.Wins"
-        mc:Ignorable="d"
-       Title="Chat" Height="720" Width="1280">
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Ahnduino.Wins"
+		mc:Ignorable="d"
+		Title="Chat" Height="720" Width="1280"
+		WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120"/>
@@ -15,39 +16,39 @@
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White">사용자 님</Button>
-				<Button Height="120"  Style="{StaticResource MenuButton}">
+				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White" FontFamily="{StaticResource Default }">사용자 님</Button>
+				<Button x:Name="gotorequest" Height="120" Style="{StaticResource MenuButton}" Click="gotorequest_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotochat" Background="#004B1C" Height="120" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">📬</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">채팅</Label>
+						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">채팅</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotoboard" Height="120" Style="{StaticResource MenuButton}" Click="gotoboard_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Board.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">공지</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotobill" Height="120" Style="{StaticResource MenuButton}" Click="gotobill_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Bill.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">고지서</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotogallery" Height="120" Style="{StaticResource MenuButton}" Click="gotogallery_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Gallery.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="18" FontFamily="{StaticResource Default }">갤러리</Label>
 					</StackPanel>
 				</Button>
 			</StackPanel>
@@ -64,7 +65,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25">
+					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="35" FontFamily="{StaticResource Default }">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>
@@ -81,7 +82,7 @@
 					</Button>
 				</Grid>
 
-				<ListView x:Name="chatneedanswerlistview" Grid.Row="1" Width="380" Margin="8" BorderThickness="0" SelectionChanged="chatneedanswerlistview_SelectionChanged">
+				<ListView x:Name="chatneedanswerlistview" Grid.Row="1" Width="380" Margin="8" BorderThickness="0" SelectionChanged="chatneedanswerlistview_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
@@ -106,20 +107,21 @@
 			</Grid.RowDefinitions>
 
 			<ScrollViewer x:Name="SV" Grid.Row="0" ScrollChanged="ScrollViewer_ScrollChanged">
-				<ListView x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0">
-					<ListView.ItemTemplate>
+				<ListBox x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0" IsSynchronizedWithCurrentItem="True" FontSize="30" FontFamily="{StaticResource Default }">
+					<ListBox.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
 								<TextBlock Text="{Binding}"/>
+								<ListBox x:Name="lbchatimg" Width="250" BorderBrush="Transparent" Background="Transparent" ItemsSource="{Binding trueimage}"/>
 							</StackPanel>
 						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
+					</ListBox.ItemTemplate>
+					<ListBox.Resources>
 						<Style TargetType="Border">
 							<Setter Property="CornerRadius" Value="10,10,0,0"/>
 						</Style>
-					</ListView.Resources>
-				</ListView>
+					</ListBox.Resources>
+				</ListBox>
 			</ScrollViewer>
 			
 
@@ -131,7 +133,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="70"/>
 					</Grid.ColumnDefinitions>
-					<Button Grid.Column="0" BorderBrush="Transparent" Background="Transparent">
+					<Button x:Name="buploadimg" Grid.Column="0" BorderBrush="Transparent" Background="Transparent" Click="buploadimg_Click">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="10"/>
@@ -140,7 +142,7 @@
 						<Image Source="/Icon/ChatPlus.png"/>
 					</Button>
 
-					<TextBox x:Name="chattextbox" Grid.Column="1" BorderBrush="White" Background="LightGray" Margin="5">
+					<TextBox x:Name="chattextbox" Grid.Column="1" BorderBrush="White" Background="LightGray" Margin="5" FontSize="35" FontFamily="{StaticResource Default}" KeyDown="chattextbox_KeyDown">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="10"/>

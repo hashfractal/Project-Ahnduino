@@ -26,6 +26,7 @@ namespace Ahnduino.Wins
 		public Auth()
 		{
 			InitializeComponent();
+			
 		}
 
 		private void RegisterBtn_Click(object sender, RoutedEventArgs e)
@@ -36,15 +37,17 @@ namespace Ahnduino.Wins
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (Firebase.Login(IDTextbox.Text, password))
+			IDTextbox.Text = "hsj3925@naver.com";
+			password = "qwerasdf";
+			if (Fbad.Login(IDTextbox.Text, password))
 			{
-				RequestMenu mainWindow = new RequestMenu();
+				RequestMenu mainWindow = new RequestMenu(IDTextbox.Text);
 				mainWindow.Show();
 				Close();
 			}
 			else
 			{
-				MessageBox.Show("실패");
+				MessageBox.Show("로그인에 실패하였습니다");
 			}
 		}
 

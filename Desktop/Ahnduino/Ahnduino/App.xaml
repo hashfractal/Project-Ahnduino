@@ -2,13 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Ahnduino"
-             StartupUri="Wins/ChatMenu.xaml">
+             StartupUri="Wins/Auth.xaml">
 	<Application.Resources>
 		<ResourceDictionary>
-			<FontFamily x:Key="OptimusPrinceps">/Fonts/#OptimusPrinceps</FontFamily>
-			<FontFamily x:Key="OptimusPrincepsSB">/Fonts/#OptimusPrincepsSemiBold</FontFamily>
-			<FontFamily x:Key="NanumMyeongjo">/Fonts/#NanumMyeongjo</FontFamily>
-			
+			<FontFamily x:Key="Default">/Fonts/#배달의민족 한나체 Air</FontFamily>
+
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="Themes/MenuButton.xaml"/>
 				<ResourceDictionary Source="Themes/AuthTextbox.xaml"/>

@@ -19,9 +19,47 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class InfoMenu : Window
 	{
-		public InfoMenu()
+		string uid;
+		public InfoMenu(string uid)
 		{
+			this.uid = uid;
+
 			InitializeComponent();
+		}
+
+		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
 		}
 	}
 }

@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
 18-1424624885
 1-699830913
-21-377043301
-214-1969012555
+211887087115
+215-1645943984
 Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardAdd.xaml;Wins\BoardMenu.xaml;Wins\ChatMenu.xaml;Wins\ImageViewer.xaml;Wins\InfoMenu.xaml;Wins\MainMenuTemplate.xaml;Wins\Register.xaml;Wins\RequestMenu.xaml;Wins\ResetPW.xaml;
 
-False
+True
 

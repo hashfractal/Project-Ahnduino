@@ -17,12 +17,12 @@
 				<Image x:Name="___Image_mainIConcolor_png" 
 				   Source="/Image/mainIConcolor.png"
 				   Stretch="Fill" Height="50" Width="50"/>
-				<TextBlock Grid.Column="2" FontSize="50" FontFamily="{StaticResource NanumMyeongjo}" Margin="10,12,0,0">Ahnduino</TextBlock>
+				<TextBlock Grid.Column="2" FontSize="50" FontFamily="{StaticResource Default}" Margin="10,12,0,0">Ahnduino</TextBlock>
 			</Grid>
 
 			<Grid>
 				<StackPanel Margin="20">
-					<TextBlock FontSize="30" FontFamily="{StaticResource NanumMyeongjo}">이메일</TextBlock>
+					<TextBlock FontSize="30" FontFamily="{StaticResource Default}">이메일</TextBlock>
 					<TextBox x:Name="emailtextbox" FontSize="30"  BorderBrush="Black">
 						<TextBox.Resources>
 							<Style TargetType="Border">
@@ -38,7 +38,7 @@
 							</Style>
 						</Button.Resources>
 						<Button.FontFamily>
-							<StaticResource ResourceKey="NanumMyeongjo"/>
+							<StaticResource ResourceKey="Default"/>
 						</Button.FontFamily>
 					</Button>
 				</StackPanel>

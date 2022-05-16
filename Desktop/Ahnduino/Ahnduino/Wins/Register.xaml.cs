@@ -47,7 +47,7 @@ namespace Ahnduino.Wins
 
 		private void RegBtn_Click(object sender, RoutedEventArgs e)
 		{
-			string[] vali = Firebase.FBValidation(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
+			string[] vali = Fbad.FBValidation(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
 			if(vali[0] != "" | vali[1] != "" | vali[2] != "" | vali[3] != "" | vali[4] != "")
 			{
 				if (vali[0] != "")
@@ -83,7 +83,7 @@ namespace Ahnduino.Wins
 				return;
 			}	
 
-			Firebase.Register(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
+			Fbad.Register(emailtextbox.Text, password, repassword, nametextbox.Text, phonetextbox.Text);
 
 			MessageBox.Show("회원가입이 완료되었습니다");
 

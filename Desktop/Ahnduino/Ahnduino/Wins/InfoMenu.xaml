@@ -16,39 +16,39 @@
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White">사용자 님</Button>
-				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
+				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White" FontFamily="{StaticResource Default }">사용자 님</Button>
+				<Button x:Name="gotorequest" Height="120" Style="{StaticResource MenuButton}" Click="gotorequest_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotochat" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">채팅</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotoboard" Height="120" Style="{StaticResource MenuButton}" Click="gotoboard_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Board.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">공지</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotobill" Height="120" Style="{StaticResource MenuButton}" Click="gotobill_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Bill.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">고지서</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotogallery" Background="#004B1C" Height="120" Style="{StaticResource MenuButton}" Click="gotogallery_Click">
 					<StackPanel Orientation="Vertical">
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="50">🏡</Label>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15">주택 관리</Label>
+						<Image Source="/Image/Gallery.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">갤러리</Label>
 					</StackPanel>
 				</Button>
 			</StackPanel>
@@ -70,7 +70,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25">
+					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>
@@ -87,44 +87,53 @@
 						<Image Margin="3" Source="/Icon/ChatSearch.Png"/>
 					</Button>
 				</Grid>
-				<Border Grid.Row="1" Background="White" CornerRadius="10" Margin="8">
-					<TextBlock>
+
+				<Border Grid.Row="1" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
+						입실
+					</TextBlock>
+				</Border>
+				<ListView x:Name="chatneedanswerlistview" Grid.Row="2" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="{Binding}"/>
+							</StackPanel>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+					<ListView.Resources>
+						<Style TargetType="Border">
+							<Setter Property="CornerRadius" Value="10"/>
+						</Style>
+					</ListView.Resources>
+				</ListView>
+
+				<Border Grid.Row="3" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
+						퇴실
+					</TextBlock>
+				</Border>
+				<ListView x:Name="ccc2" Grid.Row="4" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Text="{Binding}"/>
+							</StackPanel>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+					<ListView.Resources>
+						<Style TargetType="Border">
+							<Setter Property="CornerRadius" Value="10"/>
+						</Style>
+					</ListView.Resources>
+				</ListView>
+
+				<Border Grid.Row="5" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
 						수리 내역
 					</TextBlock>
 				</Border>
-				
-
-				<ListView x:Name="chatneedanswerlistview" Grid.Row="2" Width="380" Margin="8" BorderThickness="0">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
-						<Style TargetType="Border">
-							<Setter Property="CornerRadius" Value="10"/>
-						</Style>
-					</ListView.Resources>
-				</ListView>
-
-				<ListView x:Name="ccc2" Grid.Row="4" Width="380" Margin="8" BorderThickness="0">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
-						<Style TargetType="Border">
-							<Setter Property="CornerRadius" Value="10"/>
-						</Style>
-					</ListView.Resources>
-				</ListView>
-
-				<ListView x:Name="ch3" Grid.Row="7" Width="380" Margin="8" BorderThickness="0">
+				<ListView x:Name="ch3" Grid.Row="7" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
@@ -142,11 +151,8 @@
 		</Grid>
 
 		<Grid Grid.Column="2" Background="LightGray">
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-				<RowDefinition/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
+			<Border Background="White" CornerRadius="10" Margin="10">
+			</Border>
 		</Grid>
 	</Grid>
 </Window>

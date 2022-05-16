@@ -22,6 +22,8 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class RequestMenu : Window
 	{
+		string uid;
+
 		Request? request = null;
 
 		ObservableCollection<string> userlist = new ObservableCollection<string>();
@@ -31,35 +33,38 @@ namespace Ahnduino.Wins
 		string? selectedEmail = null;
 		string? selectedDate = null;
 
-		public RequestMenu()
+		public RequestMenu(string uid)
 		{
+			this.uid = uid;
 			InitializeComponent();
+
+			this.FontFamily = new FontFamily("Default");
 
 			RequestUserListView.ItemsSource = userlist;
 			RequestDateListView.ItemsSource = datelist;
 			RequestListView.ItemsSource = requestlist;
-			Firebase.GetRequestUserList(userlist);
+			Fbad.GetRequestUserList(userlist);
 		}
 
 		private void RequestUserListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			selectedEmail = (string)RequestUserListView.SelectedItem;
-			Firebase.GetDateList(null, datelist);
-			Firebase.GetDateList(selectedEmail, datelist);
+			Fbad.GetDateList(null, datelist);
+			Fbad.GetDateList(selectedEmail, datelist);
 		}
 
 		private void RequestDateListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			selectedDate = (string)RequestDateListView.SelectedItem;
-			Firebase.GetRequestList(null, null, requestlist);
-			Firebase.GetRequestList(selectedEmail, selectedDate, requestlist);
+			Fbad.GetRequestList(null, null, requestlist);
+			Fbad.GetRequestList(selectedEmail, selectedDate, requestlist);
 		}
 
 		private void RequestListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
 			ImageList.Items.Clear();
-			request = Firebase.GetRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem);
+			request = Fbad.GetRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem);
 
 			
 
@@ -71,7 +76,7 @@ namespace Ahnduino.Wins
 
 			foreach (string i in request!.Images!)
 			{
-				Image image = Firebase.GetImageFromUri(i);
+				Image image = Fbad.GetImageFromUri(i);
 				image.Height = 150;
 				image.Width = 150;
 
@@ -86,7 +91,7 @@ namespace Ahnduino.Wins
 				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
 				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
 				request.Isreserve = true;
-				Firebase.UpdateRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, tbworker.Text, dt);
+				Fbad.UpdateRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, tbworker.Text, dt);
 			}
 
 			MessageBox.Show("예약완료되었습니다");
@@ -108,6 +113,39 @@ namespace Ahnduino.Wins
 				ImageList.SelectedIndex = -1;
 			}
 			
+		}
+
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void bcancle_Click(object sender, RoutedEventArgs e)
+		{
+			Fbad.RemoveRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, uid);
 		}
 	}
 }

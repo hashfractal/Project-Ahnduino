@@ -6,13 +6,17 @@
         xmlns:local="clr-namespace:Ahnduino.Wins"
         mc:Ignorable="d"
         Title="BoardAdd" Height="450" Width="800">
-	<Grid Grid.Column="2" Background="LightGray">
+	<Grid Background="LightGray">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="200"/>
+		</Grid.ColumnDefinitions>
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="65"/>
 				<RowDefinition Height="3*"/>
-				<RowDefinition/>
-				<RowDefinition Height="80"/>
+
+				<RowDefinition Height="70"/>
 			</Grid.RowDefinitions>
 
 			<Grid>
@@ -20,7 +24,7 @@
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 				<Border CornerRadius="10" Margin="8" Background="White">
-					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent">
+					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtitle_GotFocus" FontFamily="{StaticResource Default}">
 					제목
 					</TextBox>
 				</Border>
@@ -28,33 +32,26 @@
 
 
 			<Border Grid.Row="1" CornerRadius="10" Margin="8,0,8,8" Background="White">
-				<TextBox x:Name="tbtext" FontSize="20" Background="Transparent" BorderBrush="Transparent">
-				내용
+				<TextBox x:Name="tbtext" FontSize="20" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtext_GotFocus" FontFamily="{StaticResource Default}">
+					내용
 				</TextBox>
 			</Border>
 
-			<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="100"/>
-						<ColumnDefinition/>
-					</Grid.ColumnDefinitions>
-					<Border Background="#008f5e" CornerRadius="10" Margin="0,8,0,8" Width="70">
-						<Button x:Name="baddimage" Content="사진 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White"/>
-					</Border>
-				</Grid>
-
-				
-			</Border>
-
-			<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
+			<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,0" Background="Transparent">
 				<StackPanel Orientation="Horizontal">
-					<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-						<Button x:Name="bcreate" Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bcreate_Click"/>
+					<Border Background="#008f5e" CornerRadius="10" Margin="0,8,0,8" Width="100">
+						<Button x:Name="baddimage" Content="사진 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="baddimage_Click" FontFamily="{StaticResource Default}"/>
 					</Border>
-
+					<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
+						<Button x:Name="bcreate" Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bcreate_Click" FontFamily="{StaticResource Default}"/>
+					</Border>
 				</StackPanel>
 			</Border>
 		</Grid>
+
+		<Border Grid.Column="2" CornerRadius="10" Margin="0,8,8,8" Background="White">
+			<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged"/>
+		</Border>
+		
 	</Grid>
 </Window>

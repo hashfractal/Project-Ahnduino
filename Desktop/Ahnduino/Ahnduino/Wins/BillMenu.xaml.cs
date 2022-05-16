@@ -25,13 +25,18 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class BillMenu : Window
 	{
+		string uid;
+
 		ObservableCollection<Bill> billlist = new ObservableCollection<Bill>();
 		Bill? bill;
 		Bill? newbill = new();
 
-		public BillMenu()
+		public BillMenu(string uid)
 		{
+			this.uid = uid;
+
 			InitializeComponent();
+
 
 			billlist.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(CollectionChangedMethod!);
 
@@ -48,8 +53,8 @@ namespace Ahnduino.Wins
 		{
 			Thread.Sleep(200);
 			
-			Firebase.GetBillList(textboxemail.Text, billlist);
-			Firebase.SetNewBill(textboxemail.Text, newbill!);
+			Fbad.GetBillList(textboxemail.Text, billlist);
+			Fbad.SetNewBill(textboxemail.Text, newbill!);
 
 			if (newbill!.Totmoney == null)
 			{
@@ -113,7 +118,7 @@ namespace Ahnduino.Wins
 		private void acceptbutton_Click(object sender, RoutedEventArgs e)
 		{
 			bill = billlistbox.SelectedItem as Bill;
-			Firebase.AcceptPay(textboxemail.Text, bill!);
+			Fbad.AcceptPay(textboxemail.Text, bill!);
 			searchbutton_Click(sender, e);
 		}
 
@@ -129,9 +134,111 @@ namespace Ahnduino.Wins
 			newbill.Repair = int.Parse(ntb10.Text);
 			newbill.Totmoney = int.Parse(ntb3.Text);
 
-			Firebase.CreateBill(textboxemail.Text, newbill!, billlist.Count);
+			Fbad.CreateBill(textboxemail.Text, newbill!, billlist.Count);
 			searchbutton_Click(sender, e);
 		}
 
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void ntb6_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			int n = 0;
+			int n2 = 0;
+			if (ntb6.Text != "")
+				n += int.Parse(ntb6.Text);
+			if (ntb7.Text != "")
+				n += int.Parse(ntb7.Text);
+			if (ntb10.Text != "")
+				n += int.Parse(ntb10.Text);
+
+			if (ntb8.Text != "")
+				n2 = int.Parse(ntb8.Text) + n;
+
+			ntb5.Text = n.ToString();
+			ntb3.Text = n.ToString();
+			ntb9.Text = n2.ToString();
+		}
+
+		private void ntb7_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			int n = 0;
+			int n2 = 0;
+			if (ntb6.Text != "")
+				n += int.Parse(ntb6.Text);
+			if (ntb7.Text != "")
+				n += int.Parse(ntb7.Text);
+			if (ntb10.Text != "")
+				n += int.Parse(ntb10.Text);
+
+			if (ntb8.Text != "")
+				n2 = int.Parse(ntb8.Text) + n;
+
+			ntb5.Text = n.ToString();
+			ntb3.Text = n.ToString();
+			ntb9.Text = n2.ToString();
+		}
+
+		private void ntb8_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			int n = 0;
+			int n2 = 0;
+			if (ntb6.Text != "")
+				n += int.Parse(ntb6.Text);
+			if (ntb7.Text != "")
+				n += int.Parse(ntb7.Text);
+			if (ntb10.Text != "")
+				n += int.Parse(ntb10.Text);
+
+			if (ntb8.Text != "")
+				n2 = int.Parse(ntb8.Text) + n;
+
+			ntb5.Text = n.ToString();
+			ntb3.Text = n.ToString();
+			ntb9.Text = n2.ToString();
+		}
+
+		private void ntb10_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			int n = 0;
+			int n2 = 0;
+			if (ntb6.Text != "")
+				n += int.Parse(ntb6.Text);
+			if (ntb7.Text != "")
+				n += int.Parse(ntb7.Text);
+			if (ntb10.Text != "")
+				n += int.Parse(ntb10.Text);
+
+			if (ntb8.Text != "")
+				n2 = int.Parse(ntb8.Text) + n;
+
+			ntb5.Text = n.ToString();
+			ntb3.Text = n.ToString();
+			ntb9.Text = n2.ToString();
+		}
 	}
 }

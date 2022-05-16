@@ -10,13 +10,18 @@
 
   <ItemGroup>
     <None Remove="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json" />
+    <None Remove="Fonts\BMHANNAAir_ttf.ttf" />
+    <None Remove="Fonts\BMHANNA_11yrs_ttf.ttf" />
     <None Remove="Fonts\honokamin.ttf" />
-    <None Remove="Fonts\NanumMyeongjo.ttf" />
-    <None Remove="Fonts\OptimusPrinceps.ttf" />
-    <None Remove="Fonts\OptimusPrincepsSemiBold.ttf" />
     <None Remove="Icon\ChatPlus.png" />
     <None Remove="Icon\ChatSearch.png" />
     <None Remove="Icon\ChatSend.png" />
+    <None Remove="Image\Bill.png" />
+    <None Remove="Image\Board.png" />
+    <None Remove="Image\chat.png" />
+    <None Remove="Image\Gallery.png" />
+    <None Remove="Image\mainIcon.png" />
+    <None Remove="Image\mainIConcolor.ico" />
     <None Remove="Image\mainIConcolor.png" />
   </ItemGroup>
 
@@ -27,15 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\NanumMyeongjo.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\OptimusPrinceps.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\OptimusPrincepsSemiBold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Fonts\BMHANNAAir_ttf.ttf" />
+    <Resource Include="Fonts\BMHANNA_11yrs_ttf.ttf" />
     <Resource Include="Icon\ChatPlus.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -43,6 +41,14 @@
     <Resource Include="Icon\ChatSend.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\Bill.png" />
+    <Resource Include="Image\Board.png" />
+    <Resource Include="Image\chat.png" />
+    <Resource Include="Image\Gallery.png" />
+    <Resource Include="Image\mainIcon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\mainIConcolor.ico" />
     <Resource Include="Image\mainIConcolor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -55,13 +61,8 @@
 
   <ItemGroup>
     <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Image\mainIcon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Cloud.Firestore;
+using System.Windows.Controls;
 
 namespace Ahnduino.Lib.Object
 {
@@ -20,11 +21,13 @@ namespace Ahnduino.Lib.Object
 		public bool? type { get; set; }
 		public List<string>? imagelist { get; set; }
 
+		public List<Image>? trueimage { get; set; }
+
 		public override string ToString()
 		{
 			Timestamp ts = (Timestamp)time!;
 			DateTime dt = ts.ToDateTime();
-			dt.AddHours(9);
+			dt = dt.AddHours(9);
 
 			return (string.Format("{0:[HH:mm]} {1}: {2}", dt, (bool)type! ? "[사용자]" : "[관리자]" ,text ));
 		}
