@@ -5,28 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ahnduino.Wins"
         mc:Ignorable="d"
-        Title="BoardAdd" Height="450" Width="800">
+        Title="BoardAdd" Height="750" Width="1280"
+		WindowStartupLocation="CenterScreen">
 	<Grid Background="LightGray">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
-			<ColumnDefinition Width="200"/>
 		</Grid.ColumnDefinitions>
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="65"/>
 				<RowDefinition Height="3*"/>
-
-				<RowDefinition Height="70"/>
+				<RowDefinition Height="200"/>
 			</Grid.RowDefinitions>
 
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
+					<ColumnDefinition Width="150"/>
 				</Grid.ColumnDefinitions>
-				<Border CornerRadius="10" Margin="8" Background="White">
-					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtitle_GotFocus" FontFamily="{StaticResource Default}">
+				<Border CornerRadius="10" Margin="8,8,0,8" Background="White">
+					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtitle_GotFocus" FontFamily="{StaticResource Default}" VerticalAlignment="Center">
 					제목
 					</TextBox>
+				</Border>
+
+				<Border Grid.Column="1" Background="#008f5e" CornerRadius="10" Margin="8">
+					<Button x:Name="bcreate" Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bcreate_Click" FontFamily="{StaticResource Default}" FontSize="20"/>
 				</Border>
 			</Grid>
 
@@ -37,21 +41,18 @@
 				</TextBox>
 			</Border>
 
-			<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,0" Background="Transparent">
-				<StackPanel Orientation="Horizontal">
-					<Border Background="#008f5e" CornerRadius="10" Margin="0,8,0,8" Width="100">
-						<Button x:Name="baddimage" Content="사진 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="baddimage_Click" FontFamily="{StaticResource Default}"/>
+			<Border Grid.Row="2" CornerRadius="10" Margin="8" Background="White">
+				<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" VerticalAlignment="Center">
+					<ListBox.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel/>
+						</ItemsPanelTemplate>
+					</ListBox.ItemsPanel>
+					<Border Background="#008f5e" Margin="10" CornerRadius="10" Height="150" Width="150" >
+						<Button x:Name="baddimage" Content="+" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="baddimage_Click" FontFamily="{StaticResource Default}"/>
 					</Border>
-					<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-						<Button x:Name="bcreate" Content="게시글 추가" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bcreate_Click" FontFamily="{StaticResource Default}"/>
-					</Border>
-				</StackPanel>
+				</ListBox>
 			</Border>
 		</Grid>
-
-		<Border Grid.Column="2" CornerRadius="10" Margin="0,8,8,8" Background="White">
-			<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged"/>
-		</Border>
-		
 	</Grid>
 </Window>

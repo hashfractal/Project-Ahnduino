@@ -110,10 +110,12 @@
 				<ListBox x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0" IsSynchronizedWithCurrentItem="True" FontSize="30" FontFamily="{StaticResource Default }">
 					<ListBox.ItemTemplate>
 						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-								<ListBox x:Name="lbchatimg" Width="250" BorderBrush="Transparent" Background="Transparent" ItemsSource="{Binding trueimage}"/>
-							</StackPanel>
+							<Border Background="LightGray" CornerRadius="10">
+								<StackPanel Orientation="Vertical">
+									<TextBlock Text="{Binding}"/>
+									<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Background="Transparent" ItemsSource="{Binding trueimage}"/>
+								</StackPanel>
+							</Border>
 						</DataTemplate>
 					</ListBox.ItemTemplate>
 					<ListBox.Resources>

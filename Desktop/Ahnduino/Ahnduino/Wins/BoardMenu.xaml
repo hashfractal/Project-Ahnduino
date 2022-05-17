@@ -59,7 +59,6 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="40"/>
 					<RowDefinition/>
-					<RowDefinition Height="40"/>
 				</Grid.RowDefinitions>
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -84,10 +83,6 @@
 					</Button>
 				</Grid>
 
-				<Border Grid.Row="2" Background="#008f5e" CornerRadius="10" Margin="8,0,8,8">
-					<Button x:Name="badd" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="badd_Click" FontFamily="{StaticResource Default }">새 게시글 추가</Button>
-				</Border>
-
 				<ListView x:Name="listviewboard" Grid.Row="1" Width="380" Margin="8" BorderThickness="0" SelectionChanged="listviewboard_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
@@ -110,6 +105,7 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="65"/>
 					<RowDefinition Height="3*"/>
+					<RowDefinition Height="1.2*"/>
 					<RowDefinition Height="80"/>
 				</Grid.RowDefinitions>
 
@@ -134,23 +130,32 @@
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition/>
-							<ColumnDefinition Width="200"/>
 						</Grid.ColumnDefinitions>
-
-						<Border Grid.Column="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
-							<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged"/>
-						</Border>
 						<TextBlock x:Name="tbtext" FontSize="28" FontFamily="{StaticResource Default }"/>
 					</Grid>
 				</Border>
-				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="Transparent">
+				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="White">
+					<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+						<ListBox.ItemsPanel>
+							<ItemsPanelTemplate>
+								<WrapPanel/>
+							</ItemsPanelTemplate>
+						</ListBox.ItemsPanel>
+					</ListBox>
+				</Border>
+				
+				<Border Grid.Row="3" CornerRadius="10" Margin="8,0,8,8" Background="Transparent" HorizontalAlignment="Right">
 					<StackPanel Orientation="Horizontal">
-						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-							<Button x:Name="bdelete" Content="게시글 삭제" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bdelete_Click"/>
+						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="150">
+							<Button x:Name="badd" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="badd_Click"  FontFamily="{StaticResource Default }" FontSize="25">게시글 추가</Button>
+						</Border>
+						
+						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="150">
+							<Button x:Name="bdelete" Content="게시글 삭제" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bdelete_Click" FontFamily="{StaticResource Default }" FontSize="25"/>
 						</Border>
 
-						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="100">
-							<Button x:Name="bNew" Content="게시글 수정" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bNew_Click"/>
+						<Border Background="#008f5e" CornerRadius="10" Margin="8" Width="150">
+							<Button x:Name="bNew" Content="게시글 수정" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="bNew_Click" FontFamily="{StaticResource Default }" FontSize="25"/>
 						</Border>
 					</StackPanel>
 				</Border>
