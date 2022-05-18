@@ -147,6 +147,11 @@ namespace Ahnduino.Wins
 		{
 			Fbad.RemoveRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, uid);
 		}
+
+		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
 	}
 }
 

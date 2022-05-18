@@ -104,36 +104,14 @@
 				<RowDefinition Height="75"/>
 				<RowDefinition Height="2*"/>
 				<RowDefinition/>
+				<RowDefinition Height="120" />
+				<RowDefinition/>
 			</Grid.RowDefinitions>
 
 			<Border Grid.Row="0" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,10,10,0" BorderThickness="1">
-				<StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-					<Border BorderBrush="LightGray" BorderThickness="0,0,1,0" CornerRadius="0,0,0,0">
-						<TextBlock x:Name="labeltitle" FontFamily="{StaticResource Default }" Margin="0,20,0,0" FontSize="30" FontWeight="Bold" Width="350" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-							Title
-						</TextBlock>
-					</Border>
-					<Border BorderBrush="LightGray" BorderThickness="0,0,0,0" CornerRadius="0,0,10,0">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition/>
-								<RowDefinition/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-
-							<TextBlock Grid.Row="0" x:Name="labelinfo" Margin="0,0,0,0" FontSize="15" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
-								희망시각 1:
-							</TextBlock>
-							<TextBlock Grid.Row="1" x:Name="labelinfo1" Margin="0,0,0,0" FontSize="15" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
-								희망시각 2:
-							</TextBlock>
-							<TextBlock Grid.Row="2" x:Name="labelinfo2" Margin="0,0,0,0" FontSize="15" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
-								희망시각 3:
-							</TextBlock>
-						</Grid>
-						
-					</Border>
-				</StackPanel>
+				<TextBlock x:Name="labeltitle" FontFamily="{StaticResource Default }" Margin="0,0,0,0" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
+							좌측 리스트에서 항목을 불러와 주십시오
+				</TextBlock>
 			</Border>
 
 			<Border Grid.Row="1" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,0,10,0" BorderThickness="1">
@@ -142,13 +120,42 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="200"/>
 					</Grid.ColumnDefinitions>
-					<Label x:Name="labeltext" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="28" FontFamily="{StaticResource Default }">text</Label>
+					<Label x:Name="labeltext" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="28" FontFamily="{StaticResource Default }"></Label>
 					<ListBox x:Name="ImageList" Grid.Column="1" BorderBrush="Transparent" Background="Transparent" SelectionChanged="ImageList_SelectionChanged"/>
 				</Grid>
 			</Border>
 
+			<Border Grid.Row="2" BorderBrush="#abadb3" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0" Background="White">
+				<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+					<ListBox.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel/>
+						</ItemsPanelTemplate>
+					</ListBox.ItemsPanel>
+				</ListBox>
+			</Border>
+			
+			<Border Grid.Row="3" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
 
-			<Border Grid.Row="2" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,10">
+					<TextBlock Grid.Row="0" x:Name="labelinfo" Margin="0,0,0,0" FontSize="30" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
+								희망시각 1:
+					</TextBlock>
+					<TextBlock Grid.Row="1" x:Name="labelinfo1" Margin="0,0,0,0" FontSize="30" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
+								희망시각 2:
+					</TextBlock>
+					<TextBlock Grid.Row="2" x:Name="labelinfo2" Margin="0,0,0,0" FontSize="30" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontFamily="{StaticResource Default }">
+								희망시각 3:
+					</TextBlock>
+				</Grid>
+			</Border>
+
+			<Border Grid.Row="4" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,10">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition/>

@@ -32,15 +32,6 @@ namespace Ahnduino.Lib
 			DB = FirestoreDb.Create("ahnduino");
 		}
 
-		public static void CreateUser(string email)
-		{
-			/*
-			 * 이메일받아옴
-			 * 컬렉션 생성 함수 호출
-			 * 
-			 */
-		}
-
 		public static string getEmail(string address)
 		{
 			CollectionReference colref = DB!.Collection("User");
@@ -312,7 +303,7 @@ namespace Ahnduino.Lib
 						res.Add(documentSnapshot.Id);
 					}
 				});
-			} );
+			});
 		}
 
 		public static void GetDateList(string? email, ObservableCollection<string> res)

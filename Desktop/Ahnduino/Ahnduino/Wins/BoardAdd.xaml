@@ -25,7 +25,7 @@
 				</Grid.ColumnDefinitions>
 				<Border CornerRadius="10" Margin="8,8,0,8" Background="White">
 					<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtitle_GotFocus" FontFamily="{StaticResource Default}" VerticalAlignment="Center">
-					제목
+						제목
 					</TextBox>
 				</Border>
 
@@ -49,7 +49,9 @@
 						</ItemsPanelTemplate>
 					</ListBox.ItemsPanel>
 					<Border Background="#008f5e" Margin="10" CornerRadius="10" Height="150" Width="150" >
-						<Button x:Name="baddimage" Content="+" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="baddimage_Click" FontFamily="{StaticResource Default}"/>
+						<Button x:Name="baddimage" Background="Transparent" BorderBrush="Transparent" Foreground="White" Click="baddimage_Click" FontFamily="{StaticResource Default}">
+							<Image Source="/Image/add.png" Margin="20" />
+						</Button>
 					</Border>
 				</ListBox>
 			</Border>
