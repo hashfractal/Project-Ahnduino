@@ -58,13 +58,9 @@
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="40"/>
-					<RowDefinition Height="40"/>
-					<RowDefinition/>
-					<RowDefinition Height="40"/>
-					<RowDefinition/>
-					<RowDefinition Height="40"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
+				
 				<Grid Grid.Row="0">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
@@ -77,7 +73,7 @@
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					
+
 					<Button Grid.Column="1" BorderThickness="0" Background="White" Margin="0,8,10,0">
 						<Button.Resources>
 							<Style TargetType="Border">
@@ -87,17 +83,38 @@
 						<Image Margin="3" Source="/Icon/ChatSearch.Png"/>
 					</Button>
 				</Grid>
+				<Border Grid.Row="1" Margin="10" CornerRadius="10" Background="White">
+					<ListView Background="Transparent">
+						
+					</ListView>
+				</Border>
 
-				<Border Grid.Row="1" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+			</Grid>
+		</Grid>
+
+		<Grid Grid.Column="2" Background="LightGray">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="40"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+					<RowDefinition/>
+					<RowDefinition Height="40"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<Border Grid.Row="0" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
 					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
 						입실
 					</TextBlock>
 				</Border>
-				<ListView x:Name="chatneedanswerlistview" Grid.Row="2" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
+				<ListView x:Name="chatneedanswerlistview" Grid.Row="1" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
+							<StackPanel Orientation="Vertical">
+								<WrapPanel>
+									<TextBlock Text="{Binding}"/>
+								</WrapPanel>
 							</StackPanel>
 						</DataTemplate>
 					</ListView.ItemTemplate>
@@ -108,12 +125,12 @@
 					</ListView.Resources>
 				</ListView>
 
-				<Border Grid.Row="3" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+				<Border Grid.Row="2" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
 					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
 						퇴실
 					</TextBlock>
 				</Border>
-				<ListView x:Name="ccc2" Grid.Row="4" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
+				<ListView x:Name="ccc2" Grid.Row="3" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
@@ -128,12 +145,12 @@
 					</ListView.Resources>
 				</ListView>
 
-				<Border Grid.Row="5" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+				<Border Grid.Row="4" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
 					<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
 						수리 내역
 					</TextBlock>
 				</Border>
-				<ListView x:Name="ch3" Grid.Row="7" Width="380" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
+				<ListView x:Name="ch3" Grid.Row="5" Margin="8,0,8,8" BorderThickness="0" FontFamily="{StaticResource Default }">
 					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal">
@@ -148,11 +165,6 @@
 					</ListView.Resources>
 				</ListView>
 			</Grid>
-		</Grid>
-
-		<Grid Grid.Column="2" Background="LightGray">
-			<Border Background="White" CornerRadius="10" Margin="10">
-			</Border>
 		</Grid>
 	</Grid>
 </Window>

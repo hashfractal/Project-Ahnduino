@@ -66,13 +66,29 @@
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
 
-					<TextBox x:Name="tbsearch" Grid.Column="0" Margin="8,8,0,8" BorderThickness="0" FontSize="18" FontFamily="{StaticResource Default }">
-						<TextBox.Resources>
-							<Style TargetType="Border">
-								<Setter Property="CornerRadius" Value="10,0,0,10"/>
-							</Style>
-						</TextBox.Resources>
-					</TextBox>
+					<Grid>
+						<TextBox x:Name="tbsearch" Grid.Column="0" Margin="8,8,0,8" BorderThickness="0" FontSize="18" FontFamily="{StaticResource Default }">
+							<TextBox.Resources>
+								<Style TargetType="Border">
+									<Setter Property="CornerRadius" Value="10,0,0,10"/>
+								</Style>
+							</TextBox.Resources>
+						</TextBox>
+						<TextBlock IsHitTestVisible="False" Text="제목으로 검색" FontSize="30" Margin="8,8,0,8" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+							<TextBlock.Style>
+								<Style TargetType="{x:Type TextBlock}">
+									<Setter Property="Visibility" Value="Collapsed"/>
+									<Style.Triggers>
+										<DataTrigger Binding="{Binding Text, ElementName=tbsearch}" Value="">
+											<Setter Property="Visibility" Value="Visible"/>
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</TextBlock.Style>
+						</TextBlock>
+						
+					</Grid>
+					
 					<Button x:Name="buttonsearch" Grid.Column="1" BorderThickness="0" Background="White" Margin="0,8,8,8" Click="buttonsearch_Click">
 						<Button.Resources>
 							<Style TargetType="Border">
@@ -115,7 +131,7 @@
 						<ColumnDefinition Width="120"/>
 					</Grid.ColumnDefinitions>
 					<Border CornerRadius="10" Margin="8" Background="White">
-						<TextBlock x:Name="tbtitle" FontSize="30" FontFamily="{StaticResource Default }">
+						<TextBlock x:Name="tbtitle" FontSize="30" FontFamily="{StaticResource Default}" VerticalAlignment="Center">
 						</TextBlock>
 					</Border>
 					<Border Grid.Column="1" CornerRadius="10" Margin="0,8,8,8" Background="White">
