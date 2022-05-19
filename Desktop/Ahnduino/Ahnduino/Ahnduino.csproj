@@ -16,6 +16,7 @@
     <None Remove="Icon\ChatPlus.png" />
     <None Remove="Icon\ChatSearch.png" />
     <None Remove="Icon\ChatSend.png" />
+    <None Remove="Image\add.png" />
     <None Remove="Image\Bill.png" />
     <None Remove="Image\Board.png" />
     <None Remove="Image\chat.png" />
@@ -41,6 +42,7 @@
     <Resource Include="Icon\ChatSend.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\add.png" />
     <Resource Include="Image\Bill.png" />
     <Resource Include="Image\Board.png" />
     <Resource Include="Image\chat.png" />

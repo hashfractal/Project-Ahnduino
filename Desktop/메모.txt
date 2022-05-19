@@ -1,9 +1,13 @@
 https://www.flaticon.com/kr/?gclsrc=aw.ds&gclid=Cj0KCQjwyYKUBhDJARIsAMj9lkG7fif_lfdXSjBMFmfrnHpDJVDm16TPfiN399ipEqziHX3PpzybXu4aAjRwEALw_wcB
 https://insurang.tistory.com/356
 
+주소를 입력을 함 -> 주소에 할당된 인증번호 출력
+
 컨트롤 세부 크기 조정
 
 아이콘 테마 일관성
+
+도와줘 홈즈!
 
 ===건물 관리===
 건물 관리(추가)
@@ -42,6 +46,7 @@ https://insurang.tistory.com/356
 사진 뷰어 카톡참고
 좌우 <><>
 
+예약 취소 시 all 개수 감소
 ==사무직 계정==
 구 별 인증번호
 

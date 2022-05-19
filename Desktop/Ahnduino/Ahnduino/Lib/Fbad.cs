@@ -56,6 +56,29 @@ namespace Ahnduino.Lib
 			return temp!.ToString()!;
 		}
 
+		public static string? AddressToSerialNo(string region, string gu, string dong, string addressno, string buildname)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(region + " " + gu + " " + dong + " " + addressno + " " + buildname);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+
+			Dictionary<string, object> dict = dSnap.ToDictionary();
+			if (dict.TryGetValue("인증번호", out object? temp))
+				return (string)temp;
+			else
+				return null;
+		}
+
+		public static List<string> AddressToEmailList(string region, string gu, string dong, string addressno, string buildname)
+		{
+			List<string> res = new();
+			Query query = DB!.Collection("User").WhereEqualTo("주소", region + " " + gu + " " + dong + " " + addressno + " " + buildname);
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot dSnap in qSanp.Documents)
+				res.Add(dSnap.Id);
+
+			return res;
+		}
+
 		public static Image GetImageFromUri(string uri)
 		{
 			Image image = new Image();

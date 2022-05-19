@@ -103,7 +103,7 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="75"/>
 				<RowDefinition Height="2*"/>
-				<RowDefinition/>
+				<RowDefinition Height="200"/>
 				<RowDefinition Height="120" />
 				<RowDefinition/>
 			</Grid.RowDefinitions>
@@ -118,15 +118,14 @@
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
-						<ColumnDefinition Width="200"/>
 					</Grid.ColumnDefinitions>
 					<Label x:Name="labeltext" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="28" FontFamily="{StaticResource Default }"></Label>
-					<ListBox x:Name="ImageList" Grid.Column="1" BorderBrush="Transparent" Background="Transparent" SelectionChanged="ImageList_SelectionChanged"/>
+				
 				</Grid>
 			</Border>
 
 			<Border Grid.Row="2" BorderBrush="#abadb3" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0" Background="White">
-				<ListBox x:Name="imglist" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<ListBox x:Name="ImageList" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 					<ListBox.ItemsPanel>
 						<ItemsPanelTemplate>
 							<WrapPanel/>
