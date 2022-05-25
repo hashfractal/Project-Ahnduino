@@ -32,8 +32,8 @@ namespace Ahnduino.Wins
 		ObservableCollection<string> datelist = new ObservableCollection<string>();
 		ObservableCollection<string> requestlist = new ObservableCollection<string>();
 
-		string? selectedEmail = null;
-		string? selectedDate = null;
+		//string? selectedEmail = null;
+		//string? selectedDate = null;
 
 		public RequestMenu(string uid)
 		{
@@ -81,7 +81,7 @@ namespace Ahnduino.Wins
 				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
 				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
 				request.Isreserve = true;
-				Fbad.UpdateRequest(selectedEmail, selectedDate, request.DocID, request!, tbworker.Text, dt);
+				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, tbworker.Text, dt);
 			}
 
 			MessageBox.Show("예약완료되었습니다");
@@ -135,7 +135,7 @@ namespace Ahnduino.Wins
 
 		private void bcancle_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.RemoveRequest(selectedEmail, selectedDate, request!.DocID, request!, uid);
+			Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
 		}
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)

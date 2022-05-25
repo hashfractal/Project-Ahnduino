@@ -17,6 +17,7 @@
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
 				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White" FontFamily="{StaticResource Default }">사용자 님</Button>
+				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
 				<Button x:Name="gotorequest" Height="120" Style="{StaticResource MenuButton}" Click="gotorequest_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>

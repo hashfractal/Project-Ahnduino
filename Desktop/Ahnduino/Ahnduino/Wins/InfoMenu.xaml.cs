@@ -61,5 +61,11 @@ namespace Ahnduino.Wins
 			menu.Show();
 			Close();
 		}
+
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 	}
 }

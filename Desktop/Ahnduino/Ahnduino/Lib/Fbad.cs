@@ -530,11 +530,11 @@ namespace Ahnduino.Lib
 			dRef.SetAsync(dic, SetOptions.MergeAll);
 
 			//현장직 대기
-			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title).Document(request.DocID);
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정").Document(request.DocID);
 			dRef.SetAsync(dic, SetOptions.MergeAll).Wait();
 
 			//현장직 예약 카운트
-			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title);
+			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 ");
 			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul");
 			Dictionary<string, object> update = new Dictionary<string, object>
 			{

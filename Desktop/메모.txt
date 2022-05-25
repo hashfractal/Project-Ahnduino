@@ -8,6 +8,9 @@ https://insurang.tistory.com/356
 
 
 도와줘 홈즈!
+======현장직 연동====
+현장직에서 보류 쏴주면 관리자에서 처리
+
 
 =========
 
@@ -49,6 +52,8 @@ https://insurang.tistory.com/356
 좌우 <><>
 
 예약 취소 시 all 개수 감소
+
+resrevetime: 예약된 시점 timestamp 형식으로 추가
 ==사무직 계정==
 구 별 인증번호
 

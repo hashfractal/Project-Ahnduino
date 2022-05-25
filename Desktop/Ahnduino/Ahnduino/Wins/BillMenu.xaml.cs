@@ -240,5 +240,11 @@ namespace Ahnduino.Wins
 			ntb3.Text = n.ToString();
 			ntb9.Text = n2.ToString();
 		}
+
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 	}
 }
