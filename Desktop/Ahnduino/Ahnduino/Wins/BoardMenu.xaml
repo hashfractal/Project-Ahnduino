@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ahnduino.Wins"
         mc:Ignorable="d"
-        Title="MainWIndow" Height="720" Width="1280"
+        Title="도와줘 홈즈!" Height="720" Width="1280"
 		WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -132,11 +132,12 @@
 					</Grid.ColumnDefinitions>
 					<Border CornerRadius="10" Margin="8" Background="White">
 						<TextBlock x:Name="tbtitle" FontSize="30" FontFamily="{StaticResource Default}" VerticalAlignment="Center">
+							제목
 						</TextBlock>
 					</Border>
 					<Border Grid.Column="1" CornerRadius="10" Margin="0,8,8,8" Background="White">
 						<TextBlock x:Name="tbthumbup" FontSize="35" FontFamily="{StaticResource Default }" VerticalAlignment="Center">
-							👍
+							👍 0
 						</TextBlock>
 					</Border>
 				</Grid>
@@ -147,7 +148,9 @@
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition/>
 						</Grid.ColumnDefinitions>
-						<TextBlock x:Name="tbtext" FontSize="28" FontFamily="{StaticResource Default }"/>
+						<TextBlock x:Name="tbtext" FontSize="28" FontFamily="{StaticResource Default }">
+							내용
+						</TextBlock>
 					</Grid>
 				</Border>
 				<Border Grid.Row="2" CornerRadius="10" Margin="8,0,8,8" Background="White">

@@ -5,18 +5,19 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
-		Title="MainWIndow" Height="720" Width="1280"
+		Title="도와줘 홈즈!" Height="720" Width="1280"
 		WindowStartupLocation="CenterScreen">
-	<Grid>
+	<Grid Background="LightGray">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120"/>
-			<ColumnDefinition Width="500"/>
+			<ColumnDefinition Width="300"/>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
+				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
+				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
 				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
@@ -54,49 +55,21 @@
 			</StackPanel>
 		</Grid>
 
-		<Grid Grid.Column="1" Background="LightGray">
-			<StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-				<ListView Width="250" x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
-						<Style TargetType="Border">
-							<Setter Property="CornerRadius" Value="10,0,0,10"/>
-						</Style>
-					</ListView.Resources>
-				</ListView>
-
-				<ListView x:Name="RequestDateListView" Width="110" SelectionChanged="RequestDateListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-
-				<ListView x:Name="RequestListView" Width="150" SelectionChanged="RequestListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="{Binding}"/>
-							</StackPanel>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-					<ListView.Resources>
-						<Style TargetType="Border">
-							<Setter Property="CornerRadius" Value="0,10,10,0"/>
-						</Style>
-					</ListView.Resources>
-				</ListView>
-			</StackPanel>
-
+		<Grid Grid.Column="1" Background="LightGray" Margin="10">
+			<ListView x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{Binding}"/>
+						</StackPanel>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+				<ListView.Resources>
+					<Style TargetType="Border">
+						<Setter Property="CornerRadius" Value="10,10,10,10"/>
+					</Style>
+				</ListView.Resources>
+			</ListView>
 		</Grid>
 
 		<Grid Grid.Column="2" Background="LightGray">
@@ -119,7 +92,9 @@
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
-					<Label x:Name="labeltext" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="28" FontFamily="{StaticResource Default }"></Label>
+					<Label x:Name="labeltext" Grid.Column="0" HorizontalAlignment="Stretch" FontSize="28" FontFamily="{StaticResource Default }">
+						문의 내용
+					</Label>
 				
 				</Grid>
 			</Border>
@@ -226,32 +201,46 @@
 						</StackPanel>
 					</Grid>
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<TextBox Width="300" Margin="10,0,0,0"
+						<Grid>
+							<TextBox Width="300" Margin="10,0,0,0"
 						 BorderBrush="Black"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
 						 x:Name="tbworker" TextAlignment="Left" GotFocus="tbworker_GotFocus" FontFamily="{StaticResource Default }">
-							<TextBox.Resources>
-								<Style TargetType="Border">
-									<Setter Property="CornerRadius" Value="7"/>
-								</Style>
-							</TextBox.Resources>
-							현장직 Email
-						</TextBox>
+								<TextBox.Resources>
+									<Style TargetType="Border">
+										<Setter Property="CornerRadius" Value="7"/>
+									</Style>
+								</TextBox.Resources>
+							</TextBox>
+							<TextBlock IsHitTestVisible="False" Text="현장직 이메일" FontSize="30" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="Gray">
+								<TextBlock.Style>
+									<Style TargetType="{x:Type TextBlock}">
+										<Setter Property="Visibility" Value="Collapsed"/>
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding Text, ElementName=tbworker}" Value="">
+												<Setter Property="Visibility" Value="Visible"/>
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</TextBlock.Style>
+							</TextBlock>
+						</Grid>
+
 						<Button Grid.Row="1" x:Name="LoginBtn" Margin="10" Background="#008F5E" Foreground="White"
-						 FontSize="22" Content="예약" FontFamily="{StaticResource Default }" Click="LoginBtn_Click" HorizontalAlignment="Center" Width="139" Height="49" VerticalAlignment="Center">
+						 FontSize="22" Content="예약" FontFamily="{StaticResource Default }" Click="LoginBtn_Click" HorizontalAlignment="Center" Width="140" VerticalAlignment="Center">
 							<Button.Resources>
-								<Style TargetType="Border" >
+								<Style TargetType="Border">
 									<Setter Property="CornerRadius" Value="10"/>
 								</Style>
 							</Button.Resources>
 						</Button>
 
 						<Button Grid.Row="1" x:Name="bcancle" Margin="10" Background="#008F5E" Foreground="White"
-						FontSize="22" Content="취소" FontFamily="{StaticResource Default }" HorizontalAlignment="Center" Width="139" Height="49" VerticalAlignment="Center" Click="bcancle_Click">
+						FontSize="22" Content="취소" FontFamily="{StaticResource Default }" HorizontalAlignment="Center" Width="140" VerticalAlignment="Center" Click="bcancle_Click">
 							<Button.Resources>
 								<Style TargetType="Border" >
 									<Setter Property="CornerRadius" Value="10"/>
-								</Style>
+								</Style>	
 							</Button.Resources>
 						</Button>
 					</StackPanel>

@@ -27,6 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Wins\RequestMenu dum.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -65,6 +69,12 @@
     <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Wins\RequestMenu dum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

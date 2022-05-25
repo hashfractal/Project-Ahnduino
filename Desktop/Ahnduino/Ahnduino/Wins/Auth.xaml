@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-		Title="Ahnduino Login" Height="350" Width="500"
+		Title="로그인" Height="350" Width="500"
 		ResizeMode="NoResize"
 		FontFamily="{StaticResource Default}">
 	<Grid>
@@ -19,7 +19,7 @@
 				<Image x:Name="___Image_mainIConcolor_png" 
 				   Source="/Image/mainIConcolor.png"
 				   Stretch="Fill" Height="50" Width="50"/>
-				<TextBlock Grid.Column="2" FontSize="50" Margin="10,12,0,0">Ahnduino</TextBlock>
+				<TextBlock Grid.Column="2" FontSize="50" Margin="10,12,0,0">도와줘 홈즈!</TextBlock>
 			</Grid>
 
 			<Grid HorizontalAlignment="Center">

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Google.Cloud.Firestore;
+using Ahnduino.Lib;
 
 namespace Ahnduino.Lib.Object
 {
@@ -39,5 +40,10 @@ namespace Ahnduino.Lib.Object
 		public string? userName { get; set; }
 		[FirestoreProperty]
 		public List<string>? Images { get; set; }
+
+		public override string ToString()
+		{
+			return Fbad.GetAddress(UID!);	
+		}
 	}
 }

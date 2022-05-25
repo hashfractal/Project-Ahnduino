@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Google.Cloud.Firestore;
 using Ahnduino.Lib;
 using Ahnduino.Lib.Object;
+using System.Threading;
+
 namespace Ahnduino.Wins
 {
 	/// <summary>
@@ -26,7 +28,7 @@ namespace Ahnduino.Wins
 
 		Request? request = null;
 
-		ObservableCollection<string> userlist = new ObservableCollection<string>();
+		ObservableCollection<Request> userlist = new ObservableCollection<Request>();
 		ObservableCollection<string> datelist = new ObservableCollection<string>();
 		ObservableCollection<string> requestlist = new ObservableCollection<string>();
 
@@ -40,34 +42,22 @@ namespace Ahnduino.Wins
 
 			this.FontFamily = new FontFamily("Default");
 
+
 			RequestUserListView.ItemsSource = userlist;
-			RequestDateListView.ItemsSource = datelist;
-			RequestListView.ItemsSource = requestlist;
-			Fbad.GetRequestUserList(userlist);
+
+			Thread thread = new Thread(() =>  Fbad.GetRequestList(userlist));
+			thread.Start();
+
+			//RequestUserListView.ItemsSource = userlist;
+			//RequestDateListView.ItemsSource = datelist;
+			//RequestListView.ItemsSource = requestlist;
+			//Fbad.GetRequestUserList(userlist);
 		}
 
 		private void RequestUserListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			selectedEmail = (string)RequestUserListView.SelectedItem;
-			Fbad.GetDateList(null, datelist);
-			Fbad.GetDateList(selectedEmail, datelist);
-		}
-
-		private void RequestDateListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			selectedDate = (string)RequestDateListView.SelectedItem;
-			Fbad.GetRequestList(null, null, requestlist);
-			Fbad.GetRequestList(selectedEmail, selectedDate, requestlist);
-		}
-
-		private void RequestListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
 			ImageList.Items.Clear();
-			request = Fbad.GetRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem);
-
-			
-
+			request = RequestUserListView.SelectedItem as Request;
 			labeltitle.Text = request!.Title;
 			labelinfo.Text = string.Format("희망시각 1: {0}", request.hopeTime0);
 			labelinfo1.Text = string.Format("희망시각 2: {0}", request.hopeTime1);
@@ -91,7 +81,7 @@ namespace Ahnduino.Wins
 				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
 				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
 				request.Isreserve = true;
-				Fbad.UpdateRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, tbworker.Text, dt);
+				Fbad.UpdateRequest(selectedEmail, selectedDate, request.DocID, request!, tbworker.Text, dt);
 			}
 
 			MessageBox.Show("예약완료되었습니다");
@@ -145,12 +135,18 @@ namespace Ahnduino.Wins
 
 		private void bcancle_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.RemoveRequest(selectedEmail, selectedDate, (string)RequestListView.SelectedItem, request!, uid);
+			Fbad.RemoveRequest(selectedEmail, selectedDate, request!.DocID, request!, uid);
 		}
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
+		}
+
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
 		}
 	}
 }

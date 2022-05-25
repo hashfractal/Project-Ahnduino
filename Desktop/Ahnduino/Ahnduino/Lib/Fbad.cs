@@ -56,28 +56,7 @@ namespace Ahnduino.Lib
 			return temp!.ToString()!;
 		}
 
-		public static string? AddressToSerialNo(string region, string gu, string dong, string addressno, string buildname)
-		{
-			DocumentReference dRef = DB!.Collection("Building").Document(region + " " + gu + " " + dong + " " + addressno + " " + buildname);
-			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
 
-			Dictionary<string, object> dict = dSnap.ToDictionary();
-			if (dict.TryGetValue("인증번호", out object? temp))
-				return (string)temp;
-			else
-				return null;
-		}
-
-		public static List<string> AddressToEmailList(string region, string gu, string dong, string addressno, string buildname)
-		{
-			List<string> res = new();
-			Query query = DB!.Collection("User").WhereEqualTo("주소", region + " " + gu + " " + dong + " " + addressno + " " + buildname);
-			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
-			foreach (DocumentSnapshot dSnap in qSanp.Documents)
-				res.Add(dSnap.Id);
-
-			return res;
-		}
 
 		public static Image GetImageFromUri(string uri)
 		{
@@ -92,6 +71,54 @@ namespace Ahnduino.Lib
 
 			return image;
 		}
+
+		#region Build
+		public static string? AddressToSerialNo(string fulladdress)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+
+			Dictionary<string, object> dict = dSnap.ToDictionary();
+			if (dict.TryGetValue("인증번호", out object? temp))
+				return (string)temp;
+			else
+				return null;
+		}
+
+		public static string? SerialNoToAddress(string SerialNo)
+		{
+			Query query = DB!.Collection("Building").WhereEqualTo("인증번호", SerialNo);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			return qSnap.Documents[0].Id;
+		}
+
+		public static List<string> AddressToEmailList(string fulladdress)
+		{
+			List<string> res = new();
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			dSnap.TryGetValue("인증번호", out object temp);
+
+			Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot i in qSnap.Documents)
+				res.Add(i.Id);
+
+			return res;
+		}
+
+		public static int? GetPayFromAddress(string fulladdress)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+
+			Dictionary<string, object> dict = dSnap.ToDictionary();
+			if (dict.TryGetValue("관리비", out object? temp))
+				return Convert.ToInt32(temp);
+			else
+				return null;
+		}
+		#endregion
 
 		#region Auth
 
@@ -312,6 +339,58 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Request
+		public static void GetRequestList(ObservableCollection<Request> requestlist)
+		{
+			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
+
+			FirestoreChangeListener listener = query.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					Request temp = new Request();
+					requestlist.Clear();
+					Thread trd = new Thread(() =>
+					{
+						foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+						{
+							DocumentReference dRef = documentSnapshot.Reference;
+							IAsyncEnumerable<CollectionReference> clist = dRef.Collection("Request").Document("Request").ListCollectionsAsync();
+							IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = clist.GetAsyncEnumerator(default);
+
+							while (subcollectionsEnumerator.MoveNextAsync().Result)
+							{
+								CollectionReference i = subcollectionsEnumerator.Current;
+								if (i.Id.Length == 14)
+								{
+									QuerySnapshot qsnp = i.GetSnapshotAsync().Result;
+									foreach (DocumentSnapshot ds in qsnp.Documents)
+									{
+										temp = ds.ConvertTo<Request>();
+										temp.Images = new List<string>();
+										Dictionary<string, object> dict = ds.ToDictionary();
+										int n = 0;
+
+										while (dict.TryGetValue("image" + n, out object? temp2))
+										{
+											temp.Images.Add((string)temp2);
+											n++;
+										}
+										DispatcherService.Invoke(() =>
+										{
+											requestlist.Add(temp);
+										});
+										
+									}
+								}
+							}
+						}
+					});
+					
+					trd.Start();
+				});
+			});
+		}
+
 		public static void GetRequestUserList(ObservableCollection<string> res)
 		{
 			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);

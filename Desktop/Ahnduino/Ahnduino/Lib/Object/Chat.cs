@@ -29,7 +29,7 @@ namespace Ahnduino.Lib.Object
 			DateTime dt = ts.ToDateTime();
 			dt = dt.AddHours(9);
 
-			return (string.Format("{0:[HH:mm]} {1}: {2}", dt, (bool)type! ? "[사용자]" : "[관리자]" ,text ));
+			return (string.Format("{0:yyyy년 M월 d일 HH:mm}", dt));
 		}
 	}
 }
