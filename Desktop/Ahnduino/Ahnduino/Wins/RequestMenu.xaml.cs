@@ -29,11 +29,27 @@ namespace Ahnduino.Wins
 		Request? request = null;
 
 		ObservableCollection<Request> userlist = new ObservableCollection<Request>();
-		ObservableCollection<string> datelist = new ObservableCollection<string>();
-		ObservableCollection<string> requestlist = new ObservableCollection<string>();
+		//ObservableCollection<string> datelist = new ObservableCollection<string>();
+		//ObservableCollection<string> requestlist = new ObservableCollection<string>();
 
 		//string? selectedEmail = null;
 		//string? selectedDate = null;
+
+		string[] mlist28 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28"};
+
+		string[] mlist29 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29"};
+
+		string[] mlist30 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"};
+
+		string[] mlist31 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
 		public RequestMenu(string uid)
 		{
@@ -44,6 +60,11 @@ namespace Ahnduino.Wins
 
 
 			RequestUserListView.ItemsSource = userlist;
+
+			DateTime dateTime = DateTime.Now;
+
+			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime));
+			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime.AddYears(1)));
 
 			Thread thread = new Thread(() =>  Fbad.GetRequestList(userlist));
 			thread.Start();
@@ -163,6 +184,21 @@ namespace Ahnduino.Wins
 			}
 			ImageExtendList imageExtendList = new ImageExtendList(temp);
 			imageExtendList.Show();
+		}
+
+		private void TextBoxMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			string s = TextBoxMonth!.SelectedItem!.ToString()!;
+			string[] sl = s.Split(' ');
+			DateTime dateTime = new DateTime(2000, int.Parse(sl[1]), 1);
+			if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 28)
+				TextBoxDay.ItemsSource = mlist28;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 29)
+				TextBoxDay.ItemsSource = mlist29;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 30)
+				TextBoxDay.ItemsSource = mlist30;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 31)
+				TextBoxDay.ItemsSource = mlist31;
 		}
 	}
 }

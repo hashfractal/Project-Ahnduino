@@ -56,8 +56,6 @@ namespace Ahnduino.Lib
 			return temp!.ToString()!;
 		}
 
-
-
 		public static Image GetImageFromUri(string uri)
 		{
 			Image image = new Image();
