@@ -46,7 +46,7 @@ namespace Ahnduino.Wins
 
 		private void listviewboard_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			imglist.Items.Clear();
+			ImageList.Items.Clear();
 
 			board = listviewboard.SelectedItem as Board;
 			if (board != null)
@@ -61,7 +61,7 @@ namespace Ahnduino.Wins
 					image.Height = 150;
 					image.Width = 150;
 
-					imglist.Items.Add(image);
+					ImageList.Items.Add(image);
 				}
 
 			}
@@ -93,6 +93,7 @@ namespace Ahnduino.Wins
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			/*
 			if (imglist.SelectedIndex != -1)
 			{
 				Image img = (Image)imglist.SelectedItem;
@@ -100,6 +101,7 @@ namespace Ahnduino.Wins
 				imageViewer.Show();
 				imglist.SelectedIndex = -1;
 			}
+			*/
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -134,6 +136,21 @@ namespace Ahnduino.Wins
 		{
 			BuildMenu build = new();
 			build.Show();
+		}
+
+		private void bimgex_Click(object sender, RoutedEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
 		}
 	}
 }

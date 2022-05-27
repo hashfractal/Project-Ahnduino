@@ -19,18 +19,46 @@ namespace Ahnduino.Wins
 	/// </summary>
 	public partial class ImageViewer : Window
 	{
-		public ImageViewer(Image image)
+		public ImageViewer(List<Image> images, int idx)
 		{
 			Image img = new Image();
-			img.Source = image.Source;
-			InitializeComponent();
 
-			imageviewer.Children.Add(img);
+			
+
+			InitializeComponent();
+			imglist.ItemsSource = images;
+			imglist.SelectedIndex = idx;
 		}
 
 		private void imageviewer_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			Close();
+		}
+
+		private void fullImageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			imageviewer.Children.Clear();
+			Image img = new Image();
+			img.Source = ((Image)imglist.SelectedItem).Source;
+			imageviewer.Children.Add(img);
+		}
+
+		private void bleft_Click(object sender, RoutedEventArgs e)
+		{
+			if (imglist.SelectedIndex == 0)
+				imglist.SelectedIndex = imglist.Items.Count - 1;
+			else
+				imglist.SelectedIndex = --imglist.SelectedIndex;
+
+			
+		}
+
+		private void bright_Click(object sender, RoutedEventArgs e)
+		{
+			if (imglist.SelectedIndex == imglist.Items.Count - 1)
+				imglist.SelectedIndex = 0;
+			else
+				imglist.SelectedIndex = ++imglist.SelectedIndex;
 		}
 	}
 }

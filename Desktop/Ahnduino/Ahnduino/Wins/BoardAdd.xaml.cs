@@ -119,6 +119,7 @@ namespace Ahnduino.Wins
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			/*
 			if (imglist.SelectedIndex != -1)
 			{
 				Image img = (Image)imglist.SelectedItem;
@@ -126,16 +127,7 @@ namespace Ahnduino.Wins
 				imageViewer.Show();
 				imglist.SelectedIndex = -1;
 			}
-		}
-
-		private void tbtitle_GotFocus(object sender, RoutedEventArgs e)
-		{
-			tbtitle.Text = "";
-		}
-
-		private void tbtext_GotFocus(object sender, RoutedEventArgs e)
-		{
-			tbtext.Text = "";
+			*/
 		}
 	}
 }

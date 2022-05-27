@@ -25,8 +25,7 @@
 				</Grid.ColumnDefinitions>
 				<Border CornerRadius="10" Margin="8,8,0,8" Background="White">
 					<Grid>
-						<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtitle_GotFocus" FontFamily="{StaticResource Default}" VerticalAlignment="Center">
-						</TextBox>
+						<TextBox x:Name="tbtitle" FontSize="30" Background="Transparent" BorderBrush="Transparent" FontFamily="{StaticResource Default}" VerticalAlignment="Center"/>
 						<TextBlock IsHitTestVisible="False" Text="제목" FontSize="30" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" Foreground="Gray">
 							<TextBlock.Style>
 								<Style TargetType="{x:Type TextBlock}">
@@ -50,8 +49,7 @@
 
 			<Border Grid.Row="1" CornerRadius="10" Margin="8,0,8,8" Background="White">
 				<Grid>
-					<TextBox x:Name="tbtext" FontSize="20" Background="Transparent" BorderBrush="Transparent" GotFocus="tbtext_GotFocus" FontFamily="{StaticResource Default}">
-					</TextBox>
+					<TextBox x:Name="tbtext" FontSize="20" Background="Transparent" BorderBrush="Transparent" FontFamily="{StaticResource Default}"/>
 					<TextBlock IsHitTestVisible="False" Text="내용" FontSize="20" FontFamily="{StaticResource Default}" Foreground="Gray">
 						<TextBlock.Style>
 							<Style TargetType="{x:Type TextBlock}">

@@ -95,6 +95,7 @@ namespace Ahnduino.Wins
 
 		private void ImageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			/*
 			if(ImageList.SelectedIndex != -1)
 			{
 				Image img = (Image)ImageList.SelectedItem;
@@ -102,7 +103,7 @@ namespace Ahnduino.Wins
 				imageViewer.Show();
 				ImageList.SelectedIndex = -1;
 			}
-			
+			*/
 		}
 
 		private void gotochat_Click(object sender, RoutedEventArgs e)
@@ -147,6 +148,21 @@ namespace Ahnduino.Wins
 		{
 			BuildMenu build = new();
 			build.Show();
+		}
+
+		private void bimgex_Click(object sender, RoutedEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach(Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
 		}
 	}
 }

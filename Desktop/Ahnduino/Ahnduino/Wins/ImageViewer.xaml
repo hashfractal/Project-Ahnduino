@@ -7,7 +7,42 @@
         mc:Ignorable="d"
         Title="클릭시 닫힘" Height="720" Width="1280"
 		WindowStartupLocation="CenterScreen">
-    <Grid>
-		<WrapPanel x:Name="imageviewer" MouseDown="imageviewer_MouseDown"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="200"/>
+		</Grid.RowDefinitions>
+		<Grid>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"/>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="100"/>
+			</Grid.ColumnDefinitions>
+
+			<WrapPanel HorizontalAlignment="Center" Grid.Column="1" x:Name="imageviewer" MouseDown="imageviewer_MouseDown"/>
+			<Button x:Name="bleft" Background="Transparent" BorderBrush="Transparent" FontSize="30" FontWeight="Bold" Click="bleft_Click">
+				<Image Source="/Image/arrL.png" />
+			</Button>
+			<Button x:Name="bright" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" FontSize="30" FontWeight="Bold" Click="bright_Click">
+				<Image Source="/Image/arrR.png" />
+			</Button>
+		</Grid>
+		<ListBox Grid.Row="1" x:Name="imglist" Background="Transparent" BorderBrush="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Visible" SelectionChanged="fullImageList_SelectionChanged">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel>
+					</WrapPanel>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.ItemContainerStyle>
+				<Style TargetType="ListBoxItem">
+					<Setter Property="BorderThickness" Value="1"/>
+					<Setter Property="BorderBrush" Value="LightGray"/>
+					<Setter Property="Margin" Value="8"/>
+				</Style>
+			</ListBox.ItemContainerStyle>
+		</ListBox>
 	</Grid>
+	
 </Window>

@@ -17,6 +17,8 @@
     <None Remove="Icon\ChatSearch.png" />
     <None Remove="Icon\ChatSend.png" />
     <None Remove="Image\add.png" />
+    <None Remove="Image\arrL.png" />
+    <None Remove="Image\arrR.png" />
     <None Remove="Image\Bill.png" />
     <None Remove="Image\Board.png" />
     <None Remove="Image\chat.png" />
@@ -24,6 +26,7 @@
     <None Remove="Image\mainIcon.png" />
     <None Remove="Image\mainIConcolor.ico" />
     <None Remove="Image\mainIConcolor.png" />
+    <None Remove="ImgList.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +50,8 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\add.png" />
+    <Resource Include="Image\arrL.png" />
+    <Resource Include="Image\arrR.png" />
     <Resource Include="Image\Bill.png" />
     <Resource Include="Image\Board.png" />
     <Resource Include="Image\chat.png" />
@@ -58,11 +63,7 @@
     <Resource Include="Image\mainIConcolor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resource\" />
-    <Folder Include="Sound\" />
+    <Resource Include="ImgList.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -121,12 +121,12 @@
 					<Border Background="White" Margin="0,10,5,0" CornerRadius="10">
 						<Grid>
 							<TextBox x:Name="tbpay" Background="Transparent" BorderBrush="Transparent" FontFamily="{StaticResource Default}" FontSize="30"/>
-							<TextBlock IsHitTestVisible="False" Text="관리비" FontSize="30" Margin="15,0,0,0" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+							<TextBlock IsHitTestVisible="False" Text="관리비" FontSize="30" Margin="5,0,0,0" FontFamily="{StaticResource Default}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 								<TextBlock.Style>
 									<Style TargetType="{x:Type TextBlock}">
 										<Setter Property="Visibility" Value="Collapsed"/>
 										<Style.Triggers>
-											<DataTrigger Binding="{Binding Text, ElementName=textboxemail}" Value="">
+											<DataTrigger Binding="{Binding Text, ElementName=tbpay}" Value="">
 												<Setter Property="Visibility" Value="Visible"/>
 											</DataTrigger>
 										</Style.Triggers>
