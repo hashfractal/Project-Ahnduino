@@ -22,17 +22,19 @@
 
 				<Grid Grid.Row="0">
 					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="100"/>
 						<ColumnDefinition/>
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }">
+					<ComboBox Margin="10,10,0,0"/>
+					<TextBox x:Name="textboxemail" Grid.Column="1" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					<TextBlock IsHitTestVisible="False" Text="건물 주소" FontSize="30" Margin="15,8,0,0" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+					<TextBlock Grid.Column="1" IsHitTestVisible="False" Text="검색" FontSize="30" Margin="15,8,0,0" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 						<TextBlock.Style>
 							<Style TargetType="{x:Type TextBlock}">
 								<Setter Property="Visibility" Value="Collapsed"/>
@@ -45,7 +47,7 @@
 						</TextBlock.Style>
 					</TextBlock>
 
-					<Button x:Name="bsearchbuild" Grid.Column="1" BorderThickness="0" Background="White" Margin="0,8,10,0" Click="bsearchbuild_Click">
+					<Button x:Name="bsearchbuild" Grid.Column="2" BorderThickness="0" Background="White" Margin="0,8,10,0" Click="bsearchbuild_Click">
 						<Button.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="0,10,10,0"/>
