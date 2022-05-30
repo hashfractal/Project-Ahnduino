@@ -27,24 +27,10 @@ namespace Ahnduino.Wins
 
 		private void bsearchbuild_Click(object sender, RoutedEventArgs e)
 		{
-			LVUserlist.Items.Clear();
-			foreach(string i in Fbad.AddressToEmailList(textboxemail.Text))
-			{
-				LVUserlist.Items.Add(i);
-			}
-			textboxID.Text = Fbad.AddressToSerialNo(textboxemail.Text);
-			tbpay.Text = Fbad.GetPayFromAddress(textboxemail.Text!).ToString();
 		}
 
 		private void bbuildid_Click(object sender, RoutedEventArgs e)
 		{
-			LVUserlist.Items.Clear();
-			textboxemail.Text = Fbad.SerialNoToAddress(textboxID.Text);
-			foreach (string i in Fbad.AddressToEmailList(textboxemail.Text!))
-			{
-				LVUserlist.Items.Add(i);
-			}
-			tbpay.Text = Fbad.GetPayFromAddress(textboxemail.Text!).ToString();
 		}
 	}
 }

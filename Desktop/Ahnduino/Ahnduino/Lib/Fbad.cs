@@ -106,6 +106,8 @@ namespace Ahnduino.Lib
 			return res;
 		}
 
+		
+
 		public static int? GetPayFromAddress(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
@@ -921,6 +923,11 @@ namespace Ahnduino.Lib
 			Month = Month.AddMonths(-2);
 			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month == 0 ? 12 : Month.Month) + "월");
 			dRef.SetAsync(newbill, SetOptions.MergeAll);
+		}
+
+		public static void UpdateBIll()
+		{
+			CollectionReference cRef = DB!.Collection("Bill");
 		}
 		#endregion
 
