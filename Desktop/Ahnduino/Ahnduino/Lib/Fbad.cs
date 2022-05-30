@@ -52,8 +52,9 @@ namespace Ahnduino.Lib
 			Dictionary<string, object> dic = dsnap.ToDictionary();
 
 			dic.TryGetValue("주소", out object? temp);
+			dic.TryGetValue("건물명", out object? temp2);
 
-			return temp!.ToString()!;
+			return temp!.ToString()! + " " + temp2!.ToString();
 		}
 
 		public static Image GetImageFromUri(string uri)
@@ -347,6 +348,53 @@ namespace Ahnduino.Lib
 				{
 					Request temp = new Request();
 					requestlist.Clear();
+
+					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+					{
+						DocumentReference dRef = documentSnapshot.Reference;
+						IAsyncEnumerable<CollectionReference> clist = dRef.Collection("Request").Document("Request").ListCollectionsAsync();
+						IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = clist.GetAsyncEnumerator(default);
+
+						while (subcollectionsEnumerator.MoveNextAsync().Result)
+						{
+							CollectionReference i = subcollectionsEnumerator.Current;
+							if (i.Id.Length == 14)
+							{
+								QuerySnapshot qsnp = i.GetSnapshotAsync().Result;
+								foreach (DocumentSnapshot ds in qsnp.Documents)
+								{
+									temp = ds.ConvertTo<Request>();
+									temp.Images = new List<string>();
+									Dictionary<string, object> dict = ds.ToDictionary();
+									int n = 0;
+
+									while (dict.TryGetValue("image" + n, out object? temp2))
+									{
+										temp.Images.Add((string)temp2);
+										n++;
+									}
+									DispatcherService.Invoke(() =>
+									{
+										requestlist.Add(temp);
+									});
+								}
+							}
+						}
+					}
+				});
+			});
+		}
+
+		public static void GetRequestListRef(ObservableCollection<Request> requestlist)
+		{
+			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
+
+			FirestoreChangeListener listener = query.Listen(snapshot =>
+			{
+				DispatcherService.Invoke(() =>
+				{
+					Request temp = new Request();
+					requestlist.Clear();
 					Thread trd = new Thread(() =>
 					{
 						foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
@@ -389,112 +437,6 @@ namespace Ahnduino.Lib
 			});
 		}
 
-		public static void GetRequestUserList(ObservableCollection<string> res)
-		{
-			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
-
-			FirestoreChangeListener listener = query.Listen(snapshot =>
-			{
-				DispatcherService.Invoke(() =>
-				{
-					res.Clear();
-					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-					{
-						res.Add(documentSnapshot.Id);
-					}
-				});
-			});
-		}
-
-		public static void GetDateList(string? email, ObservableCollection<string> res)
-		{
-			if (email == null)
-			{
-				email = "null";
-			}
-			DocumentReference docRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
-			FirestoreChangeListener listener = docRef.Listen(snapshot =>
-			{
-				DispatcherService.Invoke(() =>
-				{
-					res.Clear();
-					IAsyncEnumerable<CollectionReference> subcollections = snapshot.Reference.ListCollectionsAsync();
-					IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
-					while (subcollectionsEnumerator.MoveNextAsync().Result)
-					{
-						CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
-						if (subcollectionRef.Id.Length == 14)
-						{
-							res.Add(subcollectionRef.Id[..10]);
-						}
-					}
-				});
-			});
-
-			if(email == "null")
-			{
-				listener.StopAsync();
-			}
-		}
-
-		public static void GetRequestList(string? email, string? date, ObservableCollection<string> res)
-		{
-			if (date == null)
-			{
-				date = "null";
-			}
-			if(email == null)
-			{
-				email = "null";
-			}
-
-			Query query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전");
-			FirestoreChangeListener listener = query.Listen(snapshot =>
-			{
-				DispatcherService.Invoke(() =>
-				{
-					res.Clear();
-					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-					{
-						res.Add(documentSnapshot.Id);
-					}
-				});
-			});
-
-			if (date == "null")
-			{
-				listener.StopAsync();
-			}
-		}
-
-		public static Request? GetRequest (string? email, string? date, string? docid)
-		{
-			Query query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
-			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
-			DocumentSnapshot dSnap = qSnap.Documents[0];
-
-			if(dSnap.Exists)
-			{
-				Dictionary<string, object> dict = dSnap.ToDictionary();
-				List<string> images = new();
-
-				object temp;
-
-				int i = 0;
-				while (dSnap.TryGetValue("image" + i, out temp))
-				{
-					images.Add((string)temp);
-					i++;
-				}
-
-				Request res = dSnap.ConvertTo<Request>();
-				res.Images = images;
-
-				return res;
-			}
-			return null;
-		}
-
 		public static void UpdateRequest (string? email, string? date, string? docid, Request request, string UID, DateTime reservedtime)
 		{
 			Query query;
@@ -527,18 +469,43 @@ namespace Ahnduino.Lib
 
 			dRef.SetAsync(dic, SetOptions.MergeAll);
 
-			//현장직 대기
+			//현장직 문서 추가
+			dRef = DB!.Collection("User").Document(request.UID);
+			dSnap = dRef.GetSnapshotAsync().Result;
+
+			dSnap.TryGetValue("주소", out string address);
+			dSnap.TryGetValue("건물명", out string buildname);
+			Dictionary<string, object> worker = new Dictionary<string, object>
+			{
+				{ "건물명", address},
+				{ "주소",  buildname},
+				{ "reservTime", Timestamp.FromDateTime(reservedtime.ToUniversalTime())}
+			};
+
 			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정").Document(request.DocID);
 			dRef.SetAsync(dic, SetOptions.MergeAll).Wait();
+			dRef.SetAsync(worker, SetOptions.MergeAll).Wait();
 
 			//현장직 예약 카운트
-			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 ");
+			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정");
 			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul");
+			int test = query.GetSnapshotAsync().Result.Count;
 			Dictionary<string, object> update = new Dictionary<string, object>
 			{
-				{ string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정 " + request.Title, query.GetSnapshotAsync().Result.Count != 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
+				{ string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정", query.GetSnapshotAsync().Result.Count != 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
 			};
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
+
+			//All 카운트
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul");
+			dSnap = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").GetSnapshotAsync().Result;
+			dSnap.TryGetValue<int>("All", out int all);
+
+			Dictionary<string, object> updateall = new Dictionary<string, object>
+			{
+				{ "All", ++all > 0 ? all : FieldValue.Delete }
+			};
+			dRef.SetAsync(updateall, SetOptions.MergeAll).Wait();
 
 			//예약전 삭제
 			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
@@ -616,6 +583,17 @@ namespace Ahnduino.Lib
 				{ date! + "예약", query.GetSnapshotAsync().Result.Count > 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
 			};
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
+
+			//All 카운트
+			dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+			dSnap = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").GetSnapshotAsync().Result;
+			dSnap.TryGetValue<int>("All", out int all);
+
+			Dictionary<string, object> updateall = new Dictionary<string, object>
+			{
+				{ "All", --all > 0 ? all : FieldValue.Delete }
+			};
+			dRef.SetAsync(updateall, SetOptions.MergeAll).Wait();
 
 			//isdone처리
 			bool isdone = true;

@@ -152,5 +152,20 @@ namespace Ahnduino.Wins
 			ImageExtendList imageExtendList = new ImageExtendList(temp);
 			imageExtendList.Show();
 		}
+
+		private void ImageList_GotMouseCapture(object sender, MouseEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
+		}
 	}
 }

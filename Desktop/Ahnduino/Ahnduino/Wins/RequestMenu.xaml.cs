@@ -56,9 +56,6 @@ namespace Ahnduino.Wins
 			this.uid = uid;
 			InitializeComponent();
 
-			this.FontFamily = new FontFamily("Default");
-
-
 			RequestUserListView.ItemsSource = userlist;
 
 			DateTime dateTime = DateTime.Now;
@@ -108,25 +105,6 @@ namespace Ahnduino.Wins
 			MessageBox.Show("예약완료되었습니다");
 		}
 
-		private void tbworker_GotFocus(object sender, RoutedEventArgs e)
-		{
-			if (tbworker.Text == "현장직 Email")
-				tbworker.Text = "";
-		}
-
-		private void ImageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			/*
-			if(ImageList.SelectedIndex != -1)
-			{
-				Image img = (Image)ImageList.SelectedItem;
-				ImageViewer imageViewer = new ImageViewer(img);
-				imageViewer.Show();
-				ImageList.SelectedIndex = -1;
-			}
-			*/
-		}
-
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);
@@ -162,7 +140,17 @@ namespace Ahnduino.Wins
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
 		}
 
 		private void Build_Click(object sender, RoutedEventArgs e)
@@ -199,6 +187,21 @@ namespace Ahnduino.Wins
 				TextBoxDay.ItemsSource = mlist30;
 			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 31)
 				TextBoxDay.ItemsSource = mlist31;
+		}
+
+		private void ImageList_GotMouseCapture(object sender, MouseEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
 		}
 	}
 }

@@ -100,25 +100,13 @@
 			</Border>
 
 			<Border Grid.Row="2" BorderBrush="#abadb3" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0" Background="White">
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition/>
-						<ColumnDefinition Width="100"/>
-					</Grid.ColumnDefinitions>
-
-					<ListBox x:Name="ImageList" Background="Transparent" BorderBrush="Transparent" SelectionChanged="imglist_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-						<ListBox.ItemsPanel>
-							<ItemsPanelTemplate>
-								<WrapPanel/>
-							</ItemsPanelTemplate>
-						</ListBox.ItemsPanel>
-					</ListBox>
-					<Border Grid.Column="2" Margin="0" Background="#008F5E" CornerRadius="0,10,10,0">
-						<Button x:Name="bimgex" Background="Transparent" BorderBrush="Transparent" Click="bimgex_Click">
-							<Image x:Name="___ImgList_png" Margin="10" Source="/ImgList.png" Stretch="Fill"/>
-						</Button>
-					</Border>
-				</Grid>
+				<ListBox x:Name="ImageList" Background="Transparent" BorderBrush="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" GotMouseCapture="ImageList_GotMouseCapture">
+					<ListBox.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel/>
+						</ItemsPanelTemplate>
+					</ListBox.ItemsPanel>
+				</ListBox>
 			</Border>
 			
 			<Border Grid.Row="3" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0">
@@ -233,7 +221,7 @@
 							<TextBox Width="300" Margin="10,0,0,0"
 						 BorderBrush="Black"
 						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="tbworker" TextAlignment="Left" GotFocus="tbworker_GotFocus" FontFamily="{StaticResource Default }">
+						 x:Name="tbworker" TextAlignment="Left" FontFamily="{StaticResource Default }">
 								<TextBox.Resources>
 									<Style TargetType="Border">
 										<Setter Property="CornerRadius" Value="7"/>

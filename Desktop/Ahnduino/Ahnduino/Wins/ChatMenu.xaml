@@ -11,7 +11,7 @@
 		<Style x:Key="ctype" TargetType="TextBlock">
 			<Style.Triggers>
 				<DataTrigger Binding="{Binding Path=type}" Value="false">
-					<Setter Property="Text" Value="관리자"/>
+					<Setter Property="Text" Value=""/>
 				</DataTrigger>
 				<DataTrigger Binding="{Binding Path=type}" Value="true">
 					<Setter Property="Text" Value="사용자"/>
@@ -36,10 +36,31 @@
 			<Style.Triggers>
 				<DataTrigger Binding="{Binding Path=type}" Value="false">
 					<Setter Property="Background" Value="#008F5E"/>
-					<Setter Property="HorizontalAlignment" Value="Right"/>
+					<Setter Property="Grid.Column" Value="1"/>
 				</DataTrigger>
 				<DataTrigger Binding="{Binding Path=type}" Value="true">
 					<Setter Property="Background" Value="LightGray"/>
+					<Setter Property="Grid.Column" Value="0"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="Chattime" TargetType="TextBlock">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=type}" Value="false">
+					<Setter Property="Grid.Column" Value="0"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Path=type}" Value="true">
+					<Setter Property="Grid.Column" Value="1"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="Chatitem" TargetType="Grid">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=type}" Value="false">
+					<Setter Property="HorizontalAlignment" Value="Right"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Path=type}" Value="true">
+					<Setter Property="HorizontalAlignment" Value="Left"/>
 				</DataTrigger>
 			</Style.Triggers>
 		</Style>
@@ -158,21 +179,31 @@
 
 			<ScrollViewer x:Name="SV" Grid.Row="0" ScrollChanged="ScrollViewer_ScrollChanged">
 				<ListBox x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0" IsSynchronizedWithCurrentItem="True" FontSize="30" FontFamily="{StaticResource Default }" HorizontalAlignment="Stretch">
+					<ListBox.ItemContainerStyle>
+						<Style TargetType="ListBoxItem">
+							<Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+						</Style>
+					</ListBox.ItemContainerStyle>
 					<ListBox.ItemTemplate>
 						<DataTemplate>
-							<StackPanel Orientation="Vertical" Margin="0,10,0,0">
-								<TextBlock Style="{StaticResource ctype}"/>
-								<StackPanel Orientation="Horizontal">
-									<Border CornerRadius="10" Style="{StaticResource Chatbubbleborder}" HorizontalAlignment="Left">
-										<StackPanel Orientation="Vertical">
-											<TextBlock Text="{Binding Path=text}" Margin="5" Style="{StaticResource Chatbubble}"/>
-											<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Margin="0,0,0,5" Background="Transparent" ItemsSource="{Binding trueimage}"/>
-										</StackPanel>
-									</Border>
-									<TextBlock Text="{Binding}" FontSize="18" Foreground="Gray" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
+							<Grid Style="{StaticResource Chatitem}">
+								<StackPanel Orientation="Vertical" Margin="0,10,0,0">
+									<TextBlock Style="{StaticResource ctype}"/>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+										<Border CornerRadius="10" Style="{StaticResource Chatbubbleborder}" HorizontalAlignment="Left">
+											<StackPanel Orientation="Vertical">
+												<TextBlock Text="{Binding Path=text}" Margin="5" Style="{StaticResource Chatbubble}"/>
+												<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Margin="0,0,0,5" Background="Transparent" ItemsSource="{Binding trueimage}"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="{Binding}" FontSize="18" Foreground="Gray" VerticalAlignment="Bottom" Margin="10,0,10,0" Style="{StaticResource Chattime}"/>
+									</Grid>
 								</StackPanel>
-							</StackPanel>
-							
+							</Grid>
 						</DataTemplate>
 					</ListBox.ItemTemplate>
 					<ListBox.Resources>
@@ -183,7 +214,6 @@
 				</ListBox>
 			</ScrollViewer>
 			
-
 			<Border Grid.Row="1" Background="White" Margin="0,0,8,8" CornerRadius="0,0,10,10"
 					BorderThickness="0" BorderBrush="#ABADB3">
 				<Grid>
