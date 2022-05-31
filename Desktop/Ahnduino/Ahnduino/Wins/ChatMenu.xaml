@@ -14,7 +14,7 @@
 					<Setter Property="Text" Value=""/>
 				</DataTrigger>
 				<DataTrigger Binding="{Binding Path=type}" Value="true">
-					<Setter Property="Text" Value="사용자"/>
+					<Setter Property="Text" Value="{Binding Path=address}"/>
 				</DataTrigger>
 			</Style.Triggers>
 		</Style>
@@ -131,7 +131,7 @@
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					<TextBlock IsHitTestVisible="False" Text="이메일로 검색" FontSize="30" Margin="8,8,0,8" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+					<TextBlock IsHitTestVisible="False" Text="주소로 검색" FontSize="30" Margin="8,8,0,8" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 						<TextBlock.Style>
 							<Style TargetType="{x:Type TextBlock}">
 								<Setter Property="Visibility" Value="Collapsed"/>

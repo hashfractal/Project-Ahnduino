@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Google.Cloud.Firestore;
 using System.Windows.Controls;
+using Ahnduino.Lib;
 
 namespace Ahnduino.Lib.Object
 {
@@ -22,6 +23,8 @@ namespace Ahnduino.Lib.Object
 		public List<string>? imagelist { get; set; }
 
 		public List<Image>? trueimage { get; set; }
+
+		public string? address { get; set; }
 
 		public override string ToString()
 		{

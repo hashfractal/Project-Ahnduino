@@ -32,14 +32,15 @@ namespace Ahnduino.Lib
 			DB = FirestoreDb.Create("ahnduino");
 		}
 
-		public static string getEmail(string address)
+		public static string getEmail(string fulladdress)
 		{
-			CollectionReference colref = DB!.Collection("User");
-			Query query = colref.WhereEqualTo("주소", address);
-			QuerySnapshot qusnap = query.GetSnapshotAsync().Result;
-			DocumentSnapshot docsnap = qusnap[0];
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			dSnap.TryGetValue("인증번호", out string temp);
+			Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 
-			return docsnap.Id;
+			return qSnap.Documents[0].Id;
 		}
 
 		public static string GetAddress(string email)
@@ -54,7 +55,7 @@ namespace Ahnduino.Lib
 			dic.TryGetValue("주소", out object? temp);
 			dic.TryGetValue("건물명", out object? temp2);
 
-			return temp!.ToString()! + " " + temp2!.ToString();
+			return temp!.ToString()! + "(" + temp2!.ToString() + ")";
 		}
 
 		public static Image GetImageFromUri(string uri)
@@ -91,22 +92,56 @@ namespace Ahnduino.Lib
 			return qSnap.Documents[0].Id;
 		}
 
-		public static List<string> AddressToEmailList(string fulladdress)
+		public static string AddressToEmail(string fulladdress)
 		{
-			List<string> res = new();
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
 			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
 			dSnap.TryGetValue("인증번호", out object temp);
 
 			Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
-			foreach (DocumentSnapshot i in qSnap.Documents)
-				res.Add(i.Id);
+			dSnap = qSnap.Documents[0];
 
-			return res;
+			return dSnap.Id;
 		}
 
-		
+		public static List<Build> GetBuildListFormAddress(string address)
+		{
+			List<Build> builds = new List<Build>();
+			Query query = DB!.Collection("Building").WhereEqualTo("주소", address);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot i in qSnap.Documents)
+			{
+				builds.Add(i.ConvertTo<Build>());
+			}
+
+			return builds;
+		}
+
+		public static Build GetBuildFormFullAddress(string fulladdress)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+
+			return dSnap.ConvertTo<Build>();
+		}
+
+		public static Build GetBuildFormID(string ID)
+		{
+			try
+			{
+				Query query = DB!.Collection("Building").WhereEqualTo("인증번호", ID);
+				QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+
+				return qSnap.Documents[0].ConvertTo<Build>();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+			
+		}
 
 		public static int? GetPayFromAddress(string fulladdress)
 		{
@@ -118,6 +153,46 @@ namespace Ahnduino.Lib
 				return Convert.ToInt32(temp);
 			else
 				return null;
+		}
+
+		public static void AddBuild(string address, string buildname, string buildid, int pay)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(address + "(" + buildname + ")");
+			Dictionary<string, object> dict = new Dictionary<string, object>
+			{
+				{ "주소", address },
+				{ "건물명", buildname },
+				{ "인증번호", buildid },
+				{ "관리비", pay },
+				{ "Used", false },
+				{ "미납", false },
+				{ "수리비", false },
+
+			};
+
+			dRef.SetAsync(dict, SetOptions.MergeAll);
+		}
+
+		public static void DeleteBuild(string fulladdress)
+		{
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
+			dRef.DeleteAsync();
+		}
+
+		public static string validationBuild(string address, string buildname, string buildid)
+		{
+			string res = "";
+			DocumentReference dRef = DB!.Collection("Building").Document(address + "(" + buildname + ")");
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			Query query = DB!.Collection("Building").WhereEqualTo("인증번호", buildid);
+			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
+
+			if (dSnap.Exists)
+				res += "이미 등록된 주소입니다\r\n";
+			if (qSanp.Count > 0)
+				res += "이미 등록된 건물 인증번호 입니다\r\n";
+
+			return res;
 		}
 		#endregion
 
@@ -654,6 +729,8 @@ namespace Ahnduino.Lib
 					res.trueimage!.Add(img);
 				}
 
+				res.address = GetAddress(email);
+
 				chatlist.Insert(0, res);
 			}
 		}
@@ -735,6 +812,8 @@ namespace Ahnduino.Lib
 						chat.trueimage!.Add(img);
 					}
 
+					chat.address = GetAddress(email);
+
 					chatlist.Add(chat);
 					scrollViewer.ScrollToBottom();
 				});
@@ -757,7 +836,7 @@ namespace Ahnduino.Lib
 					chatuserlist.Clear();
 					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
 					{
-						chatuserlist.Add(documentSnapshot.Id);
+						chatuserlist.Add(GetAddress(documentSnapshot.Id));
 					}
 				});
 			});
