@@ -32,7 +32,7 @@ namespace Ahnduino.Lib.Object
 			DateTime dt = ts.ToDateTime();
 			dt = dt.AddHours(9);
 
-			return (string.Format("{0:yyyy년 M월 d일 HH:mm}", dt));
+			return (string.Format("{0:HH:mm}", dt));
 		}
 	}
 }

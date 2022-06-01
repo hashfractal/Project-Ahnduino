@@ -415,18 +415,16 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Request
-		public static void GetRequestList(ObservableCollection<Request> requestlist)
+		static void GetTotalRequestList(ObservableCollection<Request> requestlist, QuerySnapshot request, QuerySnapshot roomout)
 		{
-			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
-
-			FirestoreChangeListener listener = query.Listen(snapshot =>
+			Task.Factory.StartNew(() =>
 			{
 				DispatcherService.Invoke(() =>
 				{
 					Request temp = new Request();
 					requestlist.Clear();
 
-					foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
+					foreach (DocumentSnapshot documentSnapshot in request.Documents)
 					{
 						DocumentReference dRef = documentSnapshot.Reference;
 						IAsyncEnumerable<CollectionReference> clist = dRef.Collection("Request").Document("Request").ListCollectionsAsync();
@@ -458,7 +456,44 @@ namespace Ahnduino.Lib
 							}
 						}
 					}
+
+					foreach (DocumentSnapshot i in roomout.Documents)
+					{
+						i.TryGetValue("퇴실신청일", out Timestamp timestamp);
+						DateTime dt = timestamp.ToDateTime();
+						dt = dt.AddHours(+9);
+						Request request = new Request();
+						request.Date = string.Format("{0:yyyy-MM-dd}", dt);
+						request.DocID = i.Id;
+						request.Text = "퇴실 신청";
+						request.Time = timestamp;
+						request.Title = "퇴실 신청";
+						request.UID = i.Id;
+						request.Reserve = "";
+						request.solved = false;
+						request.userName = i.Id;
+						request.hopeTime0 = string.Format("{0:yy}/{1:MM}/{2:dd}{3:tt hh 시 mm 분}", dt, dt, dt, dt);
+
+						requestlist.Add(request);
+					}
 				});
+			});
+		}
+		public static void GetRequestList(ObservableCollection<Request> requestlist)
+		{
+			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
+			Query query2 = DB!.Collection("RoomOut");
+
+			FirestoreChangeListener listener = query.Listen(snapshot =>
+			{
+				QuerySnapshot qSnap = query2.GetSnapshotAsync().Result;
+				GetTotalRequestList(requestlist, snapshot, qSnap);
+			});
+
+			FirestoreChangeListener listener2 = query2.Listen(snapshot =>
+			{
+				QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+				GetTotalRequestList(requestlist, qSnap, snapshot);
 			});
 		}
 
@@ -520,6 +555,13 @@ namespace Ahnduino.Lib
 			QuerySnapshot qSnap;
 			DocumentSnapshot dSnap;
 
+			//퇴실 신청일 경우 퇴실신청 삭제
+			if(request.Text == "퇴실 신청" && request.Title =="퇴실 신청")
+			{
+				DocumentReference dr = DB!.Collection("RoomOut").Document(email);
+				dr.DeleteAsync();
+			}
+
 			//예약 업데이트
 			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약").Document(docid);
 			
@@ -538,11 +580,15 @@ namespace Ahnduino.Lib
 			};
 
 			int n = 0;
-			foreach(string i in request.Images!)
+			if (request.Images != null)
 			{
-				dic.Add("image" + n, i);
-				n++;
+				foreach (string i in request.Images)
+				{
+					dic.Add("image" + n, i);
+					n++;
+				}
 			}
+			
 
 			dRef.SetAsync(dic, SetOptions.MergeAll);
 
@@ -559,17 +605,17 @@ namespace Ahnduino.Lib
 				{ "reservTime", Timestamp.FromDateTime(reservedtime.ToUniversalTime())}
 			};
 
-			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정").Document(request.DocID);
+			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 스케쥴").Document(request.DocID);
 			dRef.SetAsync(dic, SetOptions.MergeAll).Wait();
 			dRef.SetAsync(worker, SetOptions.MergeAll).Wait();
 
 			//현장직 예약 카운트
-			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정");
+			query = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul").Collection(string.Format("{0:yyyy-MM-dd}", reservedtime) + " 스케쥴");
 			dRef = DB!.Collection("MangerScagul").Document(UID).Collection("scaul").Document("scaul");
 			int test = query.GetSnapshotAsync().Result.Count;
 			Dictionary<string, object> update = new Dictionary<string, object>
 			{
-				{ string.Format("{0:yyyy-MM-dd}", reservedtime) + " 수리예정", query.GetSnapshotAsync().Result.Count != 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
+				{ string.Format("{0:yyyy-MM-dd}", reservedtime) + " 스케쥴", query.GetSnapshotAsync().Result.Count != 0 ? query.GetSnapshotAsync().Result.Count : FieldValue.Delete }
 			};
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 
@@ -587,10 +633,12 @@ namespace Ahnduino.Lib
 			//예약전 삭제
 			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전").WhereEqualTo("DocID", docid);
 			qSnap = query.GetSnapshotAsync().Result;
-			dSnap = qSnap.Documents[0];
-			dRef = dSnap.Reference;
-			dRef.DeleteAsync().Wait();
-
+			if(qSnap.Count > 0)
+			{
+				dSnap = qSnap.Documents[0];
+				dRef = dSnap.Reference;
+				dRef.DeleteAsync().Wait();
+			}
 
 			//예약전 카운트
 			query = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request").Collection(date + "예약 전");
@@ -693,6 +741,49 @@ namespace Ahnduino.Lib
 			};
 
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
+		}
+
+		public static void SetWorkerComboBox(ComboBox Region, ComboBox Gu, ComboBox Dong)
+		{
+			List<string> regionlist = new List<string>();
+			List<string> gulist = new List<string>();
+			List<string> donglist = new List<string>();
+
+			DocumentReference dRef = DB!.Collection("WorkerAdress").Document("address");
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+
+			Dictionary<string, object> dict = dSnap.ToDictionary();
+			foreach(KeyValuePair<string, object> i in dict)
+			{
+				string[] strs = i.Key.Split(' ');
+				
+				if(regionlist.Find(x => x == strs[0]) == null)
+					regionlist.Add(strs[0]);
+
+				if (gulist.Find(x => x == strs[1]) == null)
+					gulist.Add(strs[1]);
+
+				if (donglist.Find(x => x == strs[2]) == null)
+					donglist.Add(strs[2]);
+			}
+
+			Region.ItemsSource = regionlist;
+			Gu.ItemsSource = gulist;
+			Dong.ItemsSource = donglist;
+		}
+
+		public static List<string> SetWorker(string region, string gu, string dong)
+		{
+			List<string> res = new List<string>();
+			Query query = DB!.Collection("Worker").WhereEqualTo("근무지", region + " " + gu + " " + dong);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+
+			foreach(DocumentSnapshot i in qSnap.Documents)
+			{
+				res.Add(i.Id);
+			}
+
+			return res;
 		}
 		#endregion
 
@@ -1081,10 +1172,9 @@ namespace Ahnduino.Lib
 					}
 					dRef.SetAsync(dict, SetOptions.MergeAll).Wait();
 				}
-				
-				
 				return dRef.Id;
 			}
+
 			else
 			{
 				DocumentReference dRef = DB!.Collection("board").Document(board.DocID);

@@ -35,9 +35,8 @@ namespace Ahnduino.Wins
 				tbunpaid.Text = (bool)build.미납! ? "미납" : "완납";
 				tbrepair.Text = (bool)build.수리비! ? "있음" : "없음";
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
-				MessageBox.Show(ex.ToString());
 				throw;
 			}
 			
@@ -52,7 +51,7 @@ namespace Ahnduino.Wins
 		{
 			try
 			{
-				if (cbtype.Text.EndsWith(")"))
+				if (textboxemail.Text.EndsWith(")"))
 				{
 					build = Fbad.GetBuildFormFullAddress(textboxemail.Text);
 					SetBuild();

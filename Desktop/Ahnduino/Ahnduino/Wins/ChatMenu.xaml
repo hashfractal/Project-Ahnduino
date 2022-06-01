@@ -48,6 +48,7 @@
 			<Style.Triggers>
 				<DataTrigger Binding="{Binding Path=type}" Value="false">
 					<Setter Property="Grid.Column" Value="0"/>
+					<Setter Property="HorizontalAlignment" Value="Left"/>
 				</DataTrigger>
 				<DataTrigger Binding="{Binding Path=type}" Value="true">
 					<Setter Property="Grid.Column" Value="1"/>
@@ -214,7 +215,7 @@
 				</ListBox>
 			</ScrollViewer>
 			
-			<Border Grid.Row="1" Background="White" Margin="0,0,8,8" CornerRadius="0,0,10,10"
+			<Border Grid.Row="1" Background="White" Margin="0,0,25,8" CornerRadius="0,0,10,10"
 					BorderThickness="0" BorderBrush="#ABADB3">
 				<Grid>
 					<Grid.ColumnDefinitions>
@@ -238,6 +239,18 @@
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
+					<TextBlock Grid.Column="1" IsHitTestVisible="False" Text="메시지를 입력하세요..." FontSize="30" Margin="8,8,0,8" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+						<TextBlock.Style>
+							<Style TargetType="{x:Type TextBlock}">
+								<Setter Property="Visibility" Value="Collapsed"/>
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding Text, ElementName=chattextbox}" Value="">
+										<Setter Property="Visibility" Value="Visible"/>
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</TextBlock.Style>
+					</TextBlock>
 					<Button x:Name="sendbutton" Grid.Column="2" BorderBrush="Transparent" Background="Transparent" Padding="10" Click="sendbutton_Click">
 						<Button.Resources>
 							<Style TargetType="Border">

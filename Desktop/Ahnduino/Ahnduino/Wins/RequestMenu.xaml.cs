@@ -29,6 +29,7 @@ namespace Ahnduino.Wins
 		Request? request = null;
 
 		ObservableCollection<Request> userlist = new ObservableCollection<Request>();
+		ObservableCollection<Request> roomoutlist = new ObservableCollection<Request>();
 		//ObservableCollection<string> datelist = new ObservableCollection<string>();
 		//ObservableCollection<string> requestlist = new ObservableCollection<string>();
 
@@ -63,8 +64,10 @@ namespace Ahnduino.Wins
 			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime));
 			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime.AddYears(1)));
 
-			Thread thread = new Thread(() =>  Fbad.GetRequestList(userlist));
-			thread.Start();
+			Fbad.GetRequestList(userlist);
+
+
+			Fbad.SetWorkerComboBox(cbregion, cbgu, cbdong);
 
 			//RequestUserListView.ItemsSource = userlist;
 			//RequestDateListView.ItemsSource = datelist;
@@ -76,20 +79,27 @@ namespace Ahnduino.Wins
 		{
 			ImageList.Items.Clear();
 			request = RequestUserListView.SelectedItem as Request;
-			labeltitle.Text = request!.Title;
-			labelinfo.Text = string.Format("희망시각 1: {0}", request.hopeTime0);
-			labelinfo1.Text = string.Format("희망시각 2: {0}", request.hopeTime1);
-			labelinfo2.Text = string.Format("희망시각 3: {0}", request.hopeTime2);
-			labeltext.Content = request.Text;
-
-			foreach (string i in request!.Images!)
+			if(request != null)
 			{
-				Image image = Fbad.GetImageFromUri(i);
-				image.Height = 150;
-				image.Width = 150;
+				labeltitle.Text = request!.Title;
+				labelinfo.Text = string.Format("희망시각 1: {0}", request.hopeTime0);
+				labelinfo1.Text = string.Format("희망시각 2: {0}", request.hopeTime1);
+				labelinfo2.Text = string.Format("희망시각 3: {0}", request.hopeTime2);
+				labeltext.Content = request.Text;
 
-				ImageList.Items.Add(image);
+				if (request!.Images != null)
+				{
+					foreach (string i in request!.Images!)
+					{
+						Image image = Fbad.GetImageFromUri(i);
+						image.Height = 150;
+						image.Width = 150;
+
+						ImageList.Items.Add(image);
+					}
+				}
 			}
+			
 		}
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
@@ -99,7 +109,7 @@ namespace Ahnduino.Wins
 				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
 				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
 				request.Isreserve = true;
-				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, tbworker.Text, dt);
+				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, cbworker.Text, dt);
 			}
 
 			MessageBox.Show("예약완료되었습니다");
@@ -202,6 +212,14 @@ namespace Ahnduino.Wins
 			}
 			ImageExtendList imageExtendList = new ImageExtendList(temp);
 			imageExtendList.Show();
+		}
+
+		private void cbdong_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if(cbregion.Text != "" && cbgu.Text != "")
+			{
+				cbworker.ItemsSource = Fbad.SetWorker(cbregion.Text, cbgu.Text, cbdong.SelectedItem.ToString()!);
+			}
 		}
 	}
 }

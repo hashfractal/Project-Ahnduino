@@ -56,7 +56,7 @@
 		</Grid>
 
 		<Grid Grid.Column="1" Background="LightGray" Margin="10">
-			<ListView x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }">
+			<ListView Grid.Row="0" x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }" >
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">
@@ -217,45 +217,27 @@
 						</StackPanel>
 					</Grid>
 					<StackPanel Grid.Row="1" Orientation="Horizontal">
-						<Grid>
-							<TextBox Width="300" Margin="10,0,0,0"
-						 BorderBrush="Black"
-						 FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Left"
-						 x:Name="tbworker" TextAlignment="Left" FontFamily="{StaticResource Default }">
-								<TextBox.Resources>
-									<Style TargetType="Border">
-										<Setter Property="CornerRadius" Value="7"/>
-									</Style>
-								</TextBox.Resources>
-							</TextBox>
-							<TextBlock IsHitTestVisible="False" Text="현장직 이메일" FontSize="30" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" Foreground="Gray">
-								<TextBlock.Style>
-									<Style TargetType="{x:Type TextBlock}">
-										<Setter Property="Visibility" Value="Collapsed"/>
-										<Style.Triggers>
-											<DataTrigger Binding="{Binding Text, ElementName=tbworker}" Value="">
-												<Setter Property="Visibility" Value="Visible"/>
-											</DataTrigger>
-										</Style.Triggers>
-									</Style>
-								</TextBlock.Style>
-							</TextBlock>
-						</Grid>
+						<StackPanel Orientation="Horizontal">
+							<ComboBox x:Name="cbregion" Width="120" Margin="10,5,5,5" FontFamily="{StaticResource Default }" FontSize="30"/>
+							<ComboBox x:Name="cbgu" Width="120" Margin="5" FontFamily="{StaticResource Default }" FontSize="30"/>
+							<ComboBox x:Name="cbdong" Width="120" Margin="5" SelectionChanged="cbdong_SelectionChanged" FontFamily="{StaticResource Default }" FontSize="30"/>
+							<ComboBox x:Name="cbworker" Width="280" Margin="5" FontFamily="{StaticResource Default }" FontSize="30"/>
+						</StackPanel>
 
-						<Button Grid.Row="1" x:Name="LoginBtn" Margin="10" Background="#008F5E" Foreground="White"
-						 FontSize="22" Content="예약" FontFamily="{StaticResource Default }" Click="LoginBtn_Click" HorizontalAlignment="Center" Width="140" VerticalAlignment="Center">
+						<Button Grid.Row="1" x:Name="LoginBtn" Margin="5" Background="#008F5E" Foreground="White"
+						 FontSize="22" Content="예약" FontFamily="{StaticResource Default }" Click="LoginBtn_Click" HorizontalAlignment="Center" Width="60" VerticalAlignment="Center">
 							<Button.Resources>
 								<Style TargetType="Border">
-									<Setter Property="CornerRadius" Value="10"/>
+									<Setter Property="CornerRadius" Value="8"/>
 								</Style>
 							</Button.Resources>
 						</Button>
 
-						<Button Grid.Row="1" x:Name="bcancle" Margin="10" Background="#008F5E" Foreground="White"
-						FontSize="22" Content="취소" FontFamily="{StaticResource Default }" HorizontalAlignment="Center" Width="140" VerticalAlignment="Center" Click="bcancle_Click">
+						<Button Grid.Row="1" x:Name="bcancle" Margin="0,5,5,5" Background="#008F5E" Foreground="White"
+						FontSize="22" Content="취소" FontFamily="{StaticResource Default }" HorizontalAlignment="Center" Width="60" VerticalAlignment="Center" Click="bcancle_Click">
 							<Button.Resources>
 								<Style TargetType="Border" >
-									<Setter Property="CornerRadius" Value="10"/>
+									<Setter Property="CornerRadius" Value="8"/>
 								</Style>	
 							</Button.Resources>
 						</Button>
