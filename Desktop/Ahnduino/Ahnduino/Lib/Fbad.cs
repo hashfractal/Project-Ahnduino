@@ -745,6 +745,7 @@ namespace Ahnduino.Lib
 
 		public static void SetWorkerComboBox(ComboBox Region, ComboBox Gu, ComboBox Dong)
 		{
+
 			List<string> regionlist = new List<string>();
 			List<string> gulist = new List<string>();
 			List<string> donglist = new List<string>();
@@ -753,18 +754,29 @@ namespace Ahnduino.Lib
 			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
 
 			Dictionary<string, object> dict = dSnap.ToDictionary();
-			foreach(KeyValuePair<string, object> i in dict)
+			foreach (KeyValuePair<string, object> i in dict)
 			{
 				string[] strs = i.Key.Split(' ');
+
 				
-				if(regionlist.Find(x => x == strs[0]) == null)
-					regionlist.Add(strs[0]);
+					if (strs.Count() > 0)
+					{
+						if (regionlist.Find(x => x == strs[0]) == null)
+							regionlist.Add(strs[0]);
+					}
+					
+					if (strs.Count() > 1)
+					{
+						if (gulist.Find(x => x == strs[1]) == null)
+							gulist.Add(strs[1]);
+					}
 
-				if (gulist.Find(x => x == strs[1]) == null)
-					gulist.Add(strs[1]);
-
-				if (donglist.Find(x => x == strs[2]) == null)
-					donglist.Add(strs[2]);
+				
+					if (strs.Count() > 2)
+					{
+						if (donglist.Find(x => x == strs[2]) == null)
+							donglist.Add(strs[2]);
+					}
 			}
 
 			Region.ItemsSource = regionlist;
