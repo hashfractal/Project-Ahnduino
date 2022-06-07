@@ -39,6 +39,25 @@ namespace Ahnduino.Lib.Object
 		[FirestoreProperty]
 		public string? userName { get; set; }
 		[FirestoreProperty]
+		public string? fixholdtext { get; set; }
+		[FirestoreProperty]
+		public Timestamp? fixholdtime { get; set; }
+		[FirestoreProperty]
+		public string? 건물명 { get; set; }
+		[FirestoreProperty]
+		public string? 주소 { get; set; }
+		[FirestoreProperty]
+		public string? image0 { get; set; }
+		[FirestoreProperty]
+		public string? image1 { get; set; }
+		[FirestoreProperty]
+		public string? image2 { get; set; }
+		[FirestoreProperty]
+		public string? image3 { get; set; }
+		[FirestoreProperty]
+		public string? image4 { get; set; }
+
+		[FirestoreProperty]
 		public List<string>? Images { get; set; }
 
 		public override string ToString()

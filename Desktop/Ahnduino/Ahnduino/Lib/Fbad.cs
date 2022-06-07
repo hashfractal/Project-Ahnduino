@@ -797,6 +797,24 @@ namespace Ahnduino.Lib
 
 			return res;
 		}
+
+		public static List<Request> GetFixHold()
+		{
+			List<Request> res = new();
+			CollectionReference cRef = DB!.Collection("FixHold");
+			QuerySnapshot qSnap = cRef.GetSnapshotAsync().Result;
+
+			foreach(DocumentSnapshot dSnap in qSnap.Documents)
+			{
+				QuerySnapshot qSnap2 = dSnap.Reference.Collection("FixHold").GetSnapshotAsync().Result;
+				foreach(DocumentSnapshot dSp in qSnap2.Documents)
+				{
+					res.Add(dSp.ConvertTo<Request>());
+				}
+			}
+
+			return res;
+		}
 		#endregion
 
 		#region Chat
@@ -1102,8 +1120,7 @@ namespace Ahnduino.Lib
 
 			Timestamp temp = (Timestamp)newbill.Nab!;
 			DateTime Month = temp.ToDateTime();
-			Month = Month.AddMonths(-2);
-			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month == 0 ? 12 : Month.Month) + "월");
+			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month - 1 == 0 ? 12 : Month.Month - 1) + "월");
 			dRef.SetAsync(newbill, SetOptions.MergeAll);
 		}
 
@@ -1244,6 +1261,44 @@ namespace Ahnduino.Lib
 				});
 				task.Start();
 				task.Wait();
+			}
+		}
+		#endregion
+
+		#region Info
+		public static void GetCheckInList(string email, ListBox checkinlistbox, ListBox checkoutlistbox)
+		{
+			CollectionReference cRef = DB!.Collection("CheckInCheckOut").Document(email).Collection("입실");
+			QuerySnapshot qSnap = cRef.GetSnapshotAsync().Result;
+			foreach (DocumentSnapshot i in qSnap.Documents)
+			{
+				checkinlistbox.Items.Add(i.ConvertTo<Room>());
+			}
+
+			cRef = DB!.Collection("CheckInCheckOut").Document(email).Collection("퇴실");
+			qSnap = cRef.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot i in qSnap.Documents)
+			{
+				checkoutlistbox.Items.Add(i.ConvertTo<Room>());
+			}
+
+		}
+
+		public static void GetInfoRepairList(string email, ListBox requestlistbox)
+		{
+			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
+
+			IAsyncEnumerable < CollectionReference > clist = dRef.ListCollectionsAsync();
+			IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = clist.GetAsyncEnumerator(default);
+			while (subcollectionsEnumerator.MoveNextAsync().Result)
+			{
+				CollectionReference i = subcollectionsEnumerator.Current;
+				QuerySnapshot qSnap = i.GetSnapshotAsync().Result;
+
+				foreach(DocumentSnapshot dSnap in qSnap.Documents)
+				{
+					requestlistbox.Items.Add(dSnap.ConvertTo<Request>());
+				}
 			}
 		}
 		#endregion

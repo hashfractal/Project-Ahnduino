@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
-		Title="도와줘 홈즈!" Height="720" Width="1280"
+		Title="도와줘 홈즈!" Height="900" Width="1600"
 		WindowStartupLocation="CenterScreen">
 	<Grid Background="LightGray">
 		<Grid.ColumnDefinitions>
@@ -55,8 +55,18 @@
 			</StackPanel>
 		</Grid>
 
+		
 		<Grid Grid.Column="1" Background="LightGray" Margin="10">
-			<ListView Grid.Row="0" x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }" >
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<Border Background="#008f5e" CornerRadius="5" Margin="0,0,0,3">
+				<TextBlock Text="문의 목록" Foreground="White" FontFamily="{StaticResource Default}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+			</Border>
+
+			<ListView Grid.Row="2" x:Name="RequestUserListView" SelectionChanged="RequestUserListView_SelectionChanged" FontSize="18" FontFamily="{StaticResource Default }" >
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">
@@ -72,22 +82,32 @@
 			</ListView>
 		</Grid>
 
-		<Grid Grid.Column="2" Background="LightGray">
+		<Grid Grid.Column="2" Background="LightGray" Margin="10">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="30"/>
 				<RowDefinition Height="75"/>
+				<RowDefinition Height="30"/>
 				<RowDefinition Height="2*"/>
 				<RowDefinition Height="200"/>
 				<RowDefinition Height="120" />
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 
-			<Border Grid.Row="0" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,10,10,0" BorderThickness="1">
+			<Border Grid.Row="0" Background="#008f5e" CornerRadius="5" Margin="0,0,10,3">
+				<TextBlock Text="제목" Foreground="White" FontFamily="{StaticResource Default}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+			</Border>
+
+			<Border Grid.Row="1" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,1,10,0" BorderThickness="1">
 				<TextBlock x:Name="labeltitle" FontFamily="{StaticResource Default }" Margin="0,0,0,0" FontSize="30" FontWeight="Bold" VerticalAlignment="Center">
 							좌측 리스트에서 항목을 불러와 주십시오
 				</TextBlock>
 			</Border>
 
-			<Border Grid.Row="1" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,0,10,0" BorderThickness="1">
+			<Border Grid.Row="2" Background="#008f5e" CornerRadius="5" Margin="0,3,10,3">
+				<TextBlock Text="내용" Foreground="White" FontFamily="{StaticResource Default}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+			</Border>
+			
+			<Border Grid.Row="3" BorderBrush="#ABADB3" Background="White" CornerRadius="10" Margin="0,0,10,0" BorderThickness="1">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
@@ -99,7 +119,7 @@
 				</Grid>
 			</Border>
 
-			<Border Grid.Row="2" BorderBrush="#abadb3" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0" Background="White">
+			<Border Grid.Row="4" BorderBrush="#abadb3" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0" Background="White">
 				<ListBox x:Name="ImageList" Background="Transparent" BorderBrush="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" GotMouseCapture="ImageList_GotMouseCapture">
 					<ListBox.ItemsPanel>
 						<ItemsPanelTemplate>
@@ -109,7 +129,7 @@
 				</ListBox>
 			</Border>
 			
-			<Border Grid.Row="3" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0">
+			<Border Grid.Row="5" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,0">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition/>
@@ -129,7 +149,7 @@
 				</Grid>
 			</Border>
 
-			<Border Grid.Row="4" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,10">
+			<Border Grid.Row="6" BorderBrush="#ABADB3" Background="White" CornerRadius="10" BorderThickness="1" Margin="0,0,10,10">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition/>

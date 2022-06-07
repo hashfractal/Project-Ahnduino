@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Ahnduino.Lib;
+using Ahnduino.Lib.Object;
 
 namespace Ahnduino.Wins
 {
@@ -27,6 +29,7 @@ namespace Ahnduino.Wins
 			InitializeComponent();
 		}
 
+		#region menu
 		private void gotorequest_Click(object sender, RoutedEventArgs e)
 		{
 			RequestMenu menu = new(uid);
@@ -66,6 +69,13 @@ namespace Ahnduino.Wins
 		{
 			BuildMenu build = new();
 			build.Show();
+		}
+		#endregion
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text), lbin, lbout);
+			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text), lbrequest);
 		}
 	}
 }

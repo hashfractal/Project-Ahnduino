@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Ahnduino.Wins"
 		mc:Ignorable="d"
-		Title="도와줘 홈즈!" Height="720" Width="1280"
+		Title="도와줘 홈즈!" Height="900" Width="1600"
 		WindowStartupLocation="CenterScreen">
 	<Window.Resources>
 		<Style x:Key="ctype" TargetType="TextBlock">
@@ -32,6 +32,14 @@
 				</DataTrigger>
 			</Style.Triggers>
 		</Style>
+		<Style x:Key="Chatimg" TargetType="ListBox">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=trueimage}" Value="">
+					<Setter Property="Height" Value="0"/>
+					<Setter Property="Margin" Value="0"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
 		<Style x:Key="Chatbubbleborder" TargetType="Border">
 			<Style.Triggers>
 				<DataTrigger Binding="{Binding Path=type}" Value="false">
@@ -41,6 +49,23 @@
 				<DataTrigger Binding="{Binding Path=type}" Value="true">
 					<Setter Property="Background" Value="LightGray"/>
 					<Setter Property="Grid.Column" Value="0"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="chatbubbletriangle" TargetType="Polygon">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=type}" Value="false">
+					<Setter Property="Grid.Column" Value="1"/>
+					<Setter Property="HorizontalAlignment" Value="Right"/>
+					<Setter Property="Points" Value="0,0 15,0 0,30"/>
+					<Setter Property="Margin" Value="0,10,0,0"/>
+					<Setter Property="Fill" Value="#008F5E"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Path=type}" Value="true">
+					<Setter Property="Grid.Column" Value="0"/>
+					<Setter Property="Points" Value="0,0 15,0 15,30"/>
+					<Setter Property="Margin" Value="0,10,0,0"/>
+					<Setter Property="Fill" Value="LightGray"/>
 				</DataTrigger>
 			</Style.Triggers>
 		</Style>
@@ -184,26 +209,29 @@
 							<Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
 						</Style>
 					</ListBox.ItemContainerStyle>
+					
+					<!-- Chat Bubble -->
 					<ListBox.ItemTemplate>
 						<DataTemplate>
-							<Grid Style="{StaticResource Chatitem}">
-								<StackPanel Orientation="Vertical" Margin="0,10,0,0">
-									<TextBlock Style="{StaticResource ctype}"/>
+							<StackPanel Orientation="Vertical" Margin="0,10,0,0">
+								<TextBlock Style="{StaticResource ctype}"/>
+								<Grid Style="{StaticResource Chatitem}">
 									<Grid>
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition/>
 											<ColumnDefinition/>
 										</Grid.ColumnDefinitions>
+										<Polygon Style="{StaticResource chatbubbletriangle}"/>
 										<Border CornerRadius="10" Style="{StaticResource Chatbubbleborder}" HorizontalAlignment="Left" Margin="5">
-											<StackPanel Orientation="Vertical">
-												<TextBlock Text="{Binding Path=text}" Style="{StaticResource Chatbubble}" />
-												<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Background="Transparent" ItemsSource="{Binding trueimage}"/>
+											<StackPanel Orientation="Vertical" Margin="5">
+												<TextBlock Text="{Binding Path=text}" Padding="0,3,0,0" Style="{StaticResource Chatbubble}"/>
+												<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Background="Transparent" Style="{StaticResource Chatimg}" ItemsSource="{Binding trueimage}"/>
 											</StackPanel>
 										</Border>
 										<TextBlock Text="{Binding}" FontSize="18" Foreground="Gray" VerticalAlignment="Bottom" Margin="10,0,10,0" Style="{StaticResource Chattime}"/>
 									</Grid>
-								</StackPanel>
-							</Grid>
+								</Grid>
+							</StackPanel>
 						</DataTemplate>
 					</ListBox.ItemTemplate>
 					<ListBox.Resources>
@@ -231,14 +259,14 @@
 						<Image Source="/Icon/ChatPlus.png"/>
 					</Button>
 
-					<TextBox x:Name="chattextbox" Grid.Column="1" BorderBrush="White" Background="LightGray" Margin="5" FontSize="35" FontFamily="{StaticResource Default}" KeyDown="chattextbox_KeyDown">
+					<TextBox x:Name="chattextbox" Grid.Column="1" BorderBrush="White" Background="LightGray" Margin="5" FontSize="35" VerticalContentAlignment="Center" FontFamily="{StaticResource Default}" KeyDown="chattextbox_KeyDown">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="10"/>
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
-					<TextBlock Grid.Column="1" IsHitTestVisible="False" Text="메시지를 입력하세요..." FontSize="30" Margin="13,8,0,8" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+					<TextBlock Grid.Column="1" IsHitTestVisible="False" Text="메시지를 입력하세요..." FontSize="30" Margin="13,8,0,8" FontFamily="{StaticResource Default}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
 						<TextBlock.Style>
 							<Style TargetType="{x:Type TextBlock}">
 								<Setter Property="Visibility" Value="Collapsed"/>
