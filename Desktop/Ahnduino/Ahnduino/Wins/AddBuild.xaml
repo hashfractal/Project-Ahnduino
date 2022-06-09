@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ahnduino.Wins"
         mc:Ignorable="d"
-        Title="AddBuild" Height="600" Width="600">
+        Title="AddBuild" Height="750" Width="600">
 	<Grid>
 		<StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="40,40,40,40">
 			<Grid>
@@ -42,6 +42,16 @@
 							</Style>
 						</TextBox.Resources>
 					</TextBox>
+
+					<TextBlock FontSize="30" FontFamily="{StaticResource Default}" Margin="0,25,0,0">연체료</TextBlock>
+					<TextBox x:Name="tbunpay" FontSize="30" BorderBrush="Black">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="7"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+
 					<Button x:Name="RegBtn" Margin="0,50,0,0" Padding="5" Background="#008F5E" Foreground="White"
 						FontSize="30" Content="건물 추가" Click="RegBtn_Click">
 						<Button.Resources>

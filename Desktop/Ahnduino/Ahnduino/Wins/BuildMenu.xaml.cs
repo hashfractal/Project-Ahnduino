@@ -32,6 +32,7 @@ namespace Ahnduino.Wins
 				tbid.Text = build.인증번호;
 				tbused.Text = (bool)build.Used! ? "아니오" : "예";
 				tbpay.Text = build.관리비.ToString();
+				tbunpay.Text = build.연체료.ToString();
 				tbunpaid.Text = (bool)build.미납! ? "미납" : "완납";
 				tbrepair.Text = (bool)build.수리비! ? "있음" : "없음";
 			}
@@ -97,6 +98,7 @@ namespace Ahnduino.Wins
 			tbid.Text = "";
 			tbused.Text = "";
 			tbpay.Text = "";
+			tbunpay.Text = "";
 			tbunpaid.Text = "";
 			tbrepair.Text = "";
 		}

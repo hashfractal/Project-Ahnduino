@@ -41,6 +41,7 @@ namespace Ahnduino.Wins
 			billlist.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(CollectionChangedMethod!);
 
 			billlistbox.ItemsSource = billlist;
+			Fbad.GetneedListbox(lbneedsomething);
 			//billlistview.ItemsSource = billlist;
 		}
 
@@ -53,8 +54,8 @@ namespace Ahnduino.Wins
 		{
 			Thread.Sleep(200);
 			
-			Fbad.GetBillList(textboxemail.Text, billlist);
-			Fbad.SetNewBill(textboxemail.Text, newbill!);
+			Fbad.GetBillList(Fbad.getEmail(textboxemail.Text), billlist);
+			Fbad.SetNewBill(Fbad.getEmail(textboxemail.Text), newbill!);
 
 			if (newbill!.Totmoney == null)
 			{
@@ -119,7 +120,7 @@ namespace Ahnduino.Wins
 		private void acceptbutton_Click(object sender, RoutedEventArgs e)
 		{
 			bill = billlistbox.SelectedItem as Bill;
-			Fbad.AcceptPay(textboxemail.Text, bill!);
+			Fbad.AcceptPay(Fbad.getEmail(textboxemail.Text), bill!);
 			searchbutton_Click(sender, e);
 		}
 
@@ -135,7 +136,7 @@ namespace Ahnduino.Wins
 			newbill.Repair = int.Parse(ntb10.Text);
 			newbill.Totmoney = int.Parse(ntb3.Text);
 
-			Fbad.CreateBill(textboxemail.Text, newbill!, billlist.Count);
+			Fbad.CreateBill(Fbad.getEmail(textboxemail.Text), newbill!, billlist.Count);
 			searchbutton_Click(sender, e);
 		}
 
@@ -246,6 +247,12 @@ namespace Ahnduino.Wins
 		{
 			BuildMenu build = new();
 			build.Show();
+		}
+
+		private void lbneedsomething_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			textboxemail.Text = (string)lbneedsomething.SelectedItem;
+			searchbutton_Click(sender, e);
 		}
 	}
 }

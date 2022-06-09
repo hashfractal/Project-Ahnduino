@@ -155,7 +155,7 @@ namespace Ahnduino.Lib
 				return null;
 		}
 
-		public static void AddBuild(string address, string buildname, string buildid, int pay)
+		public static void AddBuild(string address, string buildname, string buildid, int pay, int unpay)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(address + "(" + buildname + ")");
 			Dictionary<string, object> dict = new Dictionary<string, object>
@@ -164,6 +164,7 @@ namespace Ahnduino.Lib
 				{ "건물명", buildname },
 				{ "인증번호", buildid },
 				{ "관리비", pay },
+				{ "연체료", unpay },
 				{ "Used", false },
 				{ "미납", false },
 				{ "수리비", false },
@@ -797,23 +798,36 @@ namespace Ahnduino.Lib
 
 			return res;
 		}
+		#endregion
 
-		public static List<Request> GetFixHold()
+		#region FixHold
+		public static List<FixHold> GetFixHoldList()
 		{
-			List<Request> res = new();
-			CollectionReference cRef = DB!.Collection("FixHold");
-			QuerySnapshot qSnap = cRef.GetSnapshotAsync().Result;
+			List<FixHold> res = new List<FixHold>();
+			Query query = DB!.Collection("FixHold");
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 
-			foreach(DocumentSnapshot dSnap in qSnap.Documents)
+			foreach(DocumentSnapshot i in qSnap.Documents)
 			{
-				QuerySnapshot qSnap2 = dSnap.Reference.Collection("FixHold").GetSnapshotAsync().Result;
-				foreach(DocumentSnapshot dSp in qSnap2.Documents)
+				Query qry = DB!.Collection("FixHold").Document(i.Id).Collection("FixHold");
+				QuerySnapshot qsp = qry.GetSnapshotAsync().Result;
+
+				foreach(DocumentSnapshot j in qsp.Documents)
 				{
-					res.Add(dSp.ConvertTo<Request>());
+					FixHold fixHold = j.ConvertTo<FixHold>();
+					fixHold.worker = i.Id;
+
+					res.Add(fixHold);
 				}
 			}
 
 			return res;
+		}
+
+		public static void RemoveFixHold(string workeremail, string docid)
+		{
+			DocumentReference dRef = DB!.Collection("FixHold").Document(workeremail).Collection("FixHold").Document(docid);
+			dRef.DeleteAsync().Wait();
 		}
 		#endregion
 
@@ -1047,6 +1061,22 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		public static void GetneedListbox(ListBox listBox)
+		{
+			Query query = DB!.Collection("Building").WhereEqualTo("Used", true);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+			foreach(DocumentSnapshot i in qSnap.Documents)
+			{
+				i.TryGetValue("미납", out bool isunpay);
+				i.TryGetValue("수리비", out bool isfix);
+
+				if(isunpay || isfix)
+				{
+					listBox.Items.Add(i.Id);
+				}
+			}
+		}
+
 		public static void AcceptPay(string? email, Bill bill)
 		{
 			Query query = DB!.Collection("Bill").Document(email).Collection("Month").WhereLessThanOrEqualTo("Nab", bill.Nab);
@@ -1060,6 +1090,16 @@ namespace Ahnduino.Lib
 				};
 				dSnap.Reference.SetAsync(dict, SetOptions.MergeAll);
 			}
+
+			Dictionary<string, object> dict2 = new Dictionary<string, object>
+			{
+				{ "미납", false },
+				{ "수리비", false },
+			};
+
+			DocumentReference dRef = DB!.Collection("Building").Document(GetAddress(email!));
+			dRef.SetAsync(dict2, SetOptions.MergeAll);
+			
 		}
 
 		public static void SetNewBill(string? email, Bill newbill)

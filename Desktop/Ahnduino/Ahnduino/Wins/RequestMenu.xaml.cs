@@ -115,34 +115,6 @@ namespace Ahnduino.Wins
 			MessageBox.Show("예약완료되었습니다");
 		}
 
-		private void gotochat_Click(object sender, RoutedEventArgs e)
-		{
-			ChatMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotoboard_Click(object sender, RoutedEventArgs e)
-		{
-			BoardMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotobill_Click(object sender, RoutedEventArgs e)
-		{
-			BillMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotogallery_Click(object sender, RoutedEventArgs e)
-		{
-			InfoMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
 		private void bcancle_Click(object sender, RoutedEventArgs e)
 		{
 			Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
@@ -221,6 +193,43 @@ namespace Ahnduino.Wins
 				cbworker.ItemsSource = Fbad.SetWorker(cbregion.Text, cbgu.Text, cbdong.SelectedItem.ToString()!);
 			}
 		}
+
+		#region Sidemenu
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void Fixhold_Click(object sender, RoutedEventArgs e)
+		{
+			FixHoldMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		#endregion
 	}
 }
 

@@ -25,6 +25,13 @@
 					</StackPanel>
 				</Button>
 
+				<Button x:Name="Fixhold" Height="120" Style="{StaticResource MenuButton}" Click="Fixhold_Click">
+					<StackPanel Orientation="Vertical">
+						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">수리 보류</Label>
+					</StackPanel>
+				</Button>
+
 				<Button x:Name="gotochat" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>

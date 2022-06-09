@@ -26,6 +26,9 @@ namespace Ahnduino.Lib.Object
 		public bool? 수리비 { get; set; }
 
 		[FirestoreProperty]
+		public int? 연체료 { get; set; }
+
+		[FirestoreProperty]
 		public string? 인증번호 { get; set; }
 
 		[FirestoreProperty]

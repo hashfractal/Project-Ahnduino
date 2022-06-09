@@ -121,6 +121,10 @@
 						<TextBlock x:Name="tbpay" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
 					</Grid>
 					<Grid Margin="10">
+						<TextBlock Text="연체료" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbunpay" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
 						<TextBlock Text="미납" FontFamily="{StaticResource Default}" FontSize="25"/>
 						<TextBlock x:Name="tbunpaid" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
 					</Grid>

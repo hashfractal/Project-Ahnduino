@@ -17,6 +17,7 @@
 			<ColumnDefinition Width="120"/>
 			<ColumnDefinition Width="400"/>
 			<ColumnDefinition/>
+			<ColumnDefinition Width="400"/>
 		</Grid.ColumnDefinitions>
 
 		<Grid Grid.Column="0" Background="#008F5E">
@@ -377,6 +378,10 @@
 					</StackPanel>
 				</Grid>
 			</Border>
+		</Grid>
+
+		<Grid Grid.Column="3">
+			<ListBox x:Name="lbneedsomething" SelectionChanged="lbneedsomething_SelectionChanged"/>
 		</Grid>
 	</Grid>
 </Window>

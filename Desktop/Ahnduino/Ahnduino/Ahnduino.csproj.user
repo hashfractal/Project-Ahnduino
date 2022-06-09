@@ -28,6 +28,9 @@
     <Compile Update="Wins\ChatMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\FixHoldMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Wins\ImageExtendList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +94,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\ChatMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\FixHoldMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\ImageExtendList.xaml">

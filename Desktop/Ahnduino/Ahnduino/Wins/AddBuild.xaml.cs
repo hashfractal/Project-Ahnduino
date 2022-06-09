@@ -33,7 +33,7 @@ namespace Ahnduino.Wins
 				MessageBox.Show(exec);
 				return;
 			}
-			Fbad.AddBuild(tbaddress.Text, tbbuild.Text, tbid.Text, int.Parse(tbpay.Text));
+			Fbad.AddBuild(tbaddress.Text, tbbuild.Text, tbid.Text, int.Parse(tbpay.Text), int.Parse(tbunpay.Text));
 			MessageBox.Show("건물이 등록되었습니다");
 			Close();
 		}
