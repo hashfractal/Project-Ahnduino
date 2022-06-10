@@ -43,6 +43,8 @@ namespace Ahnduino.Lib.Object
 		[FirestoreProperty]
 		public Timestamp? fixholdtime { get; set; }
 		[FirestoreProperty]
+		public string? worker { get; set; }
+		[FirestoreProperty]
 		public string? 건물명 { get; set; }
 		[FirestoreProperty]
 		public string? 주소 { get; set; }

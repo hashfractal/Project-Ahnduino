@@ -25,15 +25,25 @@ namespace Ahnduino.Wins
 	{
 		string uid;
 
-		FixHold? fixHold = null;
+		Request? request = null;
 
 		ObservableCollection<Request> userlist = new ObservableCollection<Request>();
-		ObservableCollection<Request> roomoutlist = new ObservableCollection<Request>();
-		//ObservableCollection<string> datelist = new ObservableCollection<string>();
-		//ObservableCollection<string> requestlist = new ObservableCollection<string>();
 
-		//string? selectedEmail = null;
-		//string? selectedDate = null;
+		string[] mlist28 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28"};
+
+		string[] mlist29 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29"};
+
+		string[] mlist30 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"};
+
+		string[] mlist31 = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+										"21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
 		public FixHoldMenu(string uid)
 		{
@@ -42,55 +52,135 @@ namespace Ahnduino.Wins
 
 			DateTime dateTime = DateTime.Now;
 
-			RequestUserListView.ItemsSource = Fbad.GetFixHoldList();
+			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime));
+			TextBoxYear.Items.Add(string.Format("{0:yyyy}", dateTime.AddYears(1)));
 
-			//RequestUserListView.ItemsSource = userlist;
-			//RequestDateListView.ItemsSource = datelist;
-			//RequestListView.ItemsSource = requestlist;
-			//Fbad.GetRequestUserList(userlist);
+			RequestUserListView.ItemsSource = Fbad.GetFixHoldList();
 		}
 
 		private void RequestUserListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			fixHold = RequestUserListView.SelectedItem as FixHold;
-			if (fixHold != null)
+			ImageList.Items.Clear();
+			request = RequestUserListView.SelectedItem as Request;
+			if (request != null)
 			{
-				Timestamp temp = (Timestamp)fixHold.fixholdtime!;
-				DateTime dateTime = temp.ToDateTime();
-				labeltitle.Text = "문서ID		: " + fixHold.DocID + "\r\n" +
-					"현장직 이름	: " + fixHold.worker + "\r\n" +
-					"날짜		: " + fixHold.Date + "\r\n" +
-					"제목		: " + fixHold.Title + "\r\n" +
-					"내용		: " + fixHold.Text + "\r\n" +
-					"사용자 UID	: " + fixHold.UID + "\r\n" +
-					"예약된 시간	: " + fixHold.reserv + "\r\n" +
-					"주소		: " + fixHold.주소 + "\r\n" +
-					"건물명		: " + fixHold.건물명 + "\r\n" +
-					"보류 텍스트	: " + fixHold.fixholdtext + "\r\n" +
-					"보류 시간		: " + dateTime.ToString() + "\r\n";
+				labeltitle.Text = request!.Title;
+				labelinfo.Text = string.Format("희망시각 1: {0}", request.hopeTime0);
+				labelinfo1.Text = string.Format("희망시각 2: {0}", request.hopeTime1);
+				labelinfo2.Text = string.Format("희망시각 3: {0}", request.hopeTime2);
+				Timestamp timestamp = (Timestamp)request.fixholdtime!;
+				DateTime dateTime = timestamp.ToDateTime();
+				labeltext.Content = request.Text + "\r\n" + 
+					"보류 내용: " + request.fixholdtext + "\r\n" +
+					"보류 날짜: " + dateTime + "\r\n" +
+					"현장직 계정: " + request.worker + "\r\n";
+
+				if (request!.Images != null)
+				{
+					foreach (string i in request!.Images!)
+					{
+						Image image = Fbad.GetImageFromUri(i);
+						image.Height = 150;
+						image.Width = 150;
+
+						ImageList.Items.Add(image);
+					}
+				}
 			}
 
 		}
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (fixHold != null)
+			if (request != null)
 			{
-				Fbad.RemoveFixHold(fixHold.worker!, fixHold.DocID!);
+				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
+				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
+				request.Isreserve = true;
+				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, request.worker!, dt);
+				Fbad.RemoveFixHold(request);
 			}
 
-			MessageBox.Show("처리완료 되었습니다");
-
-			RequestUserListView.ItemsSource = Fbad.GetFixHoldList();
+			MessageBox.Show("예약완료되었습니다");
 		}
 
+		private void bcancle_Click(object sender, RoutedEventArgs e)
+		{
+			Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
+		}
+
+		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
+		}
+
+		private void bimgex_Click(object sender, RoutedEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
+		}
+
+		private void TextBoxMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			string s = TextBoxMonth!.SelectedItem!.ToString()!;
+			string[] sl = s.Split(' ');
+			DateTime dateTime = new DateTime(2000, int.Parse(sl[1]), 1);
+			if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 28)
+				TextBoxDay.ItemsSource = mlist28;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 29)
+				TextBoxDay.ItemsSource = mlist29;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 30)
+				TextBoxDay.ItemsSource = mlist30;
+			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 31)
+				TextBoxDay.ItemsSource = mlist31;
+		}
+
+		private void ImageList_GotMouseCapture(object sender, MouseEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+			foreach (Image i in ImageList.Items.Cast<Image>().ToList())
+			{
+				Image image = new Image();
+				image.Source = i.Source;
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
+		}
+
+		#region Sidemenu
+		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
 		private void Build_Click(object sender, RoutedEventArgs e)
 		{
 			BuildMenu build = new();
 			build.Show();
 		}
-
-		#region Sidemenu
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);
@@ -126,6 +216,5 @@ namespace Ahnduino.Wins
 			Close();
 		}
 		#endregion
-
 	}
 }

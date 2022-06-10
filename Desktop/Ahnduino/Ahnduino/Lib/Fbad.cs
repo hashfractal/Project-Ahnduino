@@ -801,9 +801,9 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region FixHold
-		public static List<FixHold> GetFixHoldList()
+		public static List<Request> GetFixHoldList()
 		{
-			List<FixHold> res = new List<FixHold>();
+			List<Request> res = new List<Request>();
 			Query query = DB!.Collection("FixHold");
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 
@@ -814,7 +814,7 @@ namespace Ahnduino.Lib
 
 				foreach(DocumentSnapshot j in qsp.Documents)
 				{
-					FixHold fixHold = j.ConvertTo<FixHold>();
+					Request fixHold = j.ConvertTo<Request>();
 					fixHold.worker = i.Id;
 
 					res.Add(fixHold);
@@ -824,10 +824,22 @@ namespace Ahnduino.Lib
 			return res;
 		}
 
-		public static void RemoveFixHold(string workeremail, string docid)
+		public static void RemoveFixHold(Request request)
 		{
-			DocumentReference dRef = DB!.Collection("FixHold").Document(workeremail).Collection("FixHold").Document(docid);
+			DocumentReference dRef = DB!.Collection("FixHold").Document(request.worker).Collection("FixHold").Document(request.DocID);
 			dRef.DeleteAsync().Wait();
+			dRef = DB!.Collection("ResponsAndReQuest").Document(request.UID).Collection("Request").Document("Request").Collection(request.Date + " 수리보류").Document(request.DocID);
+			dRef.DeleteAsync().Wait();
+			dRef = DB!.Collection("ResponsAndReQuest").Document(request.UID).Collection("Request").Document("Request");
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			dSnap.TryGetValue(request.Date + " 수리보류", out int count);
+			count--;
+
+			Dictionary<string, object> updates = new Dictionary<string, object>
+			{
+				{ request.Date + " 수리보류", count > 0 ? count : FieldValue.Delete }
+			};
+			dRef.SetAsync(updates, SetOptions.MergeAll).Wait();
 		}
 		#endregion
 
