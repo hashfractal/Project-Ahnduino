@@ -26,13 +26,16 @@ namespace Ahnduino.Lib.Object
 
 		public string? address { get; set; }
 
+		public string? date { get; set; }
+		public bool? isfirst { get; set; }
+
 		public override string ToString()
 		{
 			Timestamp ts = (Timestamp)time!;
 			DateTime dt = ts.ToDateTime();
 			dt = dt.AddHours(9);
 
-			return (string.Format("{0:HH:mm}", dt));
+			return string.Format("{0:HH:mm}", dt);
 		}
 	}
 }

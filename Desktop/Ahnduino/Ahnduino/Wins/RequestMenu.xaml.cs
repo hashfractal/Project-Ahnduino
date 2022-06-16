@@ -135,12 +135,6 @@ namespace Ahnduino.Wins
 			imageExtendList.Show();
 		}
 
-		private void Build_Click(object sender, RoutedEventArgs e)
-		{
-			BuildMenu build = new();
-			build.Show();
-		}
-
 		private void bimgex_Click(object sender, RoutedEventArgs e)
 		{
 			List<Image> temp = new List<Image>();
@@ -195,6 +189,11 @@ namespace Ahnduino.Wins
 		}
 
 		#region Sidemenu
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);

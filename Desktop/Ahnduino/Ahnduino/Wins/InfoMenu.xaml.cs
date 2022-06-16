@@ -29,14 +29,18 @@ namespace Ahnduino.Wins
 			InitializeComponent();
 		}
 
-		#region menu
-		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			RequestMenu menu = new(uid);
-			menu.Show();
-			Close();
+			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text), lbin, lbout);
+			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text), lbrequest);
 		}
 
+		#region Sidemenu
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);
@@ -65,17 +69,12 @@ namespace Ahnduino.Wins
 			Close();
 		}
 
-		private void Build_Click(object sender, RoutedEventArgs e)
+		private void Fixhold_Click(object sender, RoutedEventArgs e)
 		{
-			BuildMenu build = new();
-			build.Show();
+			FixHoldMenu menu = new(uid);
+			menu.Show();
+			Close();
 		}
 		#endregion
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text), lbin, lbout);
-			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text), lbrequest);
-		}
 	}
 }

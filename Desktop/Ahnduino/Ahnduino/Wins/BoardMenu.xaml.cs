@@ -104,34 +104,6 @@ namespace Ahnduino.Wins
 			*/
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			RequestMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotochat_Click(object sender, RoutedEventArgs e)
-		{
-			ChatMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotobill_Click(object sender, RoutedEventArgs e)
-		{
-			BillMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotogallery_Click(object sender, RoutedEventArgs e)
-		{
-			InfoMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
 		private void Build_Click(object sender, RoutedEventArgs e)
 		{
 			BuildMenu build = new();
@@ -167,5 +139,42 @@ namespace Ahnduino.Wins
 			ImageExtendList imageExtendList = new ImageExtendList(temp);
 			imageExtendList.Show();
 		}
+
+		#region Sidemenu
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void Fixhold_Click(object sender, RoutedEventArgs e)
+		{
+			FixHoldMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		#endregion
 	}
 }

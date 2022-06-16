@@ -90,7 +90,19 @@
 				</DataTrigger>
 			</Style.Triggers>
 		</Style>
+		<Style x:Key="cdate" TargetType="TextBlock">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=isfirst}" Value="null">
+					<Setter Property="Text" Value=""/>
+					<Setter Property="Height" Value="0"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding Path=isfirst}" Value="true">
+					<Setter Property="Text" Value="{Binding Path=date}"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
 	</Window.Resources>
+	
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120"/>
@@ -100,16 +112,23 @@
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White" FontFamily="{StaticResource Default }">사용자 님</Button>
+				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
 				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
-				<Button x:Name="gotorequest" Height="120" Style="{StaticResource MenuButton}" Click="gotorequest_Click">
+				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
 					</StackPanel>
 				</Button>
 
-				<Button x:Name="gotochat" Background="#004B1C" Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="Fixhold" Height="120" Style="{StaticResource MenuButton}" Click="Fixhold_Click">
+					<StackPanel Orientation="Vertical">
+						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">수리 보류</Label>
+					</StackPanel>
+				</Button>
+
+				<Button x:Name="gotochat" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">채팅</Label>
@@ -133,7 +152,7 @@
 				<Button x:Name="gotogallery" Height="120" Style="{StaticResource MenuButton}" Click="gotogallery_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/Gallery.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="18" FontFamily="{StaticResource Default }">갤러리</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">갤러리</Label>
 					</StackPanel>
 				</Button>
 			</StackPanel>
@@ -203,7 +222,7 @@
 			</Grid.RowDefinitions>
 
 			<ScrollViewer x:Name="SV" Grid.Row="0" ScrollChanged="ScrollViewer_ScrollChanged">
-				<ListBox x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0" IsSynchronizedWithCurrentItem="True" FontSize="30" FontFamily="{StaticResource Default }" HorizontalAlignment="Stretch">
+				<ListBox x:Name="ChatListView" Margin="0,8,8,0" BorderThickness="0" IsSynchronizedWithCurrentItem="True" FontSize="30" FontFamily="{StaticResource Default }" HorizontalAlignment="Stretch" SelectionChanged="ChatListView_SelectionChanged">
 					<ListBox.ItemContainerStyle>
 						<Style TargetType="ListBoxItem">
 							<Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -214,6 +233,8 @@
 					<ListBox.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Vertical" Margin="0,10,0,0">
+								<TextBlock HorizontalAlignment="Center" Style="{StaticResource cdate}"/>
+								<!-- Chat User Address -->
 								<TextBlock Style="{StaticResource ctype}"/>
 								<Grid Style="{StaticResource Chatitem}">
 									<Grid>
@@ -222,12 +243,14 @@
 											<ColumnDefinition/>
 										</Grid.ColumnDefinitions>
 										<Polygon Style="{StaticResource chatbubbletriangle}"/>
+										<!-- Chat Text -->
 										<Border CornerRadius="10" Style="{StaticResource Chatbubbleborder}" HorizontalAlignment="Left" Margin="5">
 											<StackPanel Orientation="Vertical" Margin="5">
 												<TextBlock Text="{Binding Path=text}" Padding="0,3,0,0" Style="{StaticResource Chatbubble}"/>
 												<ListBox x:Name="lbchatimg" BorderBrush="Transparent" Background="Transparent" Style="{StaticResource Chatimg}" ItemsSource="{Binding trueimage}"/>
 											</StackPanel>
 										</Border>
+										<!-- Chat Time -->
 										<TextBlock Text="{Binding}" FontSize="18" Foreground="Gray" VerticalAlignment="Bottom" Margin="10,0,10,0" Style="{StaticResource Chattime}"/>
 									</Grid>
 								</Grid>

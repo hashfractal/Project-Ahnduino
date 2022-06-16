@@ -22,40 +22,47 @@
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="60" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" Foreground="White" FontFamily="{StaticResource Default}">사용자 님</Button>
+				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
 				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
-				<Button Height="120" Style="{StaticResource MenuButton}" Click="Button_Click">
+				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default}">주택 관리</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
+					</StackPanel>
+				</Button>
+
+				<Button x:Name="Fixhold" Height="120" Style="{StaticResource MenuButton}" Click="Fixhold_Click">
+					<StackPanel Orientation="Vertical">
+						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">수리 보류</Label>
 					</StackPanel>
 				</Button>
 
 				<Button x:Name="gotochat" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default}">채팅</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">채팅</Label>
 					</StackPanel>
 				</Button>
 
 				<Button x:Name="gotoboard" Height="120" Style="{StaticResource MenuButton}" Click="gotoboard_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/Board.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default}">공지</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">공지</Label>
 					</StackPanel>
 				</Button>
 
-				<Button Background="#004B1C" x:Name="gotobill" Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotobill" Height="120" Style="{StaticResource MenuButton}" Click="gotobill_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/Bill.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default}">고지서</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">고지서</Label>
 					</StackPanel>
 				</Button>
 
 				<Button x:Name="gotogallery" Height="120" Style="{StaticResource MenuButton}" Click="gotogallery_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/Gallery.png" Stretch="Fill" Height="70" Width="70"/>
-						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default}">갤러리</Label>
+						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">갤러리</Label>
 					</StackPanel>
 				</Button>
 			</StackPanel>

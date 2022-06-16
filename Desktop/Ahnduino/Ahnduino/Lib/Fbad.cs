@@ -14,16 +14,18 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-#pragma warning disable SYSLIB0022 // 형식 또는 멤버는 사용되지 않습니다.
+#pragma warning disable SYSLIB0022 // Null 경고 끄기
 
 namespace Ahnduino.Lib
 {
+	//Fbad(FireBaseAhnDuino) 안두이노 사무직 클라이언트 기능 구현 정적 클래스
 	public static class Fbad
 	{
 		static FirestoreDb? DB;
 
 		public static FirestoreDb GetDb { get { return DB!; } }
 
+		//기본 생성자, 생성이 되면서 파이어스토어 객체를 DB에 생성
 		static Fbad()
 		{
 			string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
@@ -32,17 +34,20 @@ namespace Ahnduino.Lib
 			DB = FirestoreDb.Create("ahnduino");
 		}
 
+		//전체주소(주소+(건물명))을 주면 해당 주소에 할당된 유저의 이메일 반환
 		public static string getEmail(string fulladdress)
 		{
-			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
-			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
-			dSnap.TryGetValue("인증번호", out string temp);
+			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);	//DocumentReference: 참조할 문서의 주소
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;					//DocumentSnapshot: 파이어스토어에서 가져온 문서 객체(실체가 있음)
+			dSnap.TryGetValue("인증번호", out string temp);                             //TryGetValue: 문서 스냅샷에서 특정한 값을 가져올 때 사용
 			Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
-			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
-
-			return qSnap.Documents[0].Id;
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;                      //GetSnapshotAsync: 쿼리를 실행
+																						//QuerySnapshot: 쿼리실행시킨 결과물 객체(실체가 있음) 
+			return qSnap.Documents[0].Id;                                               //QuerySnapshot.Documents: 쿼리 스냅샷의 문서 스냅샷 배열
+			//Documents[0]->쿼리 결과물의 첫번째 객체 (== DocumentSnapshot.id -> 문서id)
 		}
 
+		//이메일을 주면 전체주소 반환
 		public static string GetAddress(string email)
 		{
 			CollectionReference cref = DB!.Collection("User");
@@ -58,21 +63,29 @@ namespace Ahnduino.Lib
 			return temp!.ToString()! + "(" + temp2!.ToString() + ")";
 		}
 
+		//인터넷 이미지 링크로 WPF의 이미지 컨트롤 생성후 반환
 		public static Image GetImageFromUri(string uri)
 		{
+			//WPF이미지 객체
 			Image image = new Image();
 
+			//비트맵 이미지 객체
 			BitmapImage bitmap = new BitmapImage();
 			bitmap.BeginInit();
+			//Uri에서 이미지 가져오기
 			bitmap.UriSource = new Uri(@uri, UriKind.Absolute);
 			bitmap.EndInit();
 
+			//WPF이미지를 비트맵 이미지와 연결
 			image.Source = bitmap;
 
 			return image;
 		}
 
+		//건물관리
 		#region Build
+
+		//전체주소-> 건물 고유변호
 		public static string? AddressToSerialNo(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
@@ -85,6 +98,7 @@ namespace Ahnduino.Lib
 				return null;
 		}
 
+		//건물 고유번호 -> 전체주소
 		public static string? SerialNoToAddress(string SerialNo)
 		{
 			Query query = DB!.Collection("Building").WhereEqualTo("인증번호", SerialNo);
@@ -92,6 +106,7 @@ namespace Ahnduino.Lib
 			return qSnap.Documents[0].Id;
 		}
 
+		//전체주소 -> 이메일
 		public static string AddressToEmail(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
@@ -105,6 +120,8 @@ namespace Ahnduino.Lib
 			return dSnap.Id;
 		}
 
+		//!건물 객체는 건물 하나가 아닌 건물에있는 방 하나를 의미!
+		//주소(전체주소x (건물명)이 없음)에 해당하는 건물 리스트 반환 (ex 대전 동구 자양동 11 -> 11아파트1호, 11아파트2호...)
 		public static List<Build> GetBuildListFormAddress(string address)
 		{
 			List<Build> builds = new List<Build>();
@@ -118,6 +135,7 @@ namespace Ahnduino.Lib
 			return builds;
 		}
 
+		//전체주소에 해당하는 건물 객체 반환
 		public static Build GetBuildFormFullAddress(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
@@ -126,6 +144,7 @@ namespace Ahnduino.Lib
 			return dSnap.ConvertTo<Build>();
 		}
 
+		//건물 고유번호에 해당하는 건물 반환
 		public static Build GetBuildFormID(string ID)
 		{
 			try
@@ -142,7 +161,8 @@ namespace Ahnduino.Lib
 			}
 			
 		}
-
+		
+		//건물의 관리비 가져오기
 		public static int? GetPayFromAddress(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
@@ -155,6 +175,7 @@ namespace Ahnduino.Lib
 				return null;
 		}
 
+		//건물추가
 		public static void AddBuild(string address, string buildname, string buildid, int pay, int unpay)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(address + "(" + buildname + ")");
@@ -174,12 +195,14 @@ namespace Ahnduino.Lib
 			dRef.SetAsync(dict, SetOptions.MergeAll);
 		}
 
+		//건물삭제
 		public static void DeleteBuild(string fulladdress)
 		{
 			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
 			dRef.DeleteAsync();
 		}
 
+		//건물 추가할 때 유효성 검사
 		public static string validationBuild(string address, string buildname, string buildid)
 		{
 			string res = "";
@@ -188,27 +211,33 @@ namespace Ahnduino.Lib
 			Query query = DB!.Collection("Building").WhereEqualTo("인증번호", buildid);
 			QuerySnapshot qSanp = query.GetSnapshotAsync().Result;
 
+			//동일한 전체주소가 있을 때
 			if (dSnap.Exists)
 				res += "이미 등록된 주소입니다\r\n";
+			//동일한 건물 인증번호가 있을 때
 			if (qSanp.Count > 0)
 				res += "이미 등록된 건물 인증번호 입니다\r\n";
-
+			//res가 ""이라면 유효성 검사 성공 아니면 실패
 			return res;
 		}
 		#endregion
 
+		//로그인
 		#region Auth
 
+		//회원가입 이메일 유효성검사
 		public static bool IsValidEmail(string email)
 		{
 			return Regex.IsMatch(email, @"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?");
 		}
 
+		//회원가입 전화번호 유효성검사
 		public static bool IsValidPhone(string phone)
 		{
 			return Regex.IsMatch(phone, @"010-[0-9]{4}-[0-9]{4}$");
 		}
 
+		//회원가입 유효성검사
 		public static string[] FBValidation(string email, string password, string repassword, string name, string phone)
 		{
 			string[]? res = new string[5];
@@ -233,8 +262,10 @@ namespace Ahnduino.Lib
 			return res!;
 		}
 
+		//로그인
 		public static bool Login(string email, string password)
 		{
+			//비밀번호가 암호화 된 password와 일치하는 문서를 가져옴
 			Query qref = DB!.Collection("Manager").WhereEqualTo("Email", email).WhereEqualTo("Password", EncryptString(password, "flawless ahnduino"));
 			QuerySnapshot snap = qref.GetSnapshotAsync().Result;
 
@@ -242,12 +273,15 @@ namespace Ahnduino.Lib
 			{
 				if (docsnap.Exists)
 				{
+					//문서가있다면
 					return true;
 				}
 			}
+			//문서가없다면
 			return false;
 		}
 
+		//회원가입 공백 검사
 		public static void Register(string email, string password, string repassword, string name, string phone)
 		{
 			if (email == "" || password == "" || repassword == "" || name == "" || phone == "") //공백이 입력될 경우
@@ -258,6 +292,7 @@ namespace Ahnduino.Lib
 			JoinManagement(email, password, name, phone);
 		}
 
+		//회원가입 중복검사
 		private static void JoinManagement(string email, string password, string name, string phone)
 		{
 			bool idCheck = FindId(email);
@@ -268,6 +303,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//회원가입 파이어스토어 문서 등록
 		static void Join(string email, string password, string name, string phone)
 		{
 			DocumentReference DOC = DB!.Collection("Manager").Document(email);
@@ -281,6 +317,7 @@ namespace Ahnduino.Lib
 			DOC.SetAsync(temp);
 		}
 
+		//이메일에 해당하는 문서가 있는지 확인
 		public static bool FindId(string email)
 		{
 			Query qref = DB!.Collection("Manager").WhereEqualTo("Email", email);
@@ -296,22 +333,30 @@ namespace Ahnduino.Lib
 			return false;
 		}
 
+		//비밀번호 초기화
 		public static string ResetEmail(string email)
 		{
+			//임시 비빌번호에 사용될 수 있는 문자들
 			var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			//임시 비밀번호 문자열
 			var Charsarr = new char[8];
 			var random = new Random();
 
+			//임시비밀번호 문자열 생성
 			for (int i = 0; i < Charsarr.Length; i++)
 			{
-				Charsarr[i] = characters[random.Next(characters.Length)];
+				Charsarr[i] = characters[random.Next(characters.Length)]; //characters문자열 길이보다 작은 양의 정수를 랜덤으로 특정하고,
+																		  //characters문자열의 특정된 정수번 째 문자를 Charsarr[i]에 대입
 			}
-
+			
+			//문자 배열을 string으로 변환
 			string resultString = new string(Charsarr);
 
 			DocumentReference DOC = DB!.Collection("Manager").Document(email);
 			Dictionary<string, object> temp = new Dictionary<string, object>()
 			{
+				//생성된 임시 비밀번호를 암호화여 DB에 업로드
 				{"Password", EncryptString(resultString,"flawless ahnduino") }
 			};
 			DOC.UpdateAsync(temp);
@@ -319,7 +364,8 @@ namespace Ahnduino.Lib
 			return resultString;
 		}
 
-		// 암호화 AES256
+		// 암호화 AES256 InputText: 입력된 텍스트, Password 내부 비밀번호
+		// 내부 비밀번호에 따라서 입력된 텍스트가 암호화된 결과가 달라짐
 		private static string EncryptString(string InputText, string Password)
 		{
 			string EncryptedData = "";
@@ -415,35 +461,51 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//수리요청
 		#region Request
+
+		//요청 목록 가져오기 매개변수로 요청 목록을 전달받을 requestlist, 요청목록 스냅샷, 퇴실신청목록 쿼리 스냅샷을 받음
 		static void GetTotalRequestList(ObservableCollection<Request> requestlist, QuerySnapshot request, QuerySnapshot roomout)
 		{
+			//시스템쓰레딩의 task 사용
 			Task.Factory.StartNew(() =>
 			{
+				//Task쓰레드에서 WPF메인 쓰레드에 접근하기 때문에 Dispatcher 사용
 				DispatcherService.Invoke(() =>
 				{
 					Request temp = new Request();
 					requestlist.Clear();
 
+					//수리요청 처리가 필요한 사용자 문서를 순회
 					foreach (DocumentSnapshot documentSnapshot in request.Documents)
 					{
 						DocumentReference dRef = documentSnapshot.Reference;
+
+						//사용자 문서의 수리 목록("2022-06-06예약 전" 같은 컬렉션) 컬렉션을 가져옴
 						IAsyncEnumerable<CollectionReference> clist = dRef.Collection("Request").Document("Request").ListCollectionsAsync();
 						IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = clist.GetAsyncEnumerator(default);
 
+						//가져온 컬렉션을 순회, MoveNextAsync에서 다음 문서가 없으면 false리턴, while 중지 사실상 foreach(IAsyncEnumerator 순회에서는 foreach를 못씀)
 						while (subcollectionsEnumerator.MoveNextAsync().Result)
 						{
-							CollectionReference i = subcollectionsEnumerator.Current;
+							CollectionReference i = subcollectionsEnumerator.Current; //순회 중 현재 컬렉션 객체
+
+							//컬렉션 id길이가 14자라면("~예약 전" 인경우)
 							if (i.Id.Length == 14)
 							{
 								QuerySnapshot qsnp = i.GetSnapshotAsync().Result;
+
+								//해당 컬렉션에 있는 문서를 가져옴
 								foreach (DocumentSnapshot ds in qsnp.Documents)
 								{
+									//가져온 문서를 Request객체로 변환
 									temp = ds.ConvertTo<Request>();
 									temp.Images = new List<string>();
 									Dictionary<string, object> dict = ds.ToDictionary();
+
 									int n = 0;
 
+									//이미지가 있다면 이미지 링크를 객체에 추가, 이미지 없으면 TryGetValue에서 false 리턴
 									while (dict.TryGetValue("image" + n, out object? temp2))
 									{
 										temp.Images.Add((string)temp2);
@@ -451,6 +513,7 @@ namespace Ahnduino.Lib
 									}
 									DispatcherService.Invoke(() =>
 									{
+										//완성된 수리요청 객체를 리스트에추가
 										requestlist.Add(temp);
 									});
 								}
@@ -458,8 +521,10 @@ namespace Ahnduino.Lib
 						}
 					}
 
+					//퇴실 신청 목록 순회
 					foreach (DocumentSnapshot i in roomout.Documents)
 					{
+						//퇴실신청 객체 생성
 						i.TryGetValue("퇴실신청일", out Timestamp timestamp);
 						DateTime dt = timestamp.ToDateTime();
 						dt = dt.AddHours(+9);
@@ -475,81 +540,35 @@ namespace Ahnduino.Lib
 						request.userName = i.Id;
 						request.hopeTime0 = string.Format("{0:yy}/{1:MM}/{2:dd}{3:tt hh 시 mm 분}", dt, dt, dt, dt);
 
+						//완성된 퇴실신청 객체를 리스트에 추가
 						requestlist.Add(request);
 					}
 				});
 			});
 		}
+
+		//FirestoreChangeListener: 쿼리에 해당하는 문서의 변화(문서 생성, 문서 삭제 포함)를 감지하며, 문서에 변화가 생기면 리스너호출
 		public static void GetRequestList(ObservableCollection<Request> requestlist)
 		{
 			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
 			Query query2 = DB!.Collection("RoomOut");
 
-			FirestoreChangeListener listener = query.Listen(snapshot =>
+			FirestoreChangeListener listener = query.Listen(snapshot => //수리요청 처리가 필요한 사용자가 생기면 호출
 			{
 				QuerySnapshot qSnap = query2.GetSnapshotAsync().Result;
-				GetTotalRequestList(requestlist, snapshot, qSnap);
+				GetTotalRequestList(requestlist, snapshot, qSnap); //snapshot-> 수리신청 스냅샷, qSnap -> 퇴실 스냅샷, 수리신청과 퇴실을 한 목록에 보여주기 위해서
+																   //수리 신청만 감지가 되어도 퇴실 목록도 가져옴
 			});
 
-			FirestoreChangeListener listener2 = query2.Listen(snapshot =>
+			FirestoreChangeListener listener2 = query2.Listen(snapshot =>  //퇴실신청 처리가 필요한 사용자가 생기면 호출
 			{
 				QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
-				GetTotalRequestList(requestlist, qSnap, snapshot);
+				GetTotalRequestList(requestlist, qSnap, snapshot);  //qSnap-> 수리신청 스냅샷, snapshot -> 퇴실 스냅샷, 수리신청과 퇴실을 한 목록에 보여주기 위해서
+																	//퇴실만 감지가 되어도 수리 신청 목록을 가져옴
 			});
 		}
 
-		public static void GetRequestListRef(ObservableCollection<Request> requestlist)
-		{
-			Query query = DB!.Collection("ResponsAndReQuest").WhereEqualTo("isdone", false);
-
-			FirestoreChangeListener listener = query.Listen(snapshot =>
-			{
-				DispatcherService.Invoke(() =>
-				{
-					Request temp = new Request();
-					requestlist.Clear();
-					Thread trd = new Thread(() =>
-					{
-						foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-						{
-							DocumentReference dRef = documentSnapshot.Reference;
-							IAsyncEnumerable<CollectionReference> clist = dRef.Collection("Request").Document("Request").ListCollectionsAsync();
-							IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = clist.GetAsyncEnumerator(default);
-
-							while (subcollectionsEnumerator.MoveNextAsync().Result)
-							{
-								CollectionReference i = subcollectionsEnumerator.Current;
-								if (i.Id.Length == 14)
-								{
-									QuerySnapshot qsnp = i.GetSnapshotAsync().Result;
-									foreach (DocumentSnapshot ds in qsnp.Documents)
-									{
-										temp = ds.ConvertTo<Request>();
-										temp.Images = new List<string>();
-										Dictionary<string, object> dict = ds.ToDictionary();
-										int n = 0;
-
-										while (dict.TryGetValue("image" + n, out object? temp2))
-										{
-											temp.Images.Add((string)temp2);
-											n++;
-										}
-										DispatcherService.Invoke(() =>
-										{
-											requestlist.Add(temp);
-										});
-										
-									}
-								}
-							}
-						}
-					});
-					
-					trd.Start();
-				});
-			});
-		}
-
+		//수리요청 예약
 		public static void UpdateRequest (string? email, string? date, string? docid, Request request, string UID, DateTime reservedtime)
 		{
 			Query query;
@@ -590,7 +609,8 @@ namespace Ahnduino.Lib
 				}
 			}
 			
-
+			//!!!!!!!!!!!!!!! SetAsync(object, SetOptions.MergeAll) 경로에 문서가 없다면 새로 만듬 문서가 있다면 기존 문서와 병합->기존 문서에서 변경점이 없는 필드는 기존문서 유지
+			//																													 ->기존 문서에서 필드가 변하거나 새로 생겼다면 갱신
 			dRef.SetAsync(dic, SetOptions.MergeAll);
 
 			//현장직 문서 추가
@@ -682,6 +702,7 @@ namespace Ahnduino.Lib
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 		}
 
+		//수리요청 삭제(취소)
 		public static void RemoveRequest(string? email, string? date, string? docid, Request request, string UID)
 		{
 			Query query;
@@ -744,6 +765,7 @@ namespace Ahnduino.Lib
 			dRef.SetAsync(update, SetOptions.MergeAll).Wait();
 		}
 
+		//현장직 콤보박스 설정
 		public static void SetWorkerComboBox(ComboBox Region, ComboBox Gu, ComboBox Dong)
 		{
 
@@ -755,13 +777,18 @@ namespace Ahnduino.Lib
 			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
 
 			Dictionary<string, object> dict = dSnap.ToDictionary();
+
+			//현장직 주소 리스트 순회
 			foreach (KeyValuePair<string, object> i in dict)
 			{
+				//공백으로 단어를 나눔
 				string[] strs = i.Key.Split(' ');
 
 				
+					//나눈 단어개수가 (대전 동구 자양동 : 3) 0보다 클 때
 					if (strs.Count() > 0)
 					{
+						//리스트에 동일한 단어가 없다면 나눈 단어의 0번째를 추가
 						if (regionlist.Find(x => x == strs[0]) == null)
 							regionlist.Add(strs[0]);
 					}
@@ -785,6 +812,7 @@ namespace Ahnduino.Lib
 			Dong.ItemsSource = donglist;
 		}
 
+		//현장직 주소 콤보박스가 설정 되었을 때 현장직 목록 설정
 		public static List<string> SetWorker(string region, string gu, string dong)
 		{
 			List<string> res = new List<string>();
@@ -800,7 +828,9 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//보류
 		#region FixHold
+		//보류 목록 가져오기
 		public static List<Request> GetFixHoldList()
 		{
 			List<Request> res = new List<Request>();
@@ -824,12 +854,16 @@ namespace Ahnduino.Lib
 			return res;
 		}
 
+		//보류 삭제 및 카운트(삭제후 FixHoldMenu.xaml.cs에서 예약 함수 호출 해 줌)
 		public static void RemoveFixHold(Request request)
 		{
+			//보류 컬렉션과 수리요청 컬렉션의 보류 문서 삭제
 			DocumentReference dRef = DB!.Collection("FixHold").Document(request.worker).Collection("FixHold").Document(request.DocID);
 			dRef.DeleteAsync().Wait();
 			dRef = DB!.Collection("ResponsAndReQuest").Document(request.UID).Collection("Request").Document("Request").Collection(request.Date + " 수리보류").Document(request.DocID);
 			dRef.DeleteAsync().Wait();
+
+			//수리요청 컬렉션 수리 보류 카운트
 			dRef = DB!.Collection("ResponsAndReQuest").Document(request.UID).Collection("Request").Document("Request");
 			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
 			dSnap.TryGetValue(request.Date + " 수리보류", out int count);
@@ -837,21 +871,29 @@ namespace Ahnduino.Lib
 
 			Dictionary<string, object> updates = new Dictionary<string, object>
 			{
-				{ request.Date + " 수리보류", count > 0 ? count : FieldValue.Delete }
+				{ request.Date + " 수리보류", count > 0 ? count : FieldValue.Delete } //FieldValue.Delete: 필드를 삭제 
 			};
 			dRef.SetAsync(updates, SetOptions.MergeAll).Wait();
 		}
 		#endregion
 
 		#region Chat
+		//채팅 목록을 처음 열었을 때 채팅 리스트 가져오기
 		public static void FirstGetChatList(string email, ObservableCollection<Chat> chatlist)
 		{
 			chatlist.Clear();
 			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
-			Query query = collectionRef.OrderByDescending("time").Limit(50);
+
+			//내림차순으로 10개 가져옴(최신꺼부터 10개)
+			Query query = collectionRef.OrderByDescending("time").Limit(10);
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
-			foreach(DocumentSnapshot dSnap in qSnap.Documents)
+
+			//가져온문서를 순회해서 채팅 리스트에 넣기
+			//쿼리 스냅샷이 최신이 0번째고 오래된 채팅일수록 n번째인 구조인데 리스트에서는 오래된것이0이고 최신이 n번째여야함
+			//따라서 스냅샷 순서를 Reverse() 메서드로 역순으로 해줌
+			foreach(DocumentSnapshot dSnap in qSnap.Documents.Reverse())
 			{
+				//채팅 이미지 가져오기
 				Dictionary<string, object> dict = dSnap.ToDictionary();
 				List<string> images = new();
 
@@ -864,9 +906,12 @@ namespace Ahnduino.Lib
 					i++;
 				}
 
+				//이미지 외 채팅 항목들을 Chat 객체로 변환
 				Chat res = dSnap.ConvertTo<Chat>();
+				//채팅 객체에 이미지목록 할당
 				res.imagelist = images;
 
+				//List<string>인 이미지 목록을 WPF이미지 리스트로 저장해줌
 				res.trueimage = new List<Image>();
 				foreach(string j in res.imagelist)
 				{
@@ -878,15 +923,36 @@ namespace Ahnduino.Lib
 
 				res.address = GetAddress(email);
 
-				chatlist.Insert(0, res);
+				//!! 클래스멤버인 파이어스토어 Timestamp를 사용하려면 새로운 timestamp객체를 만들어서 클래스에 있는 타임스탬프를 참조하게 해야 함 구글이 이렇게만듬...
+				Timestamp timestamp = (Timestamp)res.time!;
+				DateTime dateTime = timestamp.ToDateTime();
+				dateTime = dateTime.AddHours(9);
+				res.date = string.Format("{0:yyyy년 M월 d일 dddd}", dateTime);
+
+				//채팅이 해당 날짜를 처음인지를 판단, xaml상에서 날짜를 띄워줄 때 사용함
+				if(chatlist.Count == 0 || chatlist[chatlist.Count-1].date != res.date)
+				{
+					res.isfirst = true;
+				}
+
+				chatlist.Add(res);
+				
 			}
+			Console.WriteLine("Done");
 		}
 
+		//채팅 목록을 추가로 불러올 때 사용
+		//==알고리즘==
+		//전체 채팅이 0~10 까지 있고 현재 0~5까지 있는상황, 0이 최신 10이 가장 오래된 것
+		//6~8까지만 불러오려고 함
+		//1. 쿼리를 날짜 내림차순으로 3개까지만 실행시킨다 (실제 프로그램상에서는 10개) 6이 날짜가 가장 크기(가장 최신) 때문에 처음으로 오며 7, 8이 순서대로 오게된다
+		//2. 채팅 배열은 처음에는 가장 오래된것 마지막에는 가장 최신의것 이 있는 구조이다
+		//3. 따라서 쿼리에서 얻은 배열들을 순서대로 채팅 배열의 첫번째에 삽입해주면 된다 큐의 삽입과 유사한 구조이다.
 		public static void GetChatList(string email, ObservableCollection<Chat> chatlist)
 		{
 			ObservableCollection<Chat> list = new ObservableCollection<Chat>();
 			CollectionReference collectionRef = DB!.Collection("chat").Document("chat").Collection(email);
-			Query query = collectionRef.WhereLessThan("time", chatlist.First().time) .OrderByDescending("time").Limit(50);
+			Query query = collectionRef.WhereLessThan("time", chatlist.First().time).OrderByDescending("time").Limit(10);
 			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
 			foreach (DocumentSnapshot dSnap in qSnap.Documents)
 			{
@@ -913,17 +979,43 @@ namespace Ahnduino.Lib
 					img.Width = 200;
 					res.trueimage!.Add(img);
 				}
+				res.address = GetAddress(email);
 
+				//불러온 결과가 있는 임시 리스트
 				list.Add(res);
 			}
+
+			//임시리스트에있는 값들을 채팅리스트에 넣어줌
+			//임시리스트의 정렬 순서는 내림차순이며 채팅 리스트의 0번째에 넣음(큐의 삽입과 유사)
 			foreach(Chat i in list)
 			{
+				
+				Timestamp timestamp = (Timestamp)i.time!;
+				DateTime dateTime = timestamp.ToDateTime();
+				dateTime = dateTime.AddHours(9);
+				i.date = string.Format("{0:yyyy년 M월 d일 dddd}", dateTime);
+
+				//만약 채팅 리스트의 0번째 날짜가 i와 같으면 i가 당일의 첫 번째 채팅이 된다
+				//따라서 채팅리스트의 0번째의 첫 번째 채팅 상태를 해제 해준다.
+				if (chatlist[0].date == i.date)
+				{
+					chatlist[0].isfirst = null;
+				}
+
+				//i는 채팅리스트의 첫 번째에 있기때문에 항상 첫 번째 채팅 상태이다
+				//먄악 임시 목록에서 다음번 i가 현재 i와 날짜가같으면 1000줄 코드에서 첫번째 상태를 해제 해주게 된다
+				i.isfirst = true;
+
+				//i를 채팅리스트의 0번째에 넣는다 기존에 있던 항목들은 순서가 밀리게된다
 				chatlist.Insert(0, i);
 			}
+			Console.WriteLine("GetChatListDone");
 		}
 
+		//새로운 채팅을 받는 메서드
 		public static void GetChat(string? email, ObservableCollection<Chat> chatlist, ScrollViewer scrollViewer)
 		{
+			//채팅방을 나갔을 때 리스너를 종료시키기 위한 설정 코드 최하단 참고
 			if (email == null)
 			{
 				email = "null";
@@ -959,19 +1051,31 @@ namespace Ahnduino.Lib
 						chat.trueimage!.Add(img);
 					}
 
+					Timestamp timestamp = (Timestamp)chat.time!;
+					DateTime dateTime = timestamp.ToDateTime();
+					dateTime = dateTime.AddHours(9);
+					chat.date = string.Format("{0:yyyy년 M월 d일 dddd}", dateTime);
+
+					if (chatlist.Count == 0 || chatlist[chatlist.Count-1].date != chat.date)
+					{
+						chat.isfirst = true;
+					}
+
 					chat.address = GetAddress(email);
 
 					chatlist.Add(chat);
-					scrollViewer.ScrollToBottom();
 				});
 			});
 
+			//불필요한 리스너가 열려있으면 최적화상에서 좋지않다. 스톱 어싱크로 리스너를 꺼야한다.
 			if (email == "null")
 			{
 				listener.StopAsync();
 			}
+			Console.WriteLine("GetChatDone");
 		}
 
+		//답변이 필요한 유저 리스트 가져오기
 		public static void GetChatUserList(ObservableCollection<string> chatuserlist)
 		{
 			Query query = DB!.Collection("chat").Document("chat").Collection("needanswer");
@@ -989,12 +1093,13 @@ namespace Ahnduino.Lib
 			});
 		}
 
+		//채팅 이미지 업로드
 		public static async Task<string> UploadChatImg(string email, string path, string docid)
 		{
 			var stream = File.Open(@path, FileMode.Open);
 
 			// Construct FirebaseStorage with path to where you want to upload the file and put it there
-			var task = new FirebaseStorage("ahnduino.appspot.com")
+			var task = new FirebaseStorage("ahnduino.appspot.com")//!!파이어스토어DB가 아닌 파이어베이스스토리지(파일이 올라가는그곳)!!
 			 .Child(email)
 			 .Child("chat")
 			 .Child(docid)
@@ -1007,6 +1112,7 @@ namespace Ahnduino.Lib
 			return downloadUrl;
 		}
 
+		//채팅 보내기
 		public static void SendChat(string email,string uid, string text)
 		{
 			CollectionReference cRef = DB!.Collection("chat").Document("chat").Collection(email);
@@ -1018,7 +1124,8 @@ namespace Ahnduino.Lib
 			cRef.AddAsync(chat).Wait();
 			answerdone(email);
 		}
-
+		
+		//이미지 보내기
 		public static void SendImg(string email, string uid, string[] Imagelist)
 		{
 			List<string> temp = new();
@@ -1053,6 +1160,7 @@ namespace Ahnduino.Lib
 			answerdone(email);
 		}
 
+		//사무직이 답변을 했을때 처리
 		public static void answerdone(string email)
 		{
 			DocumentReference dRef = DB!.Collection("chat").Document("chat").Collection("needanswer").Document(email);
@@ -1061,6 +1169,8 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Bill
+
+		//고지서 리스트 가져오기
 		public static void GetBillList(string? email, ObservableCollection<Bill> billlist)
 		{
 			billlist.Clear();
@@ -1073,6 +1183,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//미납요금이나 수리비가 발생한 유저 리스트 가져오기
 		public static void GetneedListbox(ListBox listBox)
 		{
 			Query query = DB!.Collection("Building").WhereEqualTo("Used", true);
@@ -1089,6 +1200,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//수리비납부 확인 처리
 		public static void AcceptPay(string? email, Bill bill)
 		{
 			Query query = DB!.Collection("Bill").Document(email).Collection("Month").WhereLessThanOrEqualTo("Nab", bill.Nab);
@@ -1114,6 +1226,7 @@ namespace Ahnduino.Lib
 			
 		}
 
+		//새로운 고지서를 프로그램에서 만들기(업로드 x)
 		public static void SetNewBill(string? email, Bill newbill)
 		{
 			Query query = DB!.Collection("Bill").Document(email).Collection("Month").OrderByDescending("Nab").Limit(1);
@@ -1160,6 +1273,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//고지서 업로드
 		public static void CreateBill(string? email, Bill newbill, int billlistcount)
 		{
 			if(billlistcount >= 12)
@@ -1175,14 +1289,11 @@ namespace Ahnduino.Lib
 			DocumentReference dRef = DB!.Collection("Bill").Document(email).Collection("Month").Document((Month.Month - 1 == 0 ? 12 : Month.Month - 1) + "월");
 			dRef.SetAsync(newbill, SetOptions.MergeAll);
 		}
-
-		public static void UpdateBIll()
-		{
-			CollectionReference cRef = DB!.Collection("Bill");
-		}
 		#endregion
 
 		#region Board
+
+		//게시판 목록 불러오기
 		public static void GetBoardList(ObservableCollection<Board> boardlist)
 		{
 			boardlist.Clear(); 
@@ -1208,6 +1319,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//게시판 검색
 		public static void SearchBoardList(string keyword, ObservableCollection<Board> boardlist)
 		{
 			boardlist.Clear();
@@ -1233,6 +1345,7 @@ namespace Ahnduino.Lib
 			}
 		}
 
+		//새 공지 만들기
 		public static string CreateBoard(Board board)
 		{
 			if(board.DocID == null)
@@ -1283,6 +1396,7 @@ namespace Ahnduino.Lib
 			dRef.DeleteAsync().Wait();
 		}
 
+		//이미지를 파베 스토리지에 업로드
 		public static async Task<string> UploadBoardImg(string path, string docid)
 		{
 			var stream = File.Open(@path, FileMode.Open);
@@ -1299,6 +1413,8 @@ namespace Ahnduino.Lib
 			stream.Close();
 			return downloadUrl;
 		}
+
+		//게시판에 이미지 추가
 		public static void BoardAddimage(Board board, string[] imglist, string docid)
 		{
 			if (board.imagelist == null)
@@ -1318,6 +1434,7 @@ namespace Ahnduino.Lib
 		#endregion
 
 		#region Info
+		//갤러리 입퇴실 불러오기
 		public static void GetCheckInList(string email, ListBox checkinlistbox, ListBox checkoutlistbox)
 		{
 			CollectionReference cRef = DB!.Collection("CheckInCheckOut").Document(email).Collection("입실");
@@ -1336,6 +1453,7 @@ namespace Ahnduino.Lib
 
 		}
 
+		//갤러리 수리목록 불러오기
 		public static void GetInfoRepairList(string email, ListBox requestlistbox)
 		{
 			DocumentReference dRef = DB!.Collection("ResponsAndReQuest").Document(email).Collection("Request").Document("Request");
@@ -1353,68 +1471,6 @@ namespace Ahnduino.Lib
 				}
 			}
 		}
-		#endregion
-
-		#region json
-		/*
-		private static string Request_Json(string url)
-		{
-			string result = string.Empty;
-			try
-			{
-				HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-				using (var response = (HttpWebResponse)request.GetResponse())
-				{
-					using (Stream responseStream = response.GetResponseStream())
-					{
-						using (StreamReader stream = new StreamReader(responseStream, Encoding.UTF8))
-						{
-							result = stream.ReadToEnd();
-						}
-					}
-				}
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			return result;
-		}
-		*/
-
-		/*========== json parsing example =============
-
-		private void JsonParser(String json)
-		{
-			JObject obj = JObject.Parse(json);
-			JArray array = JArray.Parse(obj["d"].ToString());
-			string result = null;
-
-			foreach (JObject itemObj in array)
-			{
-				result += " ID : " + itemObj["Id"].ToString();
-				result += " --- ";
-				result += " Name : " + itemObj["Name"].ToString();
-				result += "\r\n";
-			}
-		}
-		*/
-		/*
-		public  GetUrlImage(string url)
-		{
-			using (WebClient client = new WebClient())
-			{
-				byte[] imgArray;
-				imgArray = client.DownloadData(url);
-
-				using (MemoryStream memstr = new MemoryStream(imgArray))
-				{
-					Image img = Image.FromStream(memstr);
-					return img;
-				}
-			}
-		}
-		*/
 		#endregion
 	}
 }

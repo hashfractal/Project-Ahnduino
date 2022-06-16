@@ -33,6 +33,8 @@ namespace Ahnduino.Wins
 		ObservableCollection<string> chatuserlist = new();
 		string? email;
 		string uid;
+		bool refresh = true;
+		bool firstload = true;
 
 		public ChatMenu(string uid)
 		{
@@ -67,9 +69,25 @@ namespace Ahnduino.Wins
 
 		private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
 		{
-			if (SV.VerticalOffset == 0 && ChatListView.Items.Count > 0)
+			if (SV.VerticalOffset == 0 && ChatListView.Items.Count > 0 && refresh)
 			{
+				refresh = false;
+				Console.WriteLine("svcalled");
 				Fbad.GetChatList(email!, chatlist);
+				if(firstload)
+				{
+					firstload = false;
+				}
+				else
+				{
+					SV.ScrollToVerticalOffset(10);
+				}
+				ChatListView.ItemsSource = null;
+				ChatListView.ItemsSource = chatlist;
+			}
+			else if(SV.VerticalOffset > 10 )
+			{
+				refresh = true;
 			}
 		}
 
@@ -107,9 +125,23 @@ namespace Ahnduino.Wins
 			}
 		}
 
-		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		private void Build_Click(object sender, RoutedEventArgs e)
 		{
-			RequestMenu menu = new(uid);
+			BuildMenu build = new();
+			build.Show();
+		}
+
+		private void ChatListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Chat chat = (Chat)ChatListView.SelectedItem;
+			Console.WriteLine(chat.date);
+			Console.WriteLine(chat.isfirst);
+		}
+
+		#region Sidemenu
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
 			menu.Show();
 			Close();
 		}
@@ -135,10 +167,12 @@ namespace Ahnduino.Wins
 			Close();
 		}
 
-		private void Build_Click(object sender, RoutedEventArgs e)
+		private void Fixhold_Click(object sender, RoutedEventArgs e)
 		{
-			BuildMenu build = new();
-			build.Show();
+			FixHoldMenu menu = new(uid);
+			menu.Show();
+			Close();
 		}
+		#endregion
 	}
 }

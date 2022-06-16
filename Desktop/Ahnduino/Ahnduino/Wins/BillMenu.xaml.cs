@@ -140,33 +140,6 @@ namespace Ahnduino.Wins
 			searchbutton_Click(sender, e);
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			RequestMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-		private void gotochat_Click(object sender, RoutedEventArgs e)
-		{
-			ChatMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotoboard_Click(object sender, RoutedEventArgs e)
-		{
-			BoardMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
-		private void gotogallery_Click(object sender, RoutedEventArgs e)
-		{
-			InfoMenu menu = new(uid);
-			menu.Show();
-			Close();
-		}
-
 		private void ntb6_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			int n = 0;
@@ -254,5 +227,42 @@ namespace Ahnduino.Wins
 			textboxemail.Text = (string)lbneedsomething.SelectedItem;
 			searchbutton_Click(sender, e);
 		}
+
+		#region Sidemenu
+		private void gotochat_Click(object sender, RoutedEventArgs e)
+		{
+			ChatMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotoboard_Click(object sender, RoutedEventArgs e)
+		{
+			BoardMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotobill_Click(object sender, RoutedEventArgs e)
+		{
+			BillMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void gotogallery_Click(object sender, RoutedEventArgs e)
+		{
+			InfoMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+
+		private void Fixhold_Click(object sender, RoutedEventArgs e)
+		{
+			FixHoldMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		#endregion
 	}
 }
