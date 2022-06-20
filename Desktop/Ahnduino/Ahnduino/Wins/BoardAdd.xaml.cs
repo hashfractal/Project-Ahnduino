@@ -83,6 +83,7 @@ namespace Ahnduino.Wins
 
 		private void baddimage_Click(object sender, RoutedEventArgs e)
 		{
+			
 			Board board = new Board();
 			if (this.board != null)
 			{
@@ -103,31 +104,29 @@ namespace Ahnduino.Wins
 
 			if (openFileDialog.ShowDialog() == true)
 			{
+				for (int i = 1; i < imglist.Items.Count; i++)
+				{
+					imglist.Items.RemoveAt(i);
+				}
 				Fbad.BoardAddimage(board, openFileDialog.FileNames , Fbad.CreateBoard(board));
 			}
-
-			foreach (string i in board!.imagelist!)
+			for (int i = 1; i < imglist.Items.Count; i++)
 			{
-				Image image = Fbad.GetImageFromUri(i);
-				image.Height = 150;
-				image.Width = 150;
-
-				imglist.Items.Add(image);
+				imglist.Items.RemoveAt(i);
 			}
+			if (board!.imagelist != null)
+            {
+				foreach (string i in board!.imagelist!)
+				{
+					Image image = Fbad.GetImageFromUri(i);
+					image.Height = 150;
+					image.Width = 150;
+
+					imglist.Items.Add(image);
+				}
+			}
+			
 			this.board = board;
-		}
-
-		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			/*
-			if (imglist.SelectedIndex != -1)
-			{
-				Image img = (Image)imglist.SelectedItem;
-				ImageViewer imageViewer = new ImageViewer(img);
-				imageViewer.Show();
-				imglist.SelectedIndex = -1;
-			}
-			*/
 		}
 	}
 }

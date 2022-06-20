@@ -65,6 +65,8 @@ namespace Ahnduino.Wins
 				ntb2.Text = dt.Month.ToString();
 				
 				ntb4.Text = dt.AddMonths(1).Month.ToString();
+				ntb6.Text = newbill.Money.ToString();
+				ntb8.Text = newbill.Arrears.ToString();
 				ntb7.Text = "0";
 			}
 			else

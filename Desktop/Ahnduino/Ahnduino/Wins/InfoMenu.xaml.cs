@@ -76,5 +76,88 @@ namespace Ahnduino.Wins
 			Close();
 		}
 		#endregion
+
+		private void lbin_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			List<Image> images = new List<Image>();
+
+			for (int i = 0; i < lbin.Items.Count; i++)
+			{
+				Image img = new Image();
+
+				Room? room = lbin.Items[i] as Room;
+				img.Source = new BitmapImage(new Uri(room!.image!));
+				images.Add(img);
+			}
+
+			ImageViewer imageViewer = new ImageViewer(images, lbin.SelectedIndex);
+			imageViewer.Show();
+		}
+
+		private void lbout_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			List<Image> images = new List<Image>();
+
+			for (int i = 0; i < lbin.Items.Count; i++)
+			{
+				Image img = new Image();
+
+				Room? room = lbout.Items[i] as Room;
+				img.Source = new BitmapImage(new Uri(room!.image!));
+				images.Add(img);
+			}
+
+			ImageViewer imageViewer = new ImageViewer(images, lbin.SelectedIndex);
+			imageViewer.Show();
+		}
+
+		private void lbrequest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			List<Image> temp = new List<Image>();
+
+			
+			if (((Request)lbrequest!.SelectedItem!).image0 != null)
+			{
+				Image image = new Image();
+				image.Source = new BitmapImage(new Uri(((Request)lbrequest!.SelectedItem!).image0!));
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			if (((Request)lbrequest!.SelectedItem!).image1 != null)
+			{
+				Image image = new Image();
+				image.Source = new BitmapImage(new Uri(((Request)lbrequest!.SelectedItem!).image1!));
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			if (((Request)lbrequest!.SelectedItem!).image2 != null)
+			{
+				Image image = new Image();
+				image.Source = new BitmapImage(new Uri(((Request)lbrequest!.SelectedItem!).image2!));
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			if (((Request)lbrequest!.SelectedItem!).image3 != null)
+			{
+				Image image = new Image();
+				image.Source = new BitmapImage(new Uri(((Request)lbrequest!.SelectedItem!).image3!));
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			if (((Request)lbrequest!.SelectedItem!).image4 != null)
+			{
+				Image image = new Image();
+				image.Source = new BitmapImage(new Uri(((Request)lbrequest!.SelectedItem!).image4!));
+				image.Height = 150;
+				image.Width = 150;
+				temp.Add(image);
+			}
+			ImageExtendList imageExtendList = new ImageExtendList(temp);
+			imageExtendList.Show();
+		}
 	}
 }

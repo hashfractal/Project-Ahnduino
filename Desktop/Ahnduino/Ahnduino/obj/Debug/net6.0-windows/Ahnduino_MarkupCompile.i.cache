@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
-22116710977
-1-699830913
-27901177505
+23-207693155
+2-1163608196
+28-421501206
 215-1645943984
-Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\AddBuild.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardAdd.xaml;Wins\BoardMenu.xaml;Wins\BuildMenu.xaml;Wins\ChatMenu.xaml;Wins\FixHoldMenu.xaml;Wins\ImageExtendList.xaml;Wins\ImageViewer.xaml;Wins\InfoMenu.xaml;Wins\MainMenuTemplate.xaml;Wins\Register.xaml;Wins\RequestMenu.xaml;Wins\ResetPW.xaml;
+Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\AddBuild.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardAdd.xaml;Wins\BoardMenu.xaml;Wins\BuildMenu.xaml;Wins\ChatMenu.xaml;Wins\FixHoldMenu.xaml;Wins\ImageExtendList.xaml;Wins\ImageViewer.xaml;Wins\InfoMenu.xaml;Wins\InfoRoomViewer.xaml;Wins\MainMenuTemplate.xaml;Wins\Register.xaml;Wins\RequestMenu.xaml;Wins\ResetPW.xaml;
 
-True
+False
 

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahnduino", "Ahnduino\Ahnduino.csproj", "{27B258B5-4025-4130-AC70-D666C0C1B5DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ahnduino", "Ahnduino\Ahnduino.csproj", "{27B258B5-4025-4130-AC70-D666C0C1B5DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{3F9AA4EA-7D33-4604-8EB4-46F953B7FB6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

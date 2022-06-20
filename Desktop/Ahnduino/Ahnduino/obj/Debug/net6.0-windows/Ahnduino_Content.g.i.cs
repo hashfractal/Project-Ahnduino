@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json")]
 
 

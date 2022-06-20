@@ -28,10 +28,14 @@ namespace Ahnduino.Lib
 		//기본 생성자, 생성이 되면서 파이어스토어 객체를 DB에 생성
 		static Fbad()
 		{
-			string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
+			//string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
+			//System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+			//DB = FirestoreDb.Create("ahnduino");
+
+			string path = "rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json";
 			System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
-			DB = FirestoreDb.Create("ahnduino");
+			DB = FirestoreDb.Create("rijon-681a0");
 		}
 
 		//전체주소(주소+(건물명))을 주면 해당 주소에 할당된 유저의 이메일 반환
@@ -877,6 +881,7 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//채팅
 		#region Chat
 		//채팅 목록을 처음 열었을 때 채팅 리스트 가져오기
 		public static void FirstGetChatList(string email, ObservableCollection<Chat> chatlist)
@@ -1168,6 +1173,7 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//고지서
 		#region Bill
 
 		//고지서 리스트 가져오기
@@ -1261,10 +1267,16 @@ namespace Ahnduino.Lib
 			}
 			else
 			{
+				DocumentReference DR = DB!.Collection("Building").Document(GetAddress(email!));
+				DocumentSnapshot DS = DR.GetSnapshotAsync().Result;
+
+				DS.TryGetValue("관리비", out int pay);
+				DS.TryGetValue("연체료", out int unpay);
+
 				newbill.Ab = 2;
-				newbill.Arrears = null;
+				newbill.Arrears = unpay;
 				newbill.Defmoney = 0;
-				newbill.Money = null;
+				newbill.Money = pay;
 				newbill.Nab = null;
 				newbill.Pay = false;
 				newbill.Pomoney = null;
@@ -1291,6 +1303,7 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//공지
 		#region Board
 
 		//게시판 목록 불러오기
@@ -1433,6 +1446,7 @@ namespace Ahnduino.Lib
 		}
 		#endregion
 
+		//갤러리
 		#region Info
 		//갤러리 입퇴실 불러오기
 		public static void GetCheckInList(string email, ListBox checkinlistbox, ListBox checkoutlistbox)

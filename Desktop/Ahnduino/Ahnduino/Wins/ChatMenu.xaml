@@ -114,7 +114,7 @@
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
 				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
 				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
-				<Button Height="120" Background="#004B1C" Style="{StaticResource MenuButton}">
+				<Button Height="120" Style="{StaticResource MenuButton}">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
@@ -128,7 +128,7 @@
 					</StackPanel>
 				</Button>
 
-				<Button x:Name="gotochat" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
+				<Button x:Name="gotochat" Background="#004B1C" Height="120" Style="{StaticResource MenuButton}" Click="gotochat_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/chat.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">채팅</Label>

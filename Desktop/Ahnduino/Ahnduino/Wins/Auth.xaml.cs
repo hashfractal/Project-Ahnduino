@@ -37,8 +37,8 @@ namespace Ahnduino.Wins
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			IDTextbox.Text = "hsj3925@naver.com";
-			password = "qwerasdf";
+			//IDTextbox.Text = "hsj3925@naver.com";
+			//password = "qwerasdf";
 			if (Fbad.Login(IDTextbox.Text, password))
 			{
 				RequestMenu mainWindow = new RequestMenu(IDTextbox.Text);
@@ -81,6 +81,12 @@ namespace Ahnduino.Wins
 				PWTextbox.Text += "*";
 				PWTextbox.CaretIndex = PWTextbox.Text.Length;
 			}
+		}
+
+		private void PWTextbox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			PWTextbox.Text = "";
+			password = "";
 		}
 	}
 }
