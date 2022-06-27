@@ -1,0 +1,140 @@
+﻿<Window x:Name="window" x:Class="Ahnduino.Wins.BuildMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ahnduino.Wins"
+        mc:Ignorable="d"
+        Title="도와줘 홈즈!" Height="720" Width="810"
+		WindowStartupLocation="CenterScreen">
+	<Grid Background="LightGray">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Grid Grid.Column="0" Background="LightGray">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="40"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<Grid Grid.Row="0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="100"/>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="40"/>
+					</Grid.ColumnDefinitions>
+					<ComboBox x:Name="cbtype" Margin="10,10,0,0" SelectedIndex="0" FontFamily="{StaticResource Default}" FontSize="25" >
+						<ComboBoxItem>주소</ComboBoxItem>
+						<ComboBoxItem>ID</ComboBoxItem>
+					</ComboBox>
+					<TextBox x:Name="textboxemail" Grid.Column="1" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }">
+						<TextBox.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="8,0,0,8"/>
+							</Style>
+						</TextBox.Resources>
+					</TextBox>
+					<TextBlock Grid.Column="1" IsHitTestVisible="False" Text="검색" FontSize="30" Margin="15,8,0,0" FontFamily="{StaticResource Default}"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray">
+						<TextBlock.Style>
+							<Style TargetType="{x:Type TextBlock}">
+								<Setter Property="Visibility" Value="Collapsed"/>
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding Text, ElementName=textboxemail}" Value="">
+										<Setter Property="Visibility" Value="Visible"/>
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</TextBlock.Style>
+					</TextBlock>
+
+					<Button x:Name="bsearchbuild" Grid.Column="2" BorderThickness="0" Background="White" Margin="0,8,10,0" Click="bsearchbuild_Click">
+						<Button.Resources>
+							<Style TargetType="Border">
+								<Setter Property="CornerRadius" Value="0,10,10,0"/>
+							</Style>
+						</Button.Resources>
+						<Image Margin="3" Source="/Icon/ChatSearch.Png"/>
+					</Button>
+				</Grid>
+				<Border Grid.Row="1" Margin="10" CornerRadius="10" Background="White">
+					<ListView x:Name="LVUserlist" Background="Transparent" FontFamily="{StaticResource Default}" FontSize="18" BorderBrush="Transparent" SelectionChanged="LVUserlist_SelectionChanged">
+
+					</ListView>
+				</Border>
+
+				<Grid Grid.Row="3" Margin="10,0,10,10">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+				</Grid>
+			</Grid>
+		</Grid>
+
+		<Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<Grid Grid.Row="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Border Background="#008F5E" Margin="0,8,5,0" CornerRadius="8">
+					<Button  FontFamily="{StaticResource Default}" FontSize="25" BorderBrush="Transparent" Background="Transparent" Foreground="White" Click="Button_Click_1" >
+						건물 삭제
+					</Button>
+				</Border>
+
+				<Border Grid.Column="1"  Background="#008F5E" Margin="5,8,10,0" CornerRadius="8">
+					<Button FontSize="25" FontFamily="{StaticResource Default }" BorderBrush="Transparent" Background="Transparent" Foreground="White" Click="Button_Click">
+						건물 추가
+					</Button>
+				</Border>
+				
+			</Grid>
+			<Border Grid.Row="2" Background="White" CornerRadius="10" Margin="0,10,10,10">
+				<StackPanel>
+					<Grid Margin="10">
+						<TextBlock Text="건물 주소" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbaddress" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="건물 이름" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbname" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="건물 인증번호" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbid" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="공실" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbused" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="관리비" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbpay" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="연체료" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbunpay" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="미납" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbunpaid" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+					<Grid Margin="10">
+						<TextBlock Text="수리비" FontFamily="{StaticResource Default}" FontSize="25"/>
+						<TextBlock x:Name="tbrepair" TextAlignment="Right" FontFamily="{StaticResource Default}" FontSize="25"/>
+					</Grid>
+				</StackPanel>
+			</Border>
+
+		</Grid>
+	</Grid>
+</Window>

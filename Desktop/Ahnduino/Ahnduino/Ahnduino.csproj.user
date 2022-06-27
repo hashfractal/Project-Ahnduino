@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Wins\AddBuild.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\Auth.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\BillMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\BoardAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\BoardMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\BuildMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\ChatMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\FixHoldMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\ImageExtendList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\ImageViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\InfoMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\InfoRoomViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\MainMenuTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\Register.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\RequestMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\ResetPW.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Themes\AuthButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\AuthTextbox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ChatItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ContactCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MenuButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MessageBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\AddBuild.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\Auth.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\BillMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\BoardAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\BoardMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\BuildMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\ChatMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\FixHoldMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\ImageExtendList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\ImageViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\InfoMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\InfoRoomViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\MainMenuTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\Register.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\RequestMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\ResetPW.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

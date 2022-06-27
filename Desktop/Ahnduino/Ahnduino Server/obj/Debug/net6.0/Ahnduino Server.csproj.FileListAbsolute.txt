@@ -1,0 +1,40 @@
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.exe
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.deps.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.runtimeconfig.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.pdb
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.AssemblyReference.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfoInputs.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfo.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CoreCompileInputs.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\refint\Ahnduino Server.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.pdb
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.genruntimeconfig.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\ref\Ahnduino Server.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.CommonProtos.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.V1.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.LongRunning.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Auth.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\System.Linq.Async.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CopyComplete
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json

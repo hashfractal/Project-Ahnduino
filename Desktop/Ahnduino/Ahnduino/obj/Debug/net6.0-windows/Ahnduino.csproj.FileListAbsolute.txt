@@ -1,0 +1,348 @@
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.exe
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.deps.json
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.runtimeconfig.json
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\FirebaseAdmin.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Firebase.Storage.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Rest.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.PlatformServices.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Core.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.V1.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.LongRunning.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Auth.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.Api.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthButton.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthTextbox.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ChatItem.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ContactCard.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MenuButton.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MessageBox.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ScrollBar.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_Content.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.cache
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.lref
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.g.resources
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfo.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CopyComplete
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\refint\Ahnduino.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.genruntimeconfig.cache
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\ref\Ahnduino.dll
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.g.cs
+C:\Users\user\Desktop\Ahnduino\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.exe
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.deps.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.runtimeconfig.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.pdb
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\FirebaseAdmin.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Firebase.Storage.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Rest.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.PlatformServices.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Core.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.V1.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.LongRunning.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Auth.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.Api.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.AssemblyReference.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthButton.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthTextbox.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ChatItem.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ContactCard.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MenuButton.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MessageBox.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ScrollBar.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_Content.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.lref
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.g.resources
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfoInputs.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfo.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CoreCompileInputs.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CopyComplete
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\refint\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.pdb
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.genruntimeconfig.cache
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\ref\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.exe
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.deps.json
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.runtimeconfig.json
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\FirebaseAdmin.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Firebase.Storage.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Rest.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.PlatformServices.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Core.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.V1.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.LongRunning.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Grpc.Auth.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.Api.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.AssemblyReference.cache
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthButton.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthTextbox.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\ChatItem.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\ContactCard.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\MenuButton.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\MessageBox.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Themes\ScrollBar.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_Content.g.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.cache
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.lref
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\App.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.g.resources
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfoInputs.cache
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfo.cs
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CoreCompileInputs.cache
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CopyComplete
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\refint\Ahnduino.dll
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.genruntimeconfig.cache
+C:\Users\InHwan\Desktop\새 폴더\Ahnduino\obj\Debug\net6.0-windows\ref\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoRoomViewer.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoRoomViewer.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.exe
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.deps.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.runtimeconfig.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\FirebaseAdmin.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Firebase.Storage.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.CommonProtos.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Api.Gax.Rest.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.PlatformServices.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Auth.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Apis.Core.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Cloud.Firestore.V1.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.LongRunning.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Auth.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Grpc.Core.Api.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\System.Linq.Async.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\bin\Debug\net6.0-windows\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.AssemblyReference.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthButton.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\AuthTextbox.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ChatItem.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ContactCard.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MenuButton.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\MessageBox.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Themes\ScrollBar.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoRoomViewer.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_Content.g.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino_MarkupCompile.lref
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\App.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\AddBuild.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Auth.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BillMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardAdd.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BoardMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\BuildMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ChatMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\FixHoldMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageExtendList.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ImageViewer.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\InfoRoomViewer.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\MainMenuTemplate.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\Register.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\RequestMenu.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\ResetPW.baml
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.g.resources
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfoInputs.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.AssemblyInfo.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CoreCompileInputs.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.csproj.CopyComplete
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\refint\Ahnduino.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.pdb
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.genruntimeconfig.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\ref\Ahnduino.dll
