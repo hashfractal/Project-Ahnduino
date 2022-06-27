@@ -52,6 +52,27 @@ namespace Ahnduino.Wins
 										"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
 										"21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
+		void ResetUI()
+		{
+			RequestUserListView.SelectedIndex = 0;
+			labeltitle.Text = "좌측 리스트에서 항목을 불러와 주십시오";
+			labeltext.Content = "문의 내용";
+			labelinfo.Text = "희망시각 1:";
+			labelinfo.Text = "희망시각 2:";
+			labelinfo.Text = "희망시각 3:";
+			TextBoxYear.Text = "";
+			TextBoxMonth.Text = "";
+			TextBoxDay.Text = "";
+			tbhour.Text = "";
+			tbminute.Text = "";
+			cbregion.Text = "";
+			cbgu.Text = "";
+			cbdong.Text = "";
+			cbworker.Text = "";
+			ImageList.Items.Clear();
+			Fbad.GetRequestList(userlist);
+		}
+
 		public RequestMenu(string uid)
 		{
 			this.uid = uid;
@@ -98,6 +119,12 @@ namespace Ahnduino.Wins
 						ImageList.Items.Add(image);
 					}
 				}
+
+				DateTime dateTime = DateTime.Now;
+
+				TextBoxYear.Text = dateTime.Year.ToString();
+				TextBoxMonth.Text = dateTime.Month.ToString();
+				TextBoxDay.Text = dateTime.Day.ToString();
 			}
 			
 		}
@@ -113,11 +140,13 @@ namespace Ahnduino.Wins
 			}
 
 			MessageBox.Show("예약완료되었습니다");
+			ResetUI();
 		}
 
 		private void bcancle_Click(object sender, RoutedEventArgs e)
 		{
 			Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
+			ResetUI();
 		}
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -152,17 +181,20 @@ namespace Ahnduino.Wins
 
 		private void TextBoxMonth_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			string s = TextBoxMonth!.SelectedItem!.ToString()!;
-			string[] sl = s.Split(' ');
-			DateTime dateTime = new DateTime(2000, int.Parse(sl[1]), 1);
-			if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 28)
-				TextBoxDay.ItemsSource = mlist28;
-			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 29)
-				TextBoxDay.ItemsSource = mlist29;
-			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 30)
-				TextBoxDay.ItemsSource = mlist30;
-			else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 31)
-				TextBoxDay.ItemsSource = mlist31;
+			if(TextBoxMonth.SelectedItem != null)
+			{
+				string s = TextBoxMonth!.SelectedItem!.ToString()!;
+				string[] sl = s.Split(' ');
+				DateTime dateTime = new DateTime(2000, int.Parse(sl[1]), 1);
+				if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 28)
+					TextBoxDay.ItemsSource = mlist28;
+				else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 29)
+					TextBoxDay.ItemsSource = mlist29;
+				else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 30)
+					TextBoxDay.ItemsSource = mlist30;
+				else if (DateTime.DaysInMonth(int.Parse(TextBoxYear.Text), dateTime.Month) == 31)
+					TextBoxDay.ItemsSource = mlist31;
+			}
 		}
 
 		private void ImageList_GotMouseCapture(object sender, MouseEventArgs e)
