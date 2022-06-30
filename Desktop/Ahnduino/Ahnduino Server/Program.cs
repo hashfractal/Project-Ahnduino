@@ -14,7 +14,11 @@ class Program
 			Console.WriteLine("1: 고지서 일괄 발송");
 			string input = Console.ReadLine()!;
 			if (input == "1")
+			{
+
 				Fbad.UpdateAllBill();
+
+			}
 			else if (input == "stop")
 				break;
 		}

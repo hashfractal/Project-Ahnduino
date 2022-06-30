@@ -18,13 +18,18 @@ public static class Fbad
 
 	static Fbad()
 	{
-		string path = "ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json";
+		string path = "rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json";
 		System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
 
-		DB = FirestoreDb.Create("ahnduino");
+		DB = FirestoreDb.Create("rijon-681a0");
 	}
 
-	public static string getEmail(string fulladdress)
+    internal static void CreateBill(string email, DateTime now, int v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static string getEmail(string fulladdress)
 	{
 		DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);
 		DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;

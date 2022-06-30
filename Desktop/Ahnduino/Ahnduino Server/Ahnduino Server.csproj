@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <None Remove="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json" />
+    <None Remove="rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

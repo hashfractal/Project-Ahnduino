@@ -38,3 +38,84 @@ C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CopyComplete
 C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.exe
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.deps.json
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.runtimeconfig.json
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.pdb
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.CommonProtos.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.V1.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.LongRunning.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Auth.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\System.Linq.Async.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.AssemblyReference.cache
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfoInputs.cache
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfo.cs
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CoreCompileInputs.cache
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CopyComplete
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\refint\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.pdb
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.genruntimeconfig.cache
+C:\Users\InHwan\Desktop\새 폴더 (2)\Ahnduino\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\ref\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.exe
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\ahnduino-firebase-adminsdk-ddl6q-daf19142ac.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.deps.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.runtimeconfig.json
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Ahnduino Server.pdb
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.CommonProtos.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Cloud.Firestore.V1.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.LongRunning.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Google.Protobuf.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Auth.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Grpc.Core.Api.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\System.Linq.Async.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-arm64\native\libgrpc_csharp_ext.arm64.so
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.AssemblyReference.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfoInputs.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.AssemblyInfo.cs
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CoreCompileInputs.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.csproj.CopyComplete
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\refint\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.pdb
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.genruntimeconfig.cache
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\ref\Ahnduino Server.dll
+C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json

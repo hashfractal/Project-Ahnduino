@@ -80,7 +80,7 @@ namespace Ahnduino.Wins
 				ntb2.Text = dt.Month.ToString();
 				ntb3.Text = newbill.Totmoney.ToString();
 				ntb4.Text = dt.AddMonths(1).Month.ToString();
-				ntb4_1.Text = dt.Day.ToString();
+				ntb4_1.Text = 20.ToString();//dt.Day.ToString(); 
 				ntb5.Text = newbill.Totmoney.ToString();
 				ntb6.Text = newbill.Money.ToString();
 				ntb7.Text = newbill.Defmoney.ToString();
@@ -265,6 +265,8 @@ namespace Ahnduino.Wins
 			menu.Show();
 			Close();
 		}
-		#endregion
-	}
+        #endregion
+
+ 
+    }
 }

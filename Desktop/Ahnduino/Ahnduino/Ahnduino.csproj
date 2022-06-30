@@ -26,8 +26,10 @@
     <None Remove="Image\mainIcon.png" />
     <None Remove="Image\mainIConcolor.ico" />
     <None Remove="Image\mainIConcolor.png" />
+    <None Remove="Image\repair.png" />
     <None Remove="ImgList.png" />
     <None Remove="rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json" />
+    <None Remove="Wins\repair.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,7 +69,9 @@
     <Resource Include="Image\mainIConcolor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\repair.png" />
     <Resource Include="ImgList.png" />
+    <Resource Include="Wins\repair.png" />
   </ItemGroup>
 
   <ItemGroup>
