@@ -27,15 +27,23 @@ namespace Ahnduino.Wins
 
 		private void RegBtn_Click(object sender, RoutedEventArgs e)
 		{
-			string exec = Fbad.validationBuild(tbaddress.Text, tbbuild.Text, tbid.Text);
-			if( exec != "")
+			try
 			{
-				MessageBox.Show(exec);
-				return;
+				string exec = Fbad.validationBuild(tbaddress.Text, tbbuild.Text, tbid.Text);
+				if (exec != "")
+				{
+					MessageBox.Show(exec);
+					return;
+				}
+				Fbad.AddBuild(tbaddress.Text, tbbuild.Text, tbid.Text, int.Parse(tbpay.Text), int.Parse(tbunpay.Text));
+				MessageBox.Show("건물이 등록되었습니다");
+				Close();
 			}
-			Fbad.AddBuild(tbaddress.Text, tbbuild.Text, tbid.Text, int.Parse(tbpay.Text), int.Parse(tbunpay.Text));
-			MessageBox.Show("건물이 등록되었습니다");
-			Close();
+			catch (Exception)
+			{
+				MessageBox.Show("입력이 잘못 되었습니다");
+			}
+			
 		}
 	}
 }

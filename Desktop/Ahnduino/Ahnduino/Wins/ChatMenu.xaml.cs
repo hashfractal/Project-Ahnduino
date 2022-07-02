@@ -31,6 +31,7 @@ namespace Ahnduino.Wins
 	{
 		ObservableCollection<Chat> chatlist = new();
 		ObservableCollection<string> chatuserlist = new();
+		ObservableCollection<string> chatresentuserlist = new();
 		string? email;
 		string uid;
 		bool refresh = true;
@@ -46,17 +47,30 @@ namespace Ahnduino.Wins
 			ChatListView.ItemsSource = chatlist;
 			chatneedanswerlistview.ItemsSource = chatuserlist;
 			Fbad.GetChatUserList(chatuserlist);
+			Fbad.ChatGetResentList(uid, chatresentuserlist);
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.GetChat(null, chatlist, SV);
+			Fbad.GetChat(null, uid, chatlist, chatresentuserlist, SV);
 			email = Fbad.AddressToEmail(textboxemail.Text);
 			Fbad.FirstGetChatList(email, chatlist);
 			if(chatlist.Count > 0)
 				chatlist.RemoveAt(chatlist.Count - 1);
-			Fbad.GetChat(email, chatlist, SV);
+			Fbad.GetChat(email, uid, chatlist, chatresentuserlist, SV);
 			SV.ScrollToBottom();
+		}
+
+		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				textboxemail.Text = Fbad.GetFA();
+				Button_Click(sender, e);
+			}
+			catch (Exception)
+			{}
+			
 		}
 
 		private void sendbutton_Click(object sender, RoutedEventArgs e)
@@ -95,12 +109,12 @@ namespace Ahnduino.Wins
 		{
 			if(chatneedanswerlistview.SelectedItem != null)
 			{
-				Fbad.GetChat(null, chatlist, SV);
+				Fbad.GetChat(null, uid, chatlist, chatresentuserlist, SV);
 				email = Fbad.getEmail(chatneedanswerlistview!.SelectedItem!.ToString()!);
 				Fbad.FirstGetChatList(email!, chatlist);
 				if (chatlist.Count > 0)
 					chatlist.RemoveAt(chatlist.Count - 1);
-				Fbad.GetChat(email, chatlist, SV);
+				Fbad.GetChat(email, uid, chatlist, chatresentuserlist, SV);
 				SV.ScrollToBottom();
 			}
 			
@@ -125,12 +139,6 @@ namespace Ahnduino.Wins
 			}
 		}
 
-		private void Build_Click(object sender, RoutedEventArgs e)
-		{
-			BuildMenu build = new();
-			build.Show();
-		}
-
 		private void ChatListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Chat chat = (Chat)ChatListView.SelectedItem;
@@ -139,6 +147,23 @@ namespace Ahnduino.Wins
 		}
 
 		#region Sidemenu
+		private void Worker_Click(object sender, RoutedEventArgs e)
+		{
+			SelectWorker selectWorker = new();
+			selectWorker.Show();
+		}
+
+		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);
@@ -174,5 +199,20 @@ namespace Ahnduino.Wins
 			Close();
 		}
 		#endregion
+
+		private void bread_Click(object sender, RoutedEventArgs e)
+		{
+			chatneedanswerlistview.ItemsSource = chatresentuserlist;
+		}
+
+		private void bnoread_Click(object sender, RoutedEventArgs e)
+		{
+			chatneedanswerlistview.ItemsSource = chatuserlist;
+		}
+
+		private void Window_Closed(object sender, EventArgs e)
+		{
+			Fbad.ChatSetResentList(uid, chatresentuserlist);
+		}
 	}
 }

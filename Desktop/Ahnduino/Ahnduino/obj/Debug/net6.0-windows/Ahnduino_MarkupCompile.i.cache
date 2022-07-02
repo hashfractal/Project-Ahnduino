@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\
 Ahnduino
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\App.xaml
-23-207693155
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\App.xaml
+25-1425899383
 2-1163608196
-28-421501206
-21534650404
-Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\AddBuild.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardAdd.xaml;Wins\BoardMenu.xaml;Wins\BuildMenu.xaml;Wins\ChatMenu.xaml;Wins\FixHoldMenu.xaml;Wins\ImageExtendList.xaml;Wins\ImageViewer.xaml;Wins\InfoMenu.xaml;Wins\InfoRoomViewer.xaml;Wins\MainMenuTemplate.xaml;Wins\Register.xaml;Wins\RequestMenu.xaml;Wins\ResetPW.xaml;
+311469257787
+215-1645943984
+Themes\AuthButton.xaml;Themes\AuthTextbox.xaml;Themes\ChatItem.xaml;Themes\ContactCard.xaml;Themes\MenuButton.xaml;Themes\MessageBox.xaml;Themes\ScrollBar.xaml;Wins\AddBuild.xaml;Wins\Auth.xaml;Wins\BillMenu.xaml;Wins\BoardAdd.xaml;Wins\BoardMenu.xaml;Wins\BuildMenu.xaml;Wins\ChatMenu.xaml;Wins\FixHoldMenu.xaml;Wins\ImageExtendList.xaml;Wins\ImageViewer.xaml;Wins\InfoMenu.xaml;Wins\InfoRoomViewer.xaml;Wins\MainMenuTemplate.xaml;Wins\Register.xaml;Wins\RequestMenu.xaml;Wins\ResetPW.xaml;Wins\SelectMenu.xaml;Wins\SelectWorker.xaml;
 
-False
+True
 

@@ -73,10 +73,6 @@ namespace Ahnduino.Wins
 			
 		}
 
-		private void bbuildid_Click(object sender, RoutedEventArgs e)
-		{
-		}
-
 		private void LVUserlist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			build = LVUserlist.SelectedItem as Build;

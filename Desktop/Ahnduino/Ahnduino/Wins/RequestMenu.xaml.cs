@@ -131,22 +131,37 @@ namespace Ahnduino.Wins
 
 		private void LoginBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (request != null)
+			try
 			{
-				DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
-				request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
-				request.Isreserve = true;
-				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, cbworker.Text, dt);
-			}
+				if (request != null)
+				{
+					DateTime dt = new DateTime(int.Parse(TextBoxYear.Text), int.Parse(TextBoxMonth.Text), int.Parse(TextBoxDay.Text), int.Parse(tbhour.Text), int.Parse(tbminute.Text), 0);
+					request.Reserve = string.Format("{0:yy}/{0:MM}/{0:ddtt hh 시 mm 분}", dt);
+					request.Isreserve = true;
+					Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, cbworker.Text, dt);
+				}
 
-			MessageBox.Show("예약완료되었습니다");
-			ResetUI();
+				MessageBox.Show("예약완료되었습니다");
+				ResetUI();
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("입력이 잘못 되었습니다");
+			}
+			
 		}
 
 		private void bcancle_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
-			ResetUI();
+			try
+			{
+				Fbad.RemoveRequest(request!.UID, request.Date, request!.DocID, request!, uid);
+				ResetUI();
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("입력이 잘못 되었습니다");
+			}
 		}
 
 		private void imglist_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -259,6 +274,11 @@ namespace Ahnduino.Wins
 			FixHoldMenu menu = new(uid);
 			menu.Show();
 			Close();
+		}
+		private void Worker_Click(object sender, RoutedEventArgs e)
+		{
+			SelectWorker selectWorker = new();
+			selectWorker.Show();
 		}
 		#endregion
 	}

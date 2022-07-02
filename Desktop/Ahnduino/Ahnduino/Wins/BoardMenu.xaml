@@ -16,9 +16,9 @@
 
 		<Grid Grid.Column="0" Background="#008F5E">
 			<StackPanel Orientation="Vertical" VerticalAlignment="Top">
-				<Button Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White">사용자 님</Button>
+				<Button x:Name="Worker" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Worker_Click">사용자 님</Button>
 				<Button x:Name="Build" Height="50" Width="120" Style="{StaticResource MenuButton}" HorizontalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }" Foreground="White" Click="Build_Click">주택 조회</Button>
-				<Button Height="120" Style="{StaticResource MenuButton}">
+				<Button x:Name="gotorequest" Height="120" Style="{StaticResource MenuButton}" Click="gotorequest_Click">
 					<StackPanel Orientation="Vertical">
 						<Image Source="/Image/mainICon.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">주택 관리</Label>
@@ -27,7 +27,7 @@
 
 				<Button x:Name="Fixhold" Height="120" Style="{StaticResource MenuButton}" Click="Fixhold_Click">
 					<StackPanel Orientation="Vertical">
-                        <Image Source="/Wins/repair.png" Stretch="Fill" Height="70" Width="70"/>
+						<Image Source="/Wins/repair.png" Stretch="Fill" Height="70" Width="70"/>
 						<Label HorizontalAlignment="Center" Foreground="White" FontSize="15" FontFamily="{StaticResource Default }">수리 보류</Label>
 					</StackPanel>
 				</Button>

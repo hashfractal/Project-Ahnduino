@@ -90,6 +90,17 @@ namespace Ahnduino.Wins
 			}
 		}
 
+		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				textboxemail.Text = Fbad.GetFA();
+				searchbutton_Click(sender, e);
+			}
+			catch (Exception)
+			{ }
+		}
+
 		private void billlistbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			bill = billlistbox.SelectedItem as Bill;
@@ -218,12 +229,6 @@ namespace Ahnduino.Wins
 			ntb9.Text = n2.ToString();
 		}
 
-		private void Build_Click(object sender, RoutedEventArgs e)
-		{
-			BuildMenu build = new();
-			build.Show();
-		}
-
 		private void lbneedsomething_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			textboxemail.Text = (string)lbneedsomething.SelectedItem;
@@ -231,6 +236,23 @@ namespace Ahnduino.Wins
 		}
 
 		#region Sidemenu
+		private void Worker_Click(object sender, RoutedEventArgs e)
+		{
+			SelectWorker selectWorker = new();
+			selectWorker.Show();
+		}
+
+		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
+		private void Build_Click(object sender, RoutedEventArgs e)
+		{
+			BuildMenu build = new();
+			build.Show();
+		}
 		private void gotochat_Click(object sender, RoutedEventArgs e)
 		{
 			ChatMenu menu = new(uid);
@@ -265,8 +287,9 @@ namespace Ahnduino.Wins
 			menu.Show();
 			Close();
 		}
-        #endregion
 
- 
-    }
+		#endregion
+
+
+	}
 }

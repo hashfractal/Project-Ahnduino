@@ -31,11 +31,33 @@ namespace Ahnduino.Wins
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text), lbin, lbout);
-			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text), lbrequest);
+			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text)!, lbin, lbout);
+			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text)!, lbrequest);
+		}
+
+		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				textboxemail.Text = Fbad.GetFA();
+				Button_Click(sender, e);
+			}
+			catch (Exception)
+			{}
 		}
 
 		#region Sidemenu
+		private void Worker_Click(object sender, RoutedEventArgs e)
+		{
+			SelectWorker selectWorker = new();
+			selectWorker.Show();
+		}
+		private void gotorequest_Click(object sender, RoutedEventArgs e)
+		{
+			RequestMenu menu = new(uid);
+			menu.Show();
+			Close();
+		}
 		private void Build_Click(object sender, RoutedEventArgs e)
 		{
 			BuildMenu build = new();

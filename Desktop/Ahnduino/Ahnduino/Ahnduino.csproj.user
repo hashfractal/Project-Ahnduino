@@ -55,6 +55,12 @@
     <Compile Update="Wins\ResetPW.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Wins\SelectMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Wins\SelectWorker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\AuthButton.xaml">
@@ -124,6 +130,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wins\ResetPW.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\SelectMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wins\SelectWorker.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

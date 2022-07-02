@@ -346,3 +346,7 @@ C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\refint\Ahndui
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.pdb
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Ahnduino.genruntimeconfig.cache
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\ref\Ahnduino.dll
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\SelectMenu.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\SelectMenu.baml
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\SelectWorker.g.cs
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino\obj\Debug\net6.0-windows\Wins\SelectWorker.baml

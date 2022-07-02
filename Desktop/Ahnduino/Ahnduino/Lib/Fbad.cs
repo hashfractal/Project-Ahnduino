@@ -2,6 +2,7 @@
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -13,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Ahnduino.Wins;
 
 #pragma warning disable SYSLIB0022 // Null 경고 끄기
 
@@ -22,6 +24,7 @@ namespace Ahnduino.Lib
 	public static class Fbad
 	{
 		static FirestoreDb? DB;
+		public static string? searchresult;
 
 		public static FirestoreDb GetDb { get { return DB!; } }
 
@@ -34,21 +37,27 @@ namespace Ahnduino.Lib
 
 			string path = "rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json";
 			System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
 			DB = FirestoreDb.Create("rijon-681a0");
 		}
 
 		//전체주소(주소+(건물명))을 주면 해당 주소에 할당된 유저의 이메일 반환
-		public static string getEmail(string fulladdress)
+		public static string? getEmail(string fulladdress)
 		{
-			DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);	//DocumentReference: 참조할 문서의 주소
-			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;					//DocumentSnapshot: 파이어스토어에서 가져온 문서 객체(실체가 있음)
-			dSnap.TryGetValue("인증번호", out string temp);                             //TryGetValue: 문서 스냅샷에서 특정한 값을 가져올 때 사용
-			Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
-			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;                      //GetSnapshotAsync: 쿼리를 실행
-																						//QuerySnapshot: 쿼리실행시킨 결과물 객체(실체가 있음) 
-			return qSnap.Documents[0].Id;                                               //QuerySnapshot.Documents: 쿼리 스냅샷의 문서 스냅샷 배열
-			//Documents[0]->쿼리 결과물의 첫번째 객체 (== DocumentSnapshot.id -> 문서id)
+			try
+			{
+				DocumentReference dRef = DB!.Collection("Building").Document(fulladdress);  //DocumentReference: 참조할 문서의 주소
+				DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;                    //DocumentSnapshot: 파이어스토어에서 가져온 문서 객체(실체가 있음)
+				dSnap.TryGetValue("인증번호", out string temp);                             //TryGetValue: 문서 스냅샷에서 특정한 값을 가져올 때 사용
+				Query query = DB!.Collection("User").WhereEqualTo("인증번호", temp);
+				QuerySnapshot qSnap = query.GetSnapshotAsync().Result;                      //GetSnapshotAsync: 쿼리를 실행
+																							//QuerySnapshot: 쿼리실행시킨 결과물 객체(실체가 있음) 
+				return qSnap.Documents[0].Id;                                               //QuerySnapshot.Documents: 쿼리 스냅샷의 문서 스냅샷 배열
+																							//Documents[0]->쿼리 결과물의 첫번째 객체 (== DocumentSnapshot.id -> 문서id)
+			}
+			catch (Exception)
+			{
+				throw;
+			}                                
 		}
 
 		//이메일을 주면 전체주소 반환
@@ -85,6 +94,39 @@ namespace Ahnduino.Lib
 
 			return image;
 		}
+
+		public static string GetFA()
+		{
+			SelectMenu select = new SelectMenu();
+			select.ShowDialog();
+			if (searchresult == null)
+				throw new Exception("NotFound");
+			return searchresult!;
+		}
+
+		//현장직 조회
+		#region Worker
+		public static Worker WorkerGet(string email)
+		{
+			DocumentReference dRef = DB!.Collection("Worker").Document(email);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			return dSnap.ConvertTo<Worker>();
+		}
+
+		public static List<Worker> WorkerGetList(string region, string gu, string dong)
+		{
+			List<Worker> res = new List<Worker>();
+			Query query = DB!.Collection("Worker").WhereEqualTo("근무지", region + " " + gu + " " + dong);
+			QuerySnapshot qSnap = query.GetSnapshotAsync().Result;
+
+			foreach (DocumentSnapshot i in qSnap.Documents)
+			{
+				res.Add(i.ConvertTo<Worker>());
+			}
+
+			return res;
+		}
+		#endregion
 
 		//건물관리
 		#region Build
@@ -601,6 +643,7 @@ namespace Ahnduino.Lib
 				{"reserv", request.Reserve!},
 				{"solved", request.solved!},
 				{"userName", request.userName!},
+				{"workerUID", UID},
 			};
 
 			int n = 0;
@@ -1018,7 +1061,7 @@ namespace Ahnduino.Lib
 		}
 
 		//새로운 채팅을 받는 메서드
-		public static void GetChat(string? email, ObservableCollection<Chat> chatlist, ScrollViewer scrollViewer)
+		public static void GetChat(string? email, string? manager, ObservableCollection<Chat> chatlist, ObservableCollection<string> chatresentuserlist , ScrollViewer scrollViewer)
 		{
 			//채팅방을 나갔을 때 리스너를 종료시키기 위한 설정 코드 최하단 참고
 			if (email == null)
@@ -1069,6 +1112,28 @@ namespace Ahnduino.Lib
 					chat.address = GetAddress(email);
 
 					chatlist.Add(chat);
+
+					//채팅최근사용자목록
+					if(chat.chat != manager)
+					{
+						string? useremail = null;
+						try
+						{
+							useremail = chatresentuserlist.Single(x => x == GetAddress(chat.chat!));
+						}
+						catch (Exception)
+						{
+						}
+						
+						if ( useremail != null)
+						{
+							chatresentuserlist.Remove(GetAddress(chat.chat!));
+						}
+						chatresentuserlist.Insert(0, GetAddress(chat.chat!));
+						if (chatresentuserlist.Count > 50)
+							chatresentuserlist.RemoveAt(chatresentuserlist.Count - 1);
+					}
+					
 				});
 			});
 
@@ -1079,6 +1144,33 @@ namespace Ahnduino.Lib
 			}
 			Console.WriteLine("GetChatDone");
 		}
+
+		public static void ChatGetResentList(string uid, ObservableCollection<string> resentuserlist)
+		{
+			DocumentReference dRef = DB!.Collection("Manager").Document(uid);
+			DocumentSnapshot dSnap = dRef.GetSnapshotAsync().Result;
+			dSnap.TryGetValue("resentuserlist", out ArrayList arrayList);
+
+			if(arrayList != null)
+			{
+				foreach (string item in arrayList)
+					resentuserlist.Add(item);
+			}
+		}
+
+		public static void ChatSetResentList(string uid, ObservableCollection<string> resentuserlist)
+		{
+			DocumentReference dRef = DB!.Collection("Manager").Document(uid);
+			Dictionary<string, object> dict = new Dictionary<string, object>();
+
+			ArrayList array = new ArrayList();
+			foreach(string item in resentuserlist)
+				array.Add(item);
+
+			dict.Add("resentuserlist", array);
+			dRef.SetAsync(dict, SetOptions.MergeAll);
+		}
+
 
 		//답변이 필요한 유저 리스트 가져오기
 		public static void GetChatUserList(ObservableCollection<string> chatuserlist)

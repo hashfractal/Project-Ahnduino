@@ -47,12 +47,13 @@ namespace Ahnduino.Wins
 
 		void ResetUI()
 		{
+			request = null;
 			RequestUserListView.SelectedIndex = 0;
 			labeltitle.Text = "좌측 리스트에서 항목을 불러와 주십시오";
 			labeltext.Content = "문의 내용";
-			labelinfo.Text = "희망시각 1:";
-			labelinfo.Text = "희망시각 2:";
-			labelinfo.Text = "희망시각 3:";
+			labelinfo.Text = "희망시간 1:";
+			labelinfo1.Text = "희망시간 2:";
+			labelinfo2.Text = "희망시간 3:";
 			TextBoxYear.Text = "";
 			TextBoxMonth.Text = "";
 			TextBoxDay.Text = "";
@@ -122,10 +123,8 @@ namespace Ahnduino.Wins
 				request.Isreserve = true;
 				Fbad.UpdateRequest(request.UID, request.Date, request.DocID, request!, request.worker!, dt);
 				Fbad.RemoveFixHold(request);
+				MessageBox.Show("예약완료되었습니다");
 			}
-
-			MessageBox.Show("예약완료되었습니다");
-
 			ResetUI();
 		}
 
@@ -199,6 +198,11 @@ namespace Ahnduino.Wins
 		}
 
 		#region Sidemenu
+		private void Worker_Click(object sender, RoutedEventArgs e)
+		{
+			SelectWorker selectWorker = new();
+			selectWorker.Show();
+		}
 		private void gotorequest_Click(object sender, RoutedEventArgs e)
 		{
 			RequestMenu menu = new(uid);
@@ -245,5 +249,6 @@ namespace Ahnduino.Wins
 			Close();
 		}
 		#endregion
+
 	}
 }
