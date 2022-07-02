@@ -119,3 +119,4 @@ C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Serve
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\Ahnduino Server.genruntimeconfig.cache
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\obj\Debug\net6.0\ref\Ahnduino Server.dll
 C:\Users\InHwan\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json
+C:\Work Space\GitHub\Ahnduino\Desktop\Ahnduino\Ahnduino Server\bin\Debug\net6.0\rijon-681a0-firebase-adminsdk-mrnlm-0cfd96aa13.json

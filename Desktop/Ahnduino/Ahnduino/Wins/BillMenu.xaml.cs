@@ -52,45 +52,52 @@ namespace Ahnduino.Wins
 
 		private void searchbutton_Click(object sender, RoutedEventArgs e)	
 		{
-			Thread.Sleep(200);
+			try
+			{
+				Thread.Sleep(200);
+
+				Fbad.GetBillList(Fbad.getEmail(textboxemail.Text), billlist);
+				Fbad.SetNewBill(Fbad.getEmail(textboxemail.Text), newbill!);
+
+				if (newbill!.Totmoney == null)
+				{
+					DateTime dt = DateTime.Now;
+					tbtitle.Text = dt.Month.ToString() + "월 고지서 추가";
+					ntb1.Text = dt.Year.ToString();
+					ntb2.Text = dt.Month.ToString();
+
+					ntb4.Text = dt.AddMonths(1).Month.ToString();
+					ntb6.Text = newbill.Money.ToString();
+					ntb8.Text = newbill.Arrears.ToString();
+					ntb7.Text = "0";
+				}
+				else
+				{
+					Timestamp timestamp = (Timestamp)newbill.Nab!;
+					DateTime dt = timestamp.ToDateTime();
+					dt = dt.AddHours(9);
+
+					tbtitle.Text = dt.Month.ToString() + "월 고지서 추가";
+					ntb1.Text = dt.Year.ToString();
+					ntb2.Text = dt.Month.ToString();
+					ntb3.Text = newbill.Totmoney.ToString();
+					ntb4.Text = dt.AddMonths(1).Month.ToString();
+					ntb4_1.Text = 20.ToString();//dt.Day.ToString(); 
+					ntb5.Text = newbill.Totmoney.ToString();
+					ntb6.Text = newbill.Money.ToString();
+					ntb7.Text = newbill.Defmoney.ToString();
+					ntb8.Text = newbill.Arrears.ToString();
+					ntb9.Text = newbill.Pomoney.ToString();
+					ntb10.Text = newbill.Repair.ToString();
+				}
+			}
+			catch (Exception)
+			{
+			}
 			
-			Fbad.GetBillList(Fbad.getEmail(textboxemail.Text), billlist);
-			Fbad.SetNewBill(Fbad.getEmail(textboxemail.Text), newbill!);
-
-			if (newbill!.Totmoney == null)
-			{
-				DateTime dt = DateTime.Now;
-				tbtitle.Text = dt.Month .ToString() + "월 고지서 추가";
-				ntb1.Text = dt.Year.ToString();
-				ntb2.Text = dt.Month.ToString();
-				
-				ntb4.Text = dt.AddMonths(1).Month.ToString();
-				ntb6.Text = newbill.Money.ToString();
-				ntb8.Text = newbill.Arrears.ToString();
-				ntb7.Text = "0";
-			}
-			else
-			{
-				Timestamp timestamp = (Timestamp)newbill.Nab!;
-				DateTime dt = timestamp.ToDateTime();
-				dt = dt.AddHours(9);
-
-				tbtitle.Text = dt.Month.ToString() + "월 고지서 추가";
-				ntb1.Text = dt.Year.ToString();
-				ntb2.Text = dt.Month.ToString();
-				ntb3.Text = newbill.Totmoney.ToString();
-				ntb4.Text = dt.AddMonths(1).Month.ToString();
-				ntb4_1.Text = 20.ToString();//dt.Day.ToString(); 
-				ntb5.Text = newbill.Totmoney.ToString();
-				ntb6.Text = newbill.Money.ToString();
-				ntb7.Text = newbill.Defmoney.ToString();
-				ntb8.Text = newbill.Arrears.ToString();
-				ntb9.Text = newbill.Pomoney.ToString();
-				ntb10.Text = newbill.Repair.ToString();
-			}
 		}
 
-		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		private void textboxemail_PreviewMouseDown(object sender, MouseButtonEventArgs e)
 		{
 			try
 			{
@@ -288,8 +295,9 @@ namespace Ahnduino.Wins
 			Close();
 		}
 
+
 		#endregion
 
-
+		
 	}
 }

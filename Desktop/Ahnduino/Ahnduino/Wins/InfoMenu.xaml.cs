@@ -31,11 +31,18 @@ namespace Ahnduino.Wins
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text)!, lbin, lbout);
-			Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text)!, lbrequest);
+			try
+			{
+				Fbad.GetCheckInList(Fbad.getEmail(textboxemail.Text)!, lbin, lbout);
+				Fbad.GetInfoRepairList(Fbad.getEmail(textboxemail.Text)!, lbrequest);
+			}
+			catch (Exception)
+			{
+			}
+			
 		}
 
-		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		private void textboxemail_PreviewMouseDown(object sender, MouseButtonEventArgs e)
 		{
 			try
 			{
@@ -43,7 +50,7 @@ namespace Ahnduino.Wins
 				Button_Click(sender, e);
 			}
 			catch (Exception)
-			{}
+			{ }
 		}
 
 		#region Sidemenu

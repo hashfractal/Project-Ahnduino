@@ -55,8 +55,20 @@ namespace Ahnduino.Wins
 		private void LVUserlist_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			build = LVUserlist.SelectedItem as Build;
-			Fbad.searchresult = build!.주소 + "(" + build.건물명 + ")";
 			Close();
+		}
+
+		private void Window_Closed(object sender, EventArgs e)
+		{
+			if(build == null)
+			{
+				Fbad.searchresult = null;
+			}
+			else
+			{
+				Fbad.searchresult = build!.주소 + "(" + build.건물명 + ")";
+			}
+			
 		}
 	}
 }

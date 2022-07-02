@@ -52,16 +52,23 @@ namespace Ahnduino.Wins
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			Fbad.GetChat(null, uid, chatlist, chatresentuserlist, SV);
-			email = Fbad.AddressToEmail(textboxemail.Text);
-			Fbad.FirstGetChatList(email, chatlist);
-			if(chatlist.Count > 0)
-				chatlist.RemoveAt(chatlist.Count - 1);
-			Fbad.GetChat(email, uid, chatlist, chatresentuserlist, SV);
-			SV.ScrollToBottom();
+			try
+			{
+				Fbad.GetChat(null, uid, chatlist, chatresentuserlist, SV);
+				email = Fbad.AddressToEmail(textboxemail.Text);
+				Fbad.FirstGetChatList(email, chatlist);
+				if (chatlist.Count > 0)
+					chatlist.RemoveAt(chatlist.Count - 1);
+				Fbad.GetChat(email, uid, chatlist, chatresentuserlist, SV);
+				SV.ScrollToBottom();
+			}
+			catch (Exception)
+			{
+			}
+			
 		}
 
-		private void textboxemail_GotFocus(object sender, RoutedEventArgs e)
+		private void textboxemail_PreviewMouseDown(object sender, MouseButtonEventArgs e)
 		{
 			try
 			{
@@ -69,8 +76,8 @@ namespace Ahnduino.Wins
 				Button_Click(sender, e);
 			}
 			catch (Exception)
-			{}
-			
+			{ }
+
 		}
 
 		private void sendbutton_Click(object sender, RoutedEventArgs e)
@@ -214,5 +221,7 @@ namespace Ahnduino.Wins
 		{
 			Fbad.ChatSetResentList(uid, chatresentuserlist);
 		}
+
+		
 	}
 }

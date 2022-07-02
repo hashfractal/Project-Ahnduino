@@ -170,7 +170,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="8,8,0,8" BorderThickness="0" FontSize="35" FontFamily="{StaticResource Default}" GotFocus="textboxemail_GotFocus">
+					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="8,8,0,8" BorderThickness="0" FontSize="35" FontFamily="{StaticResource Default}" PreviewMouseDown="textboxemail_PreviewMouseDown">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>

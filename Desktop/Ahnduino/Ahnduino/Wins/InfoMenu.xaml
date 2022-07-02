@@ -73,7 +73,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="40"/>
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }" GotFocus="textboxemail_GotFocus">
+					<TextBox x:Name="textboxemail" Grid.Column="0" Margin="10,8,0,0" BorderThickness="0" FontSize="25" FontFamily="{StaticResource Default }" PreviewMouseDown="textboxemail_PreviewMouseDown">
 						<TextBox.Resources>
 							<Style TargetType="Border">
 								<Setter Property="CornerRadius" Value="8,0,0,8"/>
@@ -100,17 +100,21 @@
 						</Grid.ColumnDefinitions>
 
 						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="293*"/>
+								<ColumnDefinition Width="201*"/>
+							</Grid.ColumnDefinitions>
 							<Grid.RowDefinitions>
 								<RowDefinition Height="50" />
 								<RowDefinition/>
 							</Grid.RowDefinitions>
 
-							<Border Grid.Row="0" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8">
+							<Border Grid.Row="0" Background="#008F5E" CornerRadius="8" Margin="10,8,10,8" Grid.ColumnSpan="2">
 								<TextBlock TextAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Default }">
 									입실
 								</TextBlock>
 							</Border>
-							<ListBox x:Name="lbin" Grid.Row="2" Margin="10,0,10,8" BorderThickness="0" FontFamily="{StaticResource Default }" SelectionChanged="lbin_SelectionChanged">
+							<ListBox x:Name="lbin" Grid.Row="1" Margin="10,0,10,8" BorderThickness="0" FontFamily="{StaticResource Default }" SelectionChanged="lbin_SelectionChanged" Grid.ColumnSpan="2">
 								<ListBox.ItemTemplate>
 									<DataTemplate>
 										<Grid>

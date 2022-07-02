@@ -5,7 +5,7 @@ class Program
 	static void Main(string[] args)
 	{
 		System.Timers.Timer timer = new System.Timers.Timer();
-		timer.Interval = 1000 * 10 * 60 * 24; // 24시간마다 오늘 날짜 체크
+		timer.Interval = 1000 * 60 * 60 * 24; // 24시간마다 오늘 날짜 체크
 		timer.Elapsed += new ElapsedEventHandler(timer_Elapsed!);
 		timer.Start();
 
